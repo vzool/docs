@@ -26,7 +26,17 @@ Nobody ever needs your password!
 
 ### Header
 
-### Navigation
+### Navigation Sidebar
+
+#### Logo & Loading indicator
+
+#### Project Switcher
+
+#### Collection Navigation
+
+#### Extension Pages
+
+#### Bookmarks
 
 ### User Menu
 
@@ -40,9 +50,28 @@ Nobody ever needs your password!
 
 ### Items
 
+#### Layouts (below we talk about Tabular only, with tips for others
+#### Layout Options (changing fields, spacing, etc)
+#### Reordering
+#### Selecting (bulk edit, delete) & Opening
+#### Bookmarking
+#### Searching
+#### Filtering
+#### Sorting
+
 ### Item Detail
 
+#### Required Fields
+#### Saving
+#### Activity & Revisions
+#### Reverting
+#### Comments & Mentions
+#### Translations
+#### Deleting
+
 ### File Library
+
+#### Uploading & Adding Files
 
 ### User Directory
 
@@ -50,12 +79,5 @@ Nobody ever needs your password!
 
 ### My Activity
 
-## Items
-
-### Viewing Items
-### Creating Items
-### Editing Items
-### Deleting Items
-### Activity
-### Comments
-### Translations
+## Permissions
+## Status & Workflow
