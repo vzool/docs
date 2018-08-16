@@ -10,9 +10,9 @@ footer: GPL-3.0 | Copyright © 2018-present RANGER Studio
     <p></p>
     <nav>
       <ul>
-        <li><a href="/app/user-guide/">User Guide</a></li>
-        <li><a href="/app/admin-guide/">Admin Guide</a></li>
-        <li><a href="/app/contributor-guide/">Contributor Guide</a></li>
+        <li><router-link to="/app/user-guide/">User Guide</router-link></li>
+        <li><router-link to="/app/admin-guide/">Admin Guide</router-link></li>
+        <li><router-link to="/app/contributor-guide/">Contributor Guide</router-link></li>
       </ul>
     </nav>
   </div>
