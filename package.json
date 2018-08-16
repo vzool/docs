@@ -1,0 +1,30 @@
+{
+  "name": "@directus/docs",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Directus Docs",
+  "main": "index.js",
+  "repository": "directus/docs-v7",
+  "keywords": [
+    "directus",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "vuepress dev .",
+    "build": "vuepress build ."
+  },
+  "author": "Rijk van Zanten <rijkvanzanten@me.com>",
+  "contributors": [
+    "Ben Haynes <ben@rngr.org>",
+    "Welling Guzmán <welling@rngr.org>"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/directus/docs/issues"
+  },
+  "homepage": "https://github.com/directus/docs#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "vuepress": "^0.14.2"
+  }
+}
