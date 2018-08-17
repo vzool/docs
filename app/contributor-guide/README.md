@@ -57,15 +57,40 @@ This will build everthing into the `dist` folder. This folder can then be hosted
 http-server dist
 ```
 
-## Troubleshooting
+This will fire up a local static file server that allows you to check the production build of the app locally.
+
+::: tip
+For more information on installing the app or api, checkout our document about [installing the platform](./install-dev.md).
 
 ## Design Styleguide
 
+A lot of thought has gone into the Directus brand and UX. It is therefore extremely important to maintain consistency across the Application and all extensions. We've written [a comprehensive styleguide](./styleguide.md) you can follow when you're creating new user interface elements. Whenever possible, this guide should be followed to the letter. If any questions arise please feel free to reach out to Ben Haynes on [Directus Slack](https://slack.getdirectus.com) (@Ben), the Project Lead and head designer.
+
 ## Code Styleguide
+
+Just like the UI design, we like to keep the codestyle as consistent as possible. In order to make sure the code is following the specs, you can use our linter setup to check your code:
+
+```bash
+npm run lint
+```
+
+We've also included a `fix` command you can use to automatically fix any codestyle issues:
+
+```bash
+npm run fix
+```
+
+Please make sure to run both the linter and the fix command before pushing changes or opening a pull request.
 
 ## Submitting Pull Requests
 
+We like to keep a tight flow in working with GitHub, to make sure we have a clear history and accountability of what happened / changed when and where. Working with Git, and especially the GitHub specific features like forking and creating pull requests, can be quite daunting for new users. 
+
+To help you out in your Git(Hub) adventures, we've put together [the flow of contributing to an open source repo](./github.md).
+
 ## Need Help?
+
+If you run into anything or need pointers on how to continue, please feel free to reach out [on Slack](https://slack.getdirectus.com)!
 
 ## Page Index
 
@@ -76,6 +101,7 @@ http-server dist
 * [Globals](./globals.md)
 * [Helpers](./helpers.md)
 * [Internationalization](./i18n.md)
+* [Icons](./icons.md)
 * [Install Dev Env](./install-dev.md)
 * [Modals](./modals.md)
 * [Notifications](./notifications.md)
