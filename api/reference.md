@@ -179,7 +179,7 @@ Notice that the token is `Py8Ru.muLD7HE.5juFrOR5` and has a colon `:` at the end
 
 ### Get Auth Token
 
-Gets a token from a Directus user's credentials
+Gets a token from a Directus user's credentials.
 
 ```http
 POST /[env]/auth/authenticate
@@ -187,7 +187,7 @@ POST /[env]/auth/authenticate
 
 #### Body
 
-The users credentials
+The users credentials.
 
 ```json
 {
@@ -242,7 +242,7 @@ The access token that is returned through this endpoint must be used with any su
 
 ### Create Instance
 
-Create a new instance connection
+Create a new instance connection.
 
 ```http
 POST /instances
@@ -267,7 +267,7 @@ POST /instances
 | `cors_enabled`  | Enable CORS                            | No 
 
 ::: warning
-When `env` is not specified it will create the default configuration
+When `env` is not specified it will create the default configuration.
 :::
 
 ```json
@@ -282,7 +282,7 @@ When `env` is not specified it will create the default configuration
 
 ### Refresh Auth Token
 
-Gets a new fresh token using a valid auth token
+Gets a new fresh token using a valid auth token.
 
 ```http
 POST /[env]/auth/refresh
@@ -321,7 +321,7 @@ POST /[env]/auth/password/request
 
 #### Body
 
-The user's email address and the app URL from which the reset is requested
+The user's email address and the app URL from which the reset is requested.
 
 ```json
 {
@@ -380,7 +380,7 @@ POST /[env]/auth/sso/[provider]
 
 #### Body
 
-The user's email address and the app URL from which the reset is requested
+The user's email address and the app URL from which the reset is requested.
 
 ##### OAuth 1.0
 
@@ -580,7 +580,7 @@ Items are essentially individual database records which each contain one or more
 
 ### Create Item
 
-Creates one or more items in a given collection
+Creates one or more items in a given collection.
 
 ```http
 POST /items/[collection-name]
@@ -630,7 +630,7 @@ The API may not return any data for successful requests if the user doesn't have
 
 ### Get Item
 
-Get one or more single items from a given collection
+Get one or more single items from a given collection.
 
 ```http
 GET /items/[collection-name]/[pk]
@@ -666,7 +666,7 @@ GET /items/[collection-name]/[pk],[pk],[pk]
 
 ### Get Items
 
-Get an array of items from a given collection
+Get an array of items from a given collection.
 
 ```http
 GET /items/[collection-name]
@@ -739,7 +739,7 @@ GET /items/[collection-name]/[pk]/revisions/[offset]
 
 ### Get Revisions
 
-Get an array of revisions from a given item
+Get an array of revisions from a given item.
 
 ```http
 GET /items/[collection-name]/[pk]/revisions
@@ -771,7 +771,7 @@ GET /items/[collection-name]/[pk]/revisions
 
 ### Update Item
 
-Update or replace a single item from a given collection
+Update or replace a single item from a given collection.
 
 @TODO LOOK INTO ALLOWING FILTER PARAM FOR UPDATES, EG: `PUT /items/projects?filter[title][eq]=title`
 
@@ -787,7 +787,7 @@ PATCH /items/[collection-name]/[pk]
 
 #### Body
 
-A single item to be updated. Field keys must match the collection's column names
+A single item to be updated. Field keys must match the collection's column names.
 
 #### Common Responses
 
@@ -807,7 +807,7 @@ A single item to be updated. Field keys must match the collection's column names
 
 ### Update Items
 
-Update multiple items in a given collection
+Update multiple items in a given collection.
 
 ```http
 PATCH /items/[collection-name]
@@ -834,7 +834,7 @@ Batch Update can quickly overwrite large amounts of data. Please be careful when
 
 ### Revert Item
 
-Reverts a single item to a previous revision state
+Reverts a single item to a previous revision state.
 
 ```http
 PATCH /items/[collection-name]/[item-pk]/revert/[revision-pk]
@@ -842,7 +842,7 @@ PATCH /items/[collection-name]/[item-pk]/revert/[revision-pk]
 
 #### Body
 
-There is no body for this request
+There is no body for this request.
 
 #### Common Responses
 
@@ -861,7 +861,7 @@ There is no body for this request
 
 ### Delete Item
 
-Deletes one or more items from a specific collection. This endpoint also accepts CSV of primary key values, and would then return an array of items
+Deletes one or more items from a specific collection. This endpoint also accepts CSV of primary key values, and would then return an array of items.
 
 ```http
 DELETE /items/[collection-name]/[pk]
@@ -912,7 +912,7 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 
 #### Get Activity
 
-Get an array of activity
+Get an array of activity.
 
 ```http
 GET /activity
@@ -934,7 +934,7 @@ GET /activity
 
 #### Get Activity Event
 
-Get one or more activity events
+Get one or more activity events.
 
 ```http
 GET /activity/[pk]
@@ -958,7 +958,7 @@ GET /activity/[pk]
 
 #### Create Comment
 
-Create a new comment, whish needs to be related to a collection/item
+Create a new comment, whish needs to be related to a collection/item.
 
 ```http
 POST /activity/comment
@@ -966,7 +966,7 @@ POST /activity/comment
 
 ##### Body
 
-A single object representing the new comment
+A single object representing the new comment.
 
 ```json
 {
@@ -1068,7 +1068,7 @@ Permanently deletes a file.
 GET /[env]/files/[pk]/revisions
 ```
 
-Returns a list of a single file revisions
+Returns a list of a single file revisions.
 
 #### Get File Revision
 
@@ -1140,7 +1140,7 @@ These endpoints are used for creating, updating, or deleting collection presets 
 GET /[env]/collection_presets
 ```
 
-Returns the list of collection presets
+Returns the list of collection presets.
 
 #### Get Collection Preset
 
@@ -1156,7 +1156,7 @@ Returns the details of a single collection preset.
 POST /[env]/collection_presets
 ```
 
-Creates a new collection preset
+Creates a new collection preset.
 
 #### Update Collection Preset
 
@@ -1172,7 +1172,7 @@ Updates the details of a given collection preset.
 DELETE /[env]/collection_presets/[pk]
 ```
 
-Permanently deletes a collection_presets
+Permanently deletes a collection_presets.
 
 ### Permissions
 
@@ -1396,7 +1396,7 @@ Permanently deletes a collection information, the table and all its contents.
 
 ### Get Revision
 
-Get a specific revision
+Get a specific revision.
 
 ```http
 GET /[env]/revisions/[pk]
@@ -1424,7 +1424,7 @@ GET /[env]/revisions/[pk]
 
 ### Get Revisions
 
-Get all item revisions, for all collections within this instance
+Get all item revisions, for all collections within this instance.
 
 ```http
 GET /revisions
@@ -1452,7 +1452,7 @@ GET /revisions
 
 ### Create User
 
-Creates a new user within this instance
+Creates a new user within this instance.
 
 ```http
 POST /users
@@ -1479,7 +1479,7 @@ The email and password for the new user to be created. Any other submitted field
 
 ### Get User
 
-Gets a single user from within this instance
+Gets a single user from within this instance.
 
 ```http
 GET /users/[pk]
@@ -1511,7 +1511,7 @@ GET /users/[pk],[pk],[pk]
 
 ### Get Users
 
-Gets Directus users within this instance
+Gets Directus users within this instance.
 
 ```http
 GET /users
@@ -1548,7 +1548,7 @@ GET /users
 
 ### Update User
 
-Update a user within this instance
+Update a user within this instance.
 
 ```http
 PATCH /users/[pk]
@@ -1573,7 +1573,7 @@ A single user to be updated. Field keys must match column names within `directus
 
 ### Delete User
 
-Deletes one or more users from this instance
+Deletes one or more users from this instance.
 
 ```http
 DELETE /users/[pk]
@@ -1589,7 +1589,7 @@ DELETE /users/[pk],[pk],[pk]
 
 ### Invite User
 
-Invite a new user to this instance. This will send an email to the user with further instructions
+Invite a new user to this instance. This will send an email to the user with further instructions.
 
 ```http
 POST /users/invite
@@ -1635,7 +1635,7 @@ PATCH /users/[pk]/tracking/page
 
 #### Body
 
-The path to the last page the user was on in the Directus App
+The path to the last page the user was on in the Directus App.
 
 ```json
 {
@@ -1680,7 +1680,7 @@ Reverts the details of a user to a given revision.
 
 ### Hash String
 
-Hashes the submitted string using the chosen algorithm
+Hashes the submitted string using the chosen algorithm.
 
 ```http
 POST /utils/hash
@@ -1688,7 +1688,7 @@ POST /utils/hash
 
 #### Body
 
-The hashing algorithm to use and the string to hash
+The hashing algorithm to use and the string to hash.
 
 ```json
 {
@@ -1706,7 +1706,7 @@ The hashing algorithm to use and the string to hash
 
 ### Match Hashed String
 
-Confirms encrypted hashes against the API
+Confirms encrypted hashes against the API.
 
 ```http
 POST /utils/hash/match
@@ -1714,7 +1714,7 @@ POST /utils/hash/match
 
 #### Body
 
-The hashing algorithm to use and the string to hash
+The hashing algorithm to use and the string to hash.
 
 ```json
 {
@@ -1733,7 +1733,7 @@ The hashing algorithm to use and the string to hash
 
 ### Get Random String
 
-Gets a random alphanumeric string from the API
+Gets a random alphanumeric string from the API.
 
 ```http
 GET /utils/random/string
@@ -1753,7 +1753,7 @@ GET /utils/random/string
 
 ### Mail
 
-Send a email to one or multiple emails
+Send a email to one or multiple emails.
 
 ```http
 POST /[env]/mail
@@ -2310,7 +2310,7 @@ This is danger note with a custom title
 
 ### Information
 
-Returns information about the server and api.
+Returns information about the server and API.
 
 ```http
 GET /
