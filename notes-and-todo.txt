@@ -1,0 +1,2 @@
+* Make screenshots full screen in chrome on 125% zoom
+* Use `directus-*` descriptive file names (SEO)

@@ -20,6 +20,12 @@ Nobody ever needs your password!
 
 ### Single Sign-On
 
+Next to the default secure login, Directus allows you to use several external services as means of authentication. 
+
+When [the system has been configured to allow you to login with external services](#), the logos of these services will show up on the login form:
+
+![Login with SSO](./img/directus-login-with-sso.png)
+
 ## Overview
 
 @TODO: screenshot of interface
