@@ -58,7 +58,7 @@ The API uses HTTP status codes in addition to the message value. Everything in t
 
 The `error` property is only present when an error has occurred.
 
-### Error codes
+### Error Codes
 
 #### General error codes
 
@@ -78,7 +78,7 @@ The `error` property is only present when an error has occurred.
 - **0013** - Invalid or Empty Payload (400)
 - **0014** - Default Instance not configured properly (503)
 
-#### Authentication error codes
+#### Authentication Error Codes
 
 - **0100** - Invalid Credentials (404)
 - **0101** - Invalid Token (401)
@@ -90,7 +90,7 @@ The `error` property is only present when an error has occurred.
 - **0107** - User with a given email Not Found (404)
 - **0108** - User not authenticated (401)
 
-#### Items error codes
+#### Items Error Codes
 
 - **0200** - Collection Not Found (404)
 - **0201** - Not Allow Direct Access To System Table (401)
@@ -106,7 +106,7 @@ The `error` property is only present when an error has occurred.
 - **0211** - Cannot edit a comment from an item
 - **0212** - Cannot delete a comment from an item
 
-#### Collections error codes
+#### Collections Error Codes
 
 - **0300** - Reading items denied (403)
 - **0301** - Creating items denied (403)
@@ -119,18 +119,18 @@ The `error` property is only present when an error has occurred.
 - **0308** - Field already exists (422)
 - **0309** - Unable to find items owned by an specific user (403) 
 
-#### Schema error codes
+#### Schema Error Codes
 
 - **0400** - Unknown Error (500)
 - **0401** - Unknown data type (400)
 
-#### Mail error codes
+#### Mail Error Codes
 
 - **0500** - Mailer Transport not found (500)
 - **0501** - Invalid Transport option (500)
 - **0502** - Invalid Transport instance (500)
 
-#### Filesystem error codes
+#### Filesystem Error Codes
 
 - **0600** - Unknown Error (500)
 - **0601** - The uploaded file exceeds max upload size that was specified on the server (500)
@@ -142,7 +142,7 @@ The `error` property is only present when an error has occurred.
 - **0607** - Failed to write file to disk (500)
 - **0608** - A PHP extension stopped the file upload (500)
 
-#### Utils error codes
+#### Utils Error Codes
 
 - **1000** - Hasher not found (400)
 
@@ -177,7 +177,7 @@ Notice that the token is `Py8Ru.muLD7HE.5juFrOR5` and has a colon `:` at the end
 
 `curl https://example.com/api/?access_token=Py8RumuLD.7HE5j.uFrOR5`
 
-### Get Authentication Token
+### Get Auth Token
 
 Gets a token from a Directus user's credentials
 
@@ -208,7 +208,7 @@ The access token that is returned through this endpoint must be used with any su
 :::
 
 
-#### Protected endpoints
+#### Protected Endpoints
 
 | Endpoint                   | Protected
 | -------------------------- | -----------------------
@@ -240,7 +240,7 @@ The access token that is returned through this endpoint must be used with any su
 | /server                    | Yes
 | /types                     | Yes
 
-### Create new instance
+### Create Instance
 
 Create a new instance connection
 
@@ -280,7 +280,7 @@ When `env` is not specified it will create the default configuration
 }
 ```
 
-### Refresh Authentication Token
+### Refresh Auth Token
 
 Gets a new fresh token using a valid auth token
 
@@ -350,15 +350,15 @@ GET /[env]/auth/password/reset/[reset-token]
 | ------ | -------------------------------------------------------------------------- |
 | 401    | Invalid/Expired token |
 
-### Get a list of Single Sign-On services
+### Get SSO Services
 
 ```http
 GET /[env]/auth/sso
 ```
 
-A list of Third-party authentication services, such as Google and Facebook.
+A list of third-party Single Sign-On (SSO) authentication services, such as Google and Facebook.
 
-### Redirect to the authorization page
+### Authorization Redirect
 
 ```http
 GET /auth/sso/[provider]
@@ -366,7 +366,7 @@ GET /auth/sso/[provider]
 
 Automatically redirects to the authorization url if the origin host is allowed by the API otherwise it will return the authorization url.
 
-### Authenticate using the OAuth token/code
+### OAuth Authentication
 
 ::: warning
 This endpoint is only useful when the callback is not handled by the API. See: /[env]/auth/sso/[provider]/callback.
@@ -397,15 +397,15 @@ The user's email address and the app URL from which the reset is requested
 }
 ```
 
-### Single Sign-On Authorization callback
+### SSO Callback
 
 ```http
 GET /[env]/auth/sso/[provider]/callback
 ```
 
-Set this url as the callback for the OAuth service and it will return a "request token" that the client can use to request the access token.
+Set this url as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
 
-### Get Access Token using the Request Token
+### Get Access Token
 
 ```http
 POST /[env]/auth/sso/access_token
@@ -588,7 +588,7 @@ POST /items/[collection-name]
 
 A single item or an array of multiple items to be created. Field keys must match the collection's column names.
 
-##### One Item (Regular)
+##### Single Item (Regular)
 
 ```json
 {
@@ -700,7 +700,7 @@ GET /items/[collection-name]
     curl -u [token]: -g https://api.directus.io/_/items/projects?filter[category][eq]=design
     ```
 
-### Get Item Revision
+### Get Revision
 
 Get a specific revision from a given item. This endpoint uses a zero-based offset to select a revision, where `0` is the creation revision. Negative offsets are allowed, and select as if `0` is the current revisions.
 
@@ -735,7 +735,7 @@ GET /items/[collection-name]/[pk]/revisions/[offset]
     curl -u <token>: https://api.directus.io/_/items/projects/1/revisions/-2
     ```
 
-### Get Item Revisions
+### Get Revisions
 
 Get an array of revisions from a given item
 
@@ -906,9 +906,9 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 | LOGIN         | User authenticate using credentials                        |
 | REVERT        | Item updated using a revision data                         |
 
-#### Get activities
+#### Get Activity
 
-Get an array of activities
+Get an array of activity
 
 ```http
 GET /activity
@@ -929,9 +929,9 @@ GET /activity
 | group         |           | Group items by a field value @TODO examples                |
 
 
-#### Get Item
+#### Get Activity Event
 
-Get one or more single items from a given collection
+Get one or more activity events
 
 ```http
 GET /activity/[pk]
@@ -954,9 +954,9 @@ GET /activity/[pk]
 | 404 Not Found | `message`: Collection doesn’t exist, or item doesn't exist within collection |
 
 
-#### Create a new message
+#### Create Comment
 
-Create a new message, needs to be related to an a collection.
+Create a new comment, whish needs to be related to a collection/item
 
 ```http
 POST /activity/comment
@@ -964,7 +964,7 @@ POST /activity/comment
 
 ##### Body
 
-A single object representing the new comment.
+A single object representing the new comment
 
 ```json
 {
@@ -976,7 +976,7 @@ A single object representing the new comment.
 
 These endpoints are used for creating, updating, or deleting fields through the API requires the API to modify the database schema directly.
 
-#### List of fields
+#### Get Fields
 
 ```http
 GET /[env]/fields/[collection]
@@ -984,7 +984,7 @@ GET /[env]/fields/[collection]
 
 Returns the list of fields in a given collection.
 
-#### Single field
+#### Get Field
 
 ```http
 GET /[env]/fields/[collection]/[field]
@@ -992,7 +992,7 @@ GET /[env]/fields/[collection]/[field]
 
 Returns the details of a single field.
 
-#### Create a new field
+#### Create Field
 
 ```http
 POST /[env]/fields/[collection]
@@ -1000,7 +1000,7 @@ POST /[env]/fields/[collection]
 
 Creates a new field in a given collection.
 
-#### Update field
+#### Update Field
 
 ```http
 PATCH /[env]/fields/[collection]/[field]
@@ -1008,7 +1008,7 @@ PATCH /[env]/fields/[collection]/[field]
 
 Updates the details of a given field.
 
-#### Delete field
+#### Delete Field
 
 ```http
 DELETE /[env]/fields/[collection]
@@ -1020,7 +1020,7 @@ Permanently deletes a field and its content.
 
 These endpoints are used for creating or updating a files requires the API to accept a special field allowing for the base64 file data. Beyond that, it accepts POST requests with the multipart-formdata enctype, to allow for easier uploading of file(s).
 
-#### List of files
+#### Get Files
 
 ```http
 GET /[env]/files
@@ -1028,7 +1028,7 @@ GET /[env]/files
 
 Returns the list of your files.
 
-#### Single file
+#### Get File
 
 ```http
 GET /[env]/files/[pk]
@@ -1036,7 +1036,7 @@ GET /[env]/files/[pk]
 
 Returns the details of a single file.
 
-#### Upload a new file
+#### Upload File
 
 ```http
 POST /[env]/files
@@ -1044,7 +1044,7 @@ POST /[env]/files
 
 Uploads a new file.
 
-#### Update file
+#### Update File
 
 ```http
 PATCH /[env]/files/[pk]
@@ -1052,7 +1052,7 @@ PATCH /[env]/files/[pk]
 
 Updates the details of a given field.
 
-#### Delete file
+#### Delete File
 
 ```http
 DELETE /[env]/files/[pk]
@@ -1060,7 +1060,7 @@ DELETE /[env]/files/[pk]
 
 Permanently deletes a file.
 
-#### List of Revisions
+#### Get File Revisions
 
 ```http
 GET /[env]/files/[pk]/revisions
@@ -1068,7 +1068,7 @@ GET /[env]/files/[pk]/revisions
 
 Returns a list of a single file revisions
 
-#### Single revision
+#### Get File Revision
 
 ```http
 GET /[env]/files/[pk]/revisions/[offset]
@@ -1076,7 +1076,7 @@ GET /[env]/files/[pk]/revisions/[offset]
 
 Returns the revision of a single item using a 0-index based offset.
 
-#### Revert detail
+#### Revert File
 
 ```http
 GET /[env]/files/[pk]/revert/[revision-pk]
@@ -1088,7 +1088,7 @@ Reverts the details of a file to a given revision.
 
 These endpoints are used for creating, updating, or deleting a virtual folder.
 
-#### List of folders
+#### Get Folders
 
 ```http
 GET /[env]/files/folders
@@ -1096,7 +1096,7 @@ GET /[env]/files/folders
 
 Returns the list of your virtual folders.
 
-#### Single folder
+#### Get Folder
 
 ```http
 GET /[env]/files/folders/[pk]
@@ -1104,7 +1104,7 @@ GET /[env]/files/folders/[pk]
 
 Returns the details of a single virtual folder.
 
-#### Create a new folder
+#### Create Folder
 
 ```http
 POST /[env]/files/folders
@@ -1112,7 +1112,7 @@ POST /[env]/files/folders
 
 Creates a new virtual folder.
 
-#### Update file
+#### Update Folder
 
 ```http
 PATCH /[env]/files/folders/[pk]
@@ -1120,7 +1120,7 @@ PATCH /[env]/files/folders/[pk]
 
 Updates the details of a given folder.
 
-#### Delete file
+#### Delete Folder
 
 ```http
 DELETE /[env]/files/[pk]
@@ -1128,11 +1128,11 @@ DELETE /[env]/files/[pk]
 
 Permanently deletes a virtual folder. Leaving its sub folder and files orphan.
 
-### Collections Presets
+### Collection Presets
 
 These endpoints are used for creating, updating, or deleting collection presets through the API requires the API to modify the database schema directly.
 
-#### List of collection presets
+#### Get Collection Presets
 
 ```http
 GET /[env]/collection_presets
@@ -1140,7 +1140,7 @@ GET /[env]/collection_presets
 
 Returns the list of collection presets
 
-#### Single collection preset
+#### Get Collection Preset
 
 ```http
 GET /[env]/collection_presets/[pk]
@@ -1148,7 +1148,7 @@ GET /[env]/collection_presets/[pk]
 
 Returns the details of a single collection preset.
 
-#### Create a new collection preset
+#### Create Collection Preset
 
 ```http
 POST /[env]/collection_presets
@@ -1156,7 +1156,7 @@ POST /[env]/collection_presets
 
 Creates a new collection preset
 
-#### Update a collection preset
+#### Update Collection Preset
 
 ```http
 PATCH /[env]/collection_presets/[pk]
@@ -1164,7 +1164,7 @@ PATCH /[env]/collection_presets/[pk]
 
 Updates the details of a given collection preset.
 
-#### Delete collection preset
+#### Delete Collection Preset
 
 ```http
 DELETE /[env]/collection_presets/[pk]
@@ -1176,7 +1176,7 @@ Permanently deletes a collection_presets
 
 These endpoints are used for creating, updating, or deleting permissions through the API requires the API to modify the database schema directly.
 
-#### List of permissions
+#### Get Permissions
 
 ```http
 GET /[env]/permissions
@@ -1184,7 +1184,7 @@ GET /[env]/permissions
 
 Returns the list of permissions.
 
-#### Single permission
+#### Get Permission
 
 ```http
 GET /[env]/permissions/[pk]
@@ -1192,7 +1192,7 @@ GET /[env]/permissions/[pk]
 
 Returns the details of a single permission.
 
-#### Create a new permission
+#### Create Permission
 
 ```http
 POST /[env]/permissions
@@ -1200,7 +1200,7 @@ POST /[env]/permissions
 
 Creates a new permission.
 
-#### Update a permission
+#### Update Permission
 
 ```http
 PATCH /[env]/permissions/[pk]
@@ -1208,7 +1208,7 @@ PATCH /[env]/permissions/[pk]
 
 Updates the details of a given permission.
 
-#### Delete a permission
+#### Delete Permission
 
 ```http
 DELETE /[env]/permissions/[pk]
@@ -1220,7 +1220,7 @@ Permanently deletes a permission.
 
 These endpoints are used for creating, updating, or deleting relations.
 
-#### List of relations
+#### Get Relations
 
 ```http
 GET /[env]/relations
@@ -1228,7 +1228,7 @@ GET /[env]/relations
 
 Returns the list of relations.
 
-#### Single relation
+#### Get Relation
 
 ```http
 GET /[env]/relations/[pk]
@@ -1236,7 +1236,7 @@ GET /[env]/relations/[pk]
 
 Returns the details of a single relation.
 
-#### Create a new relation
+#### Create Relation
 
 ```http
 POST /[env]/relations
@@ -1244,7 +1244,7 @@ POST /[env]/relations
 
 Creates a new relation.
 
-#### Update a relation
+#### Update Relation
 
 ```http
 PATCH /[env]/relations/[pk]
@@ -1252,7 +1252,7 @@ PATCH /[env]/relations/[pk]
 
 Updates the details of a given relation.
 
-#### Delete a relation
+#### Delete Relation
 
 ```http
 DELETE /[env]/relations/[pk]
@@ -1264,7 +1264,7 @@ Permanently deletes a relation.
 
 These endpoints are used for creating, updating, or deleting roles.
 
-#### List of roles
+#### Get Roles
 
 ```http
 GET /[env]/roles
@@ -1272,7 +1272,7 @@ GET /[env]/roles
 
 Returns the list of roles.
 
-#### Single role
+#### Get Role
 
 ```http
 GET /[env]/roles/[pk]
@@ -1280,7 +1280,7 @@ GET /[env]/roles/[pk]
 
 Returns the details of a single role.
 
-#### Create a new role
+#### Create Role
 
 ```http
 POST /[env]/roles
@@ -1288,7 +1288,7 @@ POST /[env]/roles
 
 Creates a new role.
 
-#### Update a role
+#### Update Role
 
 ```http
 PATCH /[env]/roles/[pk]
@@ -1296,7 +1296,7 @@ PATCH /[env]/roles/[pk]
 
 Updates the details of a given role.
 
-#### Delete a role
+#### Delete Role
 
 ```http
 DELETE /[env]/roles/[pk]
@@ -1308,7 +1308,7 @@ Permanently deletes a role.
 
 These endpoints are used for creating, updating, or deleting settings.
 
-#### List of settings
+#### Get Settings
 
 ```http
 GET /[env]/settings
@@ -1316,7 +1316,7 @@ GET /[env]/settings
 
 Returns the list of settings.
 
-#### Single setting
+#### Get Setting
 
 ```http
 GET /[env]/settings/[pk]
@@ -1324,7 +1324,7 @@ GET /[env]/settings/[pk]
 
 Returns the details of a single setting.
 
-#### Create a new setting
+#### Create Setting
 
 ```http
 POST /[env]/settings
@@ -1332,7 +1332,7 @@ POST /[env]/settings
 
 Creates a new setting.
 
-#### Update a setting
+#### Update Setting
 
 ```http
 PATCH /[env]/settings/[pk]
@@ -1340,7 +1340,7 @@ PATCH /[env]/settings/[pk]
 
 Updates the details of a given setting.
 
-#### Delete a setting
+#### Delete Setting
 
 ```http
 DELETE /[env]/setting/[pk]
@@ -1352,7 +1352,7 @@ Permanently deletes a setting.
 
 These endpoints are used for creating, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
 
-#### List of collctions
+#### Get Collections
 
 ```http
 GET /[env]/collections
@@ -1360,7 +1360,7 @@ GET /[env]/collections
 
 Returns the list of collections.
 
-#### Single collection
+#### Get Collection
 
 ```http
 GET /[env]/collections/[pk]
@@ -1368,7 +1368,7 @@ GET /[env]/collections/[pk]
 
 Returns the details of a single collection.
 
-#### Create a new collection
+#### Create Collection
 
 ```http
 POST /[env]/collections
@@ -1376,7 +1376,7 @@ POST /[env]/collections
 
 Creates a new collection.
 
-#### Update a collection
+#### Update Collection
 
 ```http
 PATCH /[env]/collections/[pk]
@@ -1384,7 +1384,7 @@ PATCH /[env]/collections/[pk]
 
 Updates the details of a given collection.
 
-#### Delete a collection
+#### Delete Collection
 
 ```http
 DELETE /[env]/collections/[pk]
@@ -1650,7 +1650,7 @@ The path to the last page the user was on in the Directus App
 | 422 Unprocessable Entity | `message`: Field is invalid              |
 
 
-#### List of Revisions
+#### Get User Revisions
 
 ```http
 GET /[env]/users/[pk]/revisions
@@ -1658,7 +1658,7 @@ GET /[env]/users/[pk]/revisions
 
 Returns a list of revisions for a single user.
 
-#### Single revision
+#### Get User Revision
 
 ```http
 GET /[env]/users/[pk]/revisions/[offset]
@@ -1666,7 +1666,7 @@ GET /[env]/users/[pk]/revisions/[offset]
 
 Returns the revision of a single user using a 0-index based offset.
 
-#### Revert detail
+#### Revert User
 
 ```http
 GET /[env]/users/[pk]/revert/[revision-pk]
@@ -1787,7 +1787,7 @@ Directus partly supports Version 2 of System for Cross-domain Identity Managemen
 
 Read more in the "SCIM Endpoints and HTTP Methods" section of  [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
 
-### Get Users
+### Get SCIM Users
 
 ```
 GET /scim/v2/Users
@@ -1898,7 +1898,7 @@ GET /scim/v2/Users?filter=userName eq user@example.com
 }
 ```
 
-### Get User
+### Get SCIM User
 
 ```
 GET /scim/v2/Users/:id
@@ -1936,7 +1936,7 @@ GET /scim/v2/Users/:id
 }
 ```
 
-### Create User
+### Create SCIM User
 
 ```
 POST /scim/v2/Users
@@ -1988,7 +1988,7 @@ POST /scim/v2/Users
 }
 ```
 
-### Update User
+### Update SCIM User
 
 ```
 PATCH /scim/v2/Users/:id
@@ -2038,7 +2038,7 @@ PATCH /scim/v2/Users/:id
 ```
 
 
-### Get Groups
+### Get SCIM Groups
 
 ```
 GET /scim/v2/Groups
@@ -2127,7 +2127,7 @@ GET /scim/v2/Groups
 }
 ```
 
-### Get Group
+### Get SCIM Group
 
 ```
 GET /scim/v2/Groups/:id
@@ -2158,7 +2158,7 @@ GET /scim/v2/Groups/:id
 }
 ```
 
-### Create Group
+### Create SCIM Group
 
 ```
 POST /scim/v2/Users
@@ -2193,7 +2193,7 @@ POST /scim/v2/Users
 }
 ```
 
-### Update Group
+### Update SCIM Group
 
 ```
 PATCH /scim/v2/Groups/:id
@@ -2226,7 +2226,7 @@ PATCH /scim/v2/Groups/:id
 }
 ```
 
-### Delete Group
+### Delete SCIM Group
 
 ```
 DELETE /scim/v2/Groups/:id
@@ -2236,7 +2236,7 @@ DELETE /scim/v2/Groups/:id
 
 Empty response when successful.
 
-## Extend API endpoints
+## Extend API Endpoints
 
 ### Interfaces
 
@@ -2254,7 +2254,7 @@ All endpoints defined in a page will be located under the `pages` group.
 /[env]/pages/[interface-id]
 ```
 
-### Custom endpoints 
+### Custom Endpoints 
 
 All endpoints created by the user, that it's not related to any extension will be located under the `custom` group endpoints.
 
@@ -2302,9 +2302,9 @@ This is danger note with a custom title
 :::
 -->
 
-## API Information endpoints 
+## Server 
 
-### Server
+### Information
 
 Returns information about the server and api.
 
@@ -2312,7 +2312,7 @@ Returns information about the server and api.
 GET /
 ```
 
-### Ping the server
+### Ping
 
 ```http
 GET /server/ping
