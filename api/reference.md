@@ -8,14 +8,13 @@ sidebar: auto
 
 ### Versioning
 
-The Directus API uses SemVer for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that we will not remove or change API behavior, only _adding_ new features and enhancements – therefore, no breaking changes will ever be introduced.
+The Directus API uses SemVer for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
 ### Environments
+ 
+All endpoints are prefixed with the an environment name (based on a configuration file name). The API will try to find a configuration file that matches a given environment name and use it as the request configuration. The underscore (`_`) is reserved as the default environment name.
 
-All endpoints are prefixed with the an environment name (based on a configuration file name). The API will try to find a configuration file that matches a given environment name and use it as the request configuration.
-The underscore (`_`) is reserved as the default environment name.
-
-A few examples of api requests when your api is located at `/api` sub-directory:
+Below are few examples of API requests when your API is located in an `/api` sub-directory:
 
 *   `/api/_/collections` (uses default config file `config.php`)
 *   `/api/prod/items/projects` (uses prod config file `config.prod.php`)
@@ -2240,7 +2239,7 @@ DELETE /scim/v2/Groups/:id
 
 Empty response when successful.
 
-## Extend API Endpoints
+## Extending Endpoints
 
 ### Interfaces
 
