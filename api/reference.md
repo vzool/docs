@@ -383,6 +383,7 @@ POST /[env]/auth/sso/[provider]
 The user's email address and the app URL from which the reset is requested
 
 ##### OAuth 1.0
+
 ```json
 {
     "oauth_token": "[oauth-token]",
@@ -391,6 +392,7 @@ The user's email address and the app URL from which the reset is requested
 ```
 
 ##### OAuth 2.0
+
 ```json
 {
     "code": "[verification-code]"
@@ -888,6 +890,7 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 ### Activity
 
 #### Activities Type
+
 | Name          | Description                                                   |
 | ------------- | ------------------------------------------------------------- |
 | ENTRY         | Activities to any items besides files and settings collection |
@@ -897,6 +900,7 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 | COMMENT       | Activities related to a comment in a collections's item       |
 
 #### Activities Actions
+
 | Name          | Description                                                |
 | ------------- | ---------------------------------------------------------- |
 | ADD           | Item created                                               |
@@ -928,7 +932,6 @@ GET /activity
 | joins         |           | Join two or more tables @TODO examples                     |
 | group         |           | Group items by a field value @TODO examples                |
 
-
 #### Get Activity Event
 
 Get one or more activity events
@@ -952,7 +955,6 @@ GET /activity/[pk]
 | ------------- | ---------------------------------------------------------------------------- |
 | 200 OK        | `data`: Retrieved item<br>`meta`: Depends on requested metadata              |
 | 404 Not Found | `message`: Collection doesn’t exist, or item doesn't exist within collection |
-
 
 #### Create Comment
 
@@ -1995,6 +1997,7 @@ PATCH /scim/v2/Users/:id
 ```
 
 #### Body
+
 ```json
 {
      "schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],
@@ -2037,7 +2040,6 @@ PATCH /scim/v2/Users/:id
 }
 ```
 
-
 ### Get SCIM Groups
 
 ```
@@ -2045,6 +2047,7 @@ GET /scim/v2/Groups
 ```
 
 #### Parameters
+
 | Name       | Type        | Description 
 | ---------- | ------------| ------------
 | startIndex | `Integer`   | The 1-based index of the first result in the current set of list results.
@@ -2200,6 +2203,7 @@ PATCH /scim/v2/Groups/:id
 ```
 
 #### Body
+
 ```json
 {
   "schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],
