@@ -17,11 +17,15 @@ The underscore (`_`) is reserved as the default environment name.
 
 A few examples of api requests when your api is located at `/api` sub-directory:
 
-*   `/api/_/collections` (uses default config file `config.php`)
-*   `/api/prod/items/projects` (uses prod config file `config.prod.php`)
+*   `/api/_/collections` (uses default config file `api.php`)
+*   `/api/prod/items/projects` (uses prod config file `api.prod.php`)
 
 ::: tip
-The naming format of the configuration file is `config.<environment-name>.php`
+The naming format of the configuration file is `api.<environment-name>.php`
+:::
+
+::: warning NOTE
+A default api env (`api.php`) is required in order for the api to work.
 :::
 
 ### Response Format
