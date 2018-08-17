@@ -61,6 +61,7 @@ This will fire up a local static file server that allows you to check the produc
 
 ::: tip
 For more information on installing the app or api, checkout our document about [installing the platform](./install-dev.md).
+:::
 
 ## Design Styleguide
 
