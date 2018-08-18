@@ -4,13 +4,16 @@ sidebar: auto
 
 # User Guide
 
+This guide is written for non-technical users just getting started with Directus or looking to learn more about a some of the lesser-known features of the Application. If you are installing or configuring the Directus App you may be interested in our [Admin Docs](#). Those looking to extend or customize the Directus App codebase should reference our [Contributor Docs](#). 
+
 ## What is Directus
+
 Directus is a suite of software for managing content that can be connected anywhere. Let's take a look at a few examples to get a better idea what that means.
 
-* **Websites** – You might be managing simple text and images for a personal blog, massive amounts of syndicated content for an enterprise site, or highly customized user account data for a complex webapp service.
+* **Websites** – You might be managing simple text and images for a personal blog, massive amounts of syndicated content for a network of enterprise sites, or highly customized user account data for a complex webapp service.
 * **Native Apps** – Phone apps have similar needs to websites, but often need to receive content in a different format. Directus stores and delivers all content _agnostically_ so that's not a problem.
 * **Kiosks** – Ever seen those kiosks at airports or restaurants? That's right, flight information and menus are content too (sometimes called data) and it can also be managed in Directus.
-* **Digital-Signage** – From small screens in the back of taxis to huge digital billboards towering over highways. The text, images, and videos on those displays is all content that needs to be managed. Directus!
+* **Digital-Signage** – From the small screens in the back of taxis to huge digital billboards towering over highways. The text, images, and videos on those displays is all content that needs to be managed. Directus can easily handle that.
 * **Internet-of-Things (IoT) Devices** – The internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or recieving data somewhere. Somewhere like Directus.
 * **Wearables** – Smart watches, fitness trackers, and GPS bracelets all typically stores data in the "Cloud" (a fancy word for the internet). Whether mapping the route of your hike or tracking the number of steps taken along the way, each of those devices shares its data with a service like Directus.
 * **Combined Systems** – Perhaps your project includes several of the above platforms. Why setup, learn, and pay for multiple specific systems that can't share content with each other? Instead, manage all your content in one place, then simply connect it anywhere and everywhere. Now data for your customers, sales, payroll, scheduling, etc all live in one place, which allows for very revealing connections to be made. Synergy!
@@ -119,6 +122,8 @@ A "collection" is a _group_ or _category_ of items. This could be almost anythin
 
 ### Items
 
+@TODO Screenshot
+
 This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus with many different features available depending on the layout chosen.
 
 #### Layouts
@@ -144,18 +149,6 @@ If any active filters are present then an orange dot will be shown on top of the
 ::: tip
 Multiple filters are added together with "and", not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
 :::
-
-#### Selecting & Opening
-
-Certain layouts allow for selecting items. List view items can be selected by toggling the checkbox on the left-side of its row, you can select-all by clicking the checkbox in the column header. The Card view shows a selection toggle when you hover over each card.
-
-Once one or more items are selected, a Delete button will appear in the header. Once two or more items are selected, a [Batch Edit](#Batch-Edit) button will appear in the header.
-
-::: warning
-It is possible to quickly and irreversibly delete many items on this page. Always perform batch deletes carefully.
-:::
-
-Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
 
 #### Sorting
 
@@ -188,15 +181,33 @@ Here's what info is saved for each bookmark:
 If you see bookmarks that you didn't create, don't worry. They are likely Role or Global bookmarks that your administrator added for convenience. Role and global bookmarks can not be deleted by users.
 :::
 
+#### Creating Items
+
+To add a new item to the collection just click the New button ("+") in the header. This will open a blank [Item Detail](#Item-Detail) page for authoring content.
+
+#### Selecting & Opening Items
+
+Certain layouts allow for selecting items. List view items can be selected by toggling the checkbox on the left-side of its row, you can select-all _visible_ items by clicking the checkbox in the column header (keyboard shortcut: ⌘A Mac, Ctrl+A Win). The Card view shows a selection toggle when you hover over each card.
+
+Once one or more items are selected, a Delete button will appear in the header. Once two or more items are selected, a [Batch Edit](#Batch-Edit) button will appear in the header.
+
+::: warning
+It is possible to quickly and irreversibly delete many items on this page. Always perform batch deletes carefully.
+:::
+
+Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
+
 ### Item Detail
+
+@TODO Screenshot
 
 This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page is a form showing the interface for each available field. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
 
 #### Saving
 
-The save button ("✓") is located on the far-right of the header and will be disabled until content is added or updated. Once enabled, clicking the button will save any changes and navigate back to the Items page. Additional save options are available by clicking the "•••" at the top of the button, including:
+The Save button ("✓") is located on the far-right of the header and will be disabled until content is added or updated. Once enabled, clicking the button will save any changes and navigate back to the Items page. Additional save options are available by clicking the "•••" at the top of the button, including:
 
-* **Save and Stay** – Saves the item but stays on the same page (Keyboard shortcut: ⌘S Mac, Ctrl+S Win)
+* **Save and Stay** – Saves the item but stays on the same page (keyboard shortcut: ⌘S Mac, Ctrl+S Win)
 * **Save and Explain** – Prompts for an explanation of changes, attaching that message to the revision
 * **Save and Add New** – Saves the item and then opens a blank Create Item page for that collection
 * **Save as Copy** – Does not save the original item, instead all values and edits are saved as a new item
@@ -219,7 +230,17 @@ Often called `id`, this required field can not and should not be changed after a
 
 ##### Status
 
-This optional field is an important part of content Workflows. It is often used to mark an item as "Draft", Under Review", or "Published", but is completely customizable so your options may vary. This field determines if an item is accessible by your project (eg: _Published_) or not (eg: _Draft_).
+Often used to mark an item as "Draft", Under Review", or "Published", this optional field is completely customizable so your options may vary. The status of an item determines if it is accessible by your project (eg: _Published_) or not (eg: _Draft_).
+
+When enabled, the status field is an important part of content Workflows. A Workflow is a set of rules that determine what can be edited, and by whom, at each "stage" of an item's life. For example, an Intern role may be able to create "Draft" items and submit them for review. A Manager role may see additional fields and have the ability to shift the item from "Under Review" to "Published". An Owner role may see all fields and have total control over status. Workflows are extremely powerful and can be linear, organic, or any hybrid in-between.
+
+##### Files
+
+There are several different interfaces that manage files in different ways, but they all use the same global file uploader which we'll explain here.
+
+* **Drag-and-Drop** – You can drag and drop files direectly from your computer to the interface to start an upload
+* **Select** – Clicking the icon in the top-right will let you manually select one or more files from your device
+* **URL** – Clicking the icon in the top-right will let you type/paste a URL to a file or embed (eg: YouTube or Vimeo)
 
 ##### Translations
 
@@ -231,7 +252,7 @@ Notice that some fields may not require translating (eg: Publish Date), these ar
 
 #### Deleting
 
-The red delete button ("×") is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
+The red Delete button ("×") is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
 
 #### Activity & Revisions
 
@@ -247,13 +268,42 @@ Also in the info sidebar, and commingled with the activity timeline, are any com
 
 ### File Library
 
-#### Uploading & Adding Files
+@TODO Screenshot
+
+The file library is an annex of all files added to Directus. Files may be added through item fields (eg: a slideshow interface) or directly to the File Library itself. To add a file directly to the library, drag a file directly onto the page or click the New button ("+") in the header. 
+
+By default the File Library displays as a Card layout with thumbnails, but you can change this in the [Info Sidebar](#Info-Sidebar).
 
 ### User Directory
 
+@TODO Screenshot
+
+The user directory is a single place to browse all Directus users. Clicking on a user here will open up their user profile page.
+
+By default the File Library displays as a Card layout with images/avatars, but you can change this in the [Info Sidebar](#Info-Sidebar).
+
+::: tip
+Clicking on any user's name or avatar throughout the system will open a modal to quickly see their user profile.
+:::
+
 ### My Account
+
+@TODO Screenshot
+
+This shortcut to your user's profile is where you would edit account information such as: email address, password, avatar, and more.
 
 ### My Activity
 
+@TODO Screenshot
+
+Every edit, creation, deletion, upload, comment, login, and error – all captured in one place. This timeline of activity allows you to go back in time to what you did and when.
+
 ## Permissions
-## Status & Workflow
+
+The features described above assume you have full permissions, however your user's role may have limited permissions. You may only see a subset of collections, fields, items or pages depending on on the privileges you've been granted. Furthermore, access to items and fields may change based on Workflow, so it's possible that if you edit an item's status it may suddenly disappear or become readonly. This is all normal, and is configured by your project's administrator. 
+
+Keep this in mind when discussing content or sending links to colleages as they may not neccesarily be able to see/edit the same things you have access to.
+
+Only users with the Administrator role are guaranteed to see _everything_ in the system, including some special features only available to them. To learn more about the Administrator role, please click the link below to read our next guide:
+
+@TODO, BUTTON LINK TO: APP ADMIN GUIDE
