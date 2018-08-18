@@ -145,7 +145,7 @@ Each filter is composed of three parts: the field, the [operator](#), and the va
 If any active filters are present, an _orange dot_ will be shown on top of the filter icon. Individual filters can be removed by hovering over it and clicking "Remove". All filters (and any Search query) can be cleared by clicking the "X" in the search box.
 
 ::: tip
-Multiple filters are added together with "and," not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
+Multiple filters are added together with "and" not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
 :::
 
 ### Sorting
@@ -171,7 +171,7 @@ To delete a bookmark, just hover over it in the Bookmarks list and click the del
 Here's what info is saved for each bookmark:
 
 * Layout view (eg: List, Card, Map, Calendar)
-* Layout options (eg: visible fields, field order, spacing.)
+* Layout options (eg: visible fields, field order, spacing)
 * Sort Column & Direction (eg: Name Ascending, Date Published Descending)
 * Search & Filters (eg: "Lorem" general search and _Price_ greater than 10)
 
