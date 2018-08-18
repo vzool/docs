@@ -190,11 +190,48 @@ If you see bookmarks that you didn't create, don't worry. They are likely Role o
 
 ### Item Detail
 
-This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page is a form showing the interfaces for all available fields. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
+This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page is a form showing the interface for each available field. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
+
+#### Saving
+
+The save button ("✓") is located on the far-right of the header and will be disabled until content is added or updated. Once enabled, clicking the button will save any changes and navigate back to the Items page. Additional save options are available by clicking the "•••" at the top of the button, including:
+
+* **Save and Stay** – Saves the item but stays on the same page (Keyboard shortcut: ⌘S Mac, Ctrl+S Win)
+* **Save and Explain** – Prompts for an explanation of changes, attaching that message to the revision
+* **Save and Add New** – Saves the item and then opens a blank Create Item page for that collection
+* **Save as Copy** – Does not save the original item, instead all values and edits are saved as a new item
 
 #### Required Fields
 
 Required fields display an accent `*` to the right of their label. These fields must be completed before saving is allowed.
+
+#### Validation
+
+Fields may require their values to follow certain rules to be considered valid. If you attempt to save a field with an invalid value you'll see a warning notification and the field label will become red.
+
+#### Special Fields
+
+There are a few special fields that you may see on this page that deserve a bit of extra attention. These include:
+
+##### Primary Key
+
+Often called `id`, this required field can not and should not be changed after an item is created. It is a unique identifier used by Directus and your Project to track or reference the item.
+
+##### Status
+
+This optional field is an important part of content Workflows. It is often used to mark an item as "Draft", Under Review", or "Published", but is completely customizable so your options may vary. This field determines if an item is accessible by your project (eg: _Published_) or not (eg: _Draft_).
+
+##### Translations
+
+When managing multilingual content, you'll use this field interface to intuitively manage content in any number of languages. Your project will determine which languages are supported as well as the default. Simply select the language you wish to edit from the dropdown and update fields with the language placard beside their label. Translation updates are only saved when the parent item itself is saved.
+
+::: tip
+Notice that some fields may not require translating (eg: Publish Date), these are only entered once and will be located outside of the translations interface.
+:::
+
+#### Deleting
+
+The red delete button ("×") is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
 
 #### Activity & Revisions
 
@@ -207,11 +244,6 @@ As described above, clicking a revision in the sidebar's Activity timeline will 
 #### Comments & Mentions
 
 Also in the info sidebar, and commingled with the activity timeline, are any comments that users have left for this item. New comments can be added in the input at the top of the sidebar. Comments support basic [Markdown syntax](#) for formatting.
-
-#### Saving
-
-#### Translations
-#### Deleting
 
 ### File Library
 
