@@ -21,12 +21,12 @@ Directus is a suite of software for managing content that can be connected anywh
 
 This is probably the first Directus page you'll see, so let's learn a bit more about what you can do here. First off, Directus uses your email address instead of a username, so there's one less thing to forget. Simply enter your email address, and type in your Directus password.
 
-::: warning
-Warning: Directus securely encrypts all passwords, so there is no reason to share that information with anyone.
-:::
-
 ::: tip
 You can see which version of the Directus App you're using by hovering over the "Powered by Directus" text at the bottom of the page.
+:::
+
+::: warning
+Warning: Never share your password. Directus securely encrypts all passwords so there is no reason for anyone to ask you for it.
 :::
 
 ### Changing Projects
