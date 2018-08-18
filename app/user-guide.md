@@ -52,7 +52,7 @@ Clicking one of these icons will take you to a secure login page of the service 
 
 Your password is securely encrypted, so no one can remind you what it is if you forget. Instead, click on the "Forgot Password" link and enter the email address you use to log in. Directus will then send you an email with a temporary reset link, simply click on that link or paste it into your browser to set your password.
 
-## Overview
+## App Overview
 
 @TODO: screenshot of interface
 
@@ -112,33 +112,31 @@ The info sidebar is hidden by default, but appears when you click the "i" button
 
 The main section of the app contains the actual page's content.
 
-## Pages
-
-### Collections
+## Collections
 
 @TODO Screenshot
 
 A "collection" is a _group_ or _category_ of items. This could be almost anything: Articles, Projects, Customers, Sales, Reports, Messages, or anything else. This page lists all of the collections you have access to.
 
-### Items
+## Items
 
 @TODO Screenshot
 
 This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus with many different features available depending on the layout chosen.
 
-#### Layouts
+### Layouts
 
 By default the Items page will use the List layout, but depending on the collection content you may want to view items as a grid of cards, on a map, in a calendar, or in a more custom way. You can change the layout from the top of the [Info sidebar](#Info-Sidebar).
 
-#### Layout Options
+### Layout Options
 
 Each layout may have options for customizing its appearance. These can also be found in the [Info sidebar](#Info-Sidebar), just below the [Layout](#Layouts) dropdown. For example, the default List layout lets you toggle/reorder field columns and change row spacing.
 
-#### Searching
+### Searching
 
 You can easily search through items by entering a query into the search box in the header. This is a quick but blunt tool for finding specific items. When not in use, the search input displays the number of items displayed.
 
-#### Filtering
+### Filtering
 
 For more precise results, you can click on the filter icon on the right-side of the search input to expose the filter dropdown. Here you can add a single filter (eg: where _Publish Date_ is after today) or chain multiple filters together.
 
@@ -150,11 +148,11 @@ If any active filters are present then an orange dot will be shown on top of the
 Multiple filters are added together with "and", not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
 :::
 
-#### Sorting
+### Sorting
 
 Certain layouts support sorting items. In the List view, clicking a column header sorts by that field A-Z, clicking it again will reverse the sort to Z-A. Sorting items is a convenient way to browse items but does not change how they are displayed elsewhere.
 
-#### Reordering
+### Reordering
 
 Certain layouts support changing the order of items. For example, on the List layout you can enable drag-and-drop reordering by clicking on the sort column's header (the left-most column). Once enabled, you can reorder items by dragging them by their handle. Reordering items is often used to change the way the content is stored and can change your actual project, so you should always use this feature carefully.
 
@@ -162,7 +160,7 @@ Certain layouts support changing the order of items. For example, on the List la
 This feature is only available if your collection supports reordering.
 :::
 
-#### Bookmarking
+### Bookmarking
 
 As you can see, there are many ways to fine-tune the way you view Items. Whenever you change one of the above options Directus saves it to your user's preferences so it will look the same next time you view the page. If you would like to save _multiple_ different views then you would use bookmarks.
 
@@ -181,11 +179,11 @@ Here's what info is saved for each bookmark:
 If you see bookmarks that you didn't create, don't worry. They are likely Role or Global bookmarks that your administrator added for convenience. Role and global bookmarks can not be deleted by users.
 :::
 
-#### Creating Items
+### Creating Items
 
 To add a new item to the collection just click the New button ("+") in the header. This will open a blank [Item Detail](#Item-Detail) page for authoring content.
 
-#### Selecting & Opening Items
+### Selecting & Opening Items
 
 Certain layouts allow for selecting items. List view items can be selected by toggling the checkbox on the left-side of its row, you can select-all _visible_ items by clicking the checkbox in the column header (keyboard shortcut: ⌘A Mac, Ctrl+A Win). The Card view shows a selection toggle when you hover over each card.
 
@@ -197,13 +195,13 @@ It is possible to quickly and irreversibly delete many items on this page. Alway
 
 Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
 
-### Item Detail
+## Item Detail
 
 @TODO Screenshot
 
 This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page is a form showing the interface for each available field. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
 
-#### Saving
+### Saving
 
 The Save button ("✓") is located on the far-right of the header and will be disabled until content is added or updated. Once enabled, clicking the button will save any changes and navigate back to the Items page. Additional save options are available by clicking the "•••" at the top of the button, including:
 
@@ -212,29 +210,29 @@ The Save button ("✓") is located on the far-right of the header and will be di
 * **Save and Add New** – Saves the item and then opens a blank Create Item page for that collection
 * **Save as Copy** – Does not save the original item, instead all values and edits are saved as a new item
 
-#### Required Fields
+### Required Fields
 
 Required fields display an accent `*` to the right of their label. These fields must be completed before saving is allowed.
 
-#### Validation
+### Validation
 
 Fields may require their values to follow certain rules to be considered valid. If you attempt to save a field with an invalid value you'll see a warning notification and the field label will become red.
 
-#### Special Fields
+### Special Fields
 
 There are a few special fields that you may see on this page that deserve a bit of extra attention. These include:
 
-##### Primary Key
+#### Primary Key
 
 Often called `id`, this required field can not and should not be changed after an item is created. It is a unique identifier used by Directus and your Project to track or reference the item.
 
-##### Status
+#### Status
 
 Often used to mark an item as "Draft", Under Review", or "Published", this optional field is completely customizable so your options may vary. The status of an item determines if it is accessible by your project (eg: _Published_) or not (eg: _Draft_).
 
 When enabled, the status field is an important part of content Workflows. A Workflow is a set of rules that determine what can be edited, and by whom, at each "stage" of an item's life. For example, an Intern role may be able to create "Draft" items and submit them for review. A Manager role may see additional fields and have the ability to shift the item from "Under Review" to "Published". An Owner role may see all fields and have total control over status. Workflows are extremely powerful and can be linear, organic, or any hybrid in-between.
 
-##### Files
+#### Files
 
 There are several different interfaces that manage files in different ways, but they all use the same global file uploader which we'll explain here.
 
@@ -242,7 +240,7 @@ There are several different interfaces that manage files in different ways, but 
 * **Select** – Clicking the icon in the top-right will let you manually select one or more files from your device
 * **URL** – Clicking the icon in the top-right will let you type/paste a URL to a file or embed (eg: YouTube or Vimeo)
 
-##### Translations
+#### Translations
 
 When managing multilingual content, you'll use this field interface to intuitively manage content in any number of languages. Your project will determine which languages are supported as well as the default. Simply select the language you wish to edit from the dropdown and update fields with the language placard beside their label. Translation updates are only saved when the parent item itself is saved.
 
@@ -250,23 +248,23 @@ When managing multilingual content, you'll use this field interface to intuitive
 Notice that some fields may not require translating (eg: Publish Date), these are only entered once and will be located outside of the translations interface.
 :::
 
-#### Deleting
+### Deleting
 
 The red Delete button ("×") is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
 
-#### Activity & Revisions
+### Activity & Revisions
 
 All changes made through Directus are tracked for accountability. That means that you can always go back and review the history of each item, from the most current edit back to its creation. Each revision expands when clicked, and will show the specific updates made and give the option to revert back to that version.
 
-#### Reverting
+### Reverting
 
 As described above, clicking a revision in the sidebar's Activity timeline will expose the specific updates (only the _edits_ made) and a "Revert" button. Clicking this button will open a _full_ preview of the item at that point in time. At the bottom of this preview is a button to perform the actual revert.
 
-#### Comments & Mentions
+### Comments & Mentions
 
 Also in the info sidebar, and commingled with the activity timeline, are any comments that users have left for this item. New comments can be added in the input at the top of the sidebar. Comments support basic [Markdown syntax](#) for formatting.
 
-### File Library
+## File Library
 
 @TODO Screenshot
 
@@ -274,7 +272,7 @@ The file library is an annex of all files added to Directus. Files may be added 
 
 By default the File Library displays as a Card layout with thumbnails, but you can change this in the [Info Sidebar](#Info-Sidebar).
 
-### User Directory
+## User Directory
 
 @TODO Screenshot
 
@@ -286,13 +284,13 @@ By default the File Library displays as a Card layout with images/avatars, but y
 Clicking on any user's name or avatar throughout the system will open a modal to quickly see their user profile.
 :::
 
-### My Account
+## My Account
 
 @TODO Screenshot
 
 This shortcut to your user's profile is where you would edit account information such as: email address, password, avatar, and more.
 
-### My Activity
+## My Activity
 
 @TODO Screenshot
 
