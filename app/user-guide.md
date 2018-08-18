@@ -25,7 +25,7 @@ From small screens in the back of taxis to huge digital billboards towering over
 
 ### Internet-of-Things (IoT) Devices
 
-Not just a buzzword any more, the internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or recieving data somewhere. Somewhere like Directus.
+The internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or recieving data somewhere. Somewhere like Directus.
 
 ### Wearables
 
@@ -75,65 +75,111 @@ Your password is securely encrypted, so no one can remind you what it is if you 
 
 ### Header
 
-The header bar will show you where you currently are in the system and will provide you with a set of actions you can perform on the current page. Most of the times, these actions will be related to managing item(s), like saving, deleting, or modifying the selection.
+The header bar contains a breadcrumb showing you where you currently are in the system and will provide you with a set of actions you can perform on the current page. Often these actions will be related to managing item(s), like saving, searching, deleting, or modifying the selection.
 
 ### Navigation Sidebar
 
-The navigation sidebar shows you links to your collections, bookmarks, and extensions. This sidebar is accessible in all pages in the system.
+The navigation sidebar contains links to your collections, bookmarks, and extensions. This sidebar is accessible from all pages in the system.
 
-#### Logo & Loading indicator
+#### Logo & Loading Indicator
 
-Everytime the application is working on something—like saving or retrieving items—the logo in the top left will transform into a loading indicator. 
+Everytime the application is working on something, like saving or retrieving items, the logo in the top-left will transform into a loading indicator. 
 
 #### Project Switcher
 
-To switch from your currently in use project to another, you can click on the project name in the top left. This section also shows you the current connection status with the system. Hovering over the project switcher will show you the URL you're currently connected to and will show you the latency to the server.
+To switch from the current project to another, you can click on the project name in the top left. This section also shows you the current connection status with the system. Hovering over the project switcher will show you the exact URL you're currently connected to and the latency (milliseconds of delay) to the server.
 
-#### Collection Navigation
+#### Collections
 
-The first of three sections of links shows the links to all the available collections.
-
-::: tip
-Your system administrator has the ability to [override the links](#) in the sidebar, so the way it looks and works might differ in your application.
-:::
+The first of three link sections shows all the available collections.
 
 #### Extensions
 
-The second section of links contains the different installed extensions. These pages provide extra functionality in the system.
+The second link section contains shows any installed extensions. These pages provide extra functionality within the system.
 
 ::: tip
-This menu won't show up if there aren't any extensions installed in the system.
+This menu won't show up if there aren't any extensions installed.
 :::
 
 #### Bookmarks
 
-The third and last section of links contains your bookmarks. To learn more about bookmarking pages, see [the bookmarking section](#bookmarking).
+The third link-section shows your bookmarks. To learn more about bookmarking pages, see [the bookmarking section](#bookmarking).
 
-### User Menu
+::: tip
+Your system administrator has the ability to [override the links](#) in the navigation sidebar, so the way it looks and works might differ in your application.
+:::
 
-The user menu in the bottom left shows your currently in use user and it's avatar. Hovering over this section reveals the user menu. In this menu, you'll find different links based on your user group. 
+#### User Menu
+
+At the bottom of the navigation sidebar is your user's avatar and name. Hovering over this section reveals the user menu which contains links to system pages and a logout button.
+
+* **Admin Settings** – Only available to members of the Administrator Role
+* **Help & Docs** – An external link to these Directus Docs
+* **File Library** – Navigates to the [File Library](#File-Library)
+* **User Directory** – Navigates to the [User Directory](#User-Directory)
+* **My Activity** – Navigates to the [Activity Page](#Activity-Page)
+* **My Profile** – Navigates to your profile page, where you can update your user account
+* **Sign Out** – Logs you out of Directus
 
 ### Info Sidebar
 
-The info sidebar contains more information or settings for the current page. On collection pages for example, this sidebar allows you to configure the way your data is displayed. 
+The info sidebar is hidden by default, but appears when you click the "i" button in the header. It contains additional information or settings for the current page. When viewing items for example, this sidebar allows you to configure the way your data is displayed. 
 
 ### Page
 
-The main section of the page contains the actual page content.
+The main section of the app contains the actual page's content.
 
 ## Pages
 
 ### Collections
 
+@TODO Screenshot
+
+A "collection" is a _group_ or _category_ of items. This could be almost anything: Articles, Projects, Customers, Sales, Reports, Messages, or anything else. This page lists all of the collections you have access to.
+
 ### Items
 
-#### Layouts (below we talk about Tabular only, with tips for others
+This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus with many different features depending on 
+
+#### Layouts
+
+By default the Items page will use the List layout, but depending on the collection content you may want to view items as a grid of cards, on a map, in a calendar, or in a more custom way. You can change the layout from the top of the [Info sidebar](#Info-Sidebar).
+
 #### Layout Options (changing fields, spacing, etc)
-#### Reordering
-#### Selecting (bulk edit, delete) & Opening
-#### Bookmarking
+
+Each layout may have options for customizing its appearance. These can also be found in the [Info sidebar](#Info-Sidebar), just below the [Layout](#Layouts) dropdown. For example, the default List layout lets you toggle/reorder field columns and change row spacing.
+
 #### Searching
+
+You can easily search through items by entering a query into the search box in the header. This is a quick but blunt tool for finding specific items. When not in use, the search input displays the number of items displayed.
+
 #### Filtering
+
+For more precise results, you can click on the filter icon on the right-side of the search input to expose the filter dropdown. Here you can add a single filter (eg: where _Publish Date_ is after today) or chain multiple filters together. If there are any active filters then an orange dot will be shown on top of the filter icon.
+
+::: tip
+Multiple filters are added together with "and", not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
+:::
+
+#### Selecting (bulk edit, delete) & Opening
+Items can be selected by toggling the checkbox on the left-side of its row. Once one or more items are selected, a Delete button will appear in the header. Once two or more items are selected, a [Batch Edit](#Batch-Edit) button will appear in the header.
+
+Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
+
+::: warning
+It is possible to quickly and irreversibly delete many items on this page. Always perform batch deletes carefully.
+:::
+
+#### Reordering
+
+Certain layouts support changing the order of items. For example, on the List layout you can enable drag-and-drop reordering by clicking on the sort column's header (the left-most column). Once enabled, you can reorder items by dragging them by their handle.
+
+::: tip
+This feature is only available if your collection supports reordering.
+:::
+
+#### Bookmarking
+
 #### Sorting
 
 ### Item Detail
