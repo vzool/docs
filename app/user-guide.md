@@ -145,7 +145,7 @@ This page displays the items within a collection. All the inforation you need mi
 
 By default the Items page will use the List layout, but depending on the collection content you may want to view items as a grid of cards, on a map, in a calendar, or in a more custom way. You can change the layout from the top of the [Info sidebar](#Info-Sidebar).
 
-#### Layout Options (changing fields, spacing, etc)
+#### Layout Options
 
 Each layout may have options for customizing its appearance. These can also be found in the [Info sidebar](#Info-Sidebar), just below the [Layout](#Layouts) dropdown. For example, the default List layout lets you toggle/reorder field columns and change row spacing.
 
@@ -155,24 +155,35 @@ You can easily search through items by entering a query into the search box in t
 
 #### Filtering
 
-For more precise results, you can click on the filter icon on the right-side of the search input to expose the filter dropdown. Here you can add a single filter (eg: where _Publish Date_ is after today) or chain multiple filters together. If there are any active filters then an orange dot will be shown on top of the filter icon.
+For more precise results, you can click on the filter icon on the right-side of the search input to expose the filter dropdown. Here you can add a single filter (eg: where _Publish Date_ is after today) or chain multiple filters together.
+
+Each filter is composed of three parts: the field, the [operator](#), and the value. For example: _Date Published_ (field) greater than or equal to (`>=` operator) "April 20th, 2018" (value). The operator can be changed by clicking on it.
+
+If any active filters are present then an orange dot will be shown on top of the filter icon. Individual filters can be removed by hovering over it and clicking "Remove". All filters (and any Search query) can be cleared by clicking the "X" in the search box.
 
 ::: tip
 Multiple filters are added together with "and", not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
 :::
 
-#### Selecting (bulk edit, delete) & Opening
-Items can be selected by toggling the checkbox on the left-side of its row. Once one or more items are selected, a Delete button will appear in the header. Once two or more items are selected, a [Batch Edit](#Batch-Edit) button will appear in the header.
+#### Selecting & Opening
 
-Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
+Certain layouts allow for selecting items. List view items can be selected by toggling the checkbox on the left-side of its row, you can select-all by clicking the checkbox in the column header. The Card view shows a selection toggle when you hover over each card.
+
+Once one or more items are selected, a Delete button will appear in the header. Once two or more items are selected, a [Batch Edit](#Batch-Edit) button will appear in the header.
 
 ::: warning
 It is possible to quickly and irreversibly delete many items on this page. Always perform batch deletes carefully.
 :::
 
+Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
+
+#### Sorting
+
+Certain layouts support sorting items. In the List view, clicking a column header sorts by that field A-Z, clicking it again will reverse the sort to Z-A. Sorting items is a convenient way to browse items but does not change how they are displayed elsewhere.
+
 #### Reordering
 
-Certain layouts support changing the order of items. For example, on the List layout you can enable drag-and-drop reordering by clicking on the sort column's header (the left-most column). Once enabled, you can reorder items by dragging them by their handle.
+Certain layouts support changing the order of items. For example, on the List layout you can enable drag-and-drop reordering by clicking on the sort column's header (the left-most column). Once enabled, you can reorder items by dragging them by their handle. Reordering items is often used to change the way the content is stored and can change your actual project, so you should always use this feature carefully.
 
 ::: tip
 This feature is only available if your collection supports reordering.
@@ -180,7 +191,22 @@ This feature is only available if your collection supports reordering.
 
 #### Bookmarking
 
-#### Sorting
+As you can see, there are many ways to fine-tune the way you view Items. Whenever you change one of the above options Directus saves it to your user's preferences so it will look the same next time you view the page. If you would like to save _multiple_ different views then you would use bookmarks.
+
+You can create a bookmark by clicking the icon to the right of the breadcrumb in the [header](#Header). Once clicked, you'll be prompted to enter a name for the bookmark, and then it will be added to your [Bookmarks](#Bookmarks) list in the navigation sidebar for easy access.
+
+To delete a bookmark, just hover over it in the Bookmarks list and click the delete icon on the right.
+
+Here's what info is saved for each bookmark:
+
+* Layout view (eg: List, Card, Map, Calendar, etc)
+* Layout options (eg: visible fields, field order, spacing, etc)
+* Sort Column & Direction (eg: Name Ascending, Date Published Descending, etc)
+* Search & Filters (eg: "Lorem" general search and _Price_ greater than 10)
+
+::: tip
+If you see bookmarks that you didn't create, don't worry. They are likely Role or Global bookmarks that your administrator added for convenience. Role and global bookmarks can not be deleted by users.
+:::
 
 ### Item Detail
 
