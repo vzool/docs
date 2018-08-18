@@ -4,37 +4,37 @@ sidebar: auto
 
 # User Guide
 
-This guide is written for non-technical users just getting started with Directus or looking to learn more about a some of the lesser-known features of the Application. If you are installing or configuring the Directus App you may be interested in our [Admin Docs](#). Those looking to extend or customize the Directus App codebase should reference our [Contributor Docs](#). 
+This guide is written for non-technical users who are just getting started with Directus or who are looking to learn more about the lesser-known features of the Application. If you are installing or configuring the Directus App, you may be interested in our [Admin Docs](#). Those looking to extend or customize the Directus App codebase should reference our [Contributor Docs](#). 
 
 ## What is Directus
 
 Directus is a suite of software for managing content that can be connected anywhere. Let's take a look at a few examples to get a better idea what that means.
 
-* **Websites** – You might be managing simple text and images for a personal blog, massive amounts of syndicated content for a network of enterprise sites, or highly customized user account data for a complex webapp service.
+* **Websites** – You might be managing simple text and images for a personal blog, massive amounts of syndicated content for a network of enterprise sites, or highly customized user account data for a complex webapp service; Directus has it covered. 
 * **Native Apps** – Phone apps have similar needs to websites, but often need to receive content in a different format. Directus stores and delivers all content _agnostically_ so that's not a problem.
-* **Kiosks** – Ever seen those kiosks at airports or restaurants? That's right, flight information and menus are content too (sometimes called data) and it can also be managed in Directus.
-* **Digital-Signage** – From the small screens in the back of taxis to huge digital billboards towering over highways. The text, images, and videos on those displays is all content that needs to be managed. Directus can easily handle that.
+* **Kiosks** – Ever notice those kiosks at airports or restaurants? Flight information and menus are content too (sometimes called data) and it can all be managed in Directus.
+* **Digital-Signage** – From the small screens in the back of taxis to huge digital billboards towering over highways, the text, images, and videos on those displays is all content that needs to be managed. Directus can easily handle that.
 * **Internet-of-Things (IoT) Devices** – The internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or recieving data somewhere. Somewhere like Directus.
 * **Wearables** – Smart watches, fitness trackers, and GPS bracelets all typically stores data in the "Cloud" (a fancy word for the internet). Whether mapping the route of your hike or tracking the number of steps taken along the way, each of those devices shares its data with a service like Directus.
-* **Combined Systems** – Perhaps your project includes several of the above platforms. Why setup, learn, and pay for multiple specific systems that can't share content with each other? Instead, manage all your content in one place, then simply connect it anywhere and everywhere. Now data for your customers, sales, payroll, scheduling, etc all live in one place, which allows for very revealing connections to be made. Synergy!
+* **Combined Systems** – Perhaps your project includes several of the above platforms. Why setup, learn, and pay for multiple specific systems that can't share content with each other? Instead, manage all your content in one place, then simply connect it anywhere and everywhere. Now data for your customers, sales, payroll, scheduling, etc. all live together, which allows for very revealing connections to be made. Synergy!
 
 ## Login
 
 ![Login with SSO](./img/directus-login-with-sso.png)
 
-This is probably the first Directus page you'll see, so let's learn a bit more about what you can do here. First off, Directus uses your email address instead of a username, so there's one less thing to forget. Simply enter your email address, and type in your Directus password.
+This is probably the first Directus page you'll see, so let's learn a bit more about what you can do here. First, Directus uses your email address instead of a username, so there's one less thing to forget. Simply enter your email address and type in your Directus password.
 
 ::: tip
 You can see which version of the Directus App you're using by hovering over the "Powered by Directus" text at the bottom of the page.
 :::
 
 ::: warning
-Warning: Never share your password. Directus securely encrypts all passwords so there is no reason for anyone to ask you for it.
+Never share your password. Directus securely encrypts all passwords so there is no reason for anyone to ask you for it.
 :::
 
 ### Changing Projects
 
-If Directus has been configured to connect to multiple projects then you'll see a dropdown on the login form. You can use this to select a specific project to log in to, or in some cases to type/paste a project link. 
+If Directus has been configured to connect to multiple projects, then you'll see a dropdown on the login form. You can use this to select a specific project to log in to, or in some cases, to type/paste a project link. 
 
 ::: tip
 Remember, your account passwords may be different on separate projects, even if they use the same email address.
@@ -46,11 +46,11 @@ Next to the default secure login, Directus allows you to use several external se
 
 When [the system has been configured to allow you to login with external services](#), the logos of these services will show up on the login form.
 
-Clicking one of these icons will take you to a secure login page of the service you chose. Directus will allow you to login with your external account as long as it's using the same email address as your user account in Directus.
+Clicking one of these icons will take you to a secure login page of the service you chose. Directus will allow you to login with your external account as long as it uses the same email address as your Directus user account.
 
 ### Forgot password
 
-Your password is securely encrypted, so no one can remind you what it is if you forget. Instead, click on the "Forgot Password" link and enter the email address you use to log in. Directus will then send you an email with a temporary reset link, simply click on that link or paste it into your browser to set your password.
+Your password is securely encrypted, so no one can remind you what it is if forgotten. Instead, click on the "Forgot Password" link and enter the email address you use to log in. Directus will then send you an email with a temporary reset link; simply click on that link or paste it into your browser to reset your password.
 
 ## App Overview
 
@@ -58,7 +58,7 @@ Your password is securely encrypted, so no one can remind you what it is if you 
 
 ### Header
 
-The header bar contains a breadcrumb showing you where you currently are in the system and will provide you with a set of actions you can perform on the current page. Often these actions will be related to managing item(s), like saving, searching, deleting, or modifying the selection.
+The header bar contains a breadcrumb highlighting where you currently are within the system and will provide you with a set of actions you can perform on the current page. Often these actions will be related to managing item(s), like saving, searching, deleting, or modifying the selection.
 
 ### Navigation Sidebar
 
@@ -66,30 +66,30 @@ The navigation sidebar contains links to your collections, bookmarks, and extens
 
 #### Logo & Loading Indicator
 
-Everytime the application is working on something, like saving or retrieving items, the logo in the top-left will transform into a loading indicator. 
+Everytime the application is working on something, such as saving or retrieving items, the logo in the top-left will transform into a loading indicator (by default, a running hare). 
 
 #### Project Switcher
 
-To switch from the current project to another, you can click on the project name in the top left. This section also shows you the current connection status with the system. Hovering over the project switcher will show you the exact URL you're currently connected to and the latency (milliseconds of delay) to the server.
+To switch from the current project to another, click on the project name in the top left. This section also shows you the current connection status with the system. Hovering over the project switcher will show you the exact URL you're currently connected to and the latency (milliseconds of delay) to the server.
 
 #### Collections
 
-The first of three link sections shows all the available collections.
+The first group of links shows all of the available collections.
 
 #### Extensions
 
-The second link section contains shows any installed extensions. These pages provide extra functionality within the system.
+The second group of links shows any installed extensions. These pages provide extra functionality within the system.
 
 ::: tip
-This menu won't show up if there aren't any extensions installed.
+This menu won't show up if no extensions are installed.
 :::
 
 #### Bookmarks
 
-The third link-section shows your bookmarks. To learn more about bookmarking pages, see [the bookmarking section](#bookmarking).
+The third group of links shows your bookmarks. To learn more about bookmarking pages, see [the bookmarking section](#bookmarking).
 
 ::: tip
-Your system administrator has the ability to [override the links](#) in the navigation sidebar, so the way it looks and works might differ in your application.
+Your system administrator has the ability to [override the links](#) in the navigation sidebar, so the way it appears and functions might differ in your application.
 :::
 
 #### User Menu
@@ -106,7 +106,7 @@ At the bottom of the navigation sidebar is your user's avatar and name. Hovering
 
 ### Info Sidebar
 
-The info sidebar is hidden by default, but appears when you click the "i" button in the header. It contains additional information or settings for the current page. When viewing items for example, this sidebar allows you to configure the way your data is displayed. 
+The info sidebar is hidden by default, but it appears when you click the "i" button in the header. It contains additional information and settings for the current page. When viewing items, for example, this sidebar allows you to configure the way your data is displayed. 
 
 ### Page
 
@@ -116,17 +116,17 @@ The main section of the app contains the actual page's content.
 
 @TODO Screenshot
 
-A "collection" is a _group_ or _category_ of items. This could be almost anything: Articles, Projects, Customers, Sales, Reports, Messages, or anything else. This page lists all of the collections you have access to.
+A "collection" is a _group_ or _category_ of items. This could be almost anything: articles, projects, customers, sales, reports, messages, etc. This page lists all of the collections you have access to.
 
 ## Items
 
 @TODO Screenshot
 
-This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus with many different features available depending on the layout chosen.
+This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus, with many different features available depending on the layout chosen.
 
 ### Layouts
 
-By default the Items page will use the List layout, but depending on the collection content you may want to view items as a grid of cards, on a map, in a calendar, or in a more custom way. You can change the layout from the top of the [Info sidebar](#Info-Sidebar).
+The Items page will use the List layout by default, but depending on the collection content, you may want to view items as a grid of cards, on a map, in a calendar, or in other ways. You can change the layout from the top of the [Info sidebar](#Info-Sidebar).
 
 ### Layout Options
 
@@ -134,7 +134,7 @@ Each layout may have options for customizing its appearance. These can also be f
 
 ### Searching
 
-You can easily search through items by entering a query into the search box in the header. This is a quick but blunt tool for finding specific items. When not in use, the search input displays the number of items displayed.
+You can easily search through items by entering a query into the search box in the header. This is a quick tool for finding specific items. When not in use, the search input displays the number of items displayed.
 
 ### Filtering
 
@@ -142,19 +142,19 @@ For more precise results, you can click on the filter icon on the right-side of 
 
 Each filter is composed of three parts: the field, the [operator](#), and the value. For example: _Date Published_ (field) greater than or equal to (`>=` operator) "April 20th, 2018" (value). The operator can be changed by clicking on it.
 
-If any active filters are present then an orange dot will be shown on top of the filter icon. Individual filters can be removed by hovering over it and clicking "Remove". All filters (and any Search query) can be cleared by clicking the "X" in the search box.
+If any active filters are present, an _orange dot_ will be shown on top of the filter icon. Individual filters can be removed by hovering over it and clicking "Remove". All filters (and any Search query) can be cleared by clicking the "X" in the search box.
 
 ::: tip
-Multiple filters are added together with "and", not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
+Multiple filters are added together with "and," not "or". For example: _Name_ contains "Ben" **and** _Location_ is "Brooklyn" would only return results where both filters match.
 :::
 
 ### Sorting
 
-Certain layouts support sorting items. In the List view, clicking a column header sorts by that field A-Z, clicking it again will reverse the sort to Z-A. Sorting items is a convenient way to browse items but does not change how they are displayed elsewhere.
+Certain layouts support sorting items. In the List view, clicking a column header sorts by that field A-Z, and clicking it again will reverse the sort to Z-A. Sorting items is a convenient way to browse items but does not change how they are displayed elsewhere.
 
 ### Reordering
 
-Certain layouts support changing the order of items. For example, on the List layout you can enable drag-and-drop reordering by clicking on the sort column's header (the left-most column). Once enabled, you can reorder items by dragging them by their handle. Reordering items is often used to change the way the content is stored and can change your actual project, so you should always use this feature carefully.
+Certain layouts support changing the order of items. For example, on the List layout you can enable drag-and-drop reordering by clicking on the sort column's header (the left-most column). Once enabled, you can reorder items by dragging them by their handle. Reordering items is often used to change the way the content is stored and can change your actual project, so you should always use this feature with care.
 
 ::: tip
 This feature is only available if your collection supports reordering.
@@ -162,7 +162,7 @@ This feature is only available if your collection supports reordering.
 
 ### Bookmarking
 
-As you can see, there are many ways to fine-tune the way you view Items. Whenever you change one of the above options Directus saves it to your user's preferences so it will look the same next time you view the page. If you would like to save _multiple_ different views then you would use bookmarks.
+As you can see, there are many ways to fine-tune the way you view Items. Whenever you change one of the above options, Directus saves it to your user's preferences so it will look the same next time you view the page. If you would like to save _multiple_ different views, then you would use bookmarks.
 
 You can create a bookmark by clicking the icon to the right of the breadcrumb in the [header](#Header). Once clicked, you'll be prompted to enter a name for the bookmark, and then it will be added to your [Bookmarks](#Bookmarks) list in the navigation sidebar for easy access.
 
@@ -170,9 +170,9 @@ To delete a bookmark, just hover over it in the Bookmarks list and click the del
 
 Here's what info is saved for each bookmark:
 
-* Layout view (eg: List, Card, Map, Calendar, etc)
-* Layout options (eg: visible fields, field order, spacing, etc)
-* Sort Column & Direction (eg: Name Ascending, Date Published Descending, etc)
+* Layout view (eg: List, Card, Map, Calendar)
+* Layout options (eg: visible fields, field order, spacing.)
+* Sort Column & Direction (eg: Name Ascending, Date Published Descending)
 * Search & Filters (eg: "Lorem" general search and _Price_ greater than 10)
 
 ::: tip
@@ -181,16 +181,16 @@ If you see bookmarks that you didn't create, don't worry. They are likely Role o
 
 ### Creating Items
 
-To add a new item to the collection just click the New button ("+") in the header. This will open a blank [Item Detail](#Item-Detail) page for authoring content.
+To add a new item to the collection, just click the New button ("+") in the header. This will open a blank [Item Detail](#Item-Detail) page for authoring content.
 
 ### Selecting & Opening Items
 
-Certain layouts allow for selecting items. List view items can be selected by toggling the checkbox on the left-side of its row, you can select-all _visible_ items by clicking the checkbox in the column header (keyboard shortcut: ⌘A Mac, Ctrl+A Win). The Card view shows a selection toggle when you hover over each card.
+Certain layouts allow for selecting items. List view items can be selected by toggling the checkbox on the left-side of its row; you can select-all _visible_ items by clicking the checkbox in the column header (keyboard shortcut: ⌘A Mac, Ctrl+A Win). The Card view shows a selection toggle when you hover over each card.
 
 Once one or more items are selected, a Delete button will appear in the header. Once two or more items are selected, a [Batch Edit](#Batch-Edit) button will appear in the header.
 
 ::: warning
-It is possible to quickly and irreversibly delete many items on this page. Always perform batch deletes carefully.
+It is possible to quickly and irreversibly delete many items on this page. Always perform batch deletes carefully!
 :::
 
 Alternatively, simply clicking on an item will take you to its [Item Detail](#Item-Detail) page.
