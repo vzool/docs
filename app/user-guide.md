@@ -139,7 +139,7 @@ A "collection" is a _group_ or _category_ of items. This could be almost anythin
 
 ### Items
 
-This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus with many different features depending on 
+This page displays the items within a collection. All the inforation you need might be displayed here, or you can use this page to find and manage specific items. This is one of the most powerful pages in Directus with many different features available depending on the layout chosen.
 
 #### Layouts
 
@@ -210,11 +210,26 @@ If you see bookmarks that you didn't create, don't worry. They are likely Role o
 
 ### Item Detail
 
+This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page is a form showing the interfaces for all available fields. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
+
 #### Required Fields
-#### Saving
+
+Required fields display an accent `*` to the right of their label. These fields must be completed before saving is allowed.
+
 #### Activity & Revisions
+
+All changes made through Directus are tracked for accountability. That means that you can always go back and review the history of each item, from the most current edit back to its creation. Each revision expands when clicked, and will show the specific updates made and give the option to revert back to that version.
+
 #### Reverting
+
+As described above, clicking a revision in the sidebar's Activity timeline will expose the specific updates (only the _edits_ made) and a "Revert" button. Clicking this button will open a _full_ preview of the item at that point in time. At the bottom of this preview is a button to perform the actual revert.
+
 #### Comments & Mentions
+
+Also in the info sidebar, and commingled with the activity timeline, are any comments that users have left for this item. New comments can be added in the input at the top of the sidebar. Comments support basic [Markdown syntax](#) for formatting.
+
+#### Saving
+
 #### Translations
 #### Deleting
 
