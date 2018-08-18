@@ -199,7 +199,7 @@ Alternatively, simply clicking on an item will take you to its [Item Detail](#It
 
 @TODO Screenshot
 
-This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page is a form showing the interface for each available field. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
+This page is used to view, create, edit, or delete a specific item based on your [role permissions](#). The main content of this page shows the interface for each available field. The [Info Sidebar](#) of this page is used for Item Activity and Comments.
 
 ### Saving
 
@@ -208,7 +208,7 @@ The Save button ("✓") is located on the far-right of the header and will be di
 * **Save and Stay** – Saves the item but stays on the same page (keyboard shortcut: ⌘S Mac, Ctrl+S Win)
 * **Save and Explain** – Prompts for an explanation of changes, attaching that message to the revision
 * **Save and Add New** – Saves the item and then opens a blank Create Item page for that collection
-* **Save as Copy** – Does not save the original item, instead all values and edits are saved as a new item
+* **Save as Copy** – Does not save the original item; instead all values and edits are saved as a new item
 
 ### Required Fields
 
@@ -216,27 +216,27 @@ Required fields display an accent `*` to the right of their label. These fields 
 
 ### Validation
 
-Fields may require their values to follow certain rules to be considered valid. If you attempt to save a field with an invalid value you'll see a warning notification and the field label will become red.
+Fields may require their values to follow certain rules to be considered valid. If you attempt to save a field with an invalid value, you'll see a warning notification and the field label will become red.
 
 ### Special Fields
 
-There are a few special fields that you may see on this page that deserve a bit of extra attention. These include:
+There are a few special fields that you may see on this page that deserve some extra attention. These include:
 
 #### Primary Key
 
-Often called `id`, this required field can not and should not be changed after an item is created. It is a unique identifier used by Directus and your Project to track or reference the item.
+Often called `id`, this required field _cannot be changed_ after an item is created. It is a unique identifier used by Directus and your Project to track or reference the item.
 
 #### Status
 
 Often used to mark an item as "Draft", Under Review", or "Published", this optional field is completely customizable so your options may vary. The status of an item determines if it is accessible by your project (eg: _Published_) or not (eg: _Draft_).
 
-When enabled, the status field is an important part of content Workflows. A Workflow is a set of rules that determine what can be edited, and by whom, at each "stage" of an item's life. For example, an Intern role may be able to create "Draft" items and submit them for review. A Manager role may see additional fields and have the ability to shift the item from "Under Review" to "Published". An Owner role may see all fields and have total control over status. Workflows are extremely powerful and can be linear, organic, or any hybrid in-between.
+When enabled, the status field is an important part of content Workflows. A Workflow is a set of rules that determine what can be edited, and by whom, at each "stage" of an item's life. For example, an Intern role may be able to create "Draft" items and submit them for review. A Manager role may see additional fields and have the ability to shift the item from "Under Review" to "Published." An Owner role may see all fields and have total control over status. Workflows are extremely powerful and can be linear, organic, or any hybrid in-between.
 
 #### Files
 
-There are several different interfaces that manage files in different ways, but they all use the same global file uploader which we'll explain here.
+There are several different interfaces that manage files in unique ways, but they all use the same global file uploader which we'll explain here.
 
-* **Drag-and-Drop** – You can drag and drop files direectly from your computer to the interface to start an upload
+* **Drag-and-Drop** – You can drag and drop files directly from your computer to the interface to start an upload
 * **Select** – Clicking the icon in the top-right will let you manually select one or more files from your device
 * **URL** – Clicking the icon in the top-right will let you type/paste a URL to a file or embed (eg: YouTube or Vimeo)
 
@@ -245,7 +245,7 @@ There are several different interfaces that manage files in different ways, but 
 When managing multilingual content, you'll use this field interface to intuitively manage content in any number of languages. Your project will determine which languages are supported as well as the default. Simply select the language you wish to edit from the dropdown and update fields with the language placard beside their label. Translation updates are only saved when the parent item itself is saved.
 
 ::: tip
-Notice that some fields may not require translating (eg: Publish Date), these are only entered once and will be located outside of the translations interface.
+Notice that some fields may not require translating (eg: Publish Date); these are only entered once and will be located outside of the translations interface.
 :::
 
 ### Deleting
@@ -254,7 +254,7 @@ The red Delete button ("×") is located in the header. Clicking this button will
 
 ### Activity & Revisions
 
-All changes made through Directus are tracked for accountability. That means that you can always go back and review the history of each item, from the most current edit back to its creation. Each revision expands when clicked, and will show the specific updates made and give the option to revert back to that version.
+All changes made through Directus are tracked for accountability. That means that you can always go back and review the history of each item, from the most current edit back to its creation. Each revision expands when clicked and will show the specific updates made with the option to revert back to that version.
 
 ### Reverting
 
@@ -262,7 +262,7 @@ As described above, clicking a revision in the sidebar's Activity timeline will 
 
 ### Comments & Mentions
 
-Also in the info sidebar, and commingled with the activity timeline, are any comments that users have left for this item. New comments can be added in the input at the top of the sidebar. Comments support basic [Markdown syntax](#) for formatting.
+Also in the info sidebar, and comingled with the activity timeline, are any comments that users have left for this item. New comments can be added in the input at the top of the sidebar. Comments support basic [Markdown syntax](#) for formatting.
 
 ## File Library
 
@@ -288,7 +288,7 @@ Clicking on any user's name or avatar throughout the system will open a modal to
 
 @TODO Screenshot
 
-This shortcut to your user's profile is where you would edit account information such as: email address, password, avatar, and more.
+This shortcut to your user's profile is where you can edit account information such as: email address, password, avatar, and more.
 
 ## My Activity
 
@@ -298,9 +298,9 @@ Every edit, creation, deletion, upload, comment, login, and error – all captur
 
 ## Permissions
 
-The features described above assume you have full permissions, however your user's role may have limited permissions. You may only see a subset of collections, fields, items or pages depending on on the privileges you've been granted. Furthermore, access to items and fields may change based on Workflow, so it's possible that if you edit an item's status it may suddenly disappear or become readonly. This is all normal, and is configured by your project's administrator. 
+The features described above assume you have full permissions, however your user's role may have limited permissions. You may only see a subset of collections, fields, items or pages depending on on the privileges you've been granted. Furthermore, access to items and fields may change based on Workflow, so it's possible that if you edit an item's status it may suddenly disappear or become read-only. This is all normal and is configured by your project's administrator. 
 
-Keep this in mind when discussing content or sending links to colleages as they may not neccesarily be able to see/edit the same things you have access to.
+Keep permissions in mind when discussing content or sending links to colleages, as they may not be able to see/edit the same items you have access to.
 
 Only users with the Administrator role are guaranteed to see _everything_ in the system, including some special features only available to them. To learn more about the Administrator role, please click the link below to read our next guide:
 
