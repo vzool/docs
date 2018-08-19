@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /hero.svg
-footer: GPL-3.0 | Copyright © 2018-present RANGER Studio
+footer: GPL-3.0 | © 2018 RANGER Studio LLC
 ---
 
 <div class="features">
