@@ -7,7 +7,7 @@ footer: GPL-3.0 | © 2018 RANGER Studio LLC
 <div class="features">
   <div class="feature">
     <h2>Application Docs</h2>
-    <p>This app is a friendly wrapper for the Directus API, allowing non-technical users to intuitively manage content and administrators to more easily configure Directus settings. Feel free to self-host the app or use our hosted version to connect to any Directus API instance.</p>
+    <p>This App is a friendly wrapper for the Directus API, allowing non-technical users to intuitively manage content and administrators to more easily configure Directus settings. Feel free to self-host the app or use our hosted version to connect to any Directus API instance.</p>
     <nav>
       <ul>
         <li><router-link to="/app/user-guide.html">User Guide</router-link></li>
