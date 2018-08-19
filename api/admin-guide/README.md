@@ -1,4 +1,4 @@
-# Admin Guide
+# API Admin Guide
 
 ## Installation
 
