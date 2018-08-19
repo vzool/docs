@@ -1,7 +1,7 @@
 module.exports = {
   base: '/',
   title: 'Directus Docs',
-  description: 'The All-New Directus 7. Future-Proof Headless CMS.',
+  description: 'The All-New Directus 7.<br>Future-Proof Headless CMS.',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
