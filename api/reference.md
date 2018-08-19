@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# Directus API Reference
+# API Reference
 
 ## Introduction
 
