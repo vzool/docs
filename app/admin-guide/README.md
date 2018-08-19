@@ -1,4 +1,4 @@
-# Admin Guide
+# App Admin Guide
 
 ## Installation
 
