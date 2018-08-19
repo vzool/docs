@@ -1,4 +1,4 @@
-# Contributor Guide
+# App Contributor Guide
 
 Thanks for taking the interest in helping out to make Directus a better platform! This doc will tell you everything you need to help work on the platform.
 
