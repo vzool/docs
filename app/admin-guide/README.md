@@ -119,11 +119,13 @@ Technically this is not a _new_ relationship type... it is a O2M and M2O working
 
 ##### Many-to-Many-Many (M2MM)
 
-But we can take the M2M relationship even further. In some data models it ise useful to have an interface link items from **Collection A** to many items within _many_ collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM). 
+In some data models it ise useful to have an interface link items from **Collection A** to many items within _many_ collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM) but it is sometimes called a "Matrix Field". 
 
 Directus handles the M2MM exactly like a M2M, with one exception: foreign keys must be universally-unique-identifiers (UUID). Since Directus UUIDs are prefixed with the collection name, this avoids the ambiguity of not knowing which collection a primary key belongs to.
 
-@TODO: Show diagram
+So when would you use a M2MM? One common example is articles built from modules from different collections. Instead of using a free-form WYSIWYG editor, headers, text, photos, and quotes could be assembled in a more structured way. This could allow for validation, reusablility, and more complex layouts.
+
+![M2MM](../img/m2mm.png)
 
 #### Interface Options
 
