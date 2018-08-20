@@ -2,67 +2,76 @@
 
 ## Installation
 
+1. 
+2. 
+3. 
+
 ## Updating
 
-## Terminology
-
-* `project` – An external application using Database managed data
-* `instance` – An API install managing one or more environments on a server
-* `environment` or `env` – A SQL database (eg: `production`, `staging`, etc)
-* `schema` – The SQL database's architecture, not including any content
-* `boilerplate` – The base schema and system content included in a fresh/blank copy of Directus
-* `collection` – A SQL table
-* `item` – A SQL record
-* `field` – A SQL column or _alias_ (see below)
-* `alias` – A field that does not actually map to a database column (eg: a divider)
-* `datatype` – The SQL vendor-specific database storage type (eg: `VARCHAR`, `BIGINT`, etc)
-* `directus type` – An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `M2O`, `STATUS`, etc)
-* `length` – The amount/size of data that can be stored in a field
-* `interface` – The GUI for a field
-* `layout` – The GUI for a collection's items
-* `extension` – Components outside of the Core codebase, including: Interfaces, Pages, Storage Adapters, SSO Services, etc
-* `single collection` – A collection limited to only one item
-* `comment` – A message left on an item
-* `note` – Descriptive text displayed with a field
-* `template` – A Mustache string used to format field values (eg: `{{first_name}} {{last_name}}, {{title}}`)
-
-
-* **Collections** – Page displaying a listing of of collections within an instance/env
-* **Items** – Page displaying a listing of of items within a collection
-* **Item** – Page displaying field interfaces used for creating, viewing, and updating an item
+1. 
+2. 
+3. 
 
 ## Global Settings
 
 These are settings that apply to the entire project environment.
 
-* **Auto Sign Out** – TK
-* **File Naming** – TK
-* **Logo** – TK
+* **Auto Sign Out** – The number of minutes until inactive users will be automatically logged out of the application.
+* **File Naming** – A naming convention for uploaded files, options include:
+  * `uuid` – This is the default option, a universally unique identifier
+  * `original` – A sanitized version of the original file name, incremented as needed for uniqueness
+  * `id` – The `directus_files.id` left-padded with `0`
+* **Logo** – If you would like to use your own logo you can upload it here. Specifications:
+  * _Dimensions_ – 200px wide and 60px tall
+  * _Format_ – PNG or SVG
+  * _Color_ – White foreground with a transparent background
 * **Thumbnail Dimensions** – RENAME
 * **Thumbnail Quality** – RENAME
 * **Thumbnail Fit** – RENAME
 
 ## Collections & Fields
 
+This is where you will create and configure your database schema and its interfaces.
+
 ### Adding Collections
 
-::: tip
-Database vs Display Names
-:::
+Adding a collection is easy, simply click the New button ("+") in the header and enter a name. This is the technical name used in the database and API so you should follow the [schema naming convention](#). Display formatting will be handled automatically by App.
 
 #### Note
 
-#### Item Name Tempalte
+This is for internal use only. It helps your administrators understand the purpose of each collection.
+
+#### Item Name Template
+
+This [Mustache template](#) allows you to set a default/fallback formatted name for items in the collection. 
+
+@TODO: DO WE USE THIS ANYWHERE?
 
 #### Hidden
 
+Some helper collections are not used directly (eg: junctions) and can be globally hidden.
+
 #### Single
+
+In certain schema architectures, you may find it helpful to have a collection that can only contain one item. For example, the "About" or "Settings" of your project might be managed within the fields of a single item (also known as a "singleton"). When enabled, clicking the collection in the navigation will open the Item Detail page directly, skipping the Items Browse page.
 
 #### Translation
 
+This JSON object can be used to translate the collection name into different languages/locales. It can also be used to override the formatted display name generated from the schema name.
+
+```json
+{
+    "example": "here"
+}
+```
+
 ### Managing Collections
 
+Collections added through Directus are automatically managed, however collections added outside of Directus are unmanaged by default. This avoids issues with dynamically created temporary tables or any tables outside the scope of your project. Directus completely ignores any unmanaged collections.
+
 ### Deleting Collections
+
+To destroy a collection and all of its data you can click the Delete Button ("×") in the header of the collection detail. You will be asked only once to confirm this permanent action.
 
 ::: warning
 It is possible to irreverisbly delete massive amounts of data with this feature. Proceed with extreme caution.
@@ -129,7 +138,7 @@ So when would you use a M2MM? One common example is articles built from modules 
 
 #### Interface Options
 
-Interfaces are highly customizable with options that allow you to tailor them to individual uses. These vary depending on interface complexity, with more edge-case options collapsed within an "Advanced" toggle.
+Interfaces are highly customizable with options that allow you to tailor them to individual uses. These vary depending on interface complexity, with more edge-case options collapsed within an "Advanced" accordion.
 
 ### Reordering Fields
 
@@ -171,7 +180,7 @@ TK
 
 #### Description
 
-This is for internal use only, and just helps your administrators know the purpose of each role.
+This is for internal use only. It helps your administrators understand the purpose of each role.
 
 #### IP Whitelist
 
@@ -237,3 +246,30 @@ A JSON object that allows for customizing the navigation sidebar. With the featu
 ### SSO Services
 
 ### Storage Adapters
+
+## Terminology
+
+* `project` – An external application using Database managed data
+* `instance` – An API install managing one or more environments on a server
+* `environment` or `env` – A SQL database (eg: `production`, `staging`, etc)
+* `schema` – The SQL database's architecture, not including any content
+* `boilerplate` – The base schema and system content included in a fresh/blank copy of Directus
+* `collection` – A SQL table
+* `item` – A SQL record
+* `field` – A SQL column or _alias_ (see below)
+* `alias` – A field that does not actually map to a database column (eg: a divider)
+* `datatype` – The SQL vendor-specific database storage type (eg: `VARCHAR`, `BIGINT`, etc)
+* `directus type` – An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `M2O`, `STATUS`, etc)
+* `length` – The amount/size of data that can be stored in a field
+* `interface` – The GUI for a field
+* `layout` – The GUI for a collection's items
+* `extension` – Components outside of the Core codebase, including: Interfaces, Pages, Storage Adapters, SSO Services, etc
+* `single collection` – A collection limited to only one item
+* `comment` – A message left on an item
+* `note` – Descriptive text displayed with a field
+* `template` – A Mustache string used to format field values (eg: `{{first_name}} {{last_name}}, {{title}}`)
+
+
+* **Collections** – Page displaying a listing of of collections within an instance/env
+* **Items** – Page displaying a listing of of items within a collection
+* **Item** – Page displaying field interfaces used for creating, viewing, and updating an item
