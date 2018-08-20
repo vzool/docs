@@ -97,21 +97,31 @@ Only the "Name" is required for this step, but it's good to familiarize yourself
 * **Hidden on Detail** – RENAME
 * **Hidden on Items** – RENAME
 
-#### Relationship
+#### Relationships
 
-##### Many-to-One (M2O)
+##### One-to-Many & Many-to-One
 
-@TODO: Show diagram
+In relational databases, a one-to-many (O2M) relationship exists when an item of **Collection A** may be linked to many items of **Collection B**, but an item of **Collection B** is linked to only one item of **Collection A**. For example, directors have many movies, but a movie only has one director.
 
-##### One-to-Many (O2M)
+Now lets translate this to field interfaces. The `directors` collection might have a multi-select listing of every movie (a O2M interface). However you could also look at this relationship from the opposite direction, which would be a dropdown of directors on the `movies` collection (a M2O interface). So technically this relationship type is both a O2M and a M2O... it just depends on which way you look at it.
 
-@TODO: Show diagram
+An easy way to remember which interface is which: the "many" side is always an actual column that stores the foreign key, while the "one" side is a simulated column that uses the `ALIAS` datatype.
+
+![O2M + M2O](../img/o2m-m2o.png)
 
 ##### Many-to-Many (M2M)
 
-@TODO: Show diagram
+The many-to-many (M2M) is a slightly more advanced relationship allows you to link _any_ items within **Collection A** and **Collection B**. For example, movies can have many genres, and genres can have many movies.
+
+Technically this is not a _new_ relationship type... it is a O2M and a M2O working together across a "junction collection". Each item in the junction collection (`movies_genres`) is a single link between one item in `movies` and one item in `genres`.
+
+![M2M](../img/m2m.png)
 
 ##### Many-to-Many-Many (M2MM)
+
+But we can take the M2M relationship even further. In some data models it ise useful to have an interface link items from **Collection A** to many items within many collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM). 
+
+Diretus treats the M2MM exactly like a M2M with one exception: foreign keys be universally-unique-identifiers (UUID). Since Directus UUIDs are prefixed with the collection name, this avoids the ambiguity of not knowing which collection a primary key belongs to.
 
 @TODO: Show diagram
 
