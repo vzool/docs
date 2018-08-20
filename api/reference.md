@@ -166,6 +166,10 @@ To gain access to protected data, you must include an access token with every re
 
 There are several ways to include this access token:
 
+::: warning NOTE
+For security reason Apache hide the Authorization header to prevent other scripts from seeing the credentials used to access the server. Make sure your Apache passes the `Authentication` header. [Read more](https://httpd.apache.org/docs/2.4/en/mod/core.html#cgipassauth)
+:::
+
 #### 1. Bearer Token in Authorization Header
 
 `curl -H "Authorization: Bearer Py8Rumu.LD7HE5j.uFrOR5" https://example.com/api/`
