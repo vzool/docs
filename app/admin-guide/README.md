@@ -14,7 +14,7 @@
 * `collection` – A SQL table
 * `item` – A SQL record
 * `field` – A SQL column or _alias_ (see below)
-* `alias` – A displayed field that does not map to an actual database column (eg: a divider)
+* `alias` – A field that does not actually map to a database column (eg: a divider)
 * `datatype` – The SQL vendor-specific database storage type (eg: `VARCHAR`, `BIGINT`, etc)
 * `directus type` – An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `M2O`, `STATUS`, etc)
 * `length` – The amount/size of data that can be stored in a field
@@ -103,25 +103,25 @@ Only the "Name" is required for this step, but it's good to familiarize yourself
 
 In relational databases, a one-to-many (O2M) relationship exists when an item of **Collection A** may be linked to many items of **Collection B**, but an item of **Collection B** is linked to only one item of **Collection A**. For example, directors have many movies, but a movie only has one director.
 
-Now lets translate this to field interfaces. The `directors` collection might have a multi-select listing of every movie (a O2M interface). However you could also look at this relationship from the opposite direction, which would be a dropdown of directors on the `movies` collection (a M2O interface). So technically this relationship type is both a O2M and a M2O... it just depends on which way you look at it.
+Now let's translate this to Directus interfaces. The `directors` collection could have a multi-select listing of every movie (a O2M interface). However you could also view at this relationship in the opposite direction, which would be a dropdown of directors on the `movies` collection (a M2O interface). So a O2M relationship is also a M2O (and vice versa)... it just depends on which way you look at it.
 
-An easy way to remember which interface is which: the "many" side is always an actual column that stores the foreign key, while the "one" side is a simulated column that uses the `ALIAS` datatype.
+An easy way to remember which side is which: the "many" is an actual column that stores the foreign key, while the "one" side is a simulated column using the `ALIAS` datatype.
 
 ![O2M + M2O](../img/o2m-m2o.png)
 
 ##### Many-to-Many (M2M)
 
-The many-to-many (M2M) is a slightly more advanced relationship allows you to link _any_ items within **Collection A** and **Collection B**. For example, movies can have many genres, and genres can have many movies.
+The many-to-many (M2M) is a slightly more advanced relationship that allows you to link _any_ items within **Collection A** and **Collection B**. For example, movies can have many genres, and genres can have many movies.
 
-Technically this is not a _new_ relationship type... it is a O2M and a M2O working together across a "junction collection". Each item in the junction collection (`movies_genres`) is a single link between one item in `movies` and one item in `genres`.
+Technically this is not a _new_ relationship type... it is a O2M and M2O working together across a "junction" collection. Each item in the junction (eg: `movies_genres`) is a single link between one item in `movies` and one item in `genres`.
 
 ![M2M](../img/m2m.png)
 
 ##### Many-to-Many-Many (M2MM)
 
-But we can take the M2M relationship even further. In some data models it ise useful to have an interface link items from **Collection A** to many items within many collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM). 
+But we can take the M2M relationship even further. In some data models it ise useful to have an interface link items from **Collection A** to many items within _many_ collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM). 
 
-Diretus treats the M2MM exactly like a M2M with one exception: foreign keys be universally-unique-identifiers (UUID). Since Directus UUIDs are prefixed with the collection name, this avoids the ambiguity of not knowing which collection a primary key belongs to.
+Directus handles the M2MM exactly like a M2M, with one exception: foreign keys must be universally-unique-identifiers (UUID). Since Directus UUIDs are prefixed with the collection name, this avoids the ambiguity of not knowing which collection a primary key belongs to.
 
 @TODO: Show diagram
 
