@@ -229,7 +229,7 @@ Clicking on the "Status" button allows you to set a blacklist of which status op
 
 Workflows are one of the most powerful features of Directus. They allow for all the other permission settings to be controled **per status**. This feature compounds the utility, but it can be difficult to fully understand its potential, so let's explore an example with all the bells and whistles:
 
-
+![Workflow Example](../img/workflow-example.png)
 
 #### Directus Collections
 
