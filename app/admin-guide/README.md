@@ -112,7 +112,7 @@ Only the "Name" is required for this step, but it's good to familiarize yourself
 
 In relational databases, a one-to-many (O2M) relationship exists when an item of **Collection A** may be linked to many items of **Collection B**, but an item of **Collection B** is linked to only one item of **Collection A**. For example, directors have many movies, but a movie only has one director.
 
-Now let's translate this to Directus interfaces. The `directors` collection could have a multi-select listing of every movie (a O2M interface). However you could also view at this relationship in the opposite direction, which would be a dropdown of directors on the `movies` collection (a M2O interface). So a O2M relationship is also a M2O (and vice versa)... it just depends on which way you look at it.
+Now let's translate this to Directus interfaces. The `directors` collection could have a multi-select listing of every movie (a O2M interface). However you could also view at this relationship in the opposite direction as a many-to-one (M2O), which would be a dropdown of directors on the `movies` collection. So a O2M relationship is also a M2O (and vice versa)... it just depends on which way you look at it.
 
 An easy way to remember which side is which: the "many" is an actual column that stores the foreign key, while the "one" side is a simulated column using the `ALIAS` datatype.
 
