@@ -462,6 +462,59 @@ Using the request token that was returned by the `/[env]/auth/sso/[provider]/cal
 
 There are many common query parameters used throughout the API. Those are described here and referenced from within each endpoint's section.
 
+| Name          | Description                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| `fields`      | Include the specific fields in the result
+| `limit`       | The maximum number of items in the result
+| `offset`      | The results offset in combination with `limit`
+| `single`      | Returns the first item
+| `sort`        | Sorting the results by one or multiple fields
+| `status`      | Search for items status with the given statuses
+| `filter`      | Search for items that matches the filters
+| `q`           | Search for items that matches the given string in any of their fields*
+| `groups`      | Groups the items by one or more fields
+| `joins`       | Joins the result with another collection using SQL Joins
+
+### Fields
+
+`fields` is a CSV of columns to include in the result. This parameter supports dot notation to request nested relational fields. You can also use a wildcard (`*`) for "all fields".
+
+#### Examples
+
+*   `fields=*` Gets all top-level fields
+*   `fields=*.*` Gets all top-level fields and all relational fields one-level deep
+*   `fields=*,images.*` Gets all top-level fields and all relational fields within `images`
+*   `fields=first_name,last_name` Gets only the `first_name` and `last_name` fields
+*   `fields=*.*,images.thumbnails.*` Get all fields for top level and one level deep, as well as three levels deep within `images.thumbnails`
+
+### Limit
+
+Using `limit` can be set the maximum number of items that will be returned.
+
+#### Examples
+
+*   `limit=10` Returns a maximum of 10 items.
+
+### Offset
+
+Using `offset` the first `offset` number of items can be skipped.
+
+#### Examples
+
+*   `offset=3&limit=10` Returns a maximum of 10 items, but skips the first 3 items on the list.
+
+### Single
+
+Using `single` the first element will be returned.
+
+::: tip NOTE
+Instead of returning a list, the result data will be an object representing the first item.
+:::
+
+#### Examples
+
+*   `single=1&offset=3&limit=10` Returns the first item of the result.
+
 ### Sorting
 
 `sort` is a CSV of fields used to sort fetched items. Sorting defaults to ascending (ASC) order but a minus sign (`-`) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can use a `?` to sort randomly.
@@ -472,18 +525,6 @@ There are many common query parameters used throughout the API. Those are descri
 *   `sort=name` Sorts by `name` ASC
 *   `&sort=name,-age` Sorts by `name` ASC followed by `age` DESC
 *   `sort=name,-age,?` Sorts by `name` ASC followed by `age` DESC, followed by random sorting
-
-### Fields
-
-`fields` is a CSV of columns to include in the output. This parameter supports dot notation to request nested relational fields. You can also use a wildcard (`*`) for "everything".
-
-#### Examples
-
-*   `fields=*` Gets all top-level fields
-*   `fields=*.*` Gets all top-level fields and all relational fields one-level deep
-*   `fields=*,images.*` Gets all top-level fields and all relational fields within `images`
-*   `fields=first_name,last_name` Gets only the `first_name` and `last_name` fields
-*   `fields=*.*,images.thumbnails.*` Get all fields for top level and one level deep, as well as three levels deep within `images.thumbnails`
 
 ### Filtering
 
