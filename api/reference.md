@@ -11,7 +11,7 @@ sidebar: auto
 The Directus API uses SemVer for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
 ### Environments
- 
+
 All endpoints are prefixed with the an environment name (based on a configuration file name). The API will try to find a configuration file that matches a given environment name and use it as the request configuration. The underscore (`_`) is reserved as the default environment name.
 
 Below are few examples of API requests when your API is located in an `/api` sub-directory:
@@ -120,7 +120,7 @@ The `error` property is only present when an error has occurred.
 - **0306** - Altering collection was denied (403)
 - **0307** - Collection already exists (422)
 - **0308** - Field already exists (422)
-- **0309** - Unable to find items owned by an specific user (403) 
+- **0309** - Unable to find items owned by an specific user (403)
 
 #### Schema Error Codes
 
@@ -271,7 +271,7 @@ POST /instances
 | `project_name`  | The Directus name. Default: `Directus` | No
 | `env`           | The environment name.                  | No
 | `force`         | Force the installation                 | No
-| `cors_enabled`  | Enable CORS                            | No 
+| `cors_enabled`  | Enable CORS                            | No
 
 ::: warning
 When `env` is not specified it will create the default configuration.
@@ -709,7 +709,7 @@ GET /items/[collection-name]
     curl -u [token]: -g https://api.directus.io/_/items/projects?filter[category][eq]=design
     ```
 
-### Get Revision
+### Get Item Revision
 
 Get a specific revision from a given item. This endpoint uses a zero-based offset to select a revision, where `0` is the creation revision. Negative offsets are allowed, and select as if `0` is the current revisions.
 
@@ -744,7 +744,7 @@ GET /items/[collection-name]/[pk]/revisions/[offset]
     curl -u <token>: https://api.directus.io/_/items/projects/1/revisions/-2
     ```
 
-### Get Revisions
+### Get Item Revisions
 
 Get an array of revisions from a given item.
 
@@ -1803,7 +1803,7 @@ GET /scim/v2/Users
 ```
 
 #### Parameters
-| Name       | Type        | Description 
+| Name       | Type        | Description
 | ---------- | ------------| ------------
 | startIndex | `Integer`   | The 1-based index of the first result in the current set of list results.
 | count      | `Integer`   | Specifies the desired maximum number of query results per page.
@@ -2055,7 +2055,7 @@ GET /scim/v2/Groups
 
 #### Parameters
 
-| Name       | Type        | Description 
+| Name       | Type        | Description
 | ---------- | ------------| ------------
 | startIndex | `Integer`   | The 1-based index of the first result in the current set of list results.
 | count      | `Integer`   | Specifies the desired maximum number of query results per page.
@@ -2265,7 +2265,7 @@ All endpoints defined in a page will be located under the `pages` group.
 /[env]/pages/[interface-id]
 ```
 
-### Custom Endpoints 
+### Custom Endpoints
 
 All endpoints created by the user, that it's not related to any extension will be located under the `custom` group endpoints.
 
@@ -2313,7 +2313,7 @@ This is danger note with a custom title
 :::
 -->
 
-## Server 
+## Server
 
 ### Information
 

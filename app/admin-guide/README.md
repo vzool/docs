@@ -2,15 +2,15 @@
 
 ## Installation
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Updating
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Global Settings
 
@@ -43,7 +43,7 @@ This is for internal use only. It helps your administrators understand the purpo
 
 #### Item Name Template
 
-This [Mustache template](#) allows you to set a default/fallback formatted name for items in the collection. 
+This [Mustache template](#) allows you to set a default/fallback formatted name for items in the collection.
 
 @TODO: DO WE USE THIS ANYWHERE?
 
@@ -108,7 +108,7 @@ Only the "Name" is required for this step, but it's good to familiarize yourself
 
 #### Relationships
 
-##### One-to-Many & Many-to-One
+##### One-to-Many
 
 In relational databases, a one-to-many (O2M) relationship exists when an item of **Collection A** may be linked to many items of **Collection B**, but an item of **Collection B** is linked to only one item of **Collection A**. For example, directors have many movies, but a movie only has one director.
 
@@ -118,7 +118,7 @@ An easy way to remember which side is which: the "many" is an actual column that
 
 ![O2M + M2O](../img/o2m-m2o.png)
 
-##### Many-to-Many (M2M)
+##### Many-to-Many
 
 The many-to-many (M2M) is a slightly more advanced relationship that allows you to link _any_ items within **Collection A** and **Collection B**. For example, movies can have many genres, and genres can have many movies.
 
@@ -126,9 +126,9 @@ Technically this is not a _new_ relationship type... it is a O2M and M2O working
 
 ![M2M](../img/m2m.png)
 
-##### Many-to-Many-Many (M2MM)
+##### Many-to-Many-Many
 
-In some data models it ise useful to have an interface link items from **Collection A** to many items within _many_ collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM) but it is sometimes called a "Matrix Field". 
+In some data models it ise useful to have an interface link items from **Collection A** to many items within _many_ collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM) but it is sometimes called a "Matrix Field".
 
 Directus handles the M2MM exactly like a M2M, with one exception: foreign keys must be universally-unique-identifiers (UUID). Since Directus UUIDs are prefixed with the collection name, this avoids the ambiguity of not knowing which collection a primary key belongs to.
 
@@ -160,11 +160,11 @@ It is possible to irreverisbly delete massive amounts of data with this feature.
 
 ## Roles & Permissions
 
-Directus permissions are extremely granular and powerful, but don't feel overwhelmed, you don't need to use or even understand the more advanced features to setup basic roles. 
+Directus permissions are extremely granular and powerful, but don't feel overwhelmed, you don't need to use or even understand the more advanced features to setup basic roles.
 
 ### Administrators
 
-Users with this role have full permissions for all data within the system and are the only ones with access to Admin Settings. The administrator role is included by default and can not be edited or removed. 
+Users with this role have full permissions for all data within the system and are the only ones with access to Admin Settings. The administrator role is included by default and can not be edited or removed.
 
 ### Public
 
@@ -264,7 +264,7 @@ Not shown in the diagram, but worth noting: the Admin role always has _full_ per
 
 #### Directus Collections
 
-Below the permissions interface is a toggle to show the Directus system collections. These permissions are automatically generated when new roles are created and can be used to control system pages such as: File Library, User Directory, My Activity, etc. 
+Below the permissions interface is a toggle to show the Directus system collections. These permissions are automatically generated when new roles are created and can be used to control system pages such as: File Library, User Directory, My Activity, etc.
 
 ::: warning
 Changing the default system permissions can result in unexpected behavior or a completely broken platform. The API and App rely on certain data. For example, full read permission for `directus_users` is required. Only update these values if you know exactly what you're doing.
@@ -280,7 +280,7 @@ To keep the core codebase as simple and clean as possible, all edge-case (80/20 
 
 ### Interfaces
 
-Interfaces customize how a field is presented to the user. For example a `STRING` datatype would be shown as a text-input by default, but an interface could instead show that as a dropdown, Map, WYSIWYG Editor, or Color Picker. 
+Interfaces customize how a field is presented to the user. For example a `STRING` datatype would be shown as a text-input by default, but an interface could instead show that as a dropdown, Map, WYSIWYG Editor, or Color Picker.
 
 Each interface also describes how a field's data should be shown on the Browse Items page. For example, you might want to show a boolean as a `✓` or `×` instead of `true` or `false`.
 
@@ -308,7 +308,7 @@ Pages handle everything not covered by Interfaces and Layouts. Pages allow anyth
 
 ### SSO Services
 
-Users can use their Directus password to authenticate, or any enabled Single Sing-On (SSO) services. Supported services include: 
+Users can use their Directus password to authenticate, or any enabled Single Sing-On (SSO) services. Supported services include:
 
 * **Google** – Service's email must match user's Directus email
 * **Twitter** – Service's email must match user's Directus email
