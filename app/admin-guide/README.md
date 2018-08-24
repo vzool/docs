@@ -329,9 +329,10 @@ Storage Adapters allow you to save Directus files anywhere. By default the syste
 
 ## Terminology
 
-* `project` – An external application using Database managed data
+* `client` – An external application using Database managed data
 * `instance` – An API install managing one or more environments on a server
-* `environment` or `env` – A SQL database (eg: `production`, `staging`, etc)
+* `project` – A database, config, and file storage directory. Also used for deployment environments (eg: `prod`, `stage`, `dev`)
+* `env` - A flag set in the project config: either `production` or `staging` (not to be confused with deployment environments)
 * `schema` – The SQL database's architecture, not including any content
 * `boilerplate` – The base schema and system content included in a fresh/blank copy of Directus
 * `collection` – A SQL table
