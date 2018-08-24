@@ -10,9 +10,9 @@ sidebar: auto
 
 The Directus API uses SemVer for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
-### Environments
+### Projects
 
-All endpoints are prefixed with the an environment name (based on a configuration file name). The API will try to find a configuration file that matches a given environment name and use it as the request configuration. The underscore (`_`) is reserved as the default environment name.
+All endpoints are prefixed with the a project  name (based on a configuration file name). The API will try to find a configuration file that matches a given project name and use it as the request configuration. The underscore (`_`) is reserved as the default project name.
 
 Below are few examples of API requests when your API is located in an `/api` sub-directory:
 
@@ -20,11 +20,11 @@ Below are few examples of API requests when your API is located in an `/api` sub
 *   `/api/prod/items/projects` (uses prod config file `api.prod.php`)
 
 ::: tip
-The naming format of the configuration file is `api.<environment-name>.php`
+The naming format of the configuration file is `api.<project-name>.php`
 :::
 
 ::: warning NOTE
-A default api env (`api.php`) is required in order for the api to work.
+A default api project (`api.php`) is required in order for the api to work.
 :::
 
 ### Response Format
@@ -74,7 +74,7 @@ The `error` property is only present when an error has occurred.
 - **0005** - Endpoint Not Found (404)
 - **0006** - Method Not Allowed (405)
 - **0007** - Too Many Requests (429)
-- **0008** - API Environment Configuration Not Found (404)
+- **0008** - API Project Configuration Not Found (404)
 - **0009** - Failed generating a SQL Query (500)
 - **0010** - Forbidden (403)
 - **0011** - Failed to connect to the database (500)
@@ -170,9 +170,9 @@ POST /instances
 
 | Attribute       | Description                            | Required
 | --------------- | -------------------------------------- | ---------
-| `env`           | The environment name. Default: `_`     | No
+| `project`       | The project name. Default: `_`         | No
 | `force`         | Force the installation                 | No
-| `db_type`       | Database adapter. Only `mysql` supported| No
+| `db_type`       | Database type. Only `mysql` supported  | No
 | `db_host`       | Database host. Default: `localhost`    | No
 | `db_port`       | Database port. Default: `3306`         | No
 | `db_name`       | Database name                          | Yes
@@ -187,7 +187,7 @@ POST /instances
 | `auth_secret`   | Sets the authentication secret key     | No
 
 ::: warning
-When `env` is not specified it will create the default configuration.
+When `project` is not specified it will create the default configuration.
 :::
 
 ```json
@@ -254,7 +254,7 @@ curl https://example.com/api/?access_token=staticToken
 Gets a token from a Directus user's credentials.
 
 ```http
-POST /[env]/auth/authenticate
+POST /[project]/auth/authenticate
 ```
 
 #### Body
@@ -282,42 +282,42 @@ The access token that is returned through this endpoint must be used with any su
 
 #### Protected Endpoints
 
-| Endpoint                   | Protected
-| -------------------------- | -----------------------
-| /[env]/                    | Yes
-| /[env]/activity            | Yes
-| /[env]/auth                | No
-| /[env]/collections         | Yes
-| /[env]/collection_presets  | Yes
-| /[env]/custom              | No
-| /[env]/fields              | Yes
-| /[env]/files               | Yes
-| /[env]/items               | Yes
-| /[env]/interfaces          | No
-| /[env]/mail                | Yes
-| /[env]/pages               | No
-| /[env]/permissions         | Yes
-| /[env]/relations           | Yes
-| /[env]/revisions           | Yes
-| /[env]/roles               | Yes
-| /[env]/scim/v2             | Yes
-| /[env]/settings            | Yes
-| /[env]/users               | Yes
-| /[env]/utils               | Yes
-| /                          | Yes
-| /instances                 | No
-| /interfaces                | Yes
-| /layouts                   | Yes
-| /pages                     | Yes
-| /server/ping               | No
-| /types                     | Yes
+| Endpoint                       | Protected
+| ------------------------------ | -----------------------
+| /[project]/                    | Yes
+| /[project]/activity            | Yes
+| /[project]/auth                | No
+| /[project]/collections         | Yes
+| /[project]/collection_presets  | Yes
+| /[project]/custom              | No
+| /[project]/fields              | Yes
+| /[project]/files               | Yes
+| /[project]/items               | Yes
+| /[project]/interfaces          | No
+| /[project]/mail                | Yes
+| /[project]/pages               | No
+| /[project]/permissions         | Yes
+| /[project]/relations           | Yes
+| /[project]/revisions           | Yes
+| /[project]/roles               | Yes
+| /[project]/scim/v2             | Yes
+| /[project]/settings            | Yes
+| /[project]/users               | Yes
+| /[project]/utils               | Yes
+| /                              | Yes
+| /instances                     | No
+| /interfaces                    | Yes
+| /layouts                       | Yes
+| /pages                         | Yes
+| /server/ping                   | No
+| /types                         | Yes
 
 ### Refresh Auth Token
 
 Gets a new fresh token using a valid JWT auth token.
 
 ```http
-POST /[env]/auth/refresh
+POST /[project]/auth/refresh
 ```
 
 #### Body
@@ -348,7 +348,7 @@ The API will send an email to the requested user’s email containing a link wit
 The reset token is a JWT token that include the user id, email, type (`reset_password`) and expiration time.
 
 ```http
-POST /[env]/auth/password/request
+POST /[project]/auth/password/request
 ```
 
 #### Body
@@ -376,7 +376,7 @@ It uses a GET request so user can be requested from email clients.
 This endpoint generates a random password for the user and sends it to their email address. The user is encourage to change this password as soon as possible.
 
 ```http
-GET /[env]/auth/password/reset/[reset-token]
+GET /[project]/auth/password/reset/[reset-token]
 ```
 
 #### Common Responses
@@ -388,7 +388,7 @@ GET /[env]/auth/password/reset/[reset-token]
 ### Get SSO Services
 
 ```http
-GET /[env]/auth/sso
+GET /[project]/auth/sso
 ```
 
 A list of third-party Single Sign-On (SSO) authentication services, such as Google and Facebook.
@@ -396,7 +396,7 @@ A list of third-party Single Sign-On (SSO) authentication services, such as Goog
 ### Authorization Redirect
 
 ```http
-GET /[env]/auth/sso/[provider]
+GET /[project]/auth/sso/[provider]
 ```
 
 Automatically redirects to the authorization url if the origin host is allowed by the API, otherwise it will return the authorization url.
@@ -404,13 +404,13 @@ Automatically redirects to the authorization url if the origin host is allowed b
 ### OAuth Authentication
 
 ::: warning
-This endpoint is only useful when the callback is not handled by the API. See: /[env]/auth/sso/[provider]/callback.
+This endpoint is only useful when the callback is not handled by the API. See: /[project]/auth/sso/[provider]/callback.
 :::
 
 When the server authorized the user after authenticated it returns a `oauth_token` and `oauth_verifier` (version 1.0) or `code` (version 2.0).
 
 ```http
-POST /[env]/auth/sso/[provider]
+POST /[project]/auth/sso/[provider]
 ```
 
 #### Body
@@ -437,7 +437,7 @@ The user's email address and the app URL from which the reset is requested.
 ### SSO Callback
 
 ```http
-GET /[env]/auth/sso/[provider]/callback
+GET /[project]/auth/sso/[provider]/callback
 ```
 
 Set this url as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
@@ -445,10 +445,10 @@ Set this url as the callback for the Single Sign-On (SSO) OAuth service and it w
 ### Get Access Token
 
 ```http
-POST /[env]/auth/sso/access_token
+POST /[project]/auth/sso/access_token
 ```
 
-Using the request token that was returned by the `/[env]/auth/sso/[provider]/callback` endpoint to get the access token.
+Using the request token that was returned by the `/[project]/auth/sso/[provider]/callback` endpoint to get the access token.
 
 #### Body
 
@@ -1057,7 +1057,7 @@ These endpoints are used for creating, updating, or deleting fields through the 
 #### Get Fields
 
 ```http
-GET /[env]/fields/[collection]
+GET /[project]/fields/[collection]
 ```
 
 Returns the list of fields in a given collection.
@@ -1065,7 +1065,7 @@ Returns the list of fields in a given collection.
 #### Get Field
 
 ```http
-GET /[env]/fields/[collection]/[field]
+GET /[project]/fields/[collection]/[field]
 ```
 
 Returns the details of a single field.
@@ -1073,7 +1073,7 @@ Returns the details of a single field.
 #### Create Field
 
 ```http
-POST /[env]/fields/[collection]
+POST /[project]/fields/[collection]
 ```
 
 Creates a new field in a given collection.
@@ -1081,7 +1081,7 @@ Creates a new field in a given collection.
 #### Update Field
 
 ```http
-PATCH /[env]/fields/[collection]/[field]
+PATCH /[project]/fields/[collection]/[field]
 ```
 
 Updates the details of a given field.
@@ -1089,7 +1089,7 @@ Updates the details of a given field.
 #### Delete Field
 
 ```http
-DELETE /[env]/fields/[collection]
+DELETE /[project]/fields/[collection]
 ```
 
 Permanently deletes a field and its content.
@@ -1101,7 +1101,7 @@ These endpoints are used for creating or updating a files requires the API to ac
 #### Get Files
 
 ```http
-GET /[env]/files
+GET /[project]/files
 ```
 
 Returns the list of your files.
@@ -1109,7 +1109,7 @@ Returns the list of your files.
 #### Get File
 
 ```http
-GET /[env]/files/[pk]
+GET /[project]/files/[pk]
 ```
 
 Returns the details of a single file.
@@ -1117,7 +1117,7 @@ Returns the details of a single file.
 #### Upload File
 
 ```http
-POST /[env]/files
+POST /[project]/files
 ```
 
 Uploads a new file.
@@ -1125,7 +1125,7 @@ Uploads a new file.
 #### Update File
 
 ```http
-PATCH /[env]/files/[pk]
+PATCH /[project]/files/[pk]
 ```
 
 Updates the details of a given field.
@@ -1133,7 +1133,7 @@ Updates the details of a given field.
 #### Delete File
 
 ```http
-DELETE /[env]/files/[pk]
+DELETE /[project]/files/[pk]
 ```
 
 Permanently deletes a file.
@@ -1141,7 +1141,7 @@ Permanently deletes a file.
 #### Get File Revisions
 
 ```http
-GET /[env]/files/[pk]/revisions
+GET /[project]/files/[pk]/revisions
 ```
 
 Returns a list of a single file revisions.
@@ -1149,7 +1149,7 @@ Returns a list of a single file revisions.
 #### Get File Revision
 
 ```http
-GET /[env]/files/[pk]/revisions/[offset]
+GET /[project]/files/[pk]/revisions/[offset]
 ```
 
 Returns the revision of a single item using a 0-index based offset.
@@ -1157,7 +1157,7 @@ Returns the revision of a single item using a 0-index based offset.
 #### Revert File
 
 ```http
-GET /[env]/files/[pk]/revert/[revision-pk]
+GET /[project]/files/[pk]/revert/[revision-pk]
 ```
 
 Reverts the details of a file to a given revision.
@@ -1169,7 +1169,7 @@ These endpoints are used for creating, updating, or deleting a virtual folder.
 #### Get Folders
 
 ```http
-GET /[env]/files/folders
+GET /[project]/files/folders
 ```
 
 Returns the list of your virtual folders.
@@ -1177,7 +1177,7 @@ Returns the list of your virtual folders.
 #### Get Folder
 
 ```http
-GET /[env]/files/folders/[pk]
+GET /[project]/files/folders/[pk]
 ```
 
 Returns the details of a single virtual folder.
@@ -1185,7 +1185,7 @@ Returns the details of a single virtual folder.
 #### Create Folder
 
 ```http
-POST /[env]/files/folders
+POST /[project]/files/folders
 ```
 
 Creates a new virtual folder.
@@ -1193,7 +1193,7 @@ Creates a new virtual folder.
 #### Update Folder
 
 ```http
-PATCH /[env]/files/folders/[pk]
+PATCH /[project]/files/folders/[pk]
 ```
 
 Updates the details of a given folder.
@@ -1201,7 +1201,7 @@ Updates the details of a given folder.
 #### Delete Folder
 
 ```http
-DELETE /[env]/files/[pk]
+DELETE /[project]/files/[pk]
 ```
 
 Permanently deletes a virtual folder. Leaving its sub folder and files orphan.
@@ -1213,7 +1213,7 @@ These endpoints are used for creating, updating, or deleting collection presets 
 #### Get Collection Presets
 
 ```http
-GET /[env]/collection_presets
+GET /[project]/collection_presets
 ```
 
 Returns the list of collection presets.
@@ -1221,7 +1221,7 @@ Returns the list of collection presets.
 #### Get Collection Preset
 
 ```http
-GET /[env]/collection_presets/[pk]
+GET /[project]/collection_presets/[pk]
 ```
 
 Returns the details of a single collection preset.
@@ -1229,7 +1229,7 @@ Returns the details of a single collection preset.
 #### Create Collection Preset
 
 ```http
-POST /[env]/collection_presets
+POST /[project]/collection_presets
 ```
 
 Creates a new collection preset.
@@ -1237,7 +1237,7 @@ Creates a new collection preset.
 #### Update Collection Preset
 
 ```http
-PATCH /[env]/collection_presets/[pk]
+PATCH /[project]/collection_presets/[pk]
 ```
 
 Updates the details of a given collection preset.
@@ -1245,7 +1245,7 @@ Updates the details of a given collection preset.
 #### Delete Collection Preset
 
 ```http
-DELETE /[env]/collection_presets/[pk]
+DELETE /[project]/collection_presets/[pk]
 ```
 
 Permanently deletes a collection_presets.
@@ -1257,7 +1257,7 @@ These endpoints are used for creating, updating, or deleting permissions through
 #### Get Permissions
 
 ```http
-GET /[env]/permissions
+GET /[project]/permissions
 ```
 
 Returns the list of permissions.
@@ -1265,7 +1265,7 @@ Returns the list of permissions.
 #### Get Permission
 
 ```http
-GET /[env]/permissions/[pk]
+GET /[project]/permissions/[pk]
 ```
 
 Returns the details of a single permission.
@@ -1273,7 +1273,7 @@ Returns the details of a single permission.
 #### Create Permission
 
 ```http
-POST /[env]/permissions
+POST /[project]/permissions
 ```
 
 Creates a new permission.
@@ -1281,7 +1281,7 @@ Creates a new permission.
 #### Update Permission
 
 ```http
-PATCH /[env]/permissions/[pk]
+PATCH /[project]/permissions/[pk]
 ```
 
 Updates the details of a given permission.
@@ -1289,7 +1289,7 @@ Updates the details of a given permission.
 #### Delete Permission
 
 ```http
-DELETE /[env]/permissions/[pk]
+DELETE /[project]/permissions/[pk]
 ```
 
 Permanently deletes a permission.
@@ -1301,7 +1301,7 @@ These endpoints are used for creating, updating, or deleting relations.
 #### Get Relations
 
 ```http
-GET /[env]/relations
+GET /[project]/relations
 ```
 
 Returns the list of relations.
@@ -1309,7 +1309,7 @@ Returns the list of relations.
 #### Get Relation
 
 ```http
-GET /[env]/relations/[pk]
+GET /[project]/relations/[pk]
 ```
 
 Returns the details of a single relation.
@@ -1317,7 +1317,7 @@ Returns the details of a single relation.
 #### Create Relation
 
 ```http
-POST /[env]/relations
+POST /[project]/relations
 ```
 
 Creates a new relation.
@@ -1325,7 +1325,7 @@ Creates a new relation.
 #### Update Relation
 
 ```http
-PATCH /[env]/relations/[pk]
+PATCH /[project]/relations/[pk]
 ```
 
 Updates the details of a given relation.
@@ -1333,7 +1333,7 @@ Updates the details of a given relation.
 #### Delete Relation
 
 ```http
-DELETE /[env]/relations/[pk]
+DELETE /[project]/relations/[pk]
 ```
 
 Permanently deletes a relation.
@@ -1345,7 +1345,7 @@ These endpoints are used for creating, updating, or deleting roles.
 #### Get Roles
 
 ```http
-GET /[env]/roles
+GET /[project]/roles
 ```
 
 Returns the list of roles.
@@ -1353,7 +1353,7 @@ Returns the list of roles.
 #### Get Role
 
 ```http
-GET /[env]/roles/[pk]
+GET /[project]/roles/[pk]
 ```
 
 Returns the details of a single role.
@@ -1361,7 +1361,7 @@ Returns the details of a single role.
 #### Create Role
 
 ```http
-POST /[env]/roles
+POST /[project]/roles
 ```
 
 Creates a new role.
@@ -1369,7 +1369,7 @@ Creates a new role.
 #### Update Role
 
 ```http
-PATCH /[env]/roles/[pk]
+PATCH /[project]/roles/[pk]
 ```
 
 Updates the details of a given role.
@@ -1377,7 +1377,7 @@ Updates the details of a given role.
 #### Delete Role
 
 ```http
-DELETE /[env]/roles/[pk]
+DELETE /[project]/roles/[pk]
 ```
 
 Permanently deletes a role.
@@ -1389,7 +1389,7 @@ These endpoints are used for creating, updating, or deleting settings.
 #### Get Settings
 
 ```http
-GET /[env]/settings
+GET /[project]/settings
 ```
 
 Returns the list of settings.
@@ -1397,7 +1397,7 @@ Returns the list of settings.
 #### Get Setting
 
 ```http
-GET /[env]/settings/[pk]
+GET /[project]/settings/[pk]
 ```
 
 Returns the details of a single setting.
@@ -1405,7 +1405,7 @@ Returns the details of a single setting.
 #### Create Setting
 
 ```http
-POST /[env]/settings
+POST /[project]/settings
 ```
 
 Creates a new setting.
@@ -1413,7 +1413,7 @@ Creates a new setting.
 #### Update Setting
 
 ```http
-PATCH /[env]/settings/[pk]
+PATCH /[project]/settings/[pk]
 ```
 
 Updates the details of a given setting.
@@ -1421,7 +1421,7 @@ Updates the details of a given setting.
 #### Delete Setting
 
 ```http
-DELETE /[env]/setting/[pk]
+DELETE /[project]/setting/[pk]
 ```
 
 Permanently deletes a setting.
@@ -1433,7 +1433,7 @@ These endpoints are used for creating, updating, or deleting settings. Similar t
 #### Get Collections
 
 ```http
-GET /[env]/collections
+GET /[project]/collections
 ```
 
 Returns the list of collections.
@@ -1441,7 +1441,7 @@ Returns the list of collections.
 #### Get Collection
 
 ```http
-GET /[env]/collections/[pk]
+GET /[project]/collections/[pk]
 ```
 
 Returns the details of a single collection.
@@ -1449,7 +1449,7 @@ Returns the details of a single collection.
 #### Create Collection
 
 ```http
-POST /[env]/collections
+POST /[project]/collections
 ```
 
 Creates a new collection.
@@ -1457,7 +1457,7 @@ Creates a new collection.
 #### Update Collection
 
 ```http
-PATCH /[env]/collections/[pk]
+PATCH /[project]/collections/[pk]
 ```
 
 Updates the details of a given collection.
@@ -1465,7 +1465,7 @@ Updates the details of a given collection.
 #### Delete Collection
 
 ```http
-DELETE /[env]/collections/[pk]
+DELETE /[project]/collections/[pk]
 ```
 
 Permanently deletes a collection information, the table and all its contents.
@@ -1475,7 +1475,7 @@ Permanently deletes a collection information, the table and all its contents.
 Get a specific revision.
 
 ```http
-GET /[env]/revisions/[pk]
+GET /[project]/revisions/[pk]
 ```
 
 #### Query Parameters
@@ -1731,7 +1731,7 @@ The path to the last page the user was on in the Directus App.
 #### Get User Revisions
 
 ```http
-GET /[env]/users/[pk]/revisions
+GET /[project]/users/[pk]/revisions
 ```
 
 Returns a list of revisions for a single user.
@@ -1739,7 +1739,7 @@ Returns a list of revisions for a single user.
 #### Get User Revision
 
 ```http
-GET /[env]/users/[pk]/revisions/[offset]
+GET /[project]/users/[pk]/revisions/[offset]
 ```
 
 Returns the revision of a single user using a 0-index based offset.
@@ -1747,7 +1747,7 @@ Returns the revision of a single user using a 0-index based offset.
 #### Revert User
 
 ```http
-GET /[env]/users/[pk]/revert/[revision-pk]
+GET /[project]/users/[pk]/revert/[revision-pk]
 ```
 
 Reverts the details of a user to a given revision.
@@ -1832,7 +1832,7 @@ GET /utils/random/string
 Send a email to one or multiple emails.
 
 ```http
-POST /[env]/mail
+POST /[project]/mail
 ```
 
 #### Body
@@ -2323,7 +2323,7 @@ Empty response when successful.
 All endpoints defined in a interface will be located under the `interfaces` group.
 
 ```http
-/[env]/interfaces/[interface-id]
+/[project]/interfaces/[interface-id]
 ```
 
 ### Pages
@@ -2331,7 +2331,7 @@ All endpoints defined in a interface will be located under the `interfaces` grou
 All endpoints defined in a page will be located under the `pages` group.
 
 ```http
-/[env]/pages/[interface-id]
+/[project]/pages/[interface-id]
 ```
 
 ### Custom Endpoints
@@ -2339,7 +2339,7 @@ All endpoints defined in a page will be located under the `pages` group.
 All endpoints created by the user, that it's not related to any extension will be located under the `custom` group endpoints.
 
 ```http
-`/[env]/custom/[endpoint-id]`
+`/[project]/custom/[endpoint-id]`
 ```
 
 These endpoints are used for creating, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
