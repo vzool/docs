@@ -6,7 +6,7 @@ A lot of thought has gone into the Directus brand and UX. It is therefore extrem
 
 ## Global CSS Variables
 
-To keep things standardized across many extensions, we have a global set of CSS/SCSS variables that are available within the App. Whenever possible, these variables should be used. Variables can be found here: /src/assets/global.scss
+To keep things standardized across many extensions, we have a global set of [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) that are available within the App (since extensions don't have access to "local" imports, we chose not to use SASS Variables). Whenever possible, these variables should be used. Variables can be found here: `/src/assets/global.scss`
 
 ### Variable Usage
 
@@ -16,6 +16,31 @@ To keep things standardized across many extensions, we have a global set of CSS/
 * Box Shadow
 * Interface Border Width
 * Interface Widths
+
+## Breakpoints
+
+Directus uses 3 main breakpoints. They are given to `vue-mq` as well and can be checked programmatically by using `this.$mq`
+
+* Small: 0 - 800px
+* Medium: 800px - 1000px
+* Large: 1000px - 1200px
+* Extra Large: 1200px - Infinity
+
+## Layers
+
+| Element | z-index |
+|---------|---------|
+| content-area | 0 |
+| info-sidebar | 10 |
+| header-bar | 20 |
+| progress bar | 25 |
+| sidebar-nav | 30 |
+| modal | 100 |
+| loader | 500* |
+
+*_Customazible through property_
+
+Modals should always have the top most layer
 
 ## Typography
 
@@ -33,15 +58,17 @@ selection: #e1f0fa
 
 ## Iconography
 
-Directus uses the Material Design Icon Set, and only this set should be used unless otherwise warranted. Every attempt should be made for icons to be clear and optically aligned using Google's guide. Proper sizing for icons includes: 18px, 24px, 36px, 48px, etc
+Directus uses the [Material Design Icon Set](https://material.io/icons/), and only this set should be used unless otherwise warranted. Anytime a component accepts an icon prop, you can use any of the material design icons. Just pass the official name of the icon, and the component will handle the rest.
+
+Every attempt should be made for icons to be clear and optically aligned using Google's guide. Proper sizing for icons includes: 18px, 24px, 36px, 48px, etc
 
 Icons used within bordered interfaces (eg: Text Input) should typically be 10px from the edges, or 20px for more padded bordered interfaces (eg: WYSIWYG)
 
-When an icon is to be used alongside text, proper optical vertical alignment is crucial. Some icons are "visually weighted" to one side and should be adjusted from true center by 1-2 pixels to compensate. 
+When an icon is to be used alongside text, proper optical vertical alignment is crucial. Some icons are "visually weighted" to one side and should be adjusted from true center by 1-2 pixels to compensate.
 
-When an icon is to be used within a box/container, proper optical alignment is crucial. Some icons are "visually weighted" to one side (or have odd pixel dimensions at certain sizes) and should be adjusted from true center by 1-2 pixels to compensate. 
+When an icon is to be used within a box/container, proper optical alignment is crucial. Some icons are "visually weighted" to one side (or have odd pixel dimensions at certain sizes) and should be adjusted from true center by 1-2 pixels to compensate.
 
-All icons should be vector and one-off icons (not in MD) should be included inline. 
+All icons should be vector and one-off icons (not in MD) should be included inline.
 
 ::: tip
 When in doubt about icon alignment, take a screenshot and use a photo application to inspect it zoomed-in. Measure the distance on sides to ensure things are aligned/centered.
@@ -115,7 +142,7 @@ Within its column, interfaces have a set/max width. Widths should always align w
 
 ### Height
 
-Interfaces should use an intuitive default height based on the specific input. Whenever possible, height should be made into an Option so that the user may configure this to the content's needs. 
+Interfaces should use an intuitive default height based on the specific input. Whenever possible, height should be made into an Option so that the user may configure this to the content's needs.
 
 ::: warning
 Single-line interfaces (inputs, dropdowns, buttons, etc) should always try to be exactly 40px in total height unless otherwise warranted.
@@ -131,7 +158,7 @@ Each field's interface is displayed on the Item Detail page alongside a field la
 
 ![Field Labels & Field Notes](./img/styleguide/system.png)
 
-## Interface States 
+## Interface States
 
 ### Default
 
@@ -141,19 +168,19 @@ This is the normal state of an interface, before it gets focus.
 
 ![Interface States — Placeholder](./img/styleguide/placeholder.png)
 
-Background  
+Background
 ```css
 --white
 ```
 
-Outer Border  
+Outer Border
 ```css
 --lighter-gray
 --input-border-width
 --border-radius
 ```
 
-Text / Values  
+Text / Values
 ```css
 value: --gray
 placeholder: --lighter-gray
@@ -165,7 +192,7 @@ The main difference here is that the background is transparent and there is no h
 
 ![Readonly & Disabled](./img/styleguide/readonly.png)
 
-Background  
+Background
 ```css
 transparent
 ```
@@ -176,7 +203,7 @@ Inherits default style, but border darkens.
 
 ![Hover](./img/styleguide/hover.png)
 
-Border  
+Border
 ```css
 --light-gray
 ```
@@ -196,12 +223,12 @@ The focus state should be an obvious but not overstated change, typically using 
 
 ![Left Icon Focus](./img/styleguide/focus-icon.png)
 
-Border  
+Border
 ```css
 --accent
 ```
 
-Text  
+Text
 ```css
 --dark-gray
 ```
@@ -216,12 +243,12 @@ Each field must pass system validation to be saved, if it is invalid then the in
 
 ![Explicit Valid](./img/styleguide/explicit-valid.png)
 
-Border  
+Border
 ```css
 --danger
 ```
 
-Optional: Text (Blur Only)  
+Optional: Text (Blur Only)
 ```css
 --danger
 ```
@@ -230,15 +257,15 @@ Optional: Text (Blur Only)
 
 Interfaces are updated on the Item Detail page (see above), but a static value is also shown on the Item Listing page (see below). You must decide on the best way to present your interface's data as a useful, raw, small, snippet of data. Below are some examples:
 
-* Title  
+* Title
   Text Input Interface: Shows plaintext
-* Date Published  
+* Date Published
   Date Time Interface: Shows timestamp by default, option for "contextual time" (seen example)
-* Slideshow  
+* Slideshow
   Multiple Files Interface: Since this is a relational interface that could have many attached images/files, instead we choose to show the File Count on the listing page.
-* Views  
+* Views
   Numeric Interface: Shows the the plain number value
-* Status Interface  
+* Status Interface
   Shows as a "badge" or "placard" to help it stand out. There is also an option to only show a dot of color (no text) for a more minimal view.
 
 ![Listing View](./img/styleguide/listing.png)

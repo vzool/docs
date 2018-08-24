@@ -21,9 +21,9 @@ Installing the Directus API requires only a few steps. However, with such a wide
 
 You are welcome to contribute details on how best to install the API in other development environments.
 
-[Install Using FTP: Build Version](./installing-source.md)
+[Install Using FTP: Build Version](./installing-build.md)
 
-[Install Using Git: Source Version](./installing-build.md)
+[Install Using Git: Source Version](./installing-source.md)
 
 Another alternative is to use our Docker containers which contain everything you need to get up and running quickly.
 

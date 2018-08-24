@@ -107,6 +107,8 @@ Remember to push to `build` instead of overwriting
 9. ~Commit with the tag name `git commit -m '7.0.0-alpha.3'`~
 10. ~Force push to build branch `git push -f git@github.com:directus/api.git master:build`~
 
+@TODO Above list needs to be cleaned up
+
 ## Reserved Project Names
 
 The following project names are reserved by Directus Core and can not be used. Each represents a root-level API endpoint that exists now or may exist in the future.
