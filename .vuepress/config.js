@@ -17,7 +17,7 @@ module.exports = {
       ]}
     ],
     repo: 'directus/docs-v7',
-    docsDir: 'docs',
+    docsDir: '',
     editLinks: true,
   }
 };
