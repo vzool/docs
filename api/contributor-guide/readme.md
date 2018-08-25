@@ -197,9 +197,7 @@ These are the different types of data that Directus can store, they extend the c
 
 ## Thumbnailer
 
-The thumbnailer is a feature of Directus that dynamically returns a thumbnail when requested. Its settings are located within `directus_settings` using the `thumbnail` scope.
-
-Generator path: `/thumbnail/<width>/<height>/<action>/<quality>/<filename>`
+[Learn more about the Thumbnailer here](/thumbnailer.md)
 
 ### Options:
 
