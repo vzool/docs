@@ -11,11 +11,11 @@ The thumbnailer is a feature of Directus that dynamically returns thumbnails upo
 1. A user requests a thumbnail of a specific Directus file using the URL syntax above
 2. The request is routed through an .htaccess file (or nginx equivalent) to the thumbnailer that checks if the thumbnail already exists
 3. If it already exists:
-  * **The thumbnail is returned**
+  1. **The thumbnail is returned**
 4. If it does _NOT_ exist
-  * The requested size is validated against the whitelist
-  * The thumbnail is generated and saved in the filesystem
-  * **The thumbnail is returned**
+  1. The requested size is validated against the whitelist
+  2. The thumbnail is generated and saved in the filesystem
+  3. **The thumbnail is returned**
 
 As you can see, when requesting a thumbnail the end result is the same, all of the heavy-lifting happens automatically behind the scenes.
 
