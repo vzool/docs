@@ -4,18 +4,20 @@ The thumbnailer is a feature of Directus that dynamically returns thumbnails upo
 
 ## URL Syntax
 
-`https://directus.example.com/thumbnail/<project>/<width>/<height>/<action>/<quality>/<filename>`
+```url
+https://directus.example.com/thumbnail/<project>/<width>/<height>/<action>/<quality>/<filename>
+```
 
 ## Request Flow
 
 1. A user requests a thumbnail of a specific Directus file using the URL syntax above
 2. The request is routed through an .htaccess file (or nginx equivalent) to the thumbnailer that checks if the thumbnail already exists
-3. If it already exists:
-  1. **The thumbnail is returned**
-4. If it does _NOT_ exist
-  1. The requested size is validated against the whitelist
-  2. The thumbnail is generated and saved in the filesystem
-  3. **The thumbnail is returned**
+3. If it already exists:  
+    1. **The thumbnail is returned**
+4. If it does _NOT_ exist  
+    1. The requested size is validated against the whitelist
+    2. The thumbnail is generated and saved in the filesystem
+    3. **The thumbnail is returned**
 
 As you can see, when requesting a thumbnail the end result is the same, all of the heavy-lifting happens automatically behind the scenes.
 
@@ -89,7 +91,7 @@ Images are never stretched or distorted even when changing the aspect ratio.
 
 Now let's use the first example again, but this time with `contain` action. Now our URL is `http://directus.example.com/thumbnail/_/200/200/contain/better/file-name.jpg`, which saves the thumbnail to the server's filesystem at `thumbnail/_/200/200/contain/better/file-name.jpg`. As you can see ferom the example below, this new thumbnail has not been cropped at all... it has simply been shrunk to fit within the 200x200 bounds.
 
-![Contain](./img/thumbnailer/200-200-contain-better.jpg)<br>_27KB • 200x133_
+<!-- ![Contain](./img/thumbnailer/200-200-contain-better.jpg)<br>_27KB • 200x133_ -->
 
 :::tip
 You can also use the contain action with the `resizeCanvas` enabled. This would result in the same thumbnail as above but with "letterboxing" since the requested dimensions are forced and any negative space is filled with the `canvasBackground` color.
