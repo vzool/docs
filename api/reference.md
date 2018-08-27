@@ -82,6 +82,9 @@ The `error` property is only present when an error has occurred.
 - **0013** - Invalid or Empty Payload (400)
 - **0014** - Default Instance not configured properly (503)
 - **0015** - Batch upload not allowed (400)
+- **0016** - Invalid filesystem path (500)
+- **0017** - Invalid configuration path (422)
+- **0018** - Project name already exists (409)
 
 #### Authentication Error Codes
 
