@@ -354,3 +354,7 @@ Storage Adapters allow you to save Directus files anywhere. By default the syste
 * **Collections** – Page displaying a listing of of collections within an instance/env
 * **Items** – Page displaying a listing of of items within a collection
 * **Item** – Page displaying field interfaces used for creating, viewing, and updating an item
+
+---
+
+[Continue on to: App Contributor Guide](../contributor-guide)
