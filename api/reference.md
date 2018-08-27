@@ -85,6 +85,7 @@ The `error` property is only present when an error has occurred.
 - **0016** - Invalid filesystem path (500)
 - **0017** - Invalid configuration path (422)
 - **0018** - Project name already exists (409)
+- **0018** - Unauthorized location access (401)
 
 #### Authentication Error Codes
 
