@@ -81,6 +81,7 @@ The `error` property is only present when an error has occurred.
 - **0012** - Unprocessable Entity (422)
 - **0013** - Invalid or Empty Payload (400)
 - **0014** - Default Instance not configured properly (503)
+- **0015** - Batch upload not allowed (400)
 
 #### Authentication Error Codes
 
