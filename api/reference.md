@@ -1454,6 +1454,30 @@ POST /[project]/collections
 
 Creates a new collection.
 
+```js
+{
+    "collection": "projects",
+    "fields": [
+        {
+            "field": "id",
+            "type": "primary_key",
+            "datatype": "int",
+            "primary_key": true,
+            "auto_increment": true,
+            "interface": "primary_key",
+            "length": 10,
+            "signed": false
+        },
+        {
+            "field": "title",
+            "type": "varchar",
+            "interface": "text-input",
+            "length": 255
+        }
+    ]
+}
+```
+
 #### Update Collection
 
 ```http
