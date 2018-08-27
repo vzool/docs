@@ -294,4 +294,6 @@ Keep permissions in mind when discussing content or sending links to colleages, 
 
 Only users with the Administrator role are guaranteed to see _everything_ in the system, including some special features only available to them. To learn more about the Administrator role, please click the link below to read our next guide:
 
-@TODO, BUTTON LINK TO: APP ADMIN GUIDE
+---
+
+[Continue on to: App Admin Guide](./admin-guide)
