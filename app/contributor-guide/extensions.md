@@ -2,19 +2,52 @@
 
 ## Types of Extensions
 
-* [Interfaces](./interfaces.md)
-* Layouts
-* Pages
-* Storage Adapters
-* Auth Providers
+* [Interfaces](#interfaces)
+* [Layouts](#layouts)
+* [Pages](#pages)
+* [Storage Adapters](#storage-adapters)
+* [Auth Providers](#auth-providers)
 
 ### Interfaces
 
-Interfaces are one of the most important aspects of Directus. Since Directus is essentially a database wrapper, we know that our managed content is kept in tables (collections) with columns (fields) datatype (eg: `INT`). That takes care of storage, but if you've ever worked directly with a database you know it's not the most intuitive presentation.
+Interfaces are one of the most important aspects of Directus. Since Directus is essentially a [database wrapper](../../primer.html#database-wrapper), we know that our managed content is kept in tables (collections) with columns (fields) datatype (eg: `INT`). That takes care of storage, but if you've ever worked directly with a database you know it's not the most intuitive presentation.
 
 Directus extends the basic functionality of each column by layering it with a graphic user interface (GUI). Let's look at an example:
 
-Your database has a column called `background_color` using a `VARCHAR(6)` datatype. By default, Directus would show this as a text input with a max-length of any 6 characters. However if you choose the Color Palette interface it would instead show a grid of allowed colors. Clicking on a color would select it, and save the hex value to the database field.
+Your database has a column called `background_color` using a `VARCHAR(6)` datatype. By default, Directus would show this as a text input with a max-length of any 6 characters – which works. However if you choose the _Color Palette_ interface it would instead show a grid of allowed color options. Clicking on a color would select it, and save the hex value to the database field. This helps you visualize the abstract, validate the value, and set specific options.
+
+What makes interfaces so powerful are their options. The Color Palette interface, for example, might have options for the allowed/default color values, or whether or not to include the `#` when saving.
+
+:::tip
+For technical information, read our article on creating [Interfaces](./interfaces.md).
+:::
+
+### Layouts
+
+Layouts are different ways to view or manage a collection's Items Browse page. Out-of-the-box there are two core layouts, List and Card. But others could be created to fit specific needs. Let's take a look some different options:
+
+* **List** – The system default and fallback, this layout is a tabular view that will work with any type of data. It allows you to choose visible columns, sort by specific column data, reorder with drag-and-drop, and more.
+* **Card** – Ideal for image-centric collections, this layout showcases an image thumbnail with some configurable text details below. It is the default for the Users and Files pages.
+* **Map** – Ideal for location based data, this would show each item as a pin on a map.
+* **Calendar** – Ideal for date-time based data, this would show each item as an event on a calendar.
+* **Split Pan** – Similar to the List layout, instead of navigating to the Item Detail page when clicking an item, it's  opened in a right pane on the browse page. Great when you need to quickly see or manage items without losing your place.
+* **Spreadsheet** – Also similar to the List layout, this view would work best with "raw" data that can easily be edited _inline_ by clicking into individual cells.
+* **Chart** – This is an example of a read-only layout. Here we show the item's data presented as a configurable chart. For instance, you could then toggle between viewing Sales as a normal list and as a chart of data over time.
+* **To-Do List** – Some layouts could be tailored to specific collection data or functionality. For example, a To-Do list layout might contain dedicated features to nest todos or mark them as complete.
+
+For technical information, read our article on creating [Layouts](#).
+
+## Pages
+
+For technical information, read our article on creating [Pages](#).
+
+## Storage Adapters
+
+For technical information, read our article on creating [Storage Adapters](#).
+
+## Auth Providers
+
+For technical information, read our article on creating [Auth Providers](#).
 
 ## Architecture Explanation
 

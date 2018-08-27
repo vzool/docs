@@ -4,20 +4,9 @@ sidebar: auto
 
 # App User Guide
 
-This guide is written for non-technical users who are just getting started with Directus or who are looking to learn more about the lesser-known features of the Application. If you are installing or configuring the Directus App, you may be interested in our [Admin Docs](#). Those looking to extend or customize the Directus App codebase should reference our [Contributor Docs](#). 
+This guide is written for non-technical users who are just getting started with Directus or who are looking to learn more about the lesser-known features of the Application. If you are installing or configuring the Directus App, you may be interested in our [Admin Docs](#). Those looking to extend or customize the Directus App codebase should reference our [Contributor Docs](#).
 
-## What is Directus
-
-Directus is a suite of software for managing content that can be connected anywhere. That's quite a broad description, so let's take a look at a few examples to get a better idea of what it means.
-
-* **Websites** – You might be managing simple text and images for a personal blog, massive amounts of syndicated content for a network of enterprise sites, or highly customized user account data for a complex webapp service; Directus has it covered. 
-* **Native Apps** – Phone apps have similar needs to websites, but often need to receive content in a different format. Directus stores and delivers all content _agnostically_ so that's not a problem.
-* **Kiosks** – Ever notice those kiosks at airports or restaurants? Flight information and menus are content too (sometimes called data) and it can all be managed in Directus.
-* **Digital-Signage** – From the small screens in the back of taxis to huge digital billboards towering over highways, the text, images, and videos on those displays is all content that needs to be managed. Directus can easily handle that.
-* **Internet-of-Things (IoT) Devices** – The internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or recieving data somewhere. Somewhere like Directus.
-* **Wearables** – Smart watches, fitness trackers, and GPS bracelets all typically stores data in the "Cloud" (a fancy word for the internet). Whether mapping your hike or tracking the number of steps taken along the way, each of those devices shares its data with a service like Directus.
-* **Internal Tools** – Perhaps you just need an internal productivity tool that doesn't connect anywhere. Project management software, to-do lists, inventory systems, time trackers, note taking, etc. Directus is a flexible alternative to spreadsheets and proprietary monthly services.
-* **Combined Systems** – Perhaps your project includes several of the above platforms. Why setup, learn, and pay for multiple specific systems that can't share content with each other? Instead, manage all your content in one place, then simply connect it anywhere and everywhere. Now data for your customers, sales, payroll, scheduling, etc. all live together, which allows for very revealing connections to be made. Synergy!
+If you're completely new to the platform it is recommended that you read our [What is Directus](../what-is-directus.html) article.
 
 ## Login
 
@@ -35,7 +24,7 @@ Never share your password. Directus securely encrypts all passwords so there is 
 
 ### Changing Projects
 
-If Directus has been configured to connect to multiple projects, then you'll see a dropdown on the login form. You can use this to select a specific project to log in to, or in some cases, to type/paste a project link. 
+If Directus has been configured to connect to multiple projects, then you'll see a dropdown on the login form. You can use this to select a specific project to log in to, or in some cases, to type/paste a project link.
 
 ::: tip
 Remember, your account passwords may be different on separate projects, even if they use the same email address.
@@ -67,7 +56,7 @@ The navigation sidebar contains links to your collections, bookmarks, and extens
 
 #### Logo & Loading Indicator
 
-Everytime the application is working on something, such as saving or retrieving items, the logo in the top-left will transform into a loading indicator (by default, a running hare). 
+Everytime the application is working on something, such as saving or retrieving items, the logo in the top-left will transform into a loading indicator (by default, a running hare).
 
 #### Project Switcher
 
@@ -107,7 +96,7 @@ At the bottom of the navigation sidebar is your user's avatar and name. Hovering
 
 ### Info Sidebar
 
-The info sidebar is hidden by default, but it appears when you click the "i" button in the header. It contains additional information and settings for the current page. When viewing items, for example, this sidebar allows you to configure the way your data is displayed. 
+The info sidebar is hidden by default, but it appears when you click the "i" button in the header. It contains additional information and settings for the current page. When viewing items, for example, this sidebar allows you to configure the way your data is displayed.
 
 ### Page
 
@@ -269,7 +258,7 @@ Also in the info sidebar, and comingled with the activity timeline, are any comm
 
 @TODO Screenshot
 
-The file library is an annex of all files added to Directus. Files may be added through item fields (eg: a slideshow interface) or directly to the File Library itself. To add a file directly to the library, drag a file directly onto the page or click the New button ("+") in the header. 
+The file library is an annex of all files added to Directus. Files may be added through item fields (eg: a slideshow interface) or directly to the File Library itself. To add a file directly to the library, drag a file directly onto the page or click the New button ("+") in the header.
 
 By default the File Library displays as a Card layout with thumbnails, but you can change this in the [Info Sidebar](#Info-Sidebar).
 
@@ -299,7 +288,7 @@ Every edit, creation, deletion, upload, comment, login, and error – all captur
 
 ## Permissions
 
-The features described above assume you have full permissions, however your user's role may have limited permissions. You may only see a subset of collections, fields, items or pages depending on on the privileges you've been granted. Furthermore, access to items and fields may change based on Workflow, so it's possible that if you edit an item's status it may suddenly disappear or become read-only. This is all normal and is configured by your project's administrator. 
+The features described above assume you have full permissions, however your user's role may have limited permissions. You may only see a subset of collections, fields, items or pages depending on on the privileges you've been granted. Furthermore, access to items and fields may change based on Workflow, so it's possible that if you edit an item's status it may suddenly disappear or become read-only. This is all normal and is configured by your project's administrator.
 
 Keep permissions in mind when discussing content or sending links to colleages, as they may not be able to see/edit the same items you have access to.
 
