@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # API Admin Guide
 
 ## Requirements

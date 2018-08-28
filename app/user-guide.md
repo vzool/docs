@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # App User Guide
 
 This guide is written for non-technical users who are just getting started with Directus or who are looking to learn more about the lesser-known features of the Application. If you are installing or configuring the Directus App, you may be interested in our [Admin Docs](#). Those looking to extend or customize the Directus App codebase should reference our [Contributor Docs](#).

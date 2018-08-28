@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # API Contributor Guide
 
 ## Understanding Directus API Internals

@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # API Reference
 
 ## Introduction
