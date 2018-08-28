@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # App Admin Guide
 
 ## Installation
