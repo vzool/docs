@@ -1,6 +1,8 @@
 ---
 home: true
 heroImage: /hero.svg
+actionText: What is Directus?
+actionLink: /what-is-directus.html
 footer: GPL-3.0 | © 2018 RANGER Studio LLC
 ---
 
