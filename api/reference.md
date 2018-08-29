@@ -467,6 +467,7 @@ There are many common query parameters used throughout the API. Those are descri
 | ------------- | -------------------------------------------------------------------------- |
 | `fields`      | Include the specific fields in the result
 | `limit`       | The maximum number of items in the result
+| `meta`        | Include metadata related to the result
 | `offset`      | The results offset in combination with `limit`
 | `single`      | Returns the first item
 | `sort`        | Sorting the results by one or multiple fields
@@ -495,6 +496,20 @@ Using `limit` can be set the maximum number of items that will be returned.
 #### Examples
 
 *   `limit=10` Returns a maximum of 10 items.
+
+### Metadata
+
+The `meta` parameter is a CSV of metadata fields to include. This parameter supports the wildcard (`*`) to return all metadata fields.
+
+#### Options
+
+*   `result_count` - Number of items returned in this response
+*   `total_count` - Total number of items in this collection
+*   `status` - Collection item count by statuses
+*   `collection` - The collection name
+*   `type`
+    *   `collection` if it is a collection of items
+    *   `item` if it is a single item
 
 ### Offset
 
@@ -529,7 +544,7 @@ Instead of returning a list, the result data will be an object representing the 
 
 ### Filtering
 
-Used to fetch specific items from a collection based on one or more filters. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The field-name supports dot notation to filter on nested relational fields.
+Used to search items from a collection that matches the filters conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
 
 #### Filter Operators
 
@@ -541,22 +556,22 @@ Used to fetch specific items from a collection based on one or more filters. Fil
 | `<=`, `lte`          | Less than or equal to                  |
 | `>`, `gt`            | Greater than                           |
 | `>=`, `gte`          | Greater than or equal to               |
-| `in`                 | One of these                           |
-| `nin`                | Not one of these                       |
-| `null`               | Is null                                |
-| `nnull`              | Is not null                            |
+| `in`                 | Exists in one of the values            |
+| `nin`                | Not exists in one of the values        |
+| `null`               | It is null                             |
+| `nnull`              | It is not null                         |
 | `contains`, `like`   | Contains the substring                 |
 | `ncontains`, `nlike` | Doesn't contain this substring         |
-| `between`            | Is between                             |
-| `nbetween`           | Is not between                         |
-| `empty`              | Is empty (null or falsy value)         |
-| `nempty`             | Is not empty (null or falsy value)     |
-| `all`                | Match all related items @TODO: Clarify |
-| `has`                | Has one or more related items          |
+| `between`            | The value is between two values        |
+| `nbetween`           | The value is not between two values    |
+| `empty`              | The value is empty (null or falsy)     |
+| `nempty`             | The value is not empty (null or falsy) |
+| `all`                | Contains all given related items's IDs |
+| `has`                | Has one or more related items's IDs    |
 
 #### AND vs OR
 
-By default, all chained filters are treated as ANDs. To create an OR combination, you can add the `logical` operator like follows:
+By default, all chained filters are treated as ANDs, which means all conditions should match. To create an OR combination, you can add the `logical` operator, as shown below:
 
 ```
 GET /items/projects?filter[category][eq]=development&filter[title][logical]=or&filter[title][like]=design
@@ -573,8 +588,18 @@ GET /items/projects?filter[category][in]=development,design
 
 #### Filtering by Date/DateTime
 
+The format for date type is `YYYY-MM-DD` and for datetime is `YYYY-MM-DD HH:MM:SS`. This formats translate to `2018-08-29 14:51:22`.
+
+- Year in `4` digits
+- Months, days, minutes and seconds in two digits, adding leading zero padding when it's a one digit month
+- Hour in 24 hour format
+
+@TODO: Soon to implement
+
+Alias for current datetime `now` and current date `today`.
+
 ```
-# Equal to
+# Equals to
 GET /items/comments?filter[datetime]=2018-05-21 15:48:03
 
 # Greater than
@@ -593,32 +618,13 @@ GET /items/comments?filter[datetime][lte]=2018-05-21 15:48:03
 GET /items/comments?filter[datetime][lte]=2018-05-21 15:48:03,2018-05-21 15:49:03
 ```
 
-::: warning
-Date should follow the `YYYY-MM-DD` format. Ex: 2018-01-01
-Time should follow the `HH:mm:ss` format. Ex: 15:01:01
-:::
-
-### Metadata
-
-`meta` is a CSV of metadata fields to include. This parameter supports the wildcard (`*`) to return all metadata fields.
-
-#### Options
-
-*   `result_count` - Number of items returned in this response
-*   `total_count` - Total number of items in this collection
-*   `status` - Collection item count by statuses
-*   `collection` - The collection name
-*   `type`
-    *   `collection` if it is a collection of items
-    *   `item` if it is a single item
-
 ### Language
 
-`lang` is a CSV of languages that should be returned with the response. This parameter can only be used when a Translation field has been included in the collection. This parameter supports the wildcard (`*`) to return all translations.
+The `lang` parameter is a CSV of languages that should be returned with the response. This parameter can only be used when a Translation field has been included in the collection. This parameter supports the wildcard (`*`) to return all translations.
 
 ### Search Query
 
-`q` is a search query that will perform a filter on all string-based fields within the collection (see list below). It's an easy way to search for an item without creating complex field filters – though it is far less optimized.
+The `q` parameter allows you to perform a search on all numeric or string-based fields within the collection (see list below). It's an easy way to search for an item without creating complex field filters – though it is far less optimized.
 
 #### Searched Datatypes
 
@@ -633,7 +639,7 @@ Time should follow the `HH:mm:ss` format. Ex: 15:01:01
 * `MEDIUMJSON`
 * `LONGJSON`
 * `ARRAY`
-* `CSV`
+* `LANG`
 * `UUID`
 * `TINYINT`
 * `SMALLINT`
@@ -647,13 +653,32 @@ Time should follow the `HH:mm:ss` format. Ex: 15:01:01
 * `DECIMAL`
 * `REAL`
 * `NUMERIC`
-* `BIT`
-* `BOOL`
-* `BOOLEAN`
+* `CURRENCY`
+* `SET`
+* `ENUM`
+
+
+
+### Groups
+
+The `groups` parameter allows to group the result for one or more fields.
+
+#### Examples
+
+* `groups=id,name` Groups the result by `id` and `name` fields
+
+### Joins
+
+The `joins` parameter allows to join items from a collection to the main result.
+
+#### Examples
+
+@TODO: Add examples and useful examples behind this feature
+
 
 ## Items
 
-Items are essentially individual database records which each contain one or more fields (database columns). Each item belongs to a specific container (database table) and is identified by the value of its primary key field. In this section we describe the different ways you can manage items.
+Items are essentially individual database records which each contain one or more fields (database columns). Each item belongs to a specific collection (database table) and is identified by the value of its primary key field. In this section we describe the different ways you can manage items.
 
 ### Create Item
 
@@ -710,18 +735,18 @@ The API may not return any data for successful requests if the user doesn't have
 Get one or more single items from a given collection.
 
 ```http
-GET /items/[collection-name]/[pk]
-GET /items/[collection-name]/[pk],[pk],[pk]
+GET /items/[collection-name]/[id]
+GET /items/[collection-name]/[id1],[id2],[id3]
 ```
 
-#### Query Parameters
+#### Supported Query Parameters
 
-| Name   | Default   | Description                                                |
-| ------ | --------- | ---------------------------------------------------------- |
-| fields | \*        | CSV of fields to include in response [Learn More](#fields) |
-| meta   |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| status | Published | CSV of statuses [Learn More](#status)                      |
-| lang   | \*        | Include translation(s) [Learn More](#language)             |
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `status`      |
+| `lang`        |
 
 #### Common Responses
 
@@ -749,21 +774,21 @@ Get an array of items from a given collection.
 GET /items/[collection-name]
 ```
 
-#### Query Parameters
+#### Suported Query Parameters
 
-| Name          | Default   | Description                                                |
-| ------------- | --------- | ---------------------------------------------------------- |
-| limit         | 20        | The number of items to request                             |
-| offset        | 0         | How many items to skip before fetching results             |
-| sort          | [pk]      | CSV of fields to sort by [Learn More](#sorting)            |
-| fields        | \*        | CSV of fields to include in response [Learn More](#fields) |
-| filter[field] |           | Filter items using operators [Learn More](#filtering)      |
-| meta          |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| status        | Published | CSV of statuses [Learn More](#status)                      |
-| lang          | \*        | Include translation(s) [Learn More](#language)             |
-| q             |           | Search string [Learn More](#search-query)                  |
-| joins         |           | Join two or more tables @TODO examples                     |
-| group         |           | Group items by a field value @TODO examples                |
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `status`      |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
 
 #### Common Responses
 
@@ -784,17 +809,17 @@ GET /items/[collection-name]
 Get a specific revision from a given item. This endpoint uses a zero-based offset to select a revision, where `0` is the creation revision. Negative offsets are allowed, and select as if `0` is the current revisions.
 
 ```http
-GET /items/[collection-name]/[pk]/revisions/[offset]
+GET /items/[collection-name]/[id]/revisions/[offset]
 ```
 
-#### Query Parameters
+#### Supported Query Parameters
 
-| Name   | Default   | Description                                                |
-| ------ | --------- | ---------------------------------------------------------- |
-| fields | \*        | CSV of fields to include in response [Learn More](#fields) |
-| meta   |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| status | Published | CSV of statuses [Learn More](#status)                      |
-| lang   | \*        | Include translation(s) [Learn More](#language)             |
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `status`      |
+| `lang`        |
 
 #### Common Responses
 
@@ -819,18 +844,24 @@ GET /items/[collection-name]/[pk]/revisions/[offset]
 Get an array of revisions from a given item.
 
 ```http
-GET /items/[collection-name]/[pk]/revisions
+GET /items/[collection-name]/[id]/revisions
 ```
 
-#### Query Parameters
+#### Suported Query Parameters
 
-| Name          | Default   | Description                                                |
-| ------------- | --------- | ---------------------------------------------------------- |
-| limit         | 200       | The number of items to request                             |
-| offset        | 0         | How many items to skip before fetching results             |
-| fields        | \*        | CSV of fields to include in response [Learn More](#fields) |
-| meta          |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| lang          | \*        | Include translation(s) [Learn More](#language)             |
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `status`      |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
 
 #### Common Responses
 
@@ -853,7 +884,7 @@ Update or replace a single item from a given collection.
 @TODO LOOK INTO ALLOWING FILTER PARAM FOR UPDATES, EG: `PUT /items/projects?filter[title][eq]=title`
 
 ```http
-PATCH /items/[collection-name]/[pk]
+PATCH /items/[collection-name]/[id]
 ```
 
 ::: warning
@@ -879,7 +910,7 @@ A single item to be updated. Field keys must match the collection's column names
 
 *   Return the project item with an ID of `1`
     ```bash
-    curl -u <token>: https://api.directus.io/_/items/projects/1
+    curl -u <token>: -d "title=new title" https://api.directus.io/_/items/projects/1
     ```
 
 ### Update Items
@@ -888,6 +919,7 @@ Update multiple items in a given collection.
 
 ```http
 PATCH /items/[collection-name]
+PATCH /items/[collection-name]/[id1],[id2],...
 ```
 
 ::: warning PATCH
@@ -899,6 +931,30 @@ PATCH /items/[collection-name]
 ::: danger WARNING
 Batch Update can quickly overwrite large amounts of data. Please be careful when implementing this request.
 :::
+
+#### Body
+
+Update multiple items with the same data: `PATCH /items/projects/1,2`
+
+
+```json
+{
+  "title": "Unknown Title"
+}
+```
+
+Update multiple items, each with its dataset: `PATCH /items/projects`. Each items requires its primary key fields to identify where the dataset will belongs to.
+
+
+```json
+[{
+  "id": 1,
+  "title": "Unknown Title 1"
+}, {
+  "id": 2,
+  "title": "Unknown Title 2"
+}]
+```
 
 #### Common Responses
 
@@ -914,12 +970,12 @@ Batch Update can quickly overwrite large amounts of data. Please be careful when
 Reverts a single item to a previous revision state.
 
 ```http
-PATCH /items/[collection-name]/[item-pk]/revert/[revision-pk]
+PATCH /items/[collection-name]/[item-id]/revert/[revision-id]
 ```
 
 #### Body
 
-There is no body for this request.
+There is no need for a body to do this request.
 
 #### Common Responses
 
@@ -941,8 +997,8 @@ There is no body for this request.
 Deletes one or more items from a specific collection. This endpoint also accepts CSV of primary key values, and would then return an array of items.
 
 ```http
-DELETE /items/[collection-name]/[pk]
-DELETE /items/[collection-name]/[pk],[pk],[pk]
+DELETE /items/[collection-name]/[id]
+DELETE /items/[collection-name]/[id1],[id2],[id3]
 ```
 
 #### Common Responses
