@@ -1235,7 +1235,7 @@ Permanently deletes a collection information, the table and all its contents.
 
 ### Fields
 
-These endpoints are used for creating, updating, or deleting fields through the API requires the API to modify the database schema directly.
+These endpoints are used for creating, updating, or deleting fields from a collection. It alters the database schema directly when needed. Similar to `/collections`.
 
 #### Get Fields
 
@@ -1243,7 +1243,7 @@ These endpoints are used for creating, updating, or deleting fields through the 
 GET /[project]/fields/[collection]
 ```
 
-Returns the list of fields in a given collection.
+Returns the list of all fields that belongs to a given collection.
 
 #### Get Field
 
@@ -1261,6 +1261,14 @@ POST /[project]/fields/[collection]
 
 Creates a new field in a given collection.
 
+```js
+{
+  "field": "description",
+  "type": "text",
+  "interface": "textarea"
+}
+```
+
 #### Update Field
 
 ```http
@@ -1268,6 +1276,12 @@ PATCH /[project]/fields/[collection]/[field]
 ```
 
 Updates the details of a given field.
+
+```js
+{
+  "required": true
+}
+```
 
 #### Delete Field
 
