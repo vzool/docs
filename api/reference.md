@@ -473,6 +473,7 @@ There are many common query parameters used throughout the API. Those are descri
 | `sort`        | Sorting the results by one or multiple fields
 | `status`      | Search for items status with the given statuses
 | `filter`      | Search for items that matches the filters
+| `lang`        | Include translation information
 | `q`           | Search for items that matches the given string in any of their fields*
 | `groups`      | Groups the items by one or more fields
 | `joins`       | Joins the result with another collection using SQL Joins
@@ -680,6 +681,8 @@ The `joins` parameter allows to join items from a collection to the main result.
 
 Items are essentially individual database records which each contain one or more fields (database columns). Each item belongs to a specific collection (database table) and is identified by the value of its primary key field. In this section we describe the different ways you can manage items.
 
+This endpoint is dedicated to all user-defined collections only. Accessing system tables are forbidden. See [Systems endpoints](#system) for more information.
+
 ### Create Item
 
 Creates one or more items in a given collection.
@@ -786,6 +789,7 @@ GET /items/[collection-name]
 | `sort`        |
 | `status`      |
 | `filter`      |
+| `lang`        |
 | `q`           |
 | `groups`      |
 | `joins`       |
@@ -859,6 +863,7 @@ GET /items/[collection-name]/[id]/revisions
 | `sort`        |
 | `status`      |
 | `filter`      |
+| `lang`        |
 | `q`           |
 | `groups`      |
 | `joins`       |
@@ -1022,26 +1027,18 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 
 ### Activity
 
-#### Activities Type
+#### Activity Actions
 
-| Name          | Description                                                   |
-| ------------- | ------------------------------------------------------------- |
-| ENTRY         | Activities to any items besides files and settings collection |
-| FILES         | Activities on the Directus files collection                   |
-| SETTINGS      | Activities on the Directus settings collection                |
-| LOGIN         | Activities on authentication                                  |
-| COMMENT       | Activities related to a comment in a collections's item       |
-
-#### Activities Actions
-
-| Name          | Description                                                |
-| ------------- | ---------------------------------------------------------- |
-| ADD           | Item created                                               |
-| UPDATE        | Item updated                                               |
-| DELETE        | Item deleted                                               |
-| SOFT_DELETE   | Item soft-deleted. Update to a soft delete status          |
-| LOGIN         | User authenticate using credentials                        |
-| REVERT        | Item updated using a revision data                         |
+| Name           | Description                                                |
+| -------------- | ---------------------------------------------------------- |
+| `authenticate` | User authenticated using credentials                       |
+| `comment`      | Comment was added to an item                               |
+| `create`       | Item was created                                           |
+| `upload`       | File item was created                                      |
+| `update`       | Item was updated                                           |
+| `delete`       | Item was deleted                                           |
+| `soft-delete`  | Item was soft-deleted. Update to a soft-deleted status     |
+| `revert`       | Item was updated using a revision data                     |
 
 #### Get Activity
 
@@ -1051,36 +1048,39 @@ Get an array of activity.
 GET /activity
 ```
 
-##### Query Parameters
+#### Suported Query Parameters
 
-| Name          | Default   | Description                                                |
-| ------------- | --------- | ---------------------------------------------------------- |
-| limit         | 20        | The number of items to request                             |
-| offset        | 0         | How many items to skip before fetching results             |
-| sort          | id        | CSV of fields to sort by [Learn More](#sorting)            |
-| fields        | \*        | CSV of fields to include in response [Learn More](#fields) |
-| filter[field] |           | Filter items using operators [Learn More](#filtering)      |
-| meta          |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| q             |           | Search string [Learn More](#search-query)                  |
-| joins         |           | Join two or more tables @TODO examples                     |
-| group         |           | Group items by a field value @TODO examples                |
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `status`      |
+| `filter`      |
+| `lang`        |
+| `q`           |
+| `groups`      |
+| `joins`       |
 
 #### Get Activity Event
 
 Get one or more activity events.
 
 ```http
-GET /activity/[pk]
+GET /activity/[id]
 ```
 
-##### Query Parameters
+#### Suported Query Parameters
 
-| Name   | Default   | Description                                                |
-| ------ | --------- | ---------------------------------------------------------- |
-| fields | \*        | CSV of fields to include in response [Learn More](#fields) |
-| meta   |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| status | Published | CSV of statuses [Learn More](#status)                      |
-| lang   | \*        | Include translation(s) [Learn More](#language)             |
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `status`      |
+| `lang`        |
 
 ##### Common Responses
 
@@ -1091,7 +1091,7 @@ GET /activity/[pk]
 
 #### Create Comment
 
-Create a new comment, whish needs to be related to a collection/item.
+Create a new comment, which needs to be related to a collection/item.
 
 ```http
 POST /activity/comment
@@ -1103,8 +1103,36 @@ A single object representing the new comment.
 
 ```json
 {
+    "collection": "projects",
+    "item": 1,
     "comment": "A new comment"
 }
+```
+
+#### Update Comment
+
+Update a comment using a comment id.
+
+```http
+POST /activity/comment/[id]
+```
+
+##### Body
+
+A single object representing the new comment. The collection and item fields are not required.
+
+```json
+{
+    "comment": "An updated comment"
+}
+```
+
+#### Delete Comment
+
+Delete a comment using a comment id.
+
+```http
+DELETE /activity/comment/[id]
 ```
 
 ### Fields
