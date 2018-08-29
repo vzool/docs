@@ -1045,10 +1045,10 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 Get an array of activity.
 
 ```http
-GET /activity
+GET /[project]/activity
 ```
 
-#### Suported Query Parameters
+##### Suported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1070,10 +1070,10 @@ GET /activity
 Get one or more activity events.
 
 ```http
-GET /activity/[id]
+GET /[project]/activity/[id]
 ```
 
-#### Suported Query Parameters
+##### Suported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1094,7 +1094,7 @@ GET /activity/[id]
 Create a new comment, which needs to be related to a collection/item.
 
 ```http
-POST /activity/comment
+POST /[project]/activity/comment
 ```
 
 ##### Body
@@ -1114,7 +1114,7 @@ A single object representing the new comment.
 Update a comment using a comment id.
 
 ```http
-POST /activity/comment/[id]
+POST /[project]/activity/comment/[id]
 ```
 
 ##### Body
@@ -1132,8 +1132,106 @@ A single object representing the new comment. The collection and item fields are
 Delete a comment using a comment id.
 
 ```http
-DELETE /activity/comment/[id]
+DELETE /[project]/activity/comment/[id]
 ```
+
+### Collections
+
+These endpoints are used for creating, updating, or deleting collections. Similar to `/fields`, it alters the database schema directly when needed.
+
+#### Get Collections
+
+```http
+GET /[project]/collections
+```
+
+Returns the list of all collections in the database.
+
+#### Get Collection
+
+```http
+GET /[project]/collections/[name]
+```
+
+Returns the details of a single collection.
+
+#### Create Collection
+
+```http
+POST /[project]/collections
+```
+
+Creates a new collection.
+
+In the top-level object `collection` fields is required.
+
+In the `fields` list, `field`, `type`, and `interface` are required.
+
+There's time when `datatype` is required because `type` supports different types, such as `primary_key` type that supports string and number type, and It is required to set the `datatype` to a numeric or string data type.
+
+Also when the `type` requires a length, such as a string or numeric type, a `length` attribute is needed.
+
+```js
+{
+    "collection": "projects",
+    "item_name_template": null,
+    "managed": true,
+    "hidden": false,
+    "single": false,
+    "translation": null,
+    "note": "This collection will stored all our projects",
+    "icon": null,
+    "fields": [
+        {
+            "field": "id",
+            "type": "primary_key",
+            "datatype": "int",
+            "interface": "primary_key",
+            "primary_key": true,
+            "auto_increment": true,
+            "length": 10,
+            "signed": false
+        },
+        {
+            "field": "title",
+            "type": "varchar",
+            "interface": "text-input",
+            "length": 255,
+            "readonly": false,
+            "required": true,
+            "note": "The project title"
+        }
+    ]
+}
+```
+
+#### Update Collection
+
+```http
+PATCH /[project]/collections/[name]
+```
+
+Updates the details, add or update fields of a given collection.
+
+```js
+{
+    "note": "This collection stores all our clients projects",
+    "fields": [
+        {
+            "field": "title",
+            "length": 128
+        }
+    ]
+}
+```
+
+#### Delete Collection
+
+```http
+DELETE /[project]/collections/[name]
+```
+
+Permanently deletes a collection information, the table and all its contents.
 
 ### Fields
 
@@ -1510,74 +1608,6 @@ DELETE /[project]/setting/[pk]
 ```
 
 Permanently deletes a setting.
-
-### Collections
-
-These endpoints are used for creating, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
-
-#### Get Collections
-
-```http
-GET /[project]/collections
-```
-
-Returns the list of collections.
-
-#### Get Collection
-
-```http
-GET /[project]/collections/[pk]
-```
-
-Returns the details of a single collection.
-
-#### Create Collection
-
-```http
-POST /[project]/collections
-```
-
-Creates a new collection.
-
-```js
-{
-    "collection": "projects",
-    "fields": [
-        {
-            "field": "id",
-            "type": "primary_key",
-            "datatype": "int",
-            "primary_key": true,
-            "auto_increment": true,
-            "interface": "primary_key",
-            "length": 10,
-            "signed": false
-        },
-        {
-            "field": "title",
-            "type": "varchar",
-            "interface": "text-input",
-            "length": 255
-        }
-    ]
-}
-```
-
-#### Update Collection
-
-```http
-PATCH /[project]/collections/[pk]
-```
-
-Updates the details of a given collection.
-
-#### Delete Collection
-
-```http
-DELETE /[project]/collections/[pk]
-```
-
-Permanently deletes a collection information, the table and all its contents.
 
 ### Get Revision
 
