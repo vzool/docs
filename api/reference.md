@@ -1800,7 +1800,7 @@ Permanently deletes one or more permissions.
 
 ### Relations
 
-These endpoints are used for creating, updating, or deleting relations.
+These endpoints are used for creating, updating, or deleting collection's relations.
 
 #### Get Relations
 
@@ -1810,13 +1810,37 @@ GET /[project]/relations
 
 Returns the list of relations.
 
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
 #### Get Relation
 
 ```http
-GET /[project]/relations/[pk]
+GET /[project]/relations/[id]
+GET /[project]/relations/[id1],[id2],[idN]
 ```
 
-Returns the details of a single relation.
+Returns the details of one or more relations.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
 
 #### Create Relation
 
@@ -1824,23 +1848,96 @@ Returns the details of a single relation.
 POST /[project]/relations
 ```
 
-Creates a new relation.
+Creates one or more relations.
+
+##### One Relation
+
+```json
+{
+  "collection_many": "projects",
+  "field_many": "author",
+  "collection_one": "directus_users",
+  "field_one": null
+}
+```
+
+##### Multiple Relations
+
+```json
+[
+  {
+    "collection_many": "projects",
+    "field_many": "author",
+    "collection_one": "directus_users",
+    "field_one": null
+  },
+  {
+    "collection_many": "projects",
+    "field_many": "category",
+    "collection_one": "categories",
+    "field_one": null
+  }
+]
+```
 
 #### Update Relation
 
 ```http
-PATCH /[project]/relations/[pk]
+PATCH /[project]/relations
+PATCH /[project]/relations/[id]
+PATCH /[project]/relations/[id1],[id2],[idN]
 ```
 
-Updates the details of a given relation.
+Updates the details of one or more relations.
+
+##### One Relation
+
+```http
+PATCH /_/relations/1
+```
+
+```json
+{
+  "field_one": "projects"
+}
+```
+
+##### Multiple Relations with same data
+
+```http
+PATCH /_/relations/1,2
+```
+
+```json
+{
+  "field_one": null
+}
+```
+
+##### Multiple Relations with different data
+
+```http
+PATCH /_/permissions
+```
+
+```json
+[{
+  "id": 1,
+  "field_one": "projects"
+}, {
+  "id": 2,
+  "field_one": "categories"
+}]
+```
 
 #### Delete Relation
 
 ```http
-DELETE /[project]/relations/[pk]
+DELETE /[project]/relations/[id]
+DELETE /[project]/relations/[id1],[id2],[idN]
 ```
 
-Permanently deletes a relation.
+Permanently deletes one or more relations.
 
 ### Roles
 
