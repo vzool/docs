@@ -775,7 +775,7 @@ Get an array of items from a given collection.
 GET /items/[collection-name]
 ```
 
-#### Suported Query Parameters
+#### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -849,7 +849,7 @@ Get an array of revisions from a given item.
 GET /items/[collection-name]/[id]/revisions
 ```
 
-#### Suported Query Parameters
+#### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1046,7 +1046,7 @@ Returns a list of activity.
 GET /[project]/activity
 ```
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1069,7 +1069,7 @@ Get one or more activity events.
 GET /[project]/activity/[id]
 ```
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1241,7 +1241,7 @@ GET /[project]/collection_presets
 
 Returns the list of collection presets.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1265,7 +1265,7 @@ GET /[project]/collection_presets/[id1],[id2],[idN]
 
 Returns the details of one or more collection presets.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1370,7 +1370,7 @@ GET /[project]/files
 
 Returns the list of files.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1394,7 +1394,7 @@ GET /[project]/files/[id1],[id2],[idN]
 
 Returns the details of one or more files.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1502,7 +1502,7 @@ GET /[project]/files/[id]/revisions
 
 Returns a list of a single file revisions.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1524,7 +1524,7 @@ GET /[project]/files/[id]/revisions/[offset]
 
 Returns the revision of a single item using a 0-index based offset.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1544,7 +1544,7 @@ GET /[project]/files/folders
 
 Returns the list of your virtual folders.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1568,7 +1568,7 @@ GET /[project]/files/folders/[id1],[id2],[idN]
 
 Returns the details of one or more virtual folders.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1626,7 +1626,7 @@ GET /[project]/permissions
 
 Returns the list of permissions.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1650,7 +1650,7 @@ GET /[project]/permissions/[id1],[id2],[idN]
 
 Returns the details of a single permission.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1666,7 +1666,7 @@ GET /[project]/permissions/me
 
 Returns a list of permissions that belongs to the authenticated user.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1689,7 +1689,7 @@ GET /[project]/permissions/me/[collection-name]
 
 Returns a a collection's permissions that belongs to the authenticated user.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1812,7 +1812,7 @@ GET /[project]/relations
 
 Returns the list of relations.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
@@ -1836,7 +1836,7 @@ GET /[project]/relations/[id1],[id2],[idN]
 
 Returns the details of one or more relations.
 
-##### Suported Query Parameters
+##### Supported Query Parameters
 
 | Name          |
 | ------------- |
