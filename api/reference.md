@@ -1614,7 +1614,7 @@ Permanently deletes one or more virtual folders. Leaving its sub-folder and file
 
 ### Permissions
 
-These endpoints are used for creating, updating, or deleting permissions through the API requires the API to modify the database schema directly.
+These endpoints are used for creating, updating, or deleting permissions.
 
 #### Get Permissions
 
@@ -1624,13 +1624,76 @@ GET /[project]/permissions
 
 Returns the list of permissions.
 
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
 #### Get Permission
 
 ```http
-GET /[project]/permissions/[pk]
+GET /[project]/permissions/[id]
+GET /[project]/permissions/[id1],[id2],[idN]
 ```
 
 Returns the details of a single permission.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
+
+#### Get Authenticated User Permissions
+
+```http
+GET /[project]/permissions/me
+```
+
+Returns a list of permissions that belongs to the authenticated user.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
+#### Get Authenticated User's Collection Permissions
+
+```http
+GET /[project]/permissions/me/[collection-name]
+```
+
+Returns a a collection's permissions that belongs to the authenticated user.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
 
 #### Create Permission
 
@@ -1638,23 +1701,102 @@ Returns the details of a single permission.
 POST /[project]/permissions
 ```
 
-Creates a new permission.
+Creates one or more permissions.
+
+##### One permission
+
+```json
+{
+  "collection": "projects",
+  "role": 3,
+  "create": "full",
+  "read": "full",
+  "update": "mine",
+  "delete": "none"
+}
+```
+
+##### Multiple Permissions
+
+```json
+[{
+  "collection": "projects",
+  "role": 3,
+  "create": "full",
+  "read": "full",
+  "update": "mine",
+  "delete": "none"
+}, {
+  "collection": "projects",
+  "role": 4,
+  "create": "none",
+  "read": "full",
+  "update": "none",
+  "delete": "none"
+}]
+```
 
 #### Update Permission
 
 ```http
-PATCH /[project]/permissions/[pk]
+PATCH /[project]/permissions
+PATCH /[project]/permissions/[id]
+PATCH /[project]/permissions/[id1],[id2],[idN]
 ```
 
-Updates the details of a given permission.
+Updates the details of one or more permissions
+
+##### One Permission
+
+```http
+PATCH /_/permissions/1
+```
+
+```json
+{
+  "create": "none"
+}
+```
+
+##### Multiple Permission with same data
+
+```http
+PATCH /_/permissions/1,2,3
+```
+
+```json
+{
+  "create": "none",
+  "delete": "none"
+}
+```
+
+##### Multiple Permission with different data
+
+```http
+PATCH /_/permissions
+```
+
+```json
+[{
+  "id": 1,
+  "create": "none",
+  "delete": "none"
+}, {
+  "id": 2,
+  "create": "mine",
+  "delte": "mine"
+}]
+```
 
 #### Delete Permission
 
 ```http
-DELETE /[project]/permissions/[pk]
+DELETE /[project]/permissions/[id]
+DELETE /[project]/permissions/[id1],[id2],[idN]
 ```
 
-Permanently deletes a permission.
+Permanently deletes one or more permissions.
 
 ### Relations
 
