@@ -1058,9 +1058,7 @@ GET /[project]/activity
 | `offset`      |
 | `single`      |
 | `sort`        |
-| `status`      |
 | `filter`      |
-| `lang`        |
 | `q`           |
 | `groups`      |
 | `joins`       |
@@ -1233,6 +1231,74 @@ DELETE /[project]/collections/[name]
 
 Permanently deletes a collection information, the table and all its contents.
 
+### Collection Presets
+
+These endpoints are used for creating, updating, or deleting collection presets.
+
+#### Get Collection Presets
+
+```http
+GET /[project]/collection_presets
+```
+
+Returns the list of collection presets.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
+#### Get Collection Preset
+
+```http
+GET /[project]/collection_presets/[id]
+GET /[project]/collection_presets/[id1],[id2],[idN]
+```
+
+Returns the details of one or more collection presets.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
+
+#### Create Collection Preset
+
+```http
+POST /[project]/collection_presets
+```
+
+Creates a new collection preset.
+
+#### Update Collection Preset
+
+```http
+PATCH /[project]/collection_presets/[id]
+```
+
+Updates the details of a given collection preset.
+
+#### Delete Collection Preset
+
+```http
+DELETE /[project]/collection_presets/[id]
+```
+
+Permanently deletes a collection_presets.
+
 ### Fields
 
 These endpoints are used for creating, updating, or deleting fields from a collection. It alters the database schema directly when needed. Similar to `/collections`.
@@ -1293,7 +1359,7 @@ Permanently deletes a field and its content.
 
 ### Files
 
-These endpoints are used for creating or updating a files requires the API to accept a special field allowing for the base64 file data. Beyond that, it accepts POST requests with the multipart-formdata enctype, to allow for easier uploading of file(s).
+These endpoints are used for uploading, updating, and deleting files and virtual folders.
 
 #### Get Files
 
@@ -1301,15 +1367,38 @@ These endpoints are used for creating or updating a files requires the API to ac
 GET /[project]/files
 ```
 
-Returns the list of your files.
+Returns the list of files.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
 
 #### Get File
 
 ```http
-GET /[project]/files/[pk]
+GET /[project]/files/[id]
 ```
 
 Returns the details of a single file.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
 
 #### Upload File
 
@@ -1319,49 +1408,131 @@ POST /[project]/files
 
 Uploads a new file.
 
+There's two way to upload a file:
+
+##### Using Base64 content
+
+Using passing a base64 file content to the `data` field.
+
+```js
+{
+  "filename": "image.jpg",
+  "data": "<base64-content>"
+}
+```
+
+##### Using `multipart/form-data` Content Type
+
+Passing the file form data set to the `data` field when making the `multipart/form-data` `POST` request.
+
+It allows for easier uploading file when using a HTML form element with a `enctype` (encoding type) set to `multipart/form-data`.
+
+
 #### Update File
 
 ```http
-PATCH /[project]/files/[pk]
+PATCH /[project]/files/[id]
 ```
 
-Updates the details of a given field.
+Updates the details of a given field, or replacing the current file.
+
+```js
+{
+  "data": "<base64-content>",
+  "description" : "new description"
+}
+```
+
+#### Update Multiple Files
+
+```http
+PATCH /[project]/files
+PATCH /[project]/files/[id1],[id2],[idN]
+```
+
+Updates the details of a given field, or replacing the current file of one or more files.
+
+##### Multiple files with different data
+
+Each file object requires the `id` field to identify which record the new data will belongs to.
+
+```
+PATCH /_/files
+```
+
+```js
+[{
+  "id": 1,
+  "data": "<base64-content>",
+  "description" : "new description"
+}, {
+  "id": 2,
+  "title" : "new title"
+}]
+```
+
+##### Multiple files with same data
+
+```
+PATCH /_/files/1,2,3
+```
+
+```js
+{
+  "tags": ['christmas', '2017']
+}
+```
 
 #### Delete File
 
 ```http
-DELETE /[project]/files/[pk]
+DELETE /[project]/files/[id]
+DELETE /[project]/files/[id1],[id2],[idn]
 ```
 
-Permanently deletes a file.
+Permanently deletes one or more files and its record.
 
 #### Get File Revisions
 
 ```http
-GET /[project]/files/[pk]/revisions
+GET /[project]/files/[id]/revisions
 ```
 
 Returns a list of a single file revisions.
 
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
 #### Get File Revision
 
 ```http
-GET /[project]/files/[pk]/revisions/[offset]
+GET /[project]/files/[id]/revisions/[offset]
 ```
 
 Returns the revision of a single item using a 0-index based offset.
 
-#### Revert File
+##### Suported Query Parameters
 
-```http
-GET /[project]/files/[pk]/revert/[revision-pk]
-```
-
-Reverts the details of a file to a given revision.
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
 
 ### Folders
 
-These endpoints are used for creating, updating, or deleting a virtual folder.
+These endpoints are used for creating, updating, or deleting a virtual folders.
 
 #### Get Folders
 
@@ -1371,13 +1542,37 @@ GET /[project]/files/folders
 
 Returns the list of your virtual folders.
 
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
 #### Get Folder
 
 ```http
-GET /[project]/files/folders/[pk]
+GET /[project]/files/folders/[id]
+GET /[project]/files/folders/[id1],[id2],[idN]
 ```
 
-Returns the details of a single virtual folder.
+Returns the details of one or more virtual folders.
+
+##### Suported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
 
 #### Create Folder
 
@@ -1387,65 +1582,35 @@ POST /[project]/files/folders
 
 Creates a new virtual folder.
 
+```js
+{
+  "name": "Christmas 2017",
+  "parent_folder": null
+}
+```
+
 #### Update Folder
 
 ```http
-PATCH /[project]/files/folders/[pk]
+PATCH /[project]/files/folders/[id]
 ```
 
 Updates the details of a given folder.
 
+```js
+{
+  "name": "Christmas Photos 2017"
+}
+```
+
 #### Delete Folder
 
 ```http
-DELETE /[project]/files/[pk]
+DELETE /[project]/files/[id]
+DELETE /[project]/files/[id1],[id2],[idN]
 ```
 
-Permanently deletes a virtual folder. Leaving its sub folder and files orphan.
-
-### Collection Presets
-
-These endpoints are used for creating, updating, or deleting collection presets through the API requires the API to modify the database schema directly.
-
-#### Get Collection Presets
-
-```http
-GET /[project]/collection_presets
-```
-
-Returns the list of collection presets.
-
-#### Get Collection Preset
-
-```http
-GET /[project]/collection_presets/[pk]
-```
-
-Returns the details of a single collection preset.
-
-#### Create Collection Preset
-
-```http
-POST /[project]/collection_presets
-```
-
-Creates a new collection preset.
-
-#### Update Collection Preset
-
-```http
-PATCH /[project]/collection_presets/[pk]
-```
-
-Updates the details of a given collection preset.
-
-#### Delete Collection Preset
-
-```http
-DELETE /[project]/collection_presets/[pk]
-```
-
-Permanently deletes a collection_presets.
+Permanently deletes one or more virtual folders. Leaving its sub-folder and files orphan.
 
 ### Permissions
 
