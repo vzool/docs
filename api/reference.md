@@ -1135,7 +1135,7 @@ DELETE /[project]/activity/comment/[id]
 
 ### Collections
 
-These endpoints are used for creating, updating, or deleting collections. Similar to `/fields`, it alters the database schema directly when needed.
+These endpoints are used for creating, reading, updating, or deleting collections. Similar to `/fields`, it alters the database schema directly when needed.
 
 #### Get Collections
 
@@ -1233,7 +1233,7 @@ Permanently deletes a collection information, the table and all its contents.
 
 ### Collection Presets
 
-These endpoints are used for creating, updating, or deleting collection presets.
+These endpoints are used for creating, reading, updating, or deleting collection presets.
 
 #### Get Collection Presets
 
@@ -1301,7 +1301,7 @@ Permanently deletes a collection_presets.
 
 ### Fields
 
-These endpoints are used for creating, updating, or deleting fields from a collection. It alters the database schema directly when needed. Similar to `/collections`.
+These endpoints are used for creating, reading, updating, or deleting fields from a collection. It alters the database schema directly when needed. Similar to `/collections`.
 
 #### Get Fields
 
@@ -1532,7 +1532,7 @@ Returns the revision of a single item using a 0-index based offset.
 
 ### Folders
 
-These endpoints are used for creating, updating, or deleting a virtual folders.
+These endpoints are used for creating, reading, updating, or deleting a virtual folders.
 
 #### Get Folders
 
@@ -1614,7 +1614,7 @@ Permanently deletes one or more virtual folders. Leaving its sub-folder and file
 
 ### Permissions
 
-These endpoints are used for creating, updating, or deleting permissions.
+These endpoints are used for creating, reading, updating, or deleting permissions.
 
 #### Get Permissions
 
@@ -1800,7 +1800,7 @@ Permanently deletes one or more permissions.
 
 ### Relations
 
-These endpoints are used for creating, updating, or deleting collection's relations.
+These endpoints are used for creating, reading, updating, or deleting collection's relations.
 
 #### Get Relations
 
@@ -1966,7 +1966,7 @@ Get the details of one or more revisions by their IDs.
 
 ### Roles
 
-These endpoints are used for creating, updating, or deleting roles.
+These endpoints are used for creating, reading, updating, or deleting roles.
 
 #### Get Roles
 
@@ -2010,7 +2010,7 @@ Permanently deletes a role.
 
 ### Settings
 
-These endpoints are used for creating, updating, or deleting settings.
+These endpoints are used for creating, reading, updating, or deleting settings.
 
 #### Get Settings
 
@@ -2868,7 +2868,7 @@ All endpoints created by the user, that it's not related to any extension will b
 `/[project]/custom/[endpoint-id]`
 ```
 
-These endpoints are used for creating, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
+These endpoints are used for creating, reading, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
 
 ## Extensions
 
