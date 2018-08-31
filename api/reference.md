@@ -658,8 +658,6 @@ The `q` parameter allows you to perform a search on all numeric or string-based 
 * `SET`
 * `ENUM`
 
-
-
 ### Groups
 
 The `groups` parameter allows to group the result for one or more fields.
@@ -683,7 +681,7 @@ Items are essentially individual database records which each contain one or more
 
 This endpoint is dedicated to all user-defined collections only. Accessing system tables are forbidden. See [Systems endpoints](#system) for more information.
 
-### Create Item
+### Create Items
 
 Creates one or more items in a given collection.
 
@@ -733,7 +731,7 @@ A single item or an array of multiple items to be created. Field keys must match
 The API may not return any data for successful requests if the user doesn't have adequate read permission. `204 NO CONTENT` is returned instead.
 :::
 
-### Get Item
+### Get Items
 
 Get one or more single items from a given collection.
 
@@ -769,7 +767,7 @@ GET /items/[collection-name]/[id1],[id2],[id3]
     curl -u <token>: https://api.directus.io/_/items/projects/1,3,11
     ```
 
-### Get Items
+### List Items
 
 Get an array of items from a given collection.
 
@@ -882,7 +880,7 @@ GET /items/[collection-name]/[id]/revisions
     curl https://api.directus.io/_/items/projects/1/revisions
     ```
 
-### Update Item
+### Update Items
 
 Update or replace a single item from a given collection.
 
@@ -997,7 +995,7 @@ There is no need for a body to do this request.
     curl -u <token>: https://api.directus.io/_/items/projects/1/revert/2
     ```
 
-### Delete Item
+### Delete Items
 
 Deletes one or more items from a specific collection. This endpoint also accepts CSV of primary key values, and would then return an array of items.
 
@@ -1040,9 +1038,9 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 | `soft-delete`  | Item was soft-deleted. Update to a soft-deleted status     |
 | `revert`       | Item was updated using a revision data                     |
 
-#### Get Activity
+#### List Activity
 
-Get an array of activity.
+Returns a list of activity.
 
 ```http
 GET /[project]/activity
@@ -1137,7 +1135,7 @@ DELETE /[project]/activity/comment/[id]
 
 These endpoints are used for creating, reading, updating, or deleting collections. Similar to `/fields`, it alters the database schema directly when needed.
 
-#### Get Collections
+#### List Collections
 
 ```http
 GET /[project]/collections
@@ -1235,7 +1233,7 @@ Permanently deletes a collection information, the table and all its contents.
 
 These endpoints are used for creating, reading, updating, or deleting collection presets.
 
-#### Get Collection Presets
+#### List Collection Presets
 
 ```http
 GET /[project]/collection_presets
@@ -1258,7 +1256,7 @@ Returns the list of collection presets.
 | `groups`      |
 | `joins`       |
 
-#### Get Collection Preset
+#### Get Collection Presets
 
 ```http
 GET /[project]/collection_presets/[id]
@@ -1275,7 +1273,7 @@ Returns the details of one or more collection presets.
 | `meta`        |
 | `joins`       |
 
-#### Create Collection Preset
+#### Create Collection Presets
 
 ```http
 POST /[project]/collection_presets
@@ -1283,18 +1281,21 @@ POST /[project]/collection_presets
 
 Creates a new collection preset.
 
-#### Update Collection Preset
+#### Update Collection Presets
 
 ```http
+PATCH /[project]/collection_presets
 PATCH /[project]/collection_presets/[id]
+PATCH /[project]/collection_presets/[id1],[id2],[idN]
 ```
 
-Updates the details of a given collection preset.
+Updates the details of one or more collection presets.
 
-#### Delete Collection Preset
+#### Delete Collection Presets
 
 ```http
 DELETE /[project]/collection_presets/[id]
+DELETE /[project]/collection_presets/[id1],[id2],[idN]
 ```
 
 Permanently deletes a collection_presets.
@@ -1303,7 +1304,7 @@ Permanently deletes a collection_presets.
 
 These endpoints are used for creating, reading, updating, or deleting fields from a collection. It alters the database schema directly when needed. Similar to `/collections`.
 
-#### Get Fields
+#### List Fields
 
 ```http
 GET /[project]/fields/[collection]
@@ -1319,7 +1320,7 @@ GET /[project]/fields/[collection]/[field]
 
 Returns the details of a single field.
 
-#### Create Field
+#### Create Fields
 
 ```http
 POST /[project]/fields/[collection]
@@ -1335,7 +1336,7 @@ Creates a new field in a given collection.
 }
 ```
 
-#### Update Field
+#### Update Fields
 
 ```http
 PATCH /[project]/fields/[collection]/[field]
@@ -1361,7 +1362,7 @@ Permanently deletes a field and its content.
 
 These endpoints are used for uploading, updating, and deleting files and virtual folders.
 
-#### Get Files
+#### List Files
 
 ```http
 GET /[project]/files
@@ -1384,13 +1385,14 @@ Returns the list of files.
 | `groups`      |
 | `joins`       |
 
-#### Get File
+#### Get Files
 
 ```http
 GET /[project]/files/[id]
+GET /[project]/files/[id1],[id2],[idN]
 ```
 
-Returns the details of a single file.
+Returns the details of one or more files.
 
 ##### Suported Query Parameters
 
@@ -1428,7 +1430,7 @@ Passing the file form data set to the `data` field when making the `multipart/fo
 It allows for easier uploading file when using a HTML form element with a `enctype` (encoding type) set to `multipart/form-data`.
 
 
-#### Update File
+#### Update Files
 
 ```http
 PATCH /[project]/files/[id]
@@ -1483,7 +1485,7 @@ PATCH /_/files/1,2,3
 }
 ```
 
-#### Delete File
+#### Delete Files
 
 ```http
 DELETE /[project]/files/[id]
@@ -1492,7 +1494,7 @@ DELETE /[project]/files/[id1],[id2],[idn]
 
 Permanently deletes one or more files and its record.
 
-#### Get File Revisions
+#### List File Revisions
 
 ```http
 GET /[project]/files/[id]/revisions
@@ -1534,7 +1536,7 @@ Returns the revision of a single item using a 0-index based offset.
 
 These endpoints are used for creating, reading, updating, or deleting a virtual folders.
 
-#### Get Folders
+#### List Folders
 
 ```http
 GET /[project]/files/folders
@@ -1557,7 +1559,7 @@ Returns the list of your virtual folders.
 | `groups`      |
 | `joins`       |
 
-#### Get Folder
+#### Get Folders
 
 ```http
 GET /[project]/files/folders/[id]
@@ -1574,7 +1576,7 @@ Returns the details of one or more virtual folders.
 | `meta`        |
 | `joins`       |
 
-#### Create Folder
+#### Create Folders
 
 ```http
 POST /[project]/files/folders
@@ -1589,7 +1591,7 @@ Creates a new virtual folder.
 }
 ```
 
-#### Update Folder
+#### Update Folders
 
 ```http
 PATCH /[project]/files/folders/[id]
@@ -1603,7 +1605,7 @@ Updates the details of a given folder.
 }
 ```
 
-#### Delete Folder
+#### Delete Folders
 
 ```http
 DELETE /[project]/files/[id]
@@ -1616,7 +1618,7 @@ Permanently deletes one or more virtual folders. Leaving its sub-folder and file
 
 These endpoints are used for creating, reading, updating, or deleting permissions.
 
-#### Get Permissions
+#### List Permissions
 
 ```http
 GET /[project]/permissions
@@ -1639,7 +1641,7 @@ Returns the list of permissions.
 | `groups`      |
 | `joins`       |
 
-#### Get Permission
+#### Get Permissions
 
 ```http
 GET /[project]/permissions/[id]
@@ -1695,7 +1697,7 @@ Returns a a collection's permissions that belongs to the authenticated user.
 | `meta`        |
 | `joins`       |
 
-#### Create Permission
+#### Create Permissions
 
 ```http
 POST /[project]/permissions
@@ -1736,7 +1738,7 @@ Creates one or more permissions.
 }]
 ```
 
-#### Update Permission
+#### Update Permissions
 
 ```http
 PATCH /[project]/permissions
@@ -1789,7 +1791,7 @@ PATCH /_/permissions
 }]
 ```
 
-#### Delete Permission
+#### Delete Permissions
 
 ```http
 DELETE /[project]/permissions/[id]
@@ -1802,7 +1804,7 @@ Permanently deletes one or more permissions.
 
 These endpoints are used for creating, reading, updating, or deleting collection's relations.
 
-#### Get Relations
+#### List Relations
 
 ```http
 GET /[project]/relations
@@ -1825,7 +1827,7 @@ Returns the list of relations.
 | `groups`      |
 | `joins`       |
 
-#### Get Relation
+#### Get Relations
 
 ```http
 GET /[project]/relations/[id]
@@ -1842,7 +1844,7 @@ Returns the details of one or more relations.
 | `meta`        |
 | `joins`       |
 
-#### Create Relation
+#### Create Relations
 
 ```http
 POST /[project]/relations
@@ -1880,7 +1882,7 @@ Creates one or more relations.
 ]
 ```
 
-#### Update Relation
+#### Update Relations
 
 ```http
 PATCH /[project]/relations
@@ -1930,7 +1932,7 @@ PATCH /_/permissions
 }]
 ```
 
-#### Delete Relation
+#### Delete Relations
 
 ```http
 DELETE /[project]/relations/[id]
@@ -1943,7 +1945,7 @@ Permanently deletes one or more relations.
 
 These endpoints are used for fetching one or a list of revisions.
 
-#### Get Revisions
+#### List Revisions
 
 ```http
 GET /[project]/revisions
@@ -1955,7 +1957,7 @@ Get a list of all revisions.
 All these information are fetched from the `directus_revisions` table.
 :::
 
-#### Get Revision
+#### Get Revisions
 
 ```http
 GET /[project]/revisions/[id]
@@ -1968,7 +1970,7 @@ Get the details of one or more revisions by their IDs.
 
 These endpoints are used for creating, reading, updating, or deleting roles.
 
-#### Get Roles
+#### List Roles
 
 ```http
 GET /[project]/roles
@@ -1976,7 +1978,7 @@ GET /[project]/roles
 
 Returns the list of roles.
 
-#### Get Role
+#### Get Roles
 
 ```http
 GET /[project]/roles/[id]
@@ -1985,7 +1987,7 @@ GET /[project]/roles/[id1],[id2],[idN]
 
 Returns the details of one or multiple roles.
 
-#### Create Role
+#### Create Roles
 
 ```http
 POST /[project]/roles
@@ -2018,7 +2020,7 @@ Directus is compatible with System for Cross-domain Identity Management (SCIM) p
 ]
 ```
 
-#### Update Role
+#### Update Roles
 
 ```http
 PATCH /[project]/roles
@@ -2068,7 +2070,7 @@ PATCH /_/roles
 }]
 ```
 
-#### Delete Role
+#### Delete Roles
 
 ```http
 DELETE /[project]/roles/[id]
