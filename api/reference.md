@@ -2127,7 +2127,9 @@ DELETE /[project]/settings/[id1],[id2],[idN]
 
 Permanently deletes one or more settings.
 
-### Create User
+### Users
+
+#### Create User
 
 Creates a new user within this instance.
 
@@ -2135,7 +2137,7 @@ Creates a new user within this instance.
 POST /users
 ```
 
-#### Body
+##### Body
 
 The email and password for the new user to be created. Any other submitted fields are optional, but field keys must match column names within `directus_users`.
 
@@ -2146,15 +2148,7 @@ The email and password for the new user to be created. Any other submitted field
 }
 ```
 
-#### Common Responses
-
-| Code                     | Description                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| 201 Created              | `data`: The created user, including default fields added by Directus |
-| 400 Bad Request          | `message`: Syntax error in provided JSON                             |
-| 422 Unprocessable Entity | `message`: Column doesn’t exist in collection                        |
-
-### Get User
+#### Get Users
 
 Gets a single user from within this instance.
 
@@ -2163,116 +2157,88 @@ GET /users/[pk]
 GET /users/[pk],[pk],[pk]
 ```
 
-#### Query Parameters
+##### Supported Query Parameters
 
-| Name   | Default   | Description                                                |
-| ------ | --------- | ---------------------------------------------------------- |
-| fields | \*        | CSV of fields to include in response [Learn More](#fields) |
-| meta   |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| status | Published | CSV of statuses [Learn More](#status)                      |
-| lang   | \*        | Include translation(s) [Learn More](#language)             |
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `status`      |
+| `joins`       |
 
-#### Common Responses
-
-| Code          | Description                                                     |
-| ------------- | --------------------------------------------------------------- |
-| 200 OK        | `data`: Retrieved user<br>`meta`: Depends on requested metadata |
-| 404 Not Found | `message`: Item doesn't exist within collection                 |
-
-#### Examples
+##### Examples
 
 *   Return the user with an ID of `1`
     ```bash
     curl https://api.directus.io/_/users/1
     ```
 
-### Get Users
+#### List Users
 
 Gets Directus users within this instance.
 
 ```http
-GET /users
+GET /[project]/users
 ```
 
-#### Query Parameters
+##### Supported Query Parameters
 
-| Name          | Default   | Description                                                |
-| ------------- | --------- | ---------------------------------------------------------- |
-| limit         | 200       | The number of items to request                             |
-| offset        | 0         | How many items to skip before fetching results             |
-| sort          | id        | CSV of fields to sort by [Learn More](#sorting)            |
-| fields        | \*        | CSV of fields to include in response [Learn More](#fields) |
-| filter[field] |           | Filter items using operators [Learn More](#filtering)      |
-| meta          |           | CSV of metadata fields to include [Learn More](#metadata)  |
-| status        | Published | CSV of statuses [Learn More](#status)                      |
-| lang          | \*        | Include translation(s) [Learn More](#language)             |
-| q             |           | Search string [Learn More](#search-query)                  |
-| id            |           | CSV of primary keys to fetch                               |
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `status`      |
+| `filter`      |
+| `lang`        |
+| `q`           |
+| `groups`      |
+| `joins`       |
 
-#### Common Responses
-
-| Code            | Description                                                              |
-| --------------- | ------------------------------------------------------------------------ |
-| 200 OK          | `data`: Array of Directus users<br>`meta`: Depends on requested metadata |
-| 400 Bad Request | `message`: Syntax error in provided JSON                                 |
-
-#### Examples
+##### Examples
 
 *   Get all the Directus users for this instance
     ```bash
     curl https://api.directus.io/_/users
     ```
 
-### Update User
+#### Update Users
 
 Update a user within this instance.
 
 ```http
-PATCH /users/[pk]
+PATCH /[project]/users/[id]
 ```
 
 @TODO DO WE WANT TO SUPPORT CSV OF PKs HERE TOO?
 
 *   **PATCH** will partially update the item with the provided data, any missing fields will be ignored
 
-#### Body
+##### Body
 
 A single user to be updated. Field keys must match column names within `directus_users`.
 
-#### Common Responses
-
-| Code                     | Description                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| 200 OK                   | `data`: The updated item, including default fields added by Directus |
-| 400 Bad Request          | `message`: Syntax error in provided JSON                             |
-| 404 Not Found            | `message`: Collection doesn’t exist @TODO NO USER FOUND?             |
-| 422 Unprocessable Entity | `message`: Column doesn’t exist in collection                        |
-
-### Delete User
+#### Delete Users
 
 Deletes one or more users from this instance.
 
 ```http
-DELETE /users/[pk]
-DELETE /users/[pk],[pk],[pk]
+DELETE /[project]/users/[id]
+DELETE /[project]/users/[id1],[id2],[idN]
 ```
 
-#### Common Responses
-
-| Code           | Description                                           |
-| -------------- | ----------------------------------------------------- |
-| 204 No Content | User was successfully deleted                         |
-| 404 Not Found  | `message`: User doesn't exist within `directus_users` |
-
-### Invite User
+#### Invite Users
 
 Invite a new user to this instance. This will send an email to the user with further instructions.
 
 ```http
-POST /users/invite
+POST /[project]/users/invite
 ```
 
-#### Body
+##### Body
 
 An email, or an array of emails to send invites to.
 
@@ -2294,23 +2260,15 @@ or
 }
 ```
 
-#### Common Responses
-
-| Code                     | Description                              |
-| ------------------------ | ---------------------------------------- |
-| 200 OK                   | Emails successfully sent                 |
-| 400 Bad Request          | `message`: Syntax error in provided JSON |
-| 422 Unprocessable Entity | `message`: Email is invalid              |
-
-### Track User
+#### Track User
 
 Set the time and last Directus App page accessed by the user. Last Access is used to determine if the user is still logged into the Directus app, and Last Page is used to avoid editing conflicts between multiple users.
 
 ```http
-PATCH /users/[pk]/tracking/page
+PATCH /users/[id]/tracking/page
 ```
 
-#### Body
+##### Body
 
 The path to the last page the user was on in the Directus App.
 
@@ -2320,19 +2278,10 @@ The path to the last page the user was on in the Directus App.
 }
 ```
 
-#### Common Responses
-
-| Code                     | Description                              |
-| ------------------------ | ---------------------------------------- |
-| 200 OK                   | User successfully tracked                |
-| 400 Bad Request          | `message`: Syntax error in provided JSON |
-| 422 Unprocessable Entity | `message`: Field is invalid              |
-
-
 #### Get User Revisions
 
 ```http
-GET /[project]/users/[pk]/revisions
+GET /[project]/users/[id]/revisions
 ```
 
 Returns a list of revisions for a single user.
@@ -2340,7 +2289,7 @@ Returns a list of revisions for a single user.
 #### Get User Revision
 
 ```http
-GET /[project]/users/[pk]/revisions/[offset]
+GET /[project]/users/[id]/revisions/[offset]
 ```
 
 Returns the revision of a single user using a 0-index based offset.
@@ -2348,7 +2297,7 @@ Returns the revision of a single user using a 0-index based offset.
 #### Revert User
 
 ```http
-GET /[project]/users/[pk]/revert/[revision-pk]
+GET /[project]/users/[id]/revert/[revision-id]
 ```
 
 Reverts the details of a user to a given revision.
