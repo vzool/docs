@@ -1939,6 +1939,31 @@ DELETE /[project]/relations/[id1],[id2],[idN]
 
 Permanently deletes one or more relations.
 
+### Revisions
+
+These endpoints are used for fetching one or a list of revisions.
+
+#### Get Revisions
+
+```http
+GET /[project]/revisions
+```
+
+Get a list of all revisions.
+
+::: warning NOTE
+All these information are fetched from the `directus_revisions` table.
+:::
+
+#### Get Revision
+
+```http
+GET /[project]/revisions/[id]
+GET /[project]/revisions/[id1],[id2],[idN]
+```
+
+Get the details of one or more revisions by their IDs.
+
 ### Roles
 
 These endpoints are used for creating, updating, or deleting roles.
@@ -2026,62 +2051,6 @@ DELETE /[project]/setting/[pk]
 ```
 
 Permanently deletes a setting.
-
-### Get Revision
-
-Get a specific revision.
-
-```http
-GET /[project]/revisions/[pk]
-```
-
-#### Query Parameters
-
-| Name   | Default   | Description                                                |
-| ------ | --------- | ---------------------------------------------------------- |
-|        |           | @TODO |
-
-#### Common Responses
-
-| Code            | Description                                                                  |
-| --------------- | ---------------------------------------------------------------------------- |
-| 200 OK          | `data`: A single Directus Revision<br>`meta`: Depends on requested metadata |
-| 400 Bad Request | `message`: Syntax error in provided JSON                                     |
-
-#### Examples
-
-*   Get the revision with primary key 91
-    ```bash
-    curl https://api.directus.io/_/revisions/91
-    ```
-
-### Get Revisions
-
-Get all item revisions, for all collections within this instance.
-
-```http
-GET /revisions
-```
-
-#### Query Parameters
-
-| Name   | Default   | Description                                                |
-| ------ | --------- | ---------------------------------------------------------- |
-|        |           | @TODO |
-
-#### Common Responses
-
-| Code            | Description                                                                  |
-| --------------- | ---------------------------------------------------------------------------- |
-| 200 OK          | `data`: Array of Directus Revisions<br>`meta`: Depends on requested metadata |
-| 400 Bad Request | `message`: Syntax error in provided JSON                                     |
-
-#### Examples
-
-*   Get all the Directus revisions for this instance
-    ```bash
-    curl https://api.directus.io/_/revisions
-    ```
 
 ### Create User
 
