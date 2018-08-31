@@ -2083,7 +2083,7 @@ Permanently deletes one or more roles.
 
 These endpoints are used for creating, reading, updating, or deleting settings.
 
-#### Get Settings
+#### List Settings
 
 ```http
 GET /[project]/settings
@@ -2091,37 +2091,41 @@ GET /[project]/settings
 
 Returns the list of settings.
 
-#### Get Setting
+#### Get Settings
 
 ```http
-GET /[project]/settings/[pk]
+GET /[project]/settings/[id]
+GET /[project]/settings/[id1],[id2],[idN]
 ```
 
-Returns the details of a single setting.
+Returns the details of one or more settings.
 
-#### Create Setting
+#### Create Settings
 
 ```http
 POST /[project]/settings
 ```
 
-Creates a new setting.
+Creates one or more settings.
 
-#### Update Setting
-
-```http
-PATCH /[project]/settings/[pk]
-```
-
-Updates the details of a given setting.
-
-#### Delete Setting
+#### Update Settings
 
 ```http
-DELETE /[project]/setting/[pk]
+PATCH /[project]/settings
+PATCH /[project]/settings/[id]
+PATCH /[project]/settings/[id1],[id2],[idN]
 ```
 
-Permanently deletes a setting.
+Updates the details of one or more settings.
+
+#### Delete Settings
+
+```http
+DELETE /[project]/setting/[id]
+DELETE /[project]/settings/[id1],[id2],[idN]
+```
+
+Permanently deletes one or more settings.
 
 ### Create User
 
