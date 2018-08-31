@@ -1169,7 +1169,7 @@ There's time when `datatype` is required because `type` supports different types
 
 Also when the `type` requires a length, such as a string or numeric type, a `length` attribute is needed.
 
-```js
+```json
 {
     "collection": "projects",
     "item_name_template": null,
@@ -1211,7 +1211,7 @@ PATCH /[project]/collections/[name]
 
 Updates the details, add or update fields of a given collection.
 
-```js
+```json
 {
     "note": "This collection stores all our clients projects",
     "fields": [
@@ -1327,7 +1327,7 @@ POST /[project]/fields/[collection]
 
 Creates a new field in a given collection.
 
-```js
+```json
 {
   "field": "description",
   "type": "text",
@@ -1343,7 +1343,7 @@ PATCH /[project]/fields/[collection]/[field]
 
 Updates the details of a given field.
 
-```js
+```json
 {
   "required": true
 }
@@ -1414,7 +1414,7 @@ There's two way to upload a file:
 
 Using passing a base64 file content to the `data` field.
 
-```js
+```json
 {
   "filename": "image.jpg",
   "data": "<base64-content>"
@@ -1436,7 +1436,7 @@ PATCH /[project]/files/[id]
 
 Updates the details of a given field, or replacing the current file.
 
-```js
+```json
 {
   "data": "<base64-content>",
   "description" : "new description"
@@ -1460,7 +1460,7 @@ Each file object requires the `id` field to identify which record the new data w
 PATCH /_/files
 ```
 
-```js
+```json
 [{
   "id": 1,
   "data": "<base64-content>",
@@ -1477,9 +1477,9 @@ PATCH /_/files
 PATCH /_/files/1,2,3
 ```
 
-```js
+```json
 {
-  "tags": ['christmas', '2017']
+  "tags": ["christmas", "2017"]
 }
 ```
 
@@ -1582,7 +1582,7 @@ POST /[project]/files/folders
 
 Creates a new virtual folder.
 
-```js
+```json
 {
   "name": "Christmas 2017",
   "parent_folder": null
@@ -1597,7 +1597,7 @@ PATCH /[project]/files/folders/[id]
 
 Updates the details of a given folder.
 
-```js
+```json
 {
   "name": "Christmas Photos 2017"
 }
