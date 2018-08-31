@@ -1979,10 +1979,11 @@ Returns the list of roles.
 #### Get Role
 
 ```http
-GET /[project]/roles/[pk]
+GET /[project]/roles/[id]
+GET /[project]/roles/[id1],[id2],[idN]
 ```
 
-Returns the details of a single role.
+Returns the details of one or multiple roles.
 
 #### Create Role
 
@@ -1990,23 +1991,91 @@ Returns the details of a single role.
 POST /[project]/roles
 ```
 
-Creates a new role.
+Creates a one or more roles.
+
+::: warning NOTE
+Directus is compatible with System for Cross-domain Identity Management (SCIM) protocol. All roles has an `external_id` to represent the group outside and it must be unique within Directus. if left empty on creation, Directus will generate an UUID v4.
+:::
+
+
+##### Create one Role
+
+```json
+{
+  "name": "Interns"
+}
+```
+
+##### Create multiple Roles
+```json
+[
+  {
+    "name": "Interns"
+  },
+  {
+    "name": "Editors"
+  }
+]
+```
 
 #### Update Role
 
 ```http
-PATCH /[project]/roles/[pk]
+PATCH /[project]/roles
+PATCH /[project]/roles/[id]
+PATCH /[project]/roles/[id1],[id2],[idN]
 ```
 
-Updates the details of a given role.
+Updates the details of one or more roles
+
+##### Update one Role
+
+```http
+PATCH /_/roles/3
+```
+
+```json
+{
+  "description": "new description"
+}
+```
+
+##### Update multiple Roles with same data
+
+```http
+PATCH /_/roles/1,2,3
+```
+
+```json
+{
+  "ip_whitelist": "10.0.0.1,127.0.0.1"
+}
+```
+
+##### Update multiple Permission with different data
+
+```http
+PATCH /_/roles
+```
+
+```json
+[{
+  "id": 1,
+  "ip_whitelist": "10.0.0.1"
+}, {
+  "id": 2,
+  "ip_whitelist": "127.0.0.1"
+}]
+```
 
 #### Delete Role
 
 ```http
-DELETE /[project]/roles/[pk]
+DELETE /[project]/roles/[id]
+DELETE /[project]/roles/[id1],[id2],[idN]
 ```
 
-Permanently deletes a role.
+Permanently deletes one or more roles.
 
 ### Settings
 
