@@ -2121,7 +2121,7 @@ Updates the details of one or more settings.
 #### Delete Settings
 
 ```http
-DELETE /[project]/setting/[id]
+DELETE /[project]/settings/[id]
 DELETE /[project]/settings/[id1],[id2],[idN]
 ```
 
