@@ -2319,80 +2319,92 @@ GET /[project]/users/[id]/revisions/[offset]
 
 Returns a revision of an user using a 0-index based offset.
 
-## Utilities
+### Utilities
 
-### Hash String
+| Hasher List   |
+| ------------- |
+| `core`        |
+| `bcrypt`      |
+| `sha1`        |
+| `sha224`      |
+| `sha256`      |
+| `sha384`      |
+| `sha512`      |
 
-Hashes the submitted string using the chosen algorithm.
+The default `hasher` is `core`. It uses the `password_hash` function and the php default algortim defined by `PASSWORD_DEFAULT`.
+
+#### Hash String
+
+Hashes a submitted string using the chosen algorithm.
 
 ```http
 POST /[project]/utils/hash
 ```
 
-#### Body
+##### Body
 
-The hashing algorithm to use and the string to hash.
+The hashing algorithm and the string to hash.
 
 ```json
 {
-    "hasher": "core|bcrypt|sha1|sha224|sha256|sha384|sha512",
+    "hasher": "sha1",
     "string": "Directus"
 }
 ```
 
-#### Common Responses
+##### Response
 
-| Code            | Description                              |
-| --------------- | ---------------------------------------- |
-| 200 OK          | `data`: The hashed string                |
-| 400 Bad Request | `message`: Syntax error in provided JSON |
+```json
+{
+  "data": {
+    "hash": "<hashed-string>"
+  }
+}
+```
 
-### Match Hashed String
+#### Match Hashed String
 
-Confirms encrypted hashes against the API.
+Verifies that a string hashed with a given algorithm matches a hashed string.
 
 ```http
 POST /[project]/utils/hash/match
 ```
 
-#### Body
+##### Body
 
-The hashing algorithm to use and the string to hash.
+The hashing algorithm to use, the plain string, and the hashed string.
 
 ```json
 {
-    "hasher": "core|bcrypt|sha1|sha224|sha256|sha384|sha512",
+    "hasher": "sha1",
     "string": "Directus",
     "hash": "c898896f3f70f61bc3fb19bef222aa860e5ea717"
 }
 ```
 
-#### Common Responses
+##### Response
 
-| Code            | Description                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------- |
-| 200 OK          | `data`: Boolean. Note that `false` (string does not match hash) is a successful response |
-| 400 Bad Request | `message`: Syntax error in provided JSON                                                 |
+```json
+{
+  "data": {
+    "valid": true
+  }
+}
+```
 
-### Get Random String
+#### Generate Random String
 
-Gets a random alphanumeric string from the API.
+Returns a random-generated alphanumeric string.
 
 ```http
 GET /[project]/utils/random/string
 ```
 
-| Name   | Default | Description                |
-| ------ | ------- | -------------------------- |
-| length | 32      | Length of string to return |
+##### Body
 
-#### Common Responses
-
-| Code            | Description                              |
-| --------------- | ---------------------------------------- |
-| 200 OK          | `data`: The random string                |
-| 400 Bad Request | `message`: Syntax error in provided JSON |
-
+| Name   | Default | Description                  |
+| ------ | ------- | ---------------------------- |
+| length | 32      | Length of string to generate |
 
 ### Mail
 
