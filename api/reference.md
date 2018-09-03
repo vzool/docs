@@ -433,9 +433,11 @@ Using the request token that was returned by the `/[project]/auth/sso/[provider]
 }
 ```
 
-## Parameters
+## Query Parameters
 
-There are many common query parameters used throughout the API. Those are described here and referenced from within each endpoint's section.
+The API have a set of query parameters that can be used for specific actions, such as filter, sort, limit and choose the fields from a result.
+
+The supported query parameters are listed below:
 
 | Name          | Description                                                                |
 | ------------- | -------------------------------------------------------------------------- |
