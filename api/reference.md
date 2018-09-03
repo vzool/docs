@@ -2408,7 +2408,7 @@ POST /[project]/utils/random/string
 
 ### Mail
 
-Send a email to one or multiple emails.
+Send an email to one or more recipients.
 
 ```http
 POST /[project]/mail
