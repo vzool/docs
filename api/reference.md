@@ -2134,7 +2134,7 @@ Permanently deletes one or more settings.
 Creates a new user within this instance.
 
 ```http
-POST /users
+POST /[project]/users
 ```
 
 ##### Body
@@ -2153,8 +2153,8 @@ The email and password for the new user to be created. Any other submitted field
 Gets a single user from within this instance.
 
 ```http
-GET /users/[pk]
-GET /users/[pk],[pk],[pk]
+GET /[project]/users/[pk]
+GET /[project]/users/[pk],[pk],[pk]
 ```
 
 ##### Supported Query Parameters
@@ -2265,7 +2265,7 @@ or
 Set the time and last Directus App page accessed by the user. Last Access is used to determine if the user is still logged into the Directus app, and Last Page is used to avoid editing conflicts between multiple users.
 
 ```http
-PATCH /users/[id]/tracking/page
+PATCH /[project]/users/[id]/tracking/page
 ```
 
 ##### Body
@@ -2309,7 +2309,7 @@ Reverts the details of a user to a given revision.
 Hashes the submitted string using the chosen algorithm.
 
 ```http
-POST /utils/hash
+POST /[project]/utils/hash
 ```
 
 #### Body
@@ -2335,7 +2335,7 @@ The hashing algorithm to use and the string to hash.
 Confirms encrypted hashes against the API.
 
 ```http
-POST /utils/hash/match
+POST /[project]/utils/hash/match
 ```
 
 #### Body
@@ -2362,7 +2362,7 @@ The hashing algorithm to use and the string to hash.
 Gets a random alphanumeric string from the API.
 
 ```http
-GET /utils/random/string
+GET /[project]/utils/random/string
 ```
 
 | Name   | Default | Description                |
@@ -2417,8 +2417,8 @@ Read more in the "SCIM Endpoints and HTTP Methods" section of  [RFC7644](https:/
 
 ### Get SCIM Users
 
-```
-GET /scim/v2/Users
+```http
+GET /[project]/scim/v2/Users
 ```
 
 #### Parameters
@@ -2428,8 +2428,8 @@ GET /scim/v2/Users
 | count      | `Integer`   | Specifies the desired maximum number of query results per page.
 | filter     | `String`    | `id`, `userName`, `emails.value` and `externalId` attribute Supported. Only operator `eq` is supported.
 
-```
-GET /scim/v2/Users?filter=userName eq user@example.com
+```http
+GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 ```
 
 #### Response
@@ -2528,8 +2528,8 @@ GET /scim/v2/Users?filter=userName eq user@example.com
 
 ### Get SCIM User
 
-```
-GET /scim/v2/Users/:id
+```http
+GET /[project]/scim/v2/Users/:id
 ```
 
 #### Response:
@@ -2566,8 +2566,8 @@ GET /scim/v2/Users/:id
 
 ### Create SCIM User
 
-```
-POST /scim/v2/Users
+```http
+POST /[project]/scim/v2/Users
 ```
 
 #### Body
@@ -2618,8 +2618,8 @@ POST /scim/v2/Users
 
 ### Update SCIM User
 
-```
-PATCH /scim/v2/Users/:id
+```http
+PATCH /[project]/scim/v2/Users/:id
 ```
 
 #### Body
@@ -2668,8 +2668,8 @@ PATCH /scim/v2/Users/:id
 
 ### Get SCIM Groups
 
-```
-GET /scim/v2/Groups
+```http
+GET /[project]/scim/v2/Groups
 ```
 
 #### Parameters
@@ -2680,8 +2680,8 @@ GET /scim/v2/Groups
 | count      | `Integer`   | Specifies the desired maximum number of query results per page.
 | filter     | `String`    | `displayName` attribute Supported. Only operator `eq` is supported.
 
-```
-GET /scim/v2/Groups
+```http
+GET /[project]/scim/v2/Groups
 ```
 
 #### Response
@@ -2758,8 +2758,8 @@ GET /scim/v2/Groups
 
 ### Get SCIM Group
 
-```
-GET /scim/v2/Groups/:id
+```http
+GET /[project]/scim/v2/Groups/:id
 ```
 
 #### Response:
@@ -2789,8 +2789,8 @@ GET /scim/v2/Groups/:id
 
 ### Create SCIM Group
 
-```
-POST /scim/v2/Users
+```http
+POST /[project]/scim/v2/Users
 ```
 
 #### Body
@@ -2824,8 +2824,8 @@ POST /scim/v2/Users
 
 ### Update SCIM Group
 
-```
-PATCH /scim/v2/Groups/:id
+```http
+PATCH /[project]/scim/v2/Groups/:id
 ```
 
 #### Body
@@ -2858,8 +2858,8 @@ PATCH /scim/v2/Groups/:id
 
 ### Delete SCIM Group
 
-```
-DELETE /scim/v2/Groups/:id
+```http
+DELETE /[project]/scim/v2/Groups/:id
 ```
 
 #### Response
@@ -2873,7 +2873,7 @@ Empty response when successful.
 All endpoints defined in a interface will be located under the `interfaces` group.
 
 ```http
-/[project]/interfaces/[interface-id]
+GET /[project]/interfaces/[interface-id]
 ```
 
 ### Pages
@@ -2881,7 +2881,7 @@ All endpoints defined in a interface will be located under the `interfaces` grou
 All endpoints defined in a page will be located under the `pages` group.
 
 ```http
-/[project]/pages/[interface-id]
+GET /[project]/pages/[interface-id]
 ```
 
 ### Custom Endpoints
@@ -2889,7 +2889,7 @@ All endpoints defined in a page will be located under the `pages` group.
 All endpoints created by the user, that it's not related to any extension will be located under the `custom` group endpoints.
 
 ```http
-`/[project]/custom/[endpoint-id]`
+GET /[project]/custom/[endpoint-id]
 ```
 
 These endpoints are used for creating, reading, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
