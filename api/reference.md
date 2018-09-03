@@ -2168,14 +2168,15 @@ GET /[project]/users/[pk],[pk],[pk]
 
 ##### Examples
 
-*   Return the user with an ID of `1`
-    ```bash
-    curl https://api.directus.io/_/users/1
-    ```
+Returns the user with an ID of `1`.
+
+```bash
+curl -u <token>: https://api.directus.io/_/users/1
+```
 
 #### List Users
 
-Gets Directus users within this instance.
+Returns a list of Directus users within this instance.
 
 ```http
 GET /[project]/users
@@ -2200,14 +2201,15 @@ GET /[project]/users
 
 ##### Examples
 
-*   Get all the Directus users for this instance
-    ```bash
-    curl https://api.directus.io/_/users
-    ```
+Get a list of Directus Users.
+
+```bash
+curl -u <token>: https://api.directus.io/_/users
+```
 
 #### Update Users
 
-Update a user within this instance.
+Updates a Directus User.
 
 ```http
 PATCH /[project]/users/[id]
@@ -2215,15 +2217,17 @@ PATCH /[project]/users/[id]
 
 @TODO DO WE WANT TO SUPPORT CSV OF PKs HERE TOO?
 
-*   **PATCH** will partially update the item with the provided data, any missing fields will be ignored
+::: tip NOTE
+**PATCH** will partially update the item with the provided data, any missing fields will be ignored.
+:::
 
 ##### Body
 
-A single user to be updated. Field keys must match column names within `directus_users`.
+An [User Object](#). Fields names must match column names within `directus_users` collection.
 
 #### Delete Users
 
-Deletes one or more users from this instance.
+Deletes one or more Users from Directus.
 
 ```http
 DELETE /[project]/users/[id]
@@ -2232,15 +2236,28 @@ DELETE /[project]/users/[id1],[id2],[idN]
 
 #### Invite Users
 
-Invite a new user to this instance. This will send an email to the user with further instructions.
-
 ```http
 POST /[project]/users/invite
 ```
 
+Invites one or more users to this instance. It will create an user with `invited` status, and then it will sends an email to the user with further instructions on how to activate their user.
+
+The email will sends an url with a to
+The API will generate and send a JWT token inside the email for this specific request.
+
+The payload contains the following data:
+
+- `type`: The token type, always set to `invitation`.
+- `date`: The datetime when the token was generated.
+- `exp`: The expiration datetime of the token.
+- `email`: The email of the user that will receive the invitation.
+- `sender`: The ID of the user that sends the invitation.
+
 ##### Body
 
-An email, or an array of emails to send invites to.
+An email, or a list of emails to send invites to.
+
+Invite one user:
 
 ```json
 {
@@ -2248,9 +2265,9 @@ An email, or an array of emails to send invites to.
 }
 ```
 
-or
+Invite multiple users:
 
-```
+```json
 {
   "email": [
     "rijk@directus.io",
@@ -2260,9 +2277,17 @@ or
 }
 ```
 
+#### Accept Users Invitation
+
+```http
+POST /[project]/users/invite/[token]
+```
+
+Accepts and enable an invited user using an JWT invitation token.
+
 #### Track User
 
-Set the time and last Directus App page accessed by the user. Last Access is used to determine if the user is still logged into the Directus app, and Last Page is used to avoid editing conflicts between multiple users.
+Set the datetime and last Directus Web Application page accessed by the user. Last Access is used to determine if the user is still logged into the Directus Web Application, and Last Page is used to warn users when another users is editing the same item.
 
 ```http
 PATCH /[project]/users/[id]/tracking/page
@@ -2284,7 +2309,7 @@ The path to the last page the user was on in the Directus App.
 GET /[project]/users/[id]/revisions
 ```
 
-Returns a list of revisions for a single user.
+Returns a list of revisions for an user.
 
 #### Get User Revision
 
@@ -2292,15 +2317,7 @@ Returns a list of revisions for a single user.
 GET /[project]/users/[id]/revisions/[offset]
 ```
 
-Returns the revision of a single user using a 0-index based offset.
-
-#### Revert User
-
-```http
-GET /[project]/users/[id]/revert/[revision-id]
-```
-
-Reverts the details of a user to a given revision.
+Returns a revision of an user using a 0-index based offset.
 
 ## Utilities
 
