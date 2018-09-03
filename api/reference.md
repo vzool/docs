@@ -2418,7 +2418,12 @@ POST /[project]/mail
 
 ```json
 {
-  "to": [1, "user@example.com", 2, {"email": "intern@example.com", "name": "Jane Doe"}],
+  "to": [
+    1,
+    "user@example.com",
+    2,
+    {"email": "intern@example.com", "name": "Jane Doe"}
+  ],
   "subject": "New password",
   "body": "Hello <b>{{name}}</b>, this is your new password: {{password}}.",
   "type": "html",
@@ -2429,39 +2434,41 @@ POST /[project]/mail
 }
 ```
 
-## SCIM
+### SCIM
 
-Directus partly supports Version 2 of System for Cross-domain Identity Management, or SCIM. This open standard allows for users to be created, managed, and disabled outside of Directus so that enterprise clients have the ability to use a single, centralize system for user provisioning.
+Directus partly supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for users to be created, managed, and disabled outside of Directus. It allows the exchange of user information between systems.
 
-### Endpoints
+The user have the ability to use a single, centralize system for user provisioning and use SCIM to exchange this information with Directus using these endpoints.
 
-| Endpoint     | Methods                 |
-| ------------ | ----------------------- |
-| /Users       | GET, POST               |
-| /Users/{id}  | GET, PUT, PATCH         |
-| /Groups      | GET, POST               |
-| /Groups/{id} | GET, PUT, PATCH, DELETE |
+#### Endpoints
 
-Read more in the "SCIM Endpoints and HTTP Methods" section of  [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
+| Endpoint       | Methods                         |
+| -------------- | ------------------------------- |
+| `/Users`       | `GET`, `POST`                   |
+| `/Users/{id}`  | `GET`, `PUT`, `PATCH`           |
+| `/Groups`      | `GET`, `POST`                   |
+| `/Groups/{id}` | `GET`, `PUT`, `PATCH`, `DELETE` |
 
-### Get SCIM Users
+Read more in the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
+
+#### List SCIM Users
 
 ```http
 GET /[project]/scim/v2/Users
 ```
 
-#### Parameters
-| Name       | Type        | Description
-| ---------- | ------------| ------------
-| startIndex | `Integer`   | The 1-based index of the first result in the current set of list results.
-| count      | `Integer`   | Specifies the desired maximum number of query results per page.
-| filter     | `String`    | `id`, `userName`, `emails.value` and `externalId` attribute Supported. Only operator `eq` is supported.
+##### Supported Query Parameters
+| Name         | Type        | Description
+| ------------ | ------------| ------------
+| `startIndex` | `Integer`   | The 1-based index of the first result in the current set of list results.
+| `count`      | `Integer`   | Specifies the desired maximum number of query results per page.
+| `filter`     | `String`    | `id`, `userName`, `emails.value` and `externalId` attribute Supported. Only operator `eq` is supported.
 
 ```http
 GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 ```
 
-#### Response
+##### Response
 
 ```json
 {
@@ -2555,13 +2562,13 @@ GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 }
 ```
 
-### Get SCIM User
+#### Get SCIM User
 
 ```http
-GET /[project]/scim/v2/Users/:id
+GET /[project]/scim/v2/Users/[id]
 ```
 
-#### Response:
+##### Response
 
 ```json
 {
@@ -2593,27 +2600,27 @@ GET /[project]/scim/v2/Users/:id
 }
 ```
 
-### Create SCIM User
+#### Create SCIM User
 
 ```http
 POST /[project]/scim/v2/Users
 ```
 
-#### Body
+##### Body
 
 ```json
 {
-     "schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],
-     "userName":"johndoe@example.com",
-     "externalId":"johndoe-id",
-     "name":{
-       "familyName":"Doe",
-       "givenName":"John"
-     }
-   }
+  "schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],
+  "userName":"johndoe@example.com",
+  "externalId":"johndoe-id",
+  "name":{
+    "familyName":"Doe",
+    "givenName":"John"
+  }
+}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
@@ -2645,25 +2652,25 @@ POST /[project]/scim/v2/Users
 }
 ```
 
-### Update SCIM User
+#### Update SCIM User
 
 ```http
-PATCH /[project]/scim/v2/Users/:id
+PATCH /[project]/scim/v2/Users/[id]
 ```
 
-#### Body
+##### Body
 
 ```json
 {
-     "schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],
-     "name":{
-       "familyName":"Doe",
-       "givenName":"Johnathan"
-     }
-   }
+  "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+  "name": {
+    "familyName": "Doe",
+    "givenName": "Johnathan"
+  }
+}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
@@ -2695,25 +2702,25 @@ PATCH /[project]/scim/v2/Users/:id
 }
 ```
 
-### Get SCIM Groups
+#### List SCIM Groups
 
 ```http
 GET /[project]/scim/v2/Groups
 ```
 
-#### Parameters
+##### Supported Query Parameters
 
-| Name       | Type        | Description
-| ---------- | ------------| ------------
-| startIndex | `Integer`   | The 1-based index of the first result in the current set of list results.
-| count      | `Integer`   | Specifies the desired maximum number of query results per page.
-| filter     | `String`    | `displayName` attribute Supported. Only operator `eq` is supported.
+| Name         | Type        | Description
+| ------------ | ------------| ------------
+| `startIndex` | `Integer`   | The 1-based index of the first result in the current set of list results.
+| `count`      | `Integer`   | Specifies the desired maximum number of query results per page.
+| `filter`     | `String`    | `displayName` attribute Supported. Only operator `eq` is supported.
 
 ```http
 GET /[project]/scim/v2/Groups
 ```
 
-#### Response
+##### Response
 
 ```json
 {
@@ -2785,13 +2792,13 @@ GET /[project]/scim/v2/Groups
 }
 ```
 
-### Get SCIM Group
+#### Get SCIM Group
 
 ```http
-GET /[project]/scim/v2/Groups/:id
+GET /[project]/scim/v2/Groups/[id]
 ```
 
-#### Response:
+##### Response
 
 ```json
 {
@@ -2816,23 +2823,23 @@ GET /[project]/scim/v2/Groups/:id
 }
 ```
 
-### Create SCIM Group
+#### Create SCIM Group
 
 ```http
 POST /[project]/scim/v2/Users
 ```
 
-#### Body
+##### Body
 
 ```json
 {
-  "schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],
-  "displayName":"Editors",
-  "externalId":"editors-id"
+  "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+  "displayName": "Editors",
+  "externalId": "editors-id"
 }
 ```
 
-#### Response
+##### Response
 
 ```json
 {
@@ -2851,22 +2858,22 @@ POST /[project]/scim/v2/Users
 }
 ```
 
-### Update SCIM Group
+#### Update SCIM Group
 
 ```http
-PATCH /[project]/scim/v2/Groups/:id
+PATCH /[project]/scim/v2/Groups/[id]
 ```
 
-#### Body
+##### Body
 
 ```json
 {
-  "schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],
-  "displayName":"Writers"
+  "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+  "displayName": "Writers"
 }
 ```
 
-#### Response
+##### Response
 
 ```json
 {
@@ -2885,13 +2892,13 @@ PATCH /[project]/scim/v2/Groups/:id
 }
 ```
 
-### Delete SCIM Group
+#### Delete SCIM Group
 
 ```http
-DELETE /[project]/scim/v2/Groups/:id
+DELETE /[project]/scim/v2/Groups/[id]
 ```
 
-#### Response
+##### Response
 
 Empty response when successful.
 
