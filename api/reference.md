@@ -269,13 +269,6 @@ The users credentials.
 }
 ```
 
-#### Common Responses
-
-| Code            | Description                        |
-| --------------- | ---------------------------------- |
-| 200 OK          | `data: [new access token]`         |
-| 400 Bad Request | `message: wrong email or password` |
-
 ::: warning
 The access token that is returned through this endpoint must be used with any subsequent requests except for endpoints that don’t require auth.
 :::
@@ -331,13 +324,6 @@ A valid token
 }
 ```
 
-#### Common Responses
-
-| Code            | Description                |
-| --------------- | -------------------------- |
-| 200 OK          | `data: [new access token]` |
-| 400 Bad Request | `message: invalid token`   |
-
 ::: warning
 The access token that is returned through this endpoint must be used with any subsequent requests except for endpoints that don’t require authentication.
 :::
@@ -362,12 +348,6 @@ The user's email address and the app URL from which the reset is requested.
 }
 ```
 
-#### Common Responses
-
-| Code   | Description                                                                |
-| ------ | -------------------------------------------------------------------------- |
-| 200 OK | Always returns success to avoid malicious checks for valid email addresses |
-
 ### Password Reset
 
 The API checks the validity of the reset token, that it hasn't expired, and the email address contained in the token payload matches one in the database.
@@ -379,12 +359,6 @@ This endpoint generates a random password for the user and sends it to their ema
 ```http
 GET /[project]/auth/password/reset/[reset-token]
 ```
-
-#### Common Responses
-
-| Code   | Description                                                                |
-| ------ | -------------------------------------------------------------------------- |
-| 401    | Invalid/Expired token |
 
 ### Get SSO Services
 
@@ -717,16 +691,6 @@ A single item or an array of multiple items to be created. Field keys must match
 ]
 ```
 
-#### Common Responses
-
-| Code                     | Description                                                             |
-| ------------------------ | ----------------------------------------------------------------------- |
-| 201 Created              | `data`: The created item(s), including default fields added by Directus |
-| 400 Bad Request          | `message`: Syntax error in provided JSON                                |
-| 404 Not Found            | `message`: Collection doesn’t exist                                     |
-| 400 Bad Request          | `message`: Invalid request body                                         |
-| 422 Unprocessable Entity | `message`: Field doesn’t exist in collection                            |
-
 ::: tip
 The API may not return any data for successful requests if the user doesn't have adequate read permission. `204 NO CONTENT` is returned instead.
 :::
@@ -748,13 +712,6 @@ GET /[project]/items/[collection-name]/[id1],[id2],[id3]
 | `meta`        |
 | `status`      |
 | `lang`        |
-
-#### Common Responses
-
-| Code          | Description                                                                  |
-| ------------- | ---------------------------------------------------------------------------- |
-| 200 OK        | `data`: Retrieved item<br>`meta`: Depends on requested metadata              |
-| 404 Not Found | `message`: Collection doesn’t exist, or item doesn't exist within collection |
 
 #### Examples
 
@@ -792,13 +749,6 @@ GET /[project]/items/[collection-name]
 | `groups`      |
 | `joins`       |
 
-#### Common Responses
-
-| Code          | Description                                                     |
-| ------------- | --------------------------------------------------------------- |
-| 200 OK        | `data`: Array of items<br>`meta`: Depends on requested metadata |
-| 404 Not Found | `message`: Collection doesn’t exist                             |
-
 #### Examples
 
 *   Search for all projects in the `design` category
@@ -822,13 +772,6 @@ GET /[project]/items/[collection-name]/[id]/revisions/[offset]
 | `meta`        |
 | `status`      |
 | `lang`        |
-
-#### Common Responses
-
-| Code          | Description                                                                  |
-| ------------- | ---------------------------------------------------------------------------- |
-| 200 OK        | `data`: Retrieved item<br>`meta`: Depends on requested metadata              |
-| 404 Not Found | `message`: Collection doesn’t exist, or item doesn't exist within collection |
 
 #### Examples
 
@@ -866,13 +809,6 @@ GET /[project]/items/[collection-name]/[id]/revisions
 | `groups`      |
 | `joins`       |
 
-#### Common Responses
-
-| Code          | Description                                                     |
-| ------------- | --------------------------------------------------------------- |
-| 200 OK        | `data`: Array of items<br>`meta`: Depends on requested metadata |
-| 404 Not Found | `message`: Collection doesn’t exist                             |
-
 #### Examples
 
 *   Get all revisions from the project item with a primary key of 1
@@ -899,15 +835,6 @@ PATCH /[project]/items/[collection-name]/[id]
 #### Body
 
 A single item to be updated. Field keys must match the collection's column names.
-
-#### Common Responses
-
-| Code                     | Description                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| 200 OK                   | `data`: The updated item, including default fields added by Directus |
-| 400 Bad Request          | `message`: Syntax error in provided JSON                             |
-| 404 Not Found            | `message`: Collection doesn’t exist                                  |
-| 422 Unprocessable Entity | `message`: Column doesn’t exist in collection                        |
 
 #### Examples
 
@@ -959,15 +886,6 @@ Update multiple items, each with its dataset: `PATCH /items/projects`. Each item
 }]
 ```
 
-#### Common Responses
-
-| Code                     | Description                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| 200 OK                   | `data`: The updated item, including default fields added by Directus |
-| 400 Bad Request          | `message`: Syntax error in provided JSON                             |
-| 404 Not Found            | `message`: Collection doesn’t exist                                  |
-| 422 Unprocessable Entity | `message`: Column doesn’t exist in collection                        |
-
 ### Revert Item
 
 Reverts a single item to a previous revision state.
@@ -979,14 +897,6 @@ PATCH /[project]/items/[collection-name]/[item-id]/revert/[revision-id]
 #### Body
 
 There is no need for a body to do this request.
-
-#### Common Responses
-
-| Code                     | Description                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| 200 OK                   | `data`: The updated item, including default fields added by Directus |
-| 404 Not Found            | `message`: Collection doesn’t exist                                  |
-| 422 Unprocessable Entity | `message`: Item doesn’t exist in collection                          |
 
 #### Examples
 
@@ -1003,13 +913,6 @@ Deletes one or more items from a specific collection. This endpoint also accepts
 DELETE /[project]/items/[collection-name]/[id]
 DELETE /[project]/items/[collection-name]/[id1],[id2],[id3]
 ```
-
-#### Common Responses
-
-| Code           | Description                                     |
-| -------------- | ----------------------------------------------- |
-| 204 No Content | Record was successfully deleted                 |
-| 404 Not Found  | `message`: Item doesn't exist within collection |
 
 ::: danger WARNING
 Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
@@ -1077,13 +980,6 @@ GET /[project]/activity/[id]
 | `meta`        |
 | `status`      |
 | `lang`        |
-
-##### Common Responses
-
-| Code          | Description                                                                  |
-| ------------- | ---------------------------------------------------------------------------- |
-| 200 OK        | `data`: Retrieved item<br>`meta`: Depends on requested metadata              |
-| 404 Not Found | `message`: Collection doesn’t exist, or item doesn't exist within collection |
 
 #### Create Comment
 
@@ -2943,12 +2839,6 @@ GET /interfaces
 GET /listings
 GET /pages
 ```
-
-#### Common Responses
-
-| Code   | Description                         |
-| ------ | ----------------------------------- |
-| 200 OK | `data`: An array of extension names |
 
 <!--
 ::: tip
