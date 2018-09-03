@@ -2397,7 +2397,7 @@ The hashing algorithm to use, the plain string, and the hashed string.
 Returns a random-generated alphanumeric string.
 
 ```http
-GET /[project]/utils/random/string
+POST /[project]/utils/random/string
 ```
 
 ##### Body
