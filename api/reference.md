@@ -2800,9 +2800,9 @@ DELETE /[project]/scim/v2/Groups/[id]
 
 Empty response when successful.
 
-## Extending Endpoints
+### Extending Endpoints
 
-### Interfaces
+#### Interfaces
 
 All endpoints defined in a interface will be located under the `interfaces` group.
 
@@ -2810,7 +2810,7 @@ All endpoints defined in a interface will be located under the `interfaces` grou
 GET /[project]/interfaces/[interface-id]
 ```
 
-### Pages
+#### Pages
 
 All endpoints defined in a page will be located under the `pages` group.
 
@@ -2818,25 +2818,25 @@ All endpoints defined in a page will be located under the `pages` group.
 GET /[project]/pages/[interface-id]
 ```
 
-### Custom Endpoints
+#### Custom Endpoints
 
-All endpoints created by the user, that it's not related to any extension will be located under the `custom` group endpoints.
+All endpoints created by the user, that it's not related to any extension (reads `interfaces` or `pages`) will be located under the `custom` group.
 
 ```http
 GET /[project]/custom/[endpoint-id]
 ```
 
-## Extensions
+### Extensions
 
 Directus can easily be extended through the addition of several types of extensions. Extensions are important pieces of the Directus App that live in the decoupled Directus API. These include Interfaces, Listing Views, and Pages. These three different types of extensions live in their own directory and may have their own endpoints.
 
-### Get Interfaces, List Views, Pages
+#### Get Interfaces, Layouts and Pages
 
-These endpoints read the API's file system for directory names and return an array of extension names as well as the contents of each's `meta.json` files.
+These endpoints search for all enabled extensions and include the content of each extension's `meta.json` file.
 
 ```http
 GET /interfaces
-GET /listings
+GET /layouts
 GET /pages
 ```
 
