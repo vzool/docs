@@ -686,7 +686,7 @@ This endpoint is dedicated to all user-defined collections only. Accessing syste
 Creates one or more items in a given collection.
 
 ```http
-POST /items/[collection-name]
+POST /[project]/items/[collection-name]
 ```
 
 #### Body
@@ -736,8 +736,8 @@ The API may not return any data for successful requests if the user doesn't have
 Get one or more single items from a given collection.
 
 ```http
-GET /items/[collection-name]/[id]
-GET /items/[collection-name]/[id1],[id2],[id3]
+GET /[project]/items/[collection-name]/[id]
+GET /[project]/items/[collection-name]/[id1],[id2],[id3]
 ```
 
 #### Supported Query Parameters
@@ -772,7 +772,7 @@ GET /items/[collection-name]/[id1],[id2],[id3]
 Get an array of items from a given collection.
 
 ```http
-GET /items/[collection-name]
+GET /[project]/items/[collection-name]
 ```
 
 #### Supported Query Parameters
@@ -811,7 +811,7 @@ GET /items/[collection-name]
 Get a specific revision from a given item. This endpoint uses a zero-based offset to select a revision, where `0` is the creation revision. Negative offsets are allowed, and select as if `0` is the current revisions.
 
 ```http
-GET /items/[collection-name]/[id]/revisions/[offset]
+GET /[project]/items/[collection-name]/[id]/revisions/[offset]
 ```
 
 #### Supported Query Parameters
@@ -846,7 +846,7 @@ GET /items/[collection-name]/[id]/revisions/[offset]
 Get an array of revisions from a given item.
 
 ```http
-GET /items/[collection-name]/[id]/revisions
+GET /[project]/items/[collection-name]/[id]/revisions
 ```
 
 #### Supported Query Parameters
@@ -884,10 +884,10 @@ GET /items/[collection-name]/[id]/revisions
 
 Update or replace a single item from a given collection.
 
-@TODO LOOK INTO ALLOWING FILTER PARAM FOR UPDATES, EG: `PUT /items/projects?filter[title][eq]=title`
+@TODO LOOK INTO ALLOWING FILTER PARAM FOR UPDATES, EG: `PUT /[project]/items/projects?filter[title][eq]=title`
 
 ```http
-PATCH /items/[collection-name]/[id]
+PATCH /[project]/items/[collection-name]/[id]
 ```
 
 ::: warning
@@ -921,8 +921,8 @@ A single item to be updated. Field keys must match the collection's column names
 Update multiple items in a given collection.
 
 ```http
-PATCH /items/[collection-name]
-PATCH /items/[collection-name]/[id1],[id2],...
+PATCH /[project]/items/[collection-name]
+PATCH /[project]/items/[collection-name]/[id1],[id2],...
 ```
 
 ::: warning PATCH
@@ -973,7 +973,7 @@ Update multiple items, each with its dataset: `PATCH /items/projects`. Each item
 Reverts a single item to a previous revision state.
 
 ```http
-PATCH /items/[collection-name]/[item-id]/revert/[revision-id]
+PATCH /[project]/items/[collection-name]/[item-id]/revert/[revision-id]
 ```
 
 #### Body
@@ -1000,8 +1000,8 @@ There is no need for a body to do this request.
 Deletes one or more items from a specific collection. This endpoint also accepts CSV of primary key values, and would then return an array of items.
 
 ```http
-DELETE /items/[collection-name]/[id]
-DELETE /items/[collection-name]/[id1],[id2],[id3]
+DELETE /[project]/items/[collection-name]/[id]
+DELETE /[project]/items/[collection-name]/[id1],[id2],[id3]
 ```
 
 #### Common Responses
