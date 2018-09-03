@@ -2826,8 +2826,6 @@ All endpoints created by the user, that it's not related to any extension will b
 GET /[project]/custom/[endpoint-id]
 ```
 
-These endpoints are used for creating, reading, updating, or deleting settings. Similar to `/fields`, it alters the database schema directly.
-
 ## Extensions
 
 Directus can easily be extended through the addition of several types of extensions. Extensions are important pieces of the Directus App that live in the decoupled Directus API. These include Interfaces, Listing Views, and Pages. These three different types of extensions live in their own directory and may have their own endpoints.
