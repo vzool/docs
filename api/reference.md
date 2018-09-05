@@ -2306,13 +2306,15 @@ POST /[project]/utils/random/string
 
 ## Mail
 
+### Send an Email
+
 Send an email to one or more recipients.
 
 ```http
 POST /[project]/mail
 ```
 
-### Body
+#### Body
 
 ```json
 {
@@ -2900,7 +2902,6 @@ GET /server/ping
 ```
 
 If the server is setup correctly it will respond with `pong` as plain text.
-
 
 ## Project
 
