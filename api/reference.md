@@ -287,9 +287,9 @@ The access token that is returned through this endpoint must be used with any su
 | /[project]/fields              | Yes
 | /[project]/files               | Yes
 | /[project]/items               | Yes
-| /[project]/interfaces          | No
+| /[project]/interfaces          | Yes
 | /[project]/mail                | Yes
-| /[project]/pages               | No
+| /[project]/pages               | Yes
 | /[project]/permissions         | Yes
 | /[project]/relations           | Yes
 | /[project]/revisions           | Yes
@@ -2802,6 +2802,8 @@ Empty response when successful.
 
 ### Extending Endpoints
 
+All custom endpoints defined in a extension (`pages` or `interfaces`) requires authentication.
+
 #### Interfaces
 
 All endpoints defined in a interface will be located under the `interfaces` group.
@@ -2815,12 +2817,16 @@ GET /[project]/interfaces/[interface-id]
 All endpoints defined in a page will be located under the `pages` group.
 
 ```http
-GET /[project]/pages/[interface-id]
+GET /[project]/pages/[page-id]
 ```
 
 #### Custom Endpoints
 
-All endpoints created by the user, that it's not related to any extension (reads `interfaces` or `pages`) will be located under the `custom` group.
+All endpoints created by the user, that it's not related to any extension (`interfaces` or `pages`) will be located under the `custom` group.
+
+::: warning
+These endpoints don't require authentication. This means it has public access.
+:::
 
 ```http
 GET /[project]/custom/[endpoint-id]
@@ -2828,7 +2834,7 @@ GET /[project]/custom/[endpoint-id]
 
 ### Extensions
 
-Directus can easily be extended through the addition of several types of extensions. Extensions are important pieces of the Directus App that live in the decoupled Directus API. These include Interfaces, Listing Views, and Pages. These three different types of extensions live in their own directory and may have their own endpoints.
+Directus can easily be extended through the addition of several types of extensions. Extensions are important pieces of the Directus App that live in the decoupled Directus API. These include Interfaces, Layouts, and Pages. These three different types of extensions live in their own directory and may have their own endpoints.
 
 #### Get Interfaces, Layouts and Pages
 
@@ -2858,29 +2864,84 @@ This is danger note with a custom title
 :::
 -->
 
-## Server
+### Server
 
-### Information
-
-Returns information about the server and API.
+#### Information
 
 ```http
 GET /
 ```
 
-### Ping
+Returns information about the server and API.
+
+##### Response
+
+```json
+{
+  "data": {
+    "api": {
+      "version": "2.0.0-rc.2"
+    },
+    "server": {
+      "general": {
+        "php_version": "7.2.1",
+        "php_api": "apache2handler"
+      },
+      "max_upload_size": 8388608
+    }
+  }
+}
+```
+
+#### Ping
 
 ```http
 GET /server/ping
 ```
 
-### Data Types
+If the server is setup correctly it will respond with `pong` as plain text.
 
-Returns the list of Directus data types.
+
+### Project
+
+#### Information
+
+@TODO: 
+
+```http
+GET /[project]/
+```
+
+Returns information about the server and API in relation to project.
+
+An example could be increasing the `upload_max_size` for a specific project only.
+
+##### Response
+
+```json
+{
+  "data": {
+    "api": {
+      "version": "2.0.0-rc.2"
+    },
+    "server": {
+      "general": {
+        "php_version": "7.2.1",
+        "php_api": "apache2handler"
+      },
+      "max_upload_size": 8388608
+    }
+  }
+}
+```
+
+### Data Types
 
 ```http
 GET /types
 ```
+
+Returns the list of Directus data types.
 
 ## Webhooks
 
@@ -2888,7 +2949,7 @@ Webhooks allows you to send a HTTP request when an event happens.
 
 Creating a webhook on Directus is done by creating a custom hook that makes a HTTP request.
 
-Below there's an example that sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
+The example below sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
 
 ```json
 {
@@ -2916,7 +2977,7 @@ return [
                 'data' => $data
             ];
 
-            $response = $client->request('POST', 'alert', [
+            $response = $client->request('POST', '/alert', [
                 'json' => $data
             ]);
         }
