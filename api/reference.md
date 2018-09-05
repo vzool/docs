@@ -2217,7 +2217,7 @@ GET /[project]/users/[id]/revisions/[offset]
 
 Returns a revision of an user using a 0-index based offset.
 
-### Utilities
+## Utilities
 
 | Hasher List   |
 | ------------- |
@@ -2231,7 +2231,7 @@ Returns a revision of an user using a 0-index based offset.
 
 The default `hasher` is `core`. It uses the `password_hash` function and the php default algortim defined by `PASSWORD_DEFAULT`.
 
-#### Hash String
+### Hash String
 
 Hashes a submitted string using the chosen algorithm.
 
@@ -2239,7 +2239,7 @@ Hashes a submitted string using the chosen algorithm.
 POST /[project]/utils/hash
 ```
 
-##### Body
+#### Body
 
 The hashing algorithm and the string to hash.
 
@@ -2250,7 +2250,7 @@ The hashing algorithm and the string to hash.
 }
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2260,7 +2260,7 @@ The hashing algorithm and the string to hash.
 }
 ```
 
-#### Match Hashed String
+### Match Hashed String
 
 Verifies that a string hashed with a given algorithm matches a hashed string.
 
@@ -2268,7 +2268,7 @@ Verifies that a string hashed with a given algorithm matches a hashed string.
 POST /[project]/utils/hash/match
 ```
 
-##### Body
+#### Body
 
 The hashing algorithm to use, the plain string, and the hashed string.
 
@@ -2280,7 +2280,7 @@ The hashing algorithm to use, the plain string, and the hashed string.
 }
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2290,7 +2290,7 @@ The hashing algorithm to use, the plain string, and the hashed string.
 }
 ```
 
-#### Generate Random String
+### Generate Random String
 
 Returns a random-generated alphanumeric string.
 
@@ -2298,13 +2298,13 @@ Returns a random-generated alphanumeric string.
 POST /[project]/utils/random/string
 ```
 
-##### Body
+#### Body
 
 | Name   | Default | Description                  |
 | ------ | ------- | ---------------------------- |
 | length | 32      | Length of string to generate |
 
-### Mail
+## Mail
 
 Send an email to one or more recipients.
 
@@ -2312,7 +2312,7 @@ Send an email to one or more recipients.
 POST /[project]/mail
 ```
 
-#### Body
+### Body
 
 ```json
 {
@@ -2332,13 +2332,13 @@ POST /[project]/mail
 }
 ```
 
-### SCIM
+## SCIM
 
 Directus partly supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for users to be created, managed, and disabled outside of Directus. It allows the exchange of user information between systems.
 
 The user have the ability to use a single, centralize system for user provisioning and use SCIM to exchange this information with Directus using these endpoints.
 
-#### Endpoints
+### Endpoints
 
 | Endpoint       | Methods                         |
 | -------------- | ------------------------------- |
@@ -2349,13 +2349,13 @@ The user have the ability to use a single, centralize system for user provisioni
 
 Read more in the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
 
-#### List SCIM Users
+### List SCIM Users
 
 ```http
 GET /[project]/scim/v2/Users
 ```
 
-##### Supported Query Parameters
+#### Supported Query Parameters
 | Name         | Type        | Description
 | ------------ | ------------| ------------
 | `startIndex` | `Integer`   | The 1-based index of the first result in the current set of list results.
@@ -2366,7 +2366,7 @@ GET /[project]/scim/v2/Users
 GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2460,13 +2460,13 @@ GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 }
 ```
 
-#### Get SCIM User
+### Get SCIM User
 
 ```http
 GET /[project]/scim/v2/Users/[id]
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2498,13 +2498,13 @@ GET /[project]/scim/v2/Users/[id]
 }
 ```
 
-#### Create SCIM User
+### Create SCIM User
 
 ```http
 POST /[project]/scim/v2/Users
 ```
 
-##### Body
+#### Body
 
 ```json
 {
@@ -2518,7 +2518,7 @@ POST /[project]/scim/v2/Users
 }
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2550,13 +2550,13 @@ POST /[project]/scim/v2/Users
 }
 ```
 
-#### Update SCIM User
+### Update SCIM User
 
 ```http
 PATCH /[project]/scim/v2/Users/[id]
 ```
 
-##### Body
+#### Body
 
 ```json
 {
@@ -2568,7 +2568,7 @@ PATCH /[project]/scim/v2/Users/[id]
 }
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2600,13 +2600,13 @@ PATCH /[project]/scim/v2/Users/[id]
 }
 ```
 
-#### List SCIM Groups
+### List SCIM Groups
 
 ```http
 GET /[project]/scim/v2/Groups
 ```
 
-##### Supported Query Parameters
+#### Supported Query Parameters
 
 | Name         | Type        | Description
 | ------------ | ------------| ------------
@@ -2618,7 +2618,7 @@ GET /[project]/scim/v2/Groups
 GET /[project]/scim/v2/Groups
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2690,13 +2690,13 @@ GET /[project]/scim/v2/Groups
 }
 ```
 
-#### Get SCIM Group
+### Get SCIM Group
 
 ```http
 GET /[project]/scim/v2/Groups/[id]
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2721,13 +2721,13 @@ GET /[project]/scim/v2/Groups/[id]
 }
 ```
 
-#### Create SCIM Group
+### Create SCIM Group
 
 ```http
 POST /[project]/scim/v2/Users
 ```
 
-##### Body
+#### Body
 
 ```json
 {
@@ -2737,7 +2737,7 @@ POST /[project]/scim/v2/Users
 }
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2756,13 +2756,13 @@ POST /[project]/scim/v2/Users
 }
 ```
 
-#### Update SCIM Group
+### Update SCIM Group
 
 ```http
 PATCH /[project]/scim/v2/Groups/[id]
 ```
 
-##### Body
+#### Body
 
 ```json
 {
@@ -2771,7 +2771,7 @@ PATCH /[project]/scim/v2/Groups/[id]
 }
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2790,21 +2790,21 @@ PATCH /[project]/scim/v2/Groups/[id]
 }
 ```
 
-#### Delete SCIM Group
+### Delete SCIM Group
 
 ```http
 DELETE /[project]/scim/v2/Groups/[id]
 ```
 
-##### Response
+#### Response
 
 Empty response when successful.
 
-### Extending Endpoints
+## Extending Endpoints
 
 All custom endpoints defined in a extension (`pages` or `interfaces`) requires authentication.
 
-#### Interfaces
+### Interfaces
 
 All endpoints defined in a interface will be located under the `interfaces` group.
 
@@ -2812,7 +2812,7 @@ All endpoints defined in a interface will be located under the `interfaces` grou
 GET /[project]/interfaces/[interface-id]
 ```
 
-#### Pages
+### Pages
 
 All endpoints defined in a page will be located under the `pages` group.
 
@@ -2820,7 +2820,7 @@ All endpoints defined in a page will be located under the `pages` group.
 GET /[project]/pages/[page-id]
 ```
 
-#### Custom Endpoints
+### Custom Endpoints
 
 All endpoints created by the user, that it's not related to any extension (`interfaces` or `pages`) will be located under the `custom` group.
 
@@ -2832,11 +2832,11 @@ These endpoints don't require authentication. This means it has public access.
 GET /[project]/custom/[endpoint-id]
 ```
 
-### Extensions
+## Extensions
 
 Directus can easily be extended through the addition of several types of extensions. Extensions are important pieces of the Directus App that live in the decoupled Directus API. These include Interfaces, Layouts, and Pages. These three different types of extensions live in their own directory and may have their own endpoints.
 
-#### Get Interfaces, Layouts and Pages
+### Get Interfaces, Layouts and Pages
 
 These endpoints search for all enabled extensions and include the content of each extension's `meta.json` file.
 
@@ -2864,9 +2864,9 @@ This is danger note with a custom title
 :::
 -->
 
-### Server
+## Server
 
-#### Information
+### Information
 
 ```http
 GET /
@@ -2874,7 +2874,7 @@ GET /
 
 Returns information about the server and API.
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2893,7 +2893,7 @@ Returns information about the server and API.
 }
 ```
 
-#### Ping
+### Ping
 
 ```http
 GET /server/ping
@@ -2902,9 +2902,9 @@ GET /server/ping
 If the server is setup correctly it will respond with `pong` as plain text.
 
 
-### Project
+## Project
 
-#### Information
+### Information
 
 @TODO: 
 
@@ -2916,7 +2916,7 @@ Returns information about the server and API in relation to project.
 
 An example could be increasing the `upload_max_size` for a specific project only.
 
-##### Response
+#### Response
 
 ```json
 {
@@ -2935,7 +2935,7 @@ An example could be increasing the `upload_max_size` for a specific project only
 }
 ```
 
-### Data Types
+## Data Types
 
 ```http
 GET /types
