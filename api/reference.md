@@ -2985,3 +2985,101 @@ return [
     ]
 ];
 ```
+
+## Object Models
+
+A list of all objects expected or returned by the system endpoints.
+
+### Activity Object
+
+| Key                   |  Type             | Description                               |
+| --------------------- | ----------------- | ----------------------------------------- |
+| `id`                  | `integer`         |                                           |
+| `action`              | `string`          |                                           |
+| `action_by`           | `integer`,`User`  |                                           |
+| `action_on`           | `timestamp`       |                                           |
+| `ip`                  | `string`          |                                           |
+| `user_agent`          | `string`          |                                           |
+| `collection`          | `string`          |                                           |
+| `item`                | `string`          |                                           |
+| `edited_on`           | `timestamp`       |                                           |
+| `comment`             | `string`          |                                           |
+| `comment_deleted_on`  | `timestamp`       |                                           |
+
+### Activity Seen Object
+
+| Key                   |  Type                 | Description                               |
+| --------------------- | --------------------- | ----------------------------------------- |
+| `id`                  | `integer`             |                                           |
+| `activity`            | `integer`, `Activity` |                                           |
+| `user`                | `integer`,`User`      |                                           |
+| `seen_on`             | `timestamp`           |                                           |
+| `archived`            | `boolean`             |                                           |
+
+### Collection Object
+
+| Key                   |  Type                | Description                               |
+| --------------------- | -------------------- | ----------------------------------------- |
+| `collection`          | `string`             |                                           |
+| `managed`             | `boolean`            |                                           |
+| `hidden`              | `boolean`            |                                           |
+| `single`              | `boolean`            |                                           |
+| `translation`         | `json`               |                                           |
+| `note`                | `string`             |                                           |
+| `icon`                | `string`             |                                           |
+
+### Collection Preset Object
+
+| Key                   |  Type                | Description                               |
+| --------------------- | -------------------- | ----------------------------------------- |
+| `id`                  | `integer`            |                                           |
+| `title`               | `string`             |                                           |
+| `user`                | `integer`,`User`     |                                           |
+| `role`                | `integer`, `Role`    |                                           |
+| `collection`          | `string`             |                                           |
+| `search_query`        | `string`             |                                           |
+| `filters`             | `json`               |                                           |
+| `view_type`           | `string`             |                                           |
+| `view_query`          | `json`               |                                           |
+| `view_options`        | `json`               |                                           |
+| `translation`         | `json`               |                                           |
+
+### Field Object
+
+| Key                   |  Type                  | Description                               |
+| --------------------- | ---------------------- | ----------------------------------------- |
+| `id`                  | `integer`              |                                           |
+| `collection`          | `string`, `Collection` |                                           |
+| `field`               | `string`               |                                           |
+| `type`                | `string`               |                                           |
+| `interface`           | `string`               |                                           |
+| `options`             | `json`                 |                                           |
+| `locked`              | `boolean`              |                                           |
+| `translation`         | `json`                 |                                           |
+| `readonly`            | `boolean`              |                                           |
+| `required`            | `boolean`              |                                           |
+| `sort`                | `integer`              |                                           |
+| `view_width`          | `integer`              |                                           |
+| `note`                | `string`               |                                           |
+| `hidden_input`        | `boolean`              |                                           |
+| `validation`          | `string`               |                                           |
+| `hidden_list`         | `boolean`              |                                           |
+| `group`               | `integer`              |                                           |
+
+### File Object
+
+### Folder Object
+
+### Permission Object
+
+### Relation Object
+
+### Revision Object
+
+### Role Object
+
+### Setting Object
+
+### User Object
+
+### User Role Object
