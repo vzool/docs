@@ -8,15 +8,15 @@ Interfaces are Directus' way of interacting with user data. An interface contain
 
 An interface is made up out of three core files:
 
-### Interface.vue
+### input.vue
 
-The main Interface file is the input itself. This file contains the code that renders the interface and emits the value of the interface on change / input.
+The main file is the input itself. This file contains the code that renders the interface and emits the value of the interface on change / input.
 
-### Readonly.vue
+### display.vue
 
 Certain interfaces need to display data differently elsewhere in the system: the interface saves a raw value, but the user wants to see the data in a more appropriate way elsewhere in the system. A good example of this is the Color Picker. The Color Picker interfaces saves the value as a HEX value, but the user wants to see a color swatch preview when looking at the data.
 
-These Readonly components are used in the system in places where the regular readonly state of the interface doesn't fit, or doesn't make sense. Examples of these are inline in the tabular listing view or in the title of a card.
+These display components are used in the system in places where the regular readonly state of the interface doesn't fit, or doesn't make sense. Examples of these are inline in the tabular listing view or in the title of a card.
 
 ### meta.json
 
@@ -24,7 +24,7 @@ The meta.json file contains information over the interface (like unique name, au
 
 ## Boilerplate
 
-The minimum files required for each interface are the aforementioned Interface.vue, Readonly.vue, and meta.json files.
+The minimum files required for each interface are the aforementioned input.vue, display.vue, and meta.json files.
 
 Both the interface and and readonly components are both a standard vue single file component:
 
