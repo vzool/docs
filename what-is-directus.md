@@ -41,11 +41,11 @@ The Directus App (Application) is how _humans_ interact with the API. It wraps t
 
 The Directus suite of software has been designed for projects both simple and complex, both small and enormous. To accomodate this, you can install the App and API individually or use the bundled version which combines both. This decoupled approach allows for a single App to manage any number of APIs, even if they are located on different servers. Additionally, each API supports multiple databases, so you only need to install a single instance for all your projects and deployment environments.
 
-:::tip
-You can use our always up-to-date hosted app to connect to any publicly accessible Directus API: [https://directus.app](https://directus.app/)
-:::
-
 ![Suite Overview](./img/Overview.png)
+
+:::tip
+Feel free to use our always-up-to-date hosted App to connect to any publicly accessible Directus API instance: [https://directus.app](https://directus.app/)
+:::
 
 ### Database Mirroring
 
