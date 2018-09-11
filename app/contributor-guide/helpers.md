@@ -4,6 +4,17 @@ Utility functions and microlibraries that are being used across the system are b
 
 ## Functions
 
+### Title Formatter
+
+Most (raw) values in Directus are being displayed in title case. We try to prevent showing users raw (db) names like `image_gallery`, instead we want to show "Image Gallery". This formatter function is available to all Vue components. The function is available in the `$helper` directive with the method name `formatTitle`:
+
+```js
+this.$helpers.formatTitle("hello_world"); // Hello World
+this.$helpers.formatTitle("iphone_storageSolution"); // iPhone Storage Solution
+```
+
+This function is alternatively available as a stand-alone npm package: [@directus/format-title](https://npmjs.com/@directus/format-title).
+
 ### Date
 
 Convert SQL datetime string to JavaScript Date object, or vise versa:

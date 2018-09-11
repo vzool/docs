@@ -241,13 +241,17 @@ It doesn't do anything, but it was meant to blacklist tables from being used by 
 
 ### `auth`
 
+Out-of-the-box Directus supports `Okta`, `GitHub`, `Facebook`, `Twitter` and `Google` Single-Sign-On (SSO), but also allows you to create your own providers.
+
+:::tip
+You can also manage auth externally through the [SCIM endpoints](#).
+:::
+
 | Name          | Description   |
 | ------------- | ------------- |
 | `secret_key`  | This key is used by the JWT encode function to encode tokens |
 | `social_providers` | List of available third-party authentication providers |
 
-
-Out-of-the-box Directus supports `Okta`, `GitHub`, `Facebook`, `Twitter` and `Google` Single-Sign-On (SSO), but also allows you to create your own providers.
 
 #### Okta
 
@@ -291,6 +295,8 @@ Out-of-the-box Directus supports `Okta`, `GitHub`, `Facebook`, `Twitter` and `Go
 
 ### Versionless
 
+With a versionless API, nothing is removed or changed... only added. This means that you never have to worry about breaking your integrations when upgrading to the latest version of the API. We've thoroughly vetted every endpoint and parameter in our new decoupled API to ensure there is no need for deprecations in the foreseeable future. You'll also notice that our API URLs don't include a version number, but you can still reference the technical API version in code to know which new features are available.
+
 ## Storing Files
 
 ## Permissions
@@ -326,7 +332,7 @@ For example: an Action might send an email to user when an new article is create
 
 TODO
 
-### Web Hooks
+#### Web Hooks
 
 TODO
 

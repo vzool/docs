@@ -269,7 +269,7 @@ If you run into anything or need pointers on how to continue, please feel free t
 * [Error Handling](./error-handling.md)
 * [Events](./events.md)
 * [GitHub](./github.md)
-* [Globals](./globals.md)
+* [Plugins](./plugins.md)
 * [Helpers](./helpers.md)
 * [Internationalization](./i18n.md)
 * [Icons](./icons.md)

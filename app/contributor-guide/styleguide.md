@@ -38,7 +38,7 @@ Directus uses 3 main breakpoints. They are given to `vue-mq` as well and can be 
 | modal | 100 |
 | loader | 500* |
 
-*_Customazible through property_
+_Customazible through property_
 
 Modals should always have the top most layer
 
@@ -74,11 +74,23 @@ All icons should be vector and one-off icons (not in MD) should be included inli
 When in doubt about icon alignment, take a screenshot and use a photo application to inspect it zoomed-in. Measure the distance on sides to ensure things are aligned/centered.
 :::
 
+### Usage
+
+Icons can be used by including an `i` tag with the `material-icons` class. The text content of this element is the name of the icon as listed on [https://material.io/tools/icons](https://material.io/tools/icons/).
+
+#### Example
+
+```html
+<i class="material-icons">backup</i>
+<i class="material-icons">pan_tool</i>
+<i class="material-icons">show_chart</i>
+```
+
 ## Colors
 
-Directus uses the Material Design Color Palette but the limited subset of "brand" colors should be used whenever possible. The entire Material design palette is available as global CSS variables, and aliases have been created for each brand color.
+Directus uses the [Material Design Color Palette](https://www.materialui.co/colors) but the limited subset of "brand" colors should be used whenever possible. The entire Material design palette is available as global CSS variables, and aliases have been created for each brand color.
 
-### Brand Colors
+### Brand Color Aliases
 
 #### Grays
 
@@ -95,19 +107,15 @@ Directus uses the Material Design Color Palette but the limited subset of "brand
 #### Other Colors
 
 ```css
---body-background: #f9fafa; // Form background to provide more contrast with White
---accent: var(--light-blue-600);
---white
---black
-```
+--action: var(--light-blue-600);  // Action color. Used in buttons.
+--success: var(--green);          // Something succeeded or is good
+--warning: var(--amber);          // Something needs the users attention before succeeding
+--danger: var(--red);             // Something failed
 
-#### Action Colors
-
-```css
---action: var(--light-blue-600);
---success: var(--green);
---warning: var(--amber);
---danger: var(--red);
+--body-background: #f9fafa;       // Form background to provide more contrast with White
+--accent: var(--light-blue-600);  // User configurable accent. eg: logo BG & CTAs
+--white: #ffffff;                 // Normal white
+--black: #000000;                 // Always consider using "darkest-gray" instead
 ```
 
 #### Accents and Alternates (Typically for Hover States)
@@ -120,32 +128,122 @@ Directus uses the Material Design Color Palette but the limited subset of "brand
 --danger-dark: var(--red-800);
 ```
 
+### Usage
+
+All of these colors are variables and can be overwritten by the developer setting up the Directus instance. To ensure consistency across the platform, never manually add hex values in the codebase, always use these color variables.
+
+```css
+p {
+  color: var(--dark-gray);
+}
+
+small {
+  color: var(--danger);
+}
+
+h1 {
+  color: var(--amber-500);
+}
+```
+
+## Shadows
+
+We have two shadow styles that are used in the platform: one normal, and one raised hover state.
+
+```css
+.card {
+  box-shadow: var(--box-shadow);
+}
+
+.card:hover {
+  box-shadow: var(--box-shadow-accent);
+}
+```
+
+## Transitions
+
+### Speeds
+
+```
+fast
+medium
+slow
+```
+
+### Easing Curves
+
+```
+transition     // normal; hovers
+transition-in  // something enters the view
+transition-out // something leaves the view
+```
+
+Use slower speeds for larger UI elements.
+
+## Page Chrome
+
+Sizing for the main Directus chrome sections have their own variables in case you want to match those standard sizes (eg. a subheader or a secondary nav sidebar).
+
+```
+header-height
+nav-sidebar-width
+info-sidebar-width
+
+page-padding
+
+// If you need more breathing room at the page bottom
+page-padding-bottom
+```
+
+## Classes
+
+Directus offers several global classes for consistent text/input styling, all of which are in turn controlled by the CSS Custom Properties above. This means that the platform is themeable. By relying on these classes (and variables), you make sure that your contributions will fit nicely in the platform, no matter how the CSS is altered in the future.
+
+### Font Styles
+
+* `style-0` (display / title)
+* `style-1`
+* `style-2`
+* `style-3` (labels / section titles)
+* `style-4` (small print, descriptions)
+* `style-btn` (button text style)
+
+### Input Widths
+
+By default, these widths range from 100px to 800px. These widhts are especially important when creating interfaces, as it makes sure that all interfaces align nicely on the edit forms.
+
+* `small`
+* `normal`
+* `large`
+* `x-large`
+
+### Text Overflow
+
+When working with dynamic text elements, you'll often need to ensure longer text is cut off with an ellipsis at the end. To make this a little bit easier, you can add the `no-wrap` class. This stops text from wrapping and adds ellipsis where the text gets cut of. This is especially useful in the readonly component of interfaces, seeing those are being used on listing pages where space is often tight.
+
 ## Interface Sizing
 
 To properly align inside the Directus field grid, special attention should be paid to the dimensions of each interface. Below we cover each in more detail.
 
-## Columns
+### Columns
 
-Directus allows for fields to be set in 1, 2, 3, or 4 columns. These columns appropriately collapse at smaller, responsive viewport widths. [Click here to learn more about the layout of the edit form](./edit-form-grid.md).
-
-### Max-Width
-
-Within its column, interfaces have a set/max width. Widths should always align with the following global variables:
+Directus allows for fields to be set in 1, 2, 3, or 4 columns. These columns appropriately collapse at smaller, responsive viewport widths. Each column is meant to have a 20px margin between adjacent columns. For example, two small columns with a margin between equal a normal column: `140` + `20` + `140` = `300`. All interfaces should confirm to these widths, or be 100% width, allowing the parent grid to limit the size dynamically.
 
 ```css
---width-x-small: 100px;
---width-small: 200px;
---width-normal: 400px;
---width-large: 600px;
---width-x-large: 800px;
+  --width-small: 140px;
+  --width-normal: 300px;
+  --width-large: 460px;
+  --width-x-large: 620px;
 ```
+
+[Click here to learn more about the layout of the edit form](./edit-form-grid.md).
 
 ### Height
 
 Interfaces should use an intuitive default height based on the specific input. Whenever possible, height should be made into an Option so that the user may configure this to the content's needs.
 
 ::: warning
-Single-line interfaces (inputs, dropdowns, buttons, etc) should always try to be exactly 40px in total height unless otherwise warranted.
+Single-line interfaces (inputs, dropdowns, buttons, etc) should always try to be exactly 40px in total height (including borders) unless otherwise warranted.
 :::
 
 ### Spacing
@@ -253,7 +351,7 @@ Optional: Text (Blur Only)
 --danger
 ```
 
-### Listing View
+### Layout View
 
 Interfaces are updated on the Item Detail page (see above), but a static value is also shown on the Item Listing page (see below). You must decide on the best way to present your interface's data as a useful, raw, small, snippet of data. Below are some examples:
 

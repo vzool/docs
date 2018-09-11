@@ -10,7 +10,15 @@ The Directus suite of software has been designed for projects both simple and co
 
 Directus isn't an all-in-one cookie-cutter solution. It strives to be a simple, flexible, transparent, and powerful _tool_ that you can seamlessly add to your existing toolkit.
 
-## Database Wrapper
+## Multitenancy
+
+The Directus 7 App is completely decoupled from the API, so you can use a single application to connect to any number of database instances and projects therein.
+
+:::tip
+You can always use our always up-to-date hosted app: [https://directus.app](https://directus.app/)
+:::
+
+## Database Mirroring
 
 One of the several unique concepts of Directus is that it aims to be a pure SQL database wrapper. When you create Directus collections, fields, defaults, datatypes... you are actually just creating tables, columns, etc in a custom SQL database. That means you do not need to shoe-horn your project architecture into a predefined CMS schema. **You are in total control of your data, including how it's organized, stored, and optimized.**
 
@@ -18,7 +26,7 @@ More importantly, all the Directus "stuff" such as settings, revisions, preferen
 
 ### Database vs Directus
 
-There are many differences between using a vanilla database or using a vanilla database wrapped with Directus. Below we outline several of the most notable advantages.
+There are many advantages to wrapping your database with Directus. Below we outline several of the most notable differences.
 
 #### Presentation
 
@@ -30,13 +38,13 @@ Working with primary keys is time consuming and it's easy to forget what you're 
 
 #### Managing Assets
 
-Sure, you can store BLOBs of data directly in the database, but it takes a script/app to get that there in the first place. Directus lets you manage assets in the filesystem or on the cloud service of your choice. It also has helpful tools for cropping and resizing.
+Sure, you can store BLOBs of file data directly in the database, but you typically don't even get a thumbnail preview... just code. And it takes a script/app to get files there in the first place. Directus lets you see all of your files, manage assets in the filesystem, or even save them to the cloud service of your choice. It also has helpful tools for cropping and resizing.
 
 #### Safety
 
-It's absurdly easy to irreversibly damage a raw database. Have you ever accidentally edited a column and lost data? Truncated a table with millions of records? Deleted a whole database? No one should endure the stressful moments when you try to figure out how recent your latest backup is.
+It's way too easy to irreversibly damage a raw database. Have you ever accidentally edited a column and lost data? Truncated a table with millions of records? Deleted a whole database? No one should endure the stressful moments of trying to figure out how recent your latest backup is.
 
-Directus keeps all item edits (full and delta), let's you hide dangerous features based on the user's proficiency, and gives appropriate warnings for attempted actions. For example, if you want to delete a collection, you'll need to confirm your intentions by typing the collection name in.
+Directus keeps all item updates (full and delta), lets you hide dangerous features based on the user's proficiency, and gives appropriate warnings for attempted actions. For example, if you want to delete a collection, you'll need to first confirm your intentions by typing the collection name in.
 
 #### Accountability
 

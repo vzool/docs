@@ -254,7 +254,11 @@ Also in the info sidebar, and comingled with the activity timeline, are any comm
 
 @TODO Screenshot
 
-The file library is an annex of all files added to Directus. Files may be added through item fields (eg: a slideshow interface) or directly to the File Library itself. To add a file directly to the library, drag a file directly onto the page or click the New button ("+") in the header.
+The file library is an annex of all files added to Directus. Files may be added through item fields (eg: a slideshow interface) or directly to the File Library itself. To add a file directly to the library, drag a file directly onto the page or click the New button ("+") in the header. Directus automatically pulls in metadata from added files/embeds, such as: description, location, tags, and dimensions.
+
+Directus also supports multiple [storage adapters](#), so you may have the option to save files to different locations.
+
+There's also an automatic [thumbnailer](#) included, so you can easily save your original files at different sizes. Allowed thumbnail sizes are setup by your administrator.
 
 By default the File Library displays as a Card layout with thumbnails, but you can change this in the [Info Sidebar](#Info-Sidebar).
 
