@@ -30,3 +30,7 @@ footer: GPL-3.0 | © 2018 RANGER Studio LLC
     </nav>
   </div>
 </div>
+
+<div class="feature-request">
+  <router-link to="/feature-requests.html">Requesting New Features</router-link>
+</div>

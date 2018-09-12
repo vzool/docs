@@ -299,11 +299,13 @@ Please give the outer most class of your Vue single file components a class name
 
 @TODO [Modals](./modals.md)
 
-## Browse Items Page
+## Pages
+
+### Browse Items
 
 @TODO
 
-## Item Detail Page
+### Item Detail
 
 [Edit Form Grid](./edit-form-grid.md)
 

@@ -49,7 +49,7 @@ Currently, a user can only have a single role, but the goal is to add the abilit
 
 ## Permissions Overview
 
-[Role Permissions](/role-permissions.md)
+[Role Permissions](/api/contributor-guide/#Permissions)
 
 ### Seeding
 
@@ -156,11 +156,11 @@ global    | sort_null_last  | Set the null values at last when sorting. Default 
 files     | file_naming     | uploaded image naming. `id`, `uuid`, otherwise the original sanitized name. Replacing spaces with `_` (underscore) and leading `.` (dots) with `dot-`.
 files     | youtube_api_key | Youtube API key used by to fetch video information when upload a youtube link
 thumbnail | not_found_location | This image will be used when trying to generate a thumbnail with invalid options or an error happens on the server trying to create the image) | Returns 404
-thumbnail | dimensions      | Comma separate value of dimensions in <width>x<height> format | 200x200
+thumbnail | dimensions      | Comma separate value of dimensions in [width]x[height] format | 200x200
 thumbnail | quality_tags    | Key-Value json string of qualities tagged with a name. Ex: `{"best": 100}`. Ranging from 0 to 100. 0 = Worst quality and smaller file size to 100 best quality biggest file size. | `{"poor": 25, "good": 50, "better":  75, "best": 100}`
 thumbnail | actions         | **WIP**; List options to perform different thumbnail generation actions. | `contain` and `crop`
 thumbnail | cache_ttl       | Cache time to live in seconds. It sets HTTP `max-age` and `Expires` datetime. Default: `86400` seconds = 1 day
-  
+
  **NOTE**: The file naming `uuid`, uses UUID v5, and `6ba7b810-9dad-11d1-80b4-00c04fd430c8` as the namespace DNS. A constant value defined in [ramsey/uuid](https://github.com/ramsey/uuid/blob/5cadea8447ea1734b66e402aeb1a1739957d59f6/src/Uuid.php#L44) package.
 
 ## Directus Datatypes
@@ -199,7 +199,7 @@ These are the different types of data that Directus can store, they extend the c
 
 ## Thumbnailer
 
-[Learn more about the Thumbnailer here](/thumbnailer.md)
+[Learn more about the Thumbnailer here](/api/admin-guide/thumbnailer.md)
 
 ### Options:
 

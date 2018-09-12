@@ -1,8 +1,14 @@
 # What is Directus
 
-Directus is a suite of software for managing agnostic content that can be connected anywhere. That's quite a broad description, so let's take a look at a few examples to get a better idea of what it means.
+## Introduction
 
-## Project Examples
+**Directus is a free and open-source suite of software for managing agnostic content.** It provides an easy way for developers to connect your data to projects on _any_ platform, and non-technical users an intuitive way to manage that data.
+
+Often described as a "headless" CMS, Directus _only manages content_. It doesn't come with a website editor, design templates, or other "presentation layer" built-in. That means that you have the freedom to connect this _agnostic_ content anywhere and everywhere, regardless of platform.
+
+If you're still a bit confused about what all that means, let's take a look at a few examples to clear things up.
+
+### Project Examples
 
 * **Websites** – You might be managing simple text and images for a personal blog, massive amounts of syndicated content for a network of enterprise sites, or highly customized user account data for a complex webapp service; Directus has it covered.
 * **Native Apps** – Phone apps have similar needs to websites, but often need to receive content in a different format. Directus stores and delivers all content _agnostically_ so that's not a problem.
