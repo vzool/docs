@@ -1,6 +1,6 @@
 # API Contributor Guide
 
-## Understanding Directus API Internals
+## Understanding API Internals
 
 - Install locally from source
 - Database Overview
