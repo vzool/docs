@@ -43,7 +43,7 @@ This will fire up the build process and launch a local development server. By de
 
 The development server will also watch for changes and auto-reload the application accordingly.
 
-### Testing production build
+### Testing Production Build
 
 In order to double check if everything works as expected, you can build the app in production mode by running
 
@@ -101,10 +101,6 @@ The `SDK.login()` method returns a promise. The promise will resolve on a succes
 Keeps the access token in the SDK and the application store in sync. The token in the store gets saved and retrieved to/from localstorage so the user isn't logged out on refresh.
 
 If the user re-opens the page when there is an invalid token in the store, the SDKs loggedIn flag will be false and the application will logout immediately.
-
-## Component Naming
-
-Please give the outer most class of your Vue single file components a class name that matches the name of the component. This makes it both easy to style, easy to find in the devtools, and easy to override in custom styling.
 
 ## Global Events
 
@@ -253,33 +249,82 @@ npm run fix
 
 Please make sure to run both the linter and the fix command before pushing changes or opening a pull request.
 
-## Submitting Pull Requests
+## The Store
+
+We use Vuex... [Store](./store.md)
+
+## Working with the API
+
+@TODO [Using the API (SDK)](./sdk-api.md)
+
+## Events
+
+@TODO [Events](./events.md)
+
+## Error Handling
+
+@TODO [Error Handling](./error-handling.md)
+
+## Internationalization
+
+@TODO [Internationalization](./i18n.md)
+
+## Helpers
+
+@TODO [Helpers](./helpers.md)
+
+@TODO [Keyboard Shortcuts](./keyboard-shortcuts.md)
+
+## Plugins
+
+@TODO [Plugins](./plugins.md)
+
+## Components
+
+### Naming
+
+Please give the outer most class of your Vue single file components a class name that matches the name of the component. This makes it both easy to style, easy to find in the devtools, and easy to override in custom styling.
+
+### Global Components
+
+#### Tooltips
+
+@TODO [Tooltips](./tooltips.md)
+
+#### Notifications
+
+@TODO [Notifications](./notifications.md)
+
+#### Modals
+
+@TODO [Modals](./modals.md)
+
+## Browse Items Page
+
+@TODO
+
+## Item Detail Page
+
+[Edit Form Grid](./edit-form-grid.md)
+
+## Loading Indicator
+
+[Running Rabbit](./running-rabbit.md)
+
+## Extensions
+
+[Extensions](./extensions.md)
+
+## Contributing
 
 We like to keep a tight flow in working with GitHub, to make sure we have a clear history and accountability of what happened / changed when and where. Working with Git, and especially the GitHub specific features like forking and creating pull requests, can be quite daunting for new users.
 
 To help you out in your Git(Hub) adventures, we've put together [the flow of contributing to an open source repo](./github.md).
 
-## Need Help?
+## Troubleshooting
 
-If you run into anything or need pointers on how to continue, please feel free to reach out [on Slack](https://slack.getdirectus.com)!
+If you run into anything or need pointers on how to continue, first check our [troubleshooting guide](./troubleshooting.md). If you still have issues you can post questions to [StackOverflow](https://stackoverflow.com/questions/tagged/directus), or reach out to the community and core team [on Slack](https://slack.getdirectus.com)!
 
-## Page Index
-
-* [Edit Form Grid](./edit-form-grid.md)
-* [Error Handling](./error-handling.md)
-* [Events](./events.md)
-* [GitHub](./github.md)
-* [Plugins](./plugins.md)
-* [Helpers](./helpers.md)
-* [Internationalization](./i18n.md)
-* [Icons](./icons.md)
-* [Install Dev Env](./install-dev.md)
-* [Modals](./modals.md)
-* [Notifications](./notifications.md)
-* [Running Rabbit (loading indicator)](./running-rabbit.md)
-* [Using the API (SDK)](./sdk-api.md)
-* [Shortcuts](./shortcuts.md)
-* [Store](./store.md)
-* [Styleguide](./styleguide.md)
-* [Tooltips](./tooltips.md)
-* [Troubleshooting](./troubleshooting.md)
+::tip
+If you think you've found a bug, you should submit a ticket on our GitHub: [App](https://github.com/directus/app/issues/new?template=Bug_report.md) or [API](https://github.com/directus/api/issues/new?template=Bug_report.md)
+:::
