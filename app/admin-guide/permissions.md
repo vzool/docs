@@ -1,63 +1,12 @@
-## Roles & Permissions
+# Permissions
 
 Directus permissions are extremely granular and powerful, but don't feel overwhelmed, you don't need to use or even understand the more advanced features to setup basic roles.
-
-### Administrators
-
-Users with this role have full permissions for all data within the system and are the only ones with access to Admin Settings. The administrator role is included by default and can not be edited or removed.
-
-### Public
-
-This special role defines what data is accessible _without_ being authenticated. The public role is included by default (with all permissions off) and can not be removed.
-
-### Creating Roles
-
-You can also create additional roles that limit access for specific purposes. As of now, users can only be assigned to a single role, but our system is architected in a way to allow for merging multiple roles in the future.
-
-#### Inviting Users
-
-TK
-
-#### Description
-
-This is for internal use only. It helps your administrators understand the purpose of each role.
-
-#### IP Whitelist
-
-A CSV of IP addresses that are allowed to connect to the APP/API. This can be used to limit access to specific offices, for example.
-
-#### Navigation Override
-
-A JSON object that allows for customizing the navigation sidebar. With the feature you can reorder collections, add links to specific items or external pages, and create new groupings. The default dynamic sections can still be included using the reserved `$collections`, `$extensions`, and `$bookmarks` values.
-
-```json
-{
-    "Collections": {
-        "Z. Collection Name": "/collections/collection-name",
-        "X. Collection Name": "/collections/collection-name",
-        "Y. Collection Name": "/collections/collection-name",
-        "Specific Item Name": "/collections/collection-name/123",
-        "External Link": "https://example.com"
-    },
-    "Another Group": {
-        "A. Collection Name": "/collections/collection-name",
-        "B. Collection Name": "/collections/collection-name",
-        "C. Collection Name": "/collections/collection-name"
-    },
-    "Favorites": "$bookmarks",
-    "Extensions": "$extensions"
-}
-```
-
-### Permissions
-
-Directus extends the typical CRUD access control to add even more granularity. For more information on how to set the base permissions (Create, Read, Update, Delete, Comment, and Explain) please read our dedicated Docs here.
 
 ::: tip
 Use the "All/None" shortcut on hover of each row or click the column header to toggle that permission for all collections.
 :::
 
-#### Field Read/Write Blacklist
+### Field Read/Write Blacklist
 
 Clicking on the "Fields" button allows you to set blacklists for both read and write. This allows you to control which fields are visible or editable for the collection. All fields are readable and writable by default.
 
@@ -109,7 +58,3 @@ Below the permissions interface is a toggle to show the Directus system collecti
 ::: warning
 Changing the default system permissions can result in unexpected behavior or a completely broken platform. The API and App rely on certain data. For example, full read permission for `directus_users` is required. Only update these values if you know exactly what you're doing.
 :::
-
-### Deleting Roles
-
-To delete a role: first remove all its users, then click the Delete button in the header of the Role Detail page.

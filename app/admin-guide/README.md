@@ -10,7 +10,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 
 ## What You Need to Know Most
 
-* [What is Directus](../what-is-directus.md)
+* [What is Directus](../../what-is-directus.md)
 * [Installing the Directus Application](./install.md)
 * [Updating the Directus Application](./update.md)
 * [Troubleshooting the Directus Application](./troubleshooting.md)
@@ -22,8 +22,9 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 * [Creating Collections](./collections.md)
 * [Creating Fields](./fields.md)
 * [Relationships](./relationships.md)
-* [Global Settings](./global-settings.md)
-* [Roles and Permissions](./roles-and-permissions.md)
+* [Global Settings](../../global-settings.md)
+* [User Roles](./roles.md)
+* [Permissions](./permissions.md)
 
 ## Use and create extensions
 
