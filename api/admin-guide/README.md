@@ -10,7 +10,13 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 
 ## What You Need to Know Most
 
-* [Install](./install.md)
-* [Update](./update.md)
-* [Configure](./configure.md)
-* [Extensions](./extensions.md)
+* [Install the API](./install.md)
+* [Update the API](./update.md)
+* [Configure the API](./configure.md)
+
+## Extending the API
+
+* [Creating Hooks](./hooks.md)
+* [Add a Custom Endpoint](./custom-endpoint.md)
+* [Add Another Auth Provider](./auth-provider.md)
+* [Other Extensions](./extensions.md)
