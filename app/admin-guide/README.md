@@ -11,7 +11,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 ## What you need to know most
 
 * [What is Directus](../what-is-directus.md)
-* [Installing Directus](./install.md)
+* [Installing the Directus Application](./install.md)
 * [Updating Directus](./update.md)
 * [Troubleshooting](./troubleshooting.md)
 * [Glossary](./glossary.md)
