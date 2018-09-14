@@ -1,6 +1,10 @@
-#### Relationships
+# Relationships
 
-##### One-to-Many
+When creating a database, it’s often a good idea to separate different types of entities into different tables. For example: storing customers separate from orders. But we also need to have a connection between these two tables — otherwise, we wouldn’t know which customer placed a given order. These connections are called relationships, and they also need to be stored in the database.
+
+There are multiple types of relationships in a relational database, which we’ll go over in a little more detail.
+
+## One-to-Many
 
 In relational databases, a one-to-many (O2M) relationship exists when an item of **Collection A** may be linked to many items of **Collection B**, but an item of **Collection B** is linked to only one item of **Collection A**. For example, directors have many movies, but a movie only has one director.
 
@@ -10,7 +14,7 @@ An easy way to remember which side is which: the "many" is an actual column that
 
 ![O2M + M2O](../img/o2m-m2o.png)
 
-##### Many-to-Many
+## Many-to-Many
 
 The many-to-many (M2M) is a slightly more advanced relationship that allows you to link _any_ items within **Collection A** and **Collection B**. For example, movies can have many genres, and genres can have many movies.
 
@@ -18,7 +22,7 @@ Technically this is not a _new_ relationship type... it is a O2M and M2O working
 
 ![M2M](../img/m2m.png)
 
-##### Many-to-Many-Many
+## Many-to-Many-Many
 
 In some data models it ise useful to have an interface link items from **Collection A** to many items within _many_ collections (**B**, **C**, **D**, etc). We call this a many-to-many-many (M2MM) but it is sometimes called a "Matrix Field".
 
