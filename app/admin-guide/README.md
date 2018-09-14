@@ -26,7 +26,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 * [User Roles](./roles.md)
 * [Permissions](./permissions.md)
 
-## Use and create extensions
+## Use and create extensions (@TODO)
 
 * [Extensions: an introduction](./about-extensions.md)
 * [Write an extension](./write-extension.md)
@@ -36,7 +36,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 
 * [Style overrides](./custom-style.md)
 * [Custom scripts](./custom-scripts.md)
-* [Adding your own logo](./custom-logo.md)
+* [Adding your own branding](./branding.md)
 
 ::: tip Contribute to Development
 Interested in helping out making Directus a better platform? Checkout the [Directus Contributer Guide](../contributer-guide/) where you'll find everything you need to get started.
