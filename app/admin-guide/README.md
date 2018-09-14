@@ -10,7 +10,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 
 ## What you need to know most
 
-* [What is Directus](./what-is-directus.md)
+* [What is Directus](../what-is-directus.md)
 * [Installing Directus](./install.md)
 * [Updating Directus](./update.md)
 * [Troubleshooting](./troubleshooting.md)
