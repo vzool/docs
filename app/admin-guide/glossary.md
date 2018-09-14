@@ -1,28 +1,75 @@
+# Glossary
 
-## Terminology
+Definitions and other various terms that are exclusive to the Directus Ecosystem.
 
-* `client` – An external application using Database managed data
-* `instance` – An API install managing one or more environments on a server
-* `project` – A database, config, and file storage directory. Also used for deployment environments (eg: `prod`, `stage`, `dev`)
-* `env` - A flag set in the project config: either `production` or `staging` (not to be confused with deployment environments)
-* `schema` – The SQL database's architecture, not including any content
-* `boilerplate` – The base schema and system content included in a fresh/blank copy of Directus
-* `collection` – A SQL table
-* `item` – A SQL record
-* `field` – A SQL column or _alias_ (see below)
-* `alias` – A field that does not actually map to a database column (eg: a divider)
-* `datatype` – The SQL vendor-specific database storage type (eg: `VARCHAR`, `BIGINT`, etc)
-* `directus type` – An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `M2O`, `STATUS`, etc)
-* `length` – The amount/size of data that can be stored in a field
-* `interface` – The GUI for a field
-* `layout` – The GUI for a collection's items
-* `extension` – Components outside of the Core codebase, including: Interfaces, Pages, Storage Adapters, SSO Services, etc
-* `single collection` – A collection limited to only one item
-* `comment` – A message left on an item
-* `note` – Descriptive text displayed with a field
-* `template` – A Mustache string used to format field values (eg: `{{first_name}} {{last_name}}, {{title}}`)
+### Client
 
+An external application using Database managed data.
 
-* **Collections** – Page displaying a listing of of collections within an instance/env
-* **Items** – Page displaying a listing of of items within a collection
-* **Item** – Page displaying field interfaces used for creating, viewing, and updating an item
+### Instance
+
+An API install managing one or more projects on a server.
+
+### Project
+
+A database, config, and file storage directory. Also used for deployment environments (eg: `prod`, `stage`, `dev`).
+
+### Environment (env)
+
+A flag set in the project config: either `production` or `staging` (not to be confused with deployment environments).
+
+### Schema
+
+The SQL database's architecture, not including any content.
+
+### Boilerplate
+
+The base schema and system content included in a fresh/blank copy of Directus.
+
+### Collection
+
+A set of items, saved as a SQL table
+
+### Item
+
+A single record of data. Contains values for the fields. Saved as a SQL row.
+
+### Field
+
+A single piece of information contained in an item. Saved as a SQL column or alias.
+
+### Alias
+
+A field that does not actually map to a database column (eg: a divider or the one side of a relationship).
+
+### Datatype
+
+The SQL vendor-specific database storage type (eg: `VARCHAR`, `BIGINT`, etc)
+
+### Directus Type
+
+An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `string`, `number`, etc). Also includes non-DB style types that provide extra functionality into the system (eg `m2o`, `translation`, etc).
+
+### Length
+
+The amount/size of data that can be stored in a single field.
+
+### Interface
+
+The GUI for a field (the actual thing that the user interacts with to create and edit the data for the field).
+
+### Layout
+
+The GUI for a collection's items. Displays the items in the user-set way.
+
+### Extension
+
+Anything that extends the core codebase, including: Interfaces, Pages, Storage Adapters, SSO Services, etc. 
+
+### Note 
+
+Descriptive text displayed with a field.
+
+### Display Template
+
+A Mustache-style string used to format field values (eg: `{{first_name}} {{last_name}}, {{title}}`)
