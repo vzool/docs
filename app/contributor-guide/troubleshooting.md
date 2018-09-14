@@ -1,5 +1,7 @@
 # Troubleshooting
 
+If you run into anything or need pointers on how to continue, first check our [troubleshooting guide](./troubleshooting.md). If you still have issues you can post questions to [StackOverflow](https://stackoverflow.com/questions/tagged/directus), or reach out to the community and core team [on Slack](https://slack.getdirectus.com)!
+
 ## Buildchain issues
 
 If for some reason the buildchain is acting up, or you're not seeing the changes you've made reflected in the browser, please try the following things:
