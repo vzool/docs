@@ -81,16 +81,6 @@ Some helper collections are not used directly (eg: junctions) and can be globall
 
 In certain schema architectures, you may find it helpful to have a collection that can only contain one item. For example, the "About" or "Settings" of your project might be managed within the fields of a single item (also known as a "singleton"). When enabled, clicking the collection in the navigation will open the Item Detail page directly, skipping the Items Browse page.
 
-#### Translation
-
-This JSON object can be used to translate the collection name into different languages/locales. It can also be used to override the formatted display name generated from the schema name.
-
-```json
-{
-    "example": "here"
-}
-```
-
 ### Managing Collections
 
 Collections added through Directus are automatically managed, however collections added outside of Directus are unmanaged by default. This avoids issues with dynamically created temporary tables or any tables outside the scope of your project. Directus completely ignores any unmanaged collections.
