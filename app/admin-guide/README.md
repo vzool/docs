@@ -12,7 +12,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 
 * [What is Directus](../what-is-directus.md)
 * [Installing the Directus Application](./install.md)
-* [Updating Directus](./update.md)
+* [Updating the Directus Application](./update.md)
 * [Troubleshooting](./troubleshooting.md)
 * [Glossary](./glossary.md)
 * [Releases](https://github.com/directus/app/releases)
