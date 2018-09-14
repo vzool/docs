@@ -73,12 +73,6 @@ Adding a collection is easy, simply click the New button ("+") in the header and
 
 This is for internal use only. It helps your administrators understand the purpose of each collection.
 
-#### Item Name Template
-
-This [Mustache template](#) allows you to set a default/fallback formatted name for items in the collection.
-
-@TODO: DO WE USE THIS ANYWHERE?
-
 #### Hidden
 
 Some helper collections are not used directly (eg: junctions) and can be globally hidden.
