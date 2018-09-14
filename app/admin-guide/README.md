@@ -8,7 +8,7 @@ This guide will cover everything you need to know to install and setup the platf
 To learn how to use Directus, checkout the [Directus User Guide](../user-guide.md).
 :::
 
-## What you need to know most
+## What You Need to Know Most
 
 * [What is Directus](../what-is-directus.md)
 * [Installing the Directus Application](./install.md)
@@ -17,7 +17,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 * [Glossary](./glossary.md)
 * [Releases](https://github.com/directus/app/releases)
 
-## Learn how to configure Directus
+## Learn How to Configure Directus
 
 * [Creating Collections](./collections.md)
 * [Creating Fields](./fields.md)
