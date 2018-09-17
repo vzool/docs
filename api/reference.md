@@ -304,37 +304,33 @@ The user's email address and the app URL from which the reset is requested.
 
 ### Password Reset
 
-The API checks the validity of the reset token, that it hasn't expired, and that the email address contained in the token payload matches one in the database.
-
-It uses a GET request so users can access it from links within their email clients.
-
-This endpoint generates a random password for the user and sends it to their email address. The user is encourage to change this password as soon as possible.
+The API checks the validity of the reset token, that it hasn't expired, and that the email address contained in the token payload matches one in the database. It uses a GET request so users can access it from links within their email clients. This endpoint generates a random password for the user and sends it to their email address.
 
 ```http
 GET /[project]/auth/password/reset/[reset-token]
 ```
 
-### SSO: Get Services
+### SSO
+
+Directus supports modular Single Sign-On (SSO) authentication services, such as Google and Facebook.
+
+#### Get SSO Services
+
+A list of third-party SSO authentication services available for this project.
 
 ```http
 GET /[project]/auth/sso
 ```
 
-A list of third-party Single Sign-On (SSO) authentication services available for this project, such as Google and Facebook.
+#### Authorization Redirect
 
-### SSO: Authorization Redirect
+Automatically redirects to the authorization url if the origin host is allowed by the API, otherwise it will return the authorization url.
 
 ```http
 GET /[project]/auth/sso/[provider]
 ```
 
-Automatically redirects to the authorization url if the origin host is allowed by the API, otherwise it will return the authorization url.
-
-### SSO: OAuth Authentication
-
-::: warning
-This endpoint is only useful when the callback is not handled by the API. See: /[project]/auth/sso/[provider]/callback.
-:::
+#### OAuth Authentication
 
 When the server has authorized the user after being authenticated, it returns an `oauth_token` and `oauth_verifier` (version 1.0) or `code` (version 2.0).
 
@@ -342,11 +338,15 @@ When the server has authorized the user after being authenticated, it returns an
 POST /[project]/auth/sso/[provider]
 ```
 
-#### Body
+::: warning
+This endpoint is only useful when the callback is not handled by the API. See: /[project]/auth/sso/[provider]/callback.
+:::
+
+##### Body
 
 The user's email address and the app URL from which the reset is requested.
 
-##### OAuth 1.0
+_OAuth 1.0_
 
 ```json
 {
@@ -355,7 +355,7 @@ The user's email address and the app URL from which the reset is requested.
 }
 ```
 
-##### OAuth 2.0
+_Or, for OAuth 2.0:_
 
 ```json
 {
@@ -363,23 +363,23 @@ The user's email address and the app URL from which the reset is requested.
 }
 ```
 
-### SSO: Callback
+#### Callback
+
+Set this URL as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
 
 ```http
 GET /[project]/auth/sso/[provider]/callback
 ```
 
-Set this URL as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
+#### Get Access Token
 
-### SSO: Access Token
+Using the request token that was returned by the `/[project]/auth/sso/[provider]/callback` endpoint to get the access token.
 
 ```http
 POST /[project]/auth/sso/access_token
 ```
 
-Using the request token that was returned by the `/[project]/auth/sso/[provider]/callback` endpoint to get the access token.
-
-#### Body
+##### Body
 
 ```json
 {
