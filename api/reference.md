@@ -2316,6 +2316,308 @@ POST /[project]/mail
 }
 ```
 
+## Extensions
+
+Directus can easily be extended through the addition of several types of extensions. Extensions are and important part of the Directus App that live within the decoupled Directus API. These extensions include: Interfaces, Layouts, and Pages. These three different types of extensions live in their own directory and may have their own endpoints. All custom endpoints defined in extensions (`pages`, `interfaces`, etc) require authentication.
+
+### Get Extensions
+
+These endpoints search for different types of enabled extensions and include the content of each extension's `meta.json` file.
+
+```http
+GET /interfaces
+GET /layouts
+GET /pages
+```
+
+### Get Interface
+
+All endpoints defined in an interface will be located within the `interfaces` group.
+
+```http
+GET /[project]/interfaces/[interface-id]
+```
+
+### Get Page
+
+All endpoints defined in a page will be located within the `pages` group.
+
+```http
+GET /[project]/pages/[page-id]
+```
+
+### Get Custom Endpoint
+
+All custom endpoints that are not related to an extension will be located under the `custom` group.
+
+::: warning
+These endpoints do not require authentication, and are therefore publically accessible.
+:::
+
+```http
+GET /[project]/custom/[endpoint-id]
+```
+
+## Server
+
+A server is comprised of the OS, HTTP server, PHP, and an instance of the Directus API.
+
+### Information
+
+Returns information about the server and API instance.
+
+```http
+GET /
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "api": {
+      "version": "2.0.0-rc.2"
+    },
+    "server": {
+      "general": {
+        "php_version": "7.2.1",
+        "php_api": "apache2handler"
+      },
+      "max_upload_size": 8388608
+    }
+  }
+}
+```
+
+### Ping
+
+If the server is setup correctly it will respond with `pong` as plain text.
+
+```http
+GET /server/ping
+```
+
+## Projects
+
+Each instance of Directus can manage multiple projects. A project is comprised of a dedicated SQL database, a config file, and any storage directories.
+
+### Information
+
+Returns information about the server and API instance in relation to project.
+
+```http
+GET /[project]/
+```
+
+An example would be if `upload_max_size` has been increased only for a single project within this API instance.
+
+#### Response
+
+```json
+{
+  "data": {
+    "api": {
+      "version": "2.0.0-rc.2"
+    },
+    "server": {
+      "general": {
+        "php_version": "7.2.1",
+        "php_api": "apache2handler"
+      },
+      "max_upload_size": 8388608
+    }
+  }
+}
+```
+
+### Create Project
+
+Create a new project (database and config file) to be managed by this API instance.
+
+```http
+POST /projects
+```
+
+#### Body
+
+| Attribute       | Description                            | Required
+| --------------- | -------------------------------------- | ---------
+| `project`       | The project key. Default: `_`          | No
+| `force`         | Force the installation                 | No
+| `db_type`       | Database type. Only `mysql` supported  | No
+| `db_host`       | Database host. Default: `localhost`    | No
+| `db_port`       | Database port. Default: `3306`         | No
+| `db_name`       | Database name                          | Yes
+| `db_user`       | Database user name                     | Yes
+| `db_password`   | Database user password                 | No
+| `user_email`    | Directus Admin email                   | Yes
+| `user_password` | Directus Admin password                | Yes
+| `user_token`    | Directus Admin token. Default: `null`  | No
+| `mail_from`     | Default mailer `from` email            | No
+| `project_name`  | The project name. Default: `Directus`  | No
+| `cors_enabled`  | Enable CORS. Default `true`            | No
+| `auth_secret`   | Sets the authentication secret key     | No
+
+::: warning
+When `project` is not specified it will create the default configuration.
+:::
+
+```json
+{
+    "db_name": "directus",
+    "db_user": "root",
+    "db_password": "pass",
+    "user_email": "admin@example.com",
+    "user_password": "password"
+}
+```
+
+## Field Types
+
+Returns the list of Directus field types.
+
+```http
+GET /types
+```
+
+## Webhooks
+
+Webhooks allow you to send an HTTP request when a specific event occurs. Creating a webhook in Directus is done by creating a custom hook that makes an HTTP request.
+
+The example below sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
+
+```json
+{
+  "type": "article",
+  "data": {
+    "title": "new article",
+    "body": "this is a new article"
+  }
+}
+```
+
+```php
+<?php
+
+return [
+    'actions' => [
+        // Send an alert when a article is created
+        'collection.insert.articles' => function (array $data) {
+            $client = new \GuzzleHttp\Client([
+                'base_uri' => 'http://example.com'
+            ]);
+
+            $data = [
+                'type' => 'article',
+                'data' => $data
+            ];
+
+            $response = $client->request('POST', '/alert', [
+                'json' => $data
+            ]);
+        }
+    ]
+];
+```
+
+## Directus Objects
+
+A list of all system objects expected or returned by Directus endpoints.
+
+### Activity Object
+
+| Key                   |  Type             | Description                               |
+| --------------------- | ----------------- | ----------------------------------------- |
+| `id`                  | `integer`         |                                           |
+| `action`              | `string`          |                                           |
+| `action_by`           | `integer`,`User`  |                                           |
+| `action_on`           | `timestamp`       |                                           |
+| `ip`                  | `string`          |                                           |
+| `user_agent`          | `string`          |                                           |
+| `collection`          | `string`          |                                           |
+| `item`                | `string`          |                                           |
+| `edited_on`           | `timestamp`       |                                           |
+| `comment`             | `string`          |                                           |
+| `comment_deleted_on`  | `timestamp`       |                                           |
+
+### Activity Seen Object
+
+| Key                   |  Type                 | Description                               |
+| --------------------- | --------------------- | ----------------------------------------- |
+| `id`                  | `integer`             |                                           |
+| `activity`            | `integer`, `Activity` |                                           |
+| `user`                | `integer`,`User`      |                                           |
+| `seen_on`             | `timestamp`           |                                           |
+| `archived`            | `boolean`             |                                           |
+
+### Collection Object
+
+| Key                   |  Type                | Description                               |
+| --------------------- | -------------------- | ----------------------------------------- |
+| `collection`          | `string`             |                                           |
+| `managed`             | `boolean`            |                                           |
+| `hidden`              | `boolean`            |                                           |
+| `single`              | `boolean`            |                                           |
+| `translation`         | `json`               |                                           |
+| `note`                | `string`             |                                           |
+| `icon`                | `string`             |                                           |
+
+### Collection Preset Object
+
+| Key                   |  Type                | Description                               |
+| --------------------- | -------------------- | ----------------------------------------- |
+| `id`                  | `integer`            |                                           |
+| `title`               | `string`             |                                           |
+| `user`                | `integer`,`User`     |                                           |
+| `role`                | `integer`, `Role`    |                                           |
+| `collection`          | `string`             |                                           |
+| `search_query`        | `string`             |                                           |
+| `filters`             | `json`               |                                           |
+| `view_type`           | `string`             |                                           |
+| `view_query`          | `json`               |                                           |
+| `view_options`        | `json`               |                                           |
+| `translation`         | `json`               |                                           |
+
+### Field Object
+
+| Key                   |  Type                  | Description                               |
+| --------------------- | ---------------------- | ----------------------------------------- |
+| `id`                  | `integer`              |                                           |
+| `collection`          | `string`, `Collection` |                                           |
+| `field`               | `string`               |                                           |
+| `type`                | `string`               |                                           |
+| `interface`           | `string`               |                                           |
+| `options`             | `json`                 |                                           |
+| `locked`              | `boolean`              |                                           |
+| `translation`         | `json`                 |                                           |
+| `readonly`            | `boolean`              |                                           |
+| `required`            | `boolean`              |                                           |
+| `sort`                | `integer`              |                                           |
+| `view_width`          | `integer`              |                                           |
+| `note`                | `string`               |                                           |
+| `hidden_input`        | `boolean`              |                                           |
+| `validation`          | `string`               |                                           |
+| `hidden_list`         | `boolean`              |                                           |
+| `group`               | `integer`              |                                           |
+
+### File Object
+
+### Folder Object
+
+### Permission Object
+
+### Relation Object
+
+### Revision Object
+
+### Role Object
+
+### Setting Object
+
+### User Object
+
+### User Role Object
+
 ## SCIM
 
 Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be created, managed, and disabled outside of Directus.
@@ -2781,305 +3083,3 @@ DELETE /[project]/scim/v2/Groups/[id]
 #### Response
 
 Response is empty when successful.
-
-## Extensions
-
-Directus can easily be extended through the addition of several types of extensions. Extensions are and important part of the Directus App that live within the decoupled Directus API. These extensions include: Interfaces, Layouts, and Pages. These three different types of extensions live in their own directory and may have their own endpoints. All custom endpoints defined in extensions (`pages`, `interfaces`, etc) require authentication.
-
-### Get Extensions
-
-These endpoints search for different types of enabled extensions and include the content of each extension's `meta.json` file.
-
-```http
-GET /interfaces
-GET /layouts
-GET /pages
-```
-
-### Get Interface
-
-All endpoints defined in an interface will be located within the `interfaces` group.
-
-```http
-GET /[project]/interfaces/[interface-id]
-```
-
-### Get Page
-
-All endpoints defined in a page will be located within the `pages` group.
-
-```http
-GET /[project]/pages/[page-id]
-```
-
-### Get Custom Endpoint
-
-All custom endpoints that are not related to an extension will be located under the `custom` group.
-
-::: warning
-These endpoints do not require authentication, and are therefore publically accessible.
-:::
-
-```http
-GET /[project]/custom/[endpoint-id]
-```
-
-## Server
-
-A server is comprised of the OS, HTTP server, PHP, and an instance of the Directus API.
-
-### Information
-
-Returns information about the server and API instance.
-
-```http
-GET /
-```
-
-#### Response
-
-```json
-{
-  "data": {
-    "api": {
-      "version": "2.0.0-rc.2"
-    },
-    "server": {
-      "general": {
-        "php_version": "7.2.1",
-        "php_api": "apache2handler"
-      },
-      "max_upload_size": 8388608
-    }
-  }
-}
-```
-
-### Ping
-
-If the server is setup correctly it will respond with `pong` as plain text.
-
-```http
-GET /server/ping
-```
-
-## Projects
-
-Each instance of Directus can manage multiple projects. A project is comprised of a dedicated SQL database, a config file, and any storage directories.
-
-### Information
-
-Returns information about the server and API instance in relation to project.
-
-```http
-GET /[project]/
-```
-
-An example would be if `upload_max_size` has been increased only for a single project within this API instance.
-
-#### Response
-
-```json
-{
-  "data": {
-    "api": {
-      "version": "2.0.0-rc.2"
-    },
-    "server": {
-      "general": {
-        "php_version": "7.2.1",
-        "php_api": "apache2handler"
-      },
-      "max_upload_size": 8388608
-    }
-  }
-}
-```
-
-### Create Project
-
-Create a new project (database and config file) to be managed by this API instance.
-
-```http
-POST /projects
-```
-
-#### Body
-
-| Attribute       | Description                            | Required
-| --------------- | -------------------------------------- | ---------
-| `project`       | The project key. Default: `_`          | No
-| `force`         | Force the installation                 | No
-| `db_type`       | Database type. Only `mysql` supported  | No
-| `db_host`       | Database host. Default: `localhost`    | No
-| `db_port`       | Database port. Default: `3306`         | No
-| `db_name`       | Database name                          | Yes
-| `db_user`       | Database user name                     | Yes
-| `db_password`   | Database user password                 | No
-| `user_email`    | Directus Admin email                   | Yes
-| `user_password` | Directus Admin password                | Yes
-| `user_token`    | Directus Admin token. Default: `null`  | No
-| `mail_from`     | Default mailer `from` email            | No
-| `project_name`  | The project name. Default: `Directus`  | No
-| `cors_enabled`  | Enable CORS. Default `true`            | No
-| `auth_secret`   | Sets the authentication secret key     | No
-
-::: warning
-When `project` is not specified it will create the default configuration.
-:::
-
-```json
-{
-    "db_name": "directus",
-    "db_user": "root",
-    "db_password": "pass",
-    "user_email": "admin@example.com",
-    "user_password": "password"
-}
-```
-
-## Field Types
-
-Returns the list of Directus field types.
-
-```http
-GET /types
-```
-
-## Webhooks
-
-Webhooks allow you to send an HTTP request when a specific event occurs. Creating a webhook in Directus is done by creating a custom hook that makes an HTTP request.
-
-The example below sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
-
-```json
-{
-  "type": "article",
-  "data": {
-    "title": "new article",
-    "body": "this is a new article"
-  }
-}
-```
-
-```php
-<?php
-
-return [
-    'actions' => [
-        // Send an alert when a article is created
-        'collection.insert.articles' => function (array $data) {
-            $client = new \GuzzleHttp\Client([
-                'base_uri' => 'http://example.com'
-            ]);
-
-            $data = [
-                'type' => 'article',
-                'data' => $data
-            ];
-
-            $response = $client->request('POST', '/alert', [
-                'json' => $data
-            ]);
-        }
-    ]
-];
-```
-
-## Directus Objects
-
-A list of all system objects expected or returned by Directus endpoints.
-
-### Activity Object
-
-| Key                   |  Type             | Description                               |
-| --------------------- | ----------------- | ----------------------------------------- |
-| `id`                  | `integer`         |                                           |
-| `action`              | `string`          |                                           |
-| `action_by`           | `integer`,`User`  |                                           |
-| `action_on`           | `timestamp`       |                                           |
-| `ip`                  | `string`          |                                           |
-| `user_agent`          | `string`          |                                           |
-| `collection`          | `string`          |                                           |
-| `item`                | `string`          |                                           |
-| `edited_on`           | `timestamp`       |                                           |
-| `comment`             | `string`          |                                           |
-| `comment_deleted_on`  | `timestamp`       |                                           |
-
-### Activity Seen Object
-
-| Key                   |  Type                 | Description                               |
-| --------------------- | --------------------- | ----------------------------------------- |
-| `id`                  | `integer`             |                                           |
-| `activity`            | `integer`, `Activity` |                                           |
-| `user`                | `integer`,`User`      |                                           |
-| `seen_on`             | `timestamp`           |                                           |
-| `archived`            | `boolean`             |                                           |
-
-### Collection Object
-
-| Key                   |  Type                | Description                               |
-| --------------------- | -------------------- | ----------------------------------------- |
-| `collection`          | `string`             |                                           |
-| `managed`             | `boolean`            |                                           |
-| `hidden`              | `boolean`            |                                           |
-| `single`              | `boolean`            |                                           |
-| `translation`         | `json`               |                                           |
-| `note`                | `string`             |                                           |
-| `icon`                | `string`             |                                           |
-
-### Collection Preset Object
-
-| Key                   |  Type                | Description                               |
-| --------------------- | -------------------- | ----------------------------------------- |
-| `id`                  | `integer`            |                                           |
-| `title`               | `string`             |                                           |
-| `user`                | `integer`,`User`     |                                           |
-| `role`                | `integer`, `Role`    |                                           |
-| `collection`          | `string`             |                                           |
-| `search_query`        | `string`             |                                           |
-| `filters`             | `json`               |                                           |
-| `view_type`           | `string`             |                                           |
-| `view_query`          | `json`               |                                           |
-| `view_options`        | `json`               |                                           |
-| `translation`         | `json`               |                                           |
-
-### Field Object
-
-| Key                   |  Type                  | Description                               |
-| --------------------- | ---------------------- | ----------------------------------------- |
-| `id`                  | `integer`              |                                           |
-| `collection`          | `string`, `Collection` |                                           |
-| `field`               | `string`               |                                           |
-| `type`                | `string`               |                                           |
-| `interface`           | `string`               |                                           |
-| `options`             | `json`                 |                                           |
-| `locked`              | `boolean`              |                                           |
-| `translation`         | `json`                 |                                           |
-| `readonly`            | `boolean`              |                                           |
-| `required`            | `boolean`              |                                           |
-| `sort`                | `integer`              |                                           |
-| `view_width`          | `integer`              |                                           |
-| `note`                | `string`               |                                           |
-| `hidden_input`        | `boolean`              |                                           |
-| `validation`          | `string`               |                                           |
-| `hidden_list`         | `boolean`              |                                           |
-| `group`               | `integer`              |                                           |
-
-### File Object
-
-### Folder Object
-
-### Permission Object
-
-### Relation Object
-
-### Revision Object
-
-### Role Object
-
-### Setting Object
-
-### User Object
-
-### User Role Object
