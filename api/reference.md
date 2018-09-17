@@ -2115,6 +2115,10 @@ DELETE /[project]/users/[id]
 DELETE /[project]/users/[id1],[id2],[id3]
 ```
 
+::: tip NOTE
+Instead of deleting a user, you should instead soft-delete them (update their `status` to "suspended" or "deleted") to maintain accountability relations with the `directus_users.id`. Only hard-delete if the user was created in error and never used.
+:::
+
 ::: danger WARNING
 Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
 :::
@@ -2288,7 +2292,7 @@ POST /[project]/utils/random/string
 
 ## Mail
 
-### Send an Email
+### Send Email
 
 Send an email to one or more recipients.
 
