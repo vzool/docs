@@ -4,23 +4,23 @@
 
 ### Versioning
 
-The Directus API uses SemVer for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
+The Directus API uses [SemVer](https://semver.org/) for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that existing API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
 ### Projects
 
-All endpoints are prefixed with the a project  name (based on a configuration file name). The API will try to find a configuration file that matches a given project name and use it as the request configuration. The underscore (`_`) is reserved as the default project name.
+All endpoints are prefixed with a project key (based on the configuration file name). The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
 
 Below are few examples of API requests when your API is located in an `/api` sub-directory:
 
-*   `/api/_/collections` (uses default config file `api.php`)
-*   `/api/prod/items/projects` (uses prod config file `api.prod.php`)
+*   `/api/_/collections` (uses the default config file `api.php`)
+*   `/api/prod/items/projects` (uses "prod" config file `api.prod.php`)
 
-::: tip
-The naming format of the configuration file is `api.<project-name>.php`
+::: tip NOTE
+The naming format of the configuration file is `api.<project-key>.php`
 :::
 
-::: warning NOTE
-A default api project (`api.php`) is required in order for the api to work.
+::: warning
+A default API project (`api.php`) is required in order for the API to function properly.
 :::
 
 ### Response Format
@@ -40,27 +40,27 @@ All output will adhere to the same general JSON structure:
 
 ### HTTP Status Codes
 
-The API uses HTTP status codes in addition to the message value. Everything in the 200 range is a valid response. The API does not serve translated error messages based on locale.
+The API uses HTTP status codes in addition to the message value. Everything in the 200 range is a valid response.
 
-| Code | Description           |
-| ---- | --------------------- |
-| 200  | OK                    |
-| 201  | Created               |
-| 204  | No Content            |
-| 400  | Bad Request           |
-| 401  | Unauthorized          |
-| 403  | Forbidden             |
-| 404  | Not Found             |
-| 409  | Conflict              |
-| 422  | Unprocessable Entity  |
-| 500  | Internal Server Error |
-| 503  | Service Unavailable   |
-
-The `error` property is only present when an error has occurred.
+| Code   | Description           |
+| ------ | --------------------- |
+| `200`  | OK                    |
+| `201`  | Created               |
+| `204`  | No Content            |
+| `400`  | Bad Request           |
+| `401`  | Unauthorized          |
+| `403`  | Forbidden             |
+| `404`  | Not Found             |
+| `409`  | Conflict              |
+| `422`  | Unprocessable Entity  |
+| `500`  | Internal Server Error |
+| `503`  | Service Unavailable   |
 
 ### Error Codes
 
-#### General error codes
+The API uses numeric codes to avoid the need for translated error messages based on locale. The `error` property is only present when an error has occurred.
+
+#### General Error Codes
 
 - **0000** - Internal Error (500)
 - **0001** - Not Found (404)
@@ -71,17 +71,17 @@ The `error` property is only present when an error has occurred.
 - **0006** - Method Not Allowed (405)
 - **0007** - Too Many Requests (429)
 - **0008** - API Project Configuration Not Found (404)
-- **0009** - Failed generating a SQL Query (500)
+- **0009** - Failed Generating SQL Query (500)
 - **0010** - Forbidden (403)
-- **0011** - Failed to connect to the database (500)
+- **0011** - Failed to Connect to the Database (500)
 - **0012** - Unprocessable Entity (422)
 - **0013** - Invalid or Empty Payload (400)
-- **0014** - Default Instance not configured properly (503)
-- **0015** - Batch upload not allowed (400)
-- **0016** - Invalid filesystem path (500)
-- **0017** - Invalid configuration path (422)
-- **0018** - Project name already exists (409)
-- **0018** - Unauthorized location access (401)
+- **0014** - Default Project Not Configured Properly (503)
+- **0015** - Batch Upload Not Allowed (400)
+- **0016** - Invalid Filesystem Path (500)
+- **0017** - Invalid Configuration Path (422)
+- **0018** - Project Name Already Exists (409)
+- **0018** - Unauthorized Location Access (401)
 
 #### Authentication Error Codes
 
@@ -92,8 +92,8 @@ The `error` property is only present when an error has occurred.
 - **0104** - Invalid Reset Password Token (401)
 - **0105** - Expired Reset Password Token (401)
 - **0106** - User Not Found (404)
-- **0107** - User with a given email Not Found (404)
-- **0108** - User not authenticated (401)
+- **0107** - User with Provided Email Not Found (404)
+- **0108** - User Not Authenticated (401)
 
 #### Items Error Codes
 
@@ -102,88 +102,87 @@ The `error` property is only present when an error has occurred.
 - **0202** - Field Not Found (404)
 - **0203** - Item Not Found (404)
 - **0204** - Duplicate Item (409)
-- **0205** - Collection not being managed by Directus
-- **0206** - Field not being managed by Directus
+- **0205** - Collection Not Managed by Directus
+- **0206** - Field Not Managed by Directus
 - **0207** - Revision Not Found (404)
-- **0208** - Revision has an invalid delta
-- **0209** - Field Invalid (400) - Trying to use a field that doesn't exists for actions such as filtering and sorting
-- **0210** - Cannot add a comment to an item
-- **0211** - Cannot edit a comment from an item
-- **0212** - Cannot delete a comment from an item
+- **0208** - Revision Has Invalid Delta
+- **0209** - Field Invalid (400) - _Trying to use a field that doesn't exists for actions such as filtering and sorting_
+- **0210** - Can Not Create Comment for Item
+- **0211** - Can Not Update Comment for Item
+- **0212** - Can Not Delete Comment from Item
 
 #### Collections Error Codes
 
-- **0300** - Reading items denied (403)
-- **0301** - Creating items denied (403)
-- **0302** - Updating items denied (403)
-- **0303** - Deleting items denied (403)
-- **0304** - Reading field denied (403)
-- **0305** - Writing to field denied (403)
-- **0306** - Altering collection was denied (403)
-- **0307** - Collection already exists (422)
-- **0308** - Field already exists (422)
-- **0309** - Unable to find items owned by an specific user (403)
+- **0300** - Reading Items Denied (403)
+- **0301** - Creating Items Denied (403)
+- **0302** - Updating Items Denied (403)
+- **0303** - Deleting Items Denied (403)
+- **0304** - Reading Field Denied (403)
+- **0305** - Updating Field Denied (403)
+- **0306** - Altering Collection Denied (403)
+- **0307** - Collection Already Exists (422)
+- **0308** - Field Already Exists (422)
+- **0309** - Unable to Find Items Owned by User (403)
 
 #### Schema Error Codes
 
 - **0400** - Unknown Error (500)
-- **0401** - Unknown data type (400)
+- **0401** - Unknown Data Type (400)
 
 #### Mail Error Codes
 
-- **0500** - Mailer Transport not found (500)
-- **0501** - Invalid Transport option (500)
-- **0502** - Invalid Transport instance (500)
+- **0500** - Mailer Transport Not Found (500)
+- **0501** - Invalid Transport Option (500)
+- **0502** - Invalid Transport Instance (500)
 
 #### Filesystem Error Codes
 
 - **0600** - Unknown Error (500)
-- **0601** - The uploaded file exceeds max upload size that was specified on the server (500)
-- **0602** - The uploaded file exceeds the max upload size that was specified in the client (500)
-- **0603** - The uploaded file was only partially uploaded (500)
-- **0604** - No file was uploaded (500)
-- **0605** - _Not defined yet_
-- **0606** - Missing temporary upload folder (500)
-- **0607** - Failed to write file to disk (500)
-- **0608** - A PHP extension stopped the file upload (500)
+- **0601** - Uploaded File Exceeds Server's Max Upload Size (500)
+- **0602** - Uploaded File Exceeds Client's Max Upload Size (500)
+- **0603** - File Only Partially Uploaded (500)
+- **0604** - No File Uploaded (500)
+- **0605** - _Not yet defined_
+- **0606** - Missing Temporary Upload Directory (500)
+- **0607** - Failed to Write File to Disk (500)
+- **0608** - File Upload Stopped by PHP Extension (500)
 
 #### Utils Error Codes
 
-- **1000** - Hasher not found (400)
+- **1000** - Hasher Not Found (400)
 
 ### Validation
 
 The API performs two types of validation on submitted data:
 
-*   **Data Type** – The API checks the submitted value's type against the directus or database's field type. For example, a String submitted for an INT field will result in an error.
+*   **Data Type** – The API checks the submitted value's type against the Directus or database's field type. For example, a String submitted for an INT field will result in an error.
 *   **RegEx** – The API checks the submitted value against its column's `directus_fields.validation` RegEx. If the value doesn't match then an error will be returned.
 
+### Create Project
 
-### Create Instance
-
-Create a new instance connection.
+Create a new project (and database) to be managed by this API instance.
 
 ```http
-POST /instances
+POST /projects
 ```
 
 #### Body
 
 | Attribute       | Description                            | Required
 | --------------- | -------------------------------------- | ---------
-| `project`       | The project name. Default: `_`         | No
+| `project`       | The project key. Default: `_`          | No
 | `force`         | Force the installation                 | No
 | `db_type`       | Database type. Only `mysql` supported  | No
 | `db_host`       | Database host. Default: `localhost`    | No
 | `db_port`       | Database port. Default: `3306`         | No
 | `db_name`       | Database name                          | Yes
-| `db_user`       | Database username                      | Yes
+| `db_user`       | Database user name                     | Yes
 | `db_password`   | Database user password                 | No
-| `user_email`    | Admin email                            | Yes
-| `user_password` | Admin password                         | Yes
-| `user_token`    | Admin token. Default: `null`           | No
+| `user_email`    | Directus Admin email                   | Yes
+| `user_password` | Directus Admin password                | Yes
+| `user_token`    | Directus Admin token. Default: `null`  | No
 | `mail_from`     | Default mailer `from` email            | No
-| `project_name`  | The project title. Default: `Directus` | No
+| `project_name`  | The project name. Default: `Directus`  | No
 | `cors_enabled`  | Enable CORS. Default `true`            | No
 | `auth_secret`   | Sets the authentication secret key     | No
 
@@ -203,23 +202,21 @@ When `project` is not specified it will create the default configuration.
 
 ## Authentication
 
-Most endpoints are checked against the permissions settings. If a user is not authenticated or isn’t allowed to access certain endpoints then API will respond with either a `401 Unauthorized` or a `403 Forbidden` respectively. In addition to these status codes, the API returns a specific reason in the `error.message` field.
+Most endpoints are checked against permissions. If a user is not authenticated or isn’t allowed to access certain endpoints then the API will respond with either a `401 Unauthorized` or a `403 Forbidden` respectively. In addition to these status codes, the API returns a specific reason in the `error.message` field.
 
 ### Tokens
 
-To gain access to protected data, you must include an access token with every request.
+To gain access to protected data, you must include an access token with every request. There are two types of tokens.
 
-There are two types of tokens.
+#### Static Tokens
 
-#### "Static" tokens
+These optional tokens never expire and can be assigned to specific Directus users within `directus_users.token`.
 
-These tokens never expired and they could be assigned to an user.
+#### Temporary Tokens
 
-#### Temporary tokens
+These tokens are generated upon the user's request and follow the [JWT spec](https://jwt.io).
 
-These tokens are generated on user request and follows the [JWT spec](https://jwt.io).
-
-The JWT token payload contains the user id, type of token (`auth`), and an expiration date, which is signed with a secret key using `HS256` hashing algorithm.
+The JWT token payload contains the user id, type of token (`auth`), and an expiration date, which is signed with a secret key using the `HS256` hashing algorithm.
 
 There are several ways to include this access token:
 
@@ -231,7 +228,7 @@ curl -H "Authorization: Bearer staticToken" https://example.com/api/`
 ```
 
 ::: warning NOTE
-For security reason Apache hide the Authorization header to prevent other scripts from seeing the credentials used to access the server. Make sure your Apache passes the `Authentication` header. [Read more](https://httpd.apache.org/docs/2.4/en/mod/core.html#cgipassauth)
+For security reasons Apache hides the Authorization header to prevent other scripts from seeing the credentials used to access the server. Make sure your Apache is passing the `Authentication` header. [Read more](https://httpd.apache.org/docs/2.4/en/mod/core.html#cgipassauth)
 :::
 
 #### 2. HTTP Basic Auth
@@ -241,9 +238,9 @@ curl -u Py8Ru.muLD7HE.5juFrOR5: https://example.com/api/
 curl -u staticToken: https://example.com/api/
 ```
 
-Notice that the token is `Py8Ru.muLD7HE.5juFrOR5` and has a colon `:` at the end. Using the Basic auth, the auth user is the token and the auth password should be either blank or the same token.
+Notice that the token is `Py8Ru.muLD7HE.5juFrOR5` and has a colon `:` at the end. Using Basic auth, the auth user is the token and the auth password should be either blank or the same token.
 
-#### 3. Query `access_token` Parameter
+#### 3. Query Parameter
 
 ```
 curl https://example.com/api/?access_token=Py8RumuLD.7HE5j.uFrOR5
@@ -252,7 +249,7 @@ curl https://example.com/api/?access_token=staticToken
 
 ### Get Auth Token
 
-Gets a token from a Directus user's credentials.
+Gets a token after validating the Directus user's credentials.
 
 ```http
 POST /[project]/auth/authenticate
@@ -273,38 +270,37 @@ The users credentials.
 The access token that is returned through this endpoint must be used with any subsequent requests except for endpoints that don’t require auth.
 :::
 
-
 #### Protected Endpoints
 
 | Endpoint                       | Protected
 | ------------------------------ | -----------------------
-| /[project]/                    | Yes
-| /[project]/activity            | Yes
+| /[project]/                    | **Yes**
+| /[project]/activity            | **Yes**
 | /[project]/auth                | No
-| /[project]/collections         | Yes
-| /[project]/collection_presets  | Yes
+| /[project]/collections         | **Yes**
+| /[project]/collection_presets  | **Yes**
 | /[project]/custom              | No
-| /[project]/fields              | Yes
-| /[project]/files               | Yes
-| /[project]/items               | Yes
-| /[project]/interfaces          | Yes
-| /[project]/mail                | Yes
-| /[project]/pages               | Yes
-| /[project]/permissions         | Yes
-| /[project]/relations           | Yes
-| /[project]/revisions           | Yes
-| /[project]/roles               | Yes
-| /[project]/scim/v2             | Yes
-| /[project]/settings            | Yes
-| /[project]/users               | Yes
-| /[project]/utils               | Yes
-| /                              | Yes
-| /instances                     | No
-| /interfaces                    | Yes
-| /layouts                       | Yes
-| /pages                         | Yes
+| /[project]/fields              | **Yes**
+| /[project]/files               | **Yes**
+| /[project]/items               | **Yes**
+| /[project]/interfaces          | **Yes**
+| /[project]/mail                | **Yes**
+| /[project]/pages               | **Yes**
+| /[project]/permissions         | **Yes**
+| /[project]/relations           | **Yes**
+| /[project]/revisions           | **Yes**
+| /[project]/roles               | **Yes**
+| /[project]/scim/v2             | **Yes**
+| /[project]/settings            | **Yes**
+| /[project]/users               | **Yes**
+| /[project]/utils               | **Yes**
+| /                              | **Yes**
+| /projects                      | No
+| /interfaces                    | **Yes**
+| /layouts                       | **Yes**
+| /pages                         | **Yes**
 | /server/ping                   | No
-| /types                         | Yes
+| /types                         | **Yes**
 
 ### Refresh Auth Token
 
@@ -330,9 +326,9 @@ The access token that is returned through this endpoint must be used with any su
 
 ### Password Reset Request
 
-The API will send an email to the requested user’s email containing a link with a short-lived reset token. This reset token can be used to finish the password reset flow.
+The API will send an email to the requested user’s email containing a link with a short-lived reset token link. This reset token can be used to finish the password reset flow.
 
-The reset token is a JWT token that include the user id, email, type (`reset_password`) and expiration time.
+The reset token is a JWT token that includes the user id, email, type (`reset_password`), and expiration time.
 
 ```http
 POST /[project]/auth/password/request
@@ -350,9 +346,9 @@ The user's email address and the app URL from which the reset is requested.
 
 ### Password Reset
 
-The API checks the validity of the reset token, that it hasn't expired, and the email address contained in the token payload matches one in the database.
+The API checks the validity of the reset token, that it hasn't expired, and that the email address contained in the token payload matches one in the database.
 
-It uses a GET request so user can be requested from email clients.
+It uses a GET request so users can access it from links within their email clients.
 
 This endpoint generates a random password for the user and sends it to their email address. The user is encourage to change this password as soon as possible.
 
@@ -366,7 +362,7 @@ GET /[project]/auth/password/reset/[reset-token]
 GET /[project]/auth/sso
 ```
 
-A list of third-party Single Sign-On (SSO) authentication services, such as Google and Facebook.
+A list of third-party Single Sign-On (SSO) authentication services available for this project, such as Google and Facebook.
 
 ### Authorization Redirect
 
@@ -382,7 +378,7 @@ Automatically redirects to the authorization url if the origin host is allowed b
 This endpoint is only useful when the callback is not handled by the API. See: /[project]/auth/sso/[provider]/callback.
 :::
 
-When the server authorized the user after authenticated it returns a `oauth_token` and `oauth_verifier` (version 1.0) or `code` (version 2.0).
+When the server has authorized the user after being authenticated, it returns an `oauth_token` and `oauth_verifier` (version 1.0) or `code` (version 2.0).
 
 ```http
 POST /[project]/auth/sso/[provider]
@@ -415,7 +411,7 @@ The user's email address and the app URL from which the reset is requested.
 GET /[project]/auth/sso/[provider]/callback
 ```
 
-Set this url as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
+Set this URL as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
 
 ### Get Access Token
 
@@ -435,28 +431,40 @@ Using the request token that was returned by the `/[project]/auth/sso/[provider]
 
 ## Query Parameters
 
-The API have a set of query parameters that can be used for specific actions, such as filter, sort, limit and choose the fields from a result.
-
-The supported query parameters are listed below:
+The API has a set of query parameters that can be used for specific actions, such as: filtering, sorting, limiting, and choosing fields. These supported query parameters are listed below:
 
 | Name          | Description                                                                |
 | ------------- | -------------------------------------------------------------------------- |
-| `fields`      | Include the specific fields in the result
-| `limit`       | The maximum number of items in the result
 | `meta`        | Include metadata related to the result
-| `offset`      | The results offset in combination with `limit`
+| `fields`      | Include only specific fields in the result
+| `limit`       | The maximum number of items in the result
+| `offset`      | The results offset, in combination with `limit`
 | `single`      | Returns the first item
 | `sort`        | Sorting the results by one or multiple fields
-| `status`      | Search for items status with the given statuses
+| `status`      | Filter items by the provided statuses
 | `filter`      | Search for items that matches the filters
 | `lang`        | Include translation information
 | `q`           | Search for items that matches the given string in any of their fields*
 | `groups`      | Groups the items by one or more fields
 | `joins`       | Joins the result with another collection using SQL Joins
 
+### Metadata
+
+The `meta` parameter is a CSV of metadata fields to include. This parameter supports the wildcard (`*`) to return all metadata fields.
+
+#### Options
+
+*   `result_count` - Number of items returned in this response
+*   `total_count` - Total number of items in this collection
+*   `status` - Collection item count by statuses
+*   `collection` - The collection name
+*   `type`
+    *   `collection` If it is a collection of items
+    *   `item` If it is a single item
+
 ### Fields
 
-`fields` is a CSV of columns to include in the result. This parameter supports dot notation to request nested relational fields. You can also use a wildcard (`*`) for "all fields".
+`fields` is a CSV of columns to include in the result. This parameter supports dot notation to request nested relational fields. You can also use a wildcard (`*`) to include all fields at a specific depth.
 
 #### Examples
 
@@ -473,20 +481,6 @@ Using `limit` can be set the maximum number of items that will be returned.
 #### Examples
 
 *   `limit=10` Returns a maximum of 10 items.
-
-### Metadata
-
-The `meta` parameter is a CSV of metadata fields to include. This parameter supports the wildcard (`*`) to return all metadata fields.
-
-#### Options
-
-*   `result_count` - Number of items returned in this response
-*   `total_count` - Total number of items in this collection
-*   `status` - Collection item count by statuses
-*   `collection` - The collection name
-*   `type`
-    *   `collection` if it is a collection of items
-    *   `item` if it is a single item
 
 ### Offset
 
@@ -510,52 +504,56 @@ Instead of returning a list, the result data will be an object representing the 
 
 ### Sorting
 
-`sort` is a CSV of fields used to sort fetched items. Sorting defaults to ascending (ASC) order but a minus sign (`-`) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can use a `?` to sort randomly.
+`sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (`-`) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a `?` to sort randomly.
 
 #### Examples
 
 *   `sort=?` Sorts randomly
 *   `sort=name` Sorts by `name` ASC
-*   `&sort=name,-age` Sorts by `name` ASC followed by `age` DESC
-*   `sort=name,-age,?` Sorts by `name` ASC followed by `age` DESC, followed by random sorting
+*   `&sort=name,-age` Sorts by `name` ASC, followed by `age` DESC
+*   `sort=name,-age,?` Sorts by `name` ASC, followed by `age` DESC, followed by random sorting
+
+### Status
+
+@TODO
 
 ### Filtering
 
-Used to search items from a collection that matches the filters conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
+Used to search items in a collection that matche the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
 
 #### Filter Operators
 
 | Operator             | Description                            |
 | -------------------- | -------------------------------------- |
 | `=`, `eq`            | Equal to                               |
-| `<>`, `!=`, `neq`    | Not Equal to                           |
+| `<>`, `!=`, `neq`    | Not equal to                           |
 | `<`, `lt`            | Less than                              |
 | `<=`, `lte`          | Less than or equal to                  |
 | `>`, `gt`            | Greater than                           |
 | `>=`, `gte`          | Greater than or equal to               |
 | `in`                 | Exists in one of the values            |
-| `nin`                | Not exists in one of the values        |
+| `nin`                | Not in one of the values               |
 | `null`               | It is null                             |
 | `nnull`              | It is not null                         |
 | `contains`, `like`   | Contains the substring                 |
-| `ncontains`, `nlike` | Doesn't contain this substring         |
+| `ncontains`, `nlike` | Doesn't contain the substring          |
 | `between`            | The value is between two values        |
 | `nbetween`           | The value is not between two values    |
 | `empty`              | The value is empty (null or falsy)     |
 | `nempty`             | The value is not empty (null or falsy) |
-| `all`                | Contains all given related items's IDs |
+| `all`                | Contains all given related item's IDs  |
 | `has`                | Has one or more related items's IDs    |
 
 #### AND vs OR
 
-By default, all chained filters are treated as ANDs, which means all conditions should match. To create an OR combination, you can add the `logical` operator, as shown below:
+By default, all chained filters are treated as ANDs, which means _all_ conditions must match. To create an OR combination, you can add the `logical` operator, as shown below:
 
 ```
 GET /items/projects?filter[category][eq]=development&filter[title][logical]=or&filter[title][like]=design
 ```
 
 ::: tip
-In nearly all cases, it makes more sense to use the `in` operator instead of going with the logical-or. For example, the above example can be rewritten as
+In many cases, it makes more sense to use the `in` operator instead of going with the logical-or. For example, the above example can be rewritten as
 
 ```
 GET /items/projects?filter[category][in]=development,design
@@ -563,15 +561,15 @@ GET /items/projects?filter[category][in]=development,design
 
 :::
 
-#### Filtering by Date/DateTime
+#### Filtering by Dates and Times
 
-The format for date type is `YYYY-MM-DD` and for datetime is `YYYY-MM-DD HH:MM:SS`. This formats translate to `2018-08-29 14:51:22`.
+The format for date is `YYYY-MM-DD` and for datetime is `YYYY-MM-DD HH:MM:SS`. This formats translate to `2018-08-29 14:51:22`.
 
 - Year in `4` digits
 - Months, days, minutes and seconds in two digits, adding leading zero padding when it's a one digit month
 - Hour in 24 hour format
 
-@TODO: Soon to implement
+@TODO: Implemented soon
 
 Alias for current datetime `now` and current date `today`.
 
@@ -597,46 +595,15 @@ GET /items/comments?filter[datetime][lte]=2018-05-21 15:48:03,2018-05-21 15:49:0
 
 ### Language
 
-The `lang` parameter is a CSV of languages that should be returned with the response. This parameter can only be used when a Translation field has been included in the collection. This parameter supports the wildcard (`*`) to return all translations.
+The `lang` parameter is a CSV of languages that should be returned with the response. This parameter can only be used when a Translation field has been included in the collection. This parameter supports the wildcard (`*`) to return all language translations.
 
 ### Search Query
 
-The `q` parameter allows you to perform a search on all numeric or string-based fields within the collection (see list below). It's an easy way to search for an item without creating complex field filters – though it is far less optimized.
-
-#### Searched Datatypes
-
-* `CHAR`
-* `VARCHAR`
-* `TINYTEXT`
-* `TEXT`
-* `MEDIUMTEXT`
-* `LONGTEXT`
-* `TINYJSON`
-* `JSON`
-* `MEDIUMJSON`
-* `LONGJSON`
-* `ARRAY`
-* `LANG`
-* `UUID`
-* `TINYINT`
-* `SMALLINT`
-* `INTEGER`
-* `INT`
-* `MEDIUMINT`
-* `BIGINT`
-* `SERIAL`
-* `FLOAT`
-* `DOUBLE`
-* `DECIMAL`
-* `REAL`
-* `NUMERIC`
-* `CURRENCY`
-* `SET`
-* `ENUM`
+The `q` parameter allows you to perform a search on all `string` and `number` type fields within a collection. It's an easy way to search for an item without creating complex field filters – though it is far less optimized. It only searches the root item's fields, related item fields are not included.
 
 ### Groups
 
-The `groups` parameter allows to group the result for one or more fields.
+The `groups` parameter allows grouping the result by one or more fields.
 
 #### Examples
 
@@ -644,18 +611,17 @@ The `groups` parameter allows to group the result for one or more fields.
 
 ### Joins
 
-The `joins` parameter allows to join items from a collection to the main result.
+The `joins` parameter allows joining items from another collection to the main result.
 
 #### Examples
 
 @TODO: Add examples and useful examples behind this feature
 
-
 ## Items
 
 Items are essentially individual database records which each contain one or more fields (database columns). Each item belongs to a specific collection (database table) and is identified by the value of its primary key field. In this section we describe the different ways you can manage items.
 
-This endpoint is dedicated to all user-defined collections only. Accessing system tables are forbidden. See [Systems endpoints](#system) for more information.
+This endpoint is dedicated to all user-defined collections only. Accessing system tables is forbidden. See [Systems Endpoints](#system) for more information.
 
 ### Create Items
 
@@ -669,8 +635,6 @@ POST /[project]/items/[collection-name]
 
 A single item or an array of multiple items to be created. Field keys must match the collection's column names.
 
-##### Single Item (Regular)
-
 ```json
 {
     "title": "Project One",
@@ -678,7 +642,7 @@ A single item or an array of multiple items to be created. Field keys must match
 }
 ```
 
-##### Multiple Items (Batch)
+_Or, for batch creating multiple items:_
 
 ```json
 [
@@ -694,16 +658,15 @@ A single item or an array of multiple items to be created. Field keys must match
 ```
 
 ::: tip
-The API may not return any data for successful requests if the user doesn't have adequate read permission. `204 NO CONTENT` is returned instead.
+The API may not return any data for successful requests if the user doesn't have adequate read permission. Instead, `204 NO CONTENT` is returned.
 :::
 
-### Get Items
+### Get Item
 
-Get one or more single items from a given collection.
+Get a single item from a given collection using its primary key (PK).
 
 ```http
-GET /[project]/items/[collection-name]/[id]
-GET /[project]/items/[collection-name]/[id1],[id2],[id3]
+GET /[project]/items/[collection-name]/[pk]
 ```
 
 #### Supported Query Parameters
@@ -717,18 +680,38 @@ GET /[project]/items/[collection-name]/[id1],[id2],[id3]
 
 #### Examples
 
-*   Return the project item with an ID of `1`
+*   Return the project item with an primary key of `1`
     ```bash
     curl -u <token>: https://api.directus.io/_/items/projects/1
     ```
-    *   Return project items with IDs of `1`, `3`, `11`
+
+### Get Multiple Items
+
+Get multiple items from a given collection using their primary keys (PK).
+
+```http
+GET /[project]/items/[collection-name]/[pk1],[pk2],[pk3]
+```
+
+#### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `status`      |
+| `lang`        |
+
+#### Examples
+
+*   Return project items with primary keys of `1`, `3`, `11`
     ```bash
     curl -u <token>: https://api.directus.io/_/items/projects/1,3,11
     ```
 
-### List Items
+### Get Items
 
-Get an array of items from a given collection.
+Get an array of items within a given collection.
 
 ```http
 GET /[project]/items/[collection-name]
@@ -760,7 +743,7 @@ GET /[project]/items/[collection-name]
 
 ### Get Item Revision
 
-Get a specific revision from a given item. This endpoint uses a zero-based offset to select a revision, where `0` is the creation revision. Negative offsets are allowed, and select as if `0` is the current revisions.
+Get a specific revision of an item. This endpoint uses a zero-based offset to select a revision, where `0` is the creation revision. Negative offsets are allowed, and select as if `0` is the current revision.
 
 ```http
 GET /[project]/items/[collection-name]/[id]/revisions/[offset]
@@ -818,7 +801,7 @@ GET /[project]/items/[collection-name]/[id]/revisions
     curl https://api.directus.io/_/items/projects/1/revisions
     ```
 
-### Update Items
+### Update Item
 
 Update or replace a single item from a given collection.
 
@@ -861,7 +844,7 @@ PATCH /[project]/items/[collection-name]/[id1],[id2],...
 :::
 
 ::: danger WARNING
-Batch Update can quickly overwrite large amounts of data. Please be careful when implementing this request.
+Batch updating can quickly overwrite large amounts of data. Please be careful when implementing this request.
 :::
 
 #### Body
@@ -875,7 +858,7 @@ Update multiple items with the same data: `PATCH /items/projects/1,2`
 }
 ```
 
-Update multiple items, each with its dataset: `PATCH /items/projects`. Each items requires its primary key fields to identify where the dataset will belongs to.
+Update multiple items, each with its dataset: `PATCH /items/projects`. Each item requires a primary key fields to identify to which item the dataset belongs.
 
 
 ```json
@@ -890,7 +873,7 @@ Update multiple items, each with its dataset: `PATCH /items/projects`. Each item
 
 ### Revert Item
 
-Reverts a single item to a previous revision state.
+Reverts an item to a previous revision state.
 
 ```http
 PATCH /[project]/items/[collection-name]/[item-id]/revert/[revision-id]
@@ -898,11 +881,11 @@ PATCH /[project]/items/[collection-name]/[item-id]/revert/[revision-id]
 
 #### Body
 
-There is no need for a body to do this request.
+There is no need for a body with this request.
 
 #### Examples
 
-*   Revert the project item (ID:`1`) to its previous state in revision (ID:`2`)
+*   Revert the project item (PK:`1`) to its previous state in revision (PK:`2`)
     ```bash
     curl -u <token>: https://api.directus.io/_/items/projects/1/revert/2
     ```
@@ -922,7 +905,7 @@ Batch Delete can quickly destroy large amounts of data. Please be careful when i
 
 ## System
 
-@TODO All these endpoints need to have the same reference as listed above
+@TODO These endpoints need the same reference as listed above
 
 All system tables (`directus_*`) are blocked from being used through the regular `/items` endpoint to prevent security leaks or because they require additional processing before sending to the end user. This means that any requests to `/items/directus_*` will always return `401 Unauthorized`.
 
@@ -936,14 +919,14 @@ These system endpoints still follow the same spec as a “regular” `/items/[co
 | -------------- | ---------------------------------------------------------- |
 | `authenticate` | User authenticated using credentials                       |
 | `comment`      | Comment was added to an item                               |
+| `upload`       | File was created                                           |
 | `create`       | Item was created                                           |
-| `upload`       | File item was created                                      |
 | `update`       | Item was updated                                           |
 | `delete`       | Item was deleted                                           |
-| `soft-delete`  | Item was soft-deleted. Update to a soft-deleted status     |
-| `revert`       | Item was updated using a revision data                     |
+| `soft-delete`  | Item was soft-deleted. Updated to a soft-deleted status    |
+| `revert`       | Item was updated using a revision's data                   |
 
-#### List Activity
+#### Get Activity
 
 Returns a list of activity.
 
@@ -972,6 +955,7 @@ Get one or more activity events.
 
 ```http
 GET /[project]/activity/[id]
+GET /[project]/activity/[id1],[id2],[id3]
 ```
 
 ##### Supported Query Parameters
@@ -985,7 +969,7 @@ GET /[project]/activity/[id]
 
 #### Create Comment
 
-Create a new comment, which needs to be related to a collection/item.
+Create a new comment on an item. Each comment must include the item primary key and its parent collection name.
 
 ```http
 POST /[project]/activity/comment
@@ -1005,7 +989,7 @@ A single object representing the new comment.
 
 #### Update Comment
 
-Update a comment using a comment id.
+Update a comment by its id.
 
 ```http
 POST /[project]/activity/comment/[id]
@@ -1023,7 +1007,7 @@ A single object representing the new comment. The collection and item fields are
 
 #### Delete Comment
 
-Delete a comment using a comment id.
+Delete a comment by its id.
 
 ```http
 DELETE /[project]/activity/comment/[id]
@@ -1031,39 +1015,23 @@ DELETE /[project]/activity/comment/[id]
 
 ### Collections
 
-These endpoints are used for creating, reading, updating, or deleting collections. Similar to `/fields`, it alters the database schema directly when needed.
-
-#### List Collections
-
-```http
-GET /[project]/collections
-```
-
-Returns the list of all collections in the database.
-
-#### Get Collection
-
-```http
-GET /[project]/collections/[name]
-```
-
-Returns the details of a single collection.
+These endpoints are used for creating, reading, updating, and deleting collections. Similar to `/fields`, it alters the database schema directly as needed.
 
 #### Create Collection
+
+Creates a new collection.
 
 ```http
 POST /[project]/collections
 ```
 
-Creates a new collection.
-
-In the top-level object `collection` fields is required.
+In the top-level object, the `collection` field is required.
 
 In the `fields` list, `field`, `type`, and `interface` are required.
 
-There's time when `datatype` is required because `type` supports different types, such as `primary_key` type that supports string and number type, and It is required to set the `datatype` to a numeric or string data type.
+The `datatype` (database vendor specific) may also be required if the `type` supports different datatypes. For example, the `primary_key` type supports both _string_ and _number_, so it is also required to set the `datatype` to a numeric or string datatype.
 
-Also when the `type` requires a length, such as a string or numeric type, a `length` attribute is needed.
+When `type` requires a length, such as a string or numeric, a `length` attribute is required.
 
 ```json
 {
@@ -1073,7 +1041,7 @@ Also when the `type` requires a length, such as a string or numeric type, a `len
     "hidden": false,
     "single": false,
     "translation": null,
-    "note": "This collection will stored all our projects",
+    "note": "This collection will store all of our projects",
     "icon": null,
     "fields": [
         {
@@ -1099,17 +1067,33 @@ Also when the `type` requires a length, such as a string or numeric type, a `len
 }
 ```
 
+#### Get Collections
+
+Returns a list of all collections in the database.
+
+```http
+GET /[project]/collections
+```
+
+#### Get Collection
+
+Returns the details of a single collection.
+
+```http
+GET /[project]/collections/[name]
+```
+
 #### Update Collection
+
+Adds new fields, updates existing fields, and manages the other details of a given collection.
 
 ```http
 PATCH /[project]/collections/[name]
 ```
 
-Updates the details, add or update fields of a given collection.
-
 ```json
 {
-    "note": "This collection stores all our clients projects",
+    "note": "This collection stores all of our client projects",
     "fields": [
         {
             "field": "title",
@@ -1119,112 +1103,33 @@ Updates the details, add or update fields of a given collection.
 }
 ```
 
+::: danger WARNING
+Updating field names, can break existing API endpoints and changing field length/type can result in a loss of data. Please be careful when implementing this request.
+:::
+
 #### Delete Collection
+
+Permanently deletes a collection information, the table and all its contents.
 
 ```http
 DELETE /[project]/collections/[name]
 ```
 
-Permanently deletes a collection information, the table and all its contents.
-
-### Collection Presets
-
-These endpoints are used for creating, reading, updating, or deleting collection presets.
-
-#### List Collection Presets
-
-```http
-GET /[project]/collection_presets
-```
-
-Returns the list of collection presets.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `limit`       |
-| `meta`        |
-| `offset`      |
-| `single`      |
-| `sort`        |
-| `filter`      |
-| `q`           |
-| `groups`      |
-| `joins`       |
-
-#### Get Collection Presets
-
-```http
-GET /[project]/collection_presets/[id]
-GET /[project]/collection_presets/[id1],[id2],[idN]
-```
-
-Returns the details of one or more collection presets.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `meta`        |
-| `joins`       |
-
-#### Create Collection Presets
-
-```http
-POST /[project]/collection_presets
-```
-
-Creates a new collection preset.
-
-#### Update Collection Presets
-
-```http
-PATCH /[project]/collection_presets
-PATCH /[project]/collection_presets/[id]
-PATCH /[project]/collection_presets/[id1],[id2],[idN]
-```
-
-Updates the details of one or more collection presets.
-
-#### Delete Collection Presets
-
-```http
-DELETE /[project]/collection_presets/[id]
-DELETE /[project]/collection_presets/[id1],[id2],[idN]
-```
-
-Permanently deletes a collection_presets.
+:::warning
+Deleting a collection removes the actual table and any records therein from the database permanently. Please proceed with extreme caution.
+:::
 
 ### Fields
 
-These endpoints are used for creating, reading, updating, or deleting fields from a collection. It alters the database schema directly when needed. Similar to `/collections`.
+These endpoints are used for creating, reading, updating, and deleting fields within a collection. It alters the database schema directly as needed.
 
-#### List Fields
+#### Create Field
 
-```http
-GET /[project]/fields/[collection]
-```
-
-Returns the list of all fields that belongs to a given collection.
-
-#### Get Field
-
-```http
-GET /[project]/fields/[collection]/[field]
-```
-
-Returns the details of a single field.
-
-#### Create Fields
+Creates a new field in a given collection.
 
 ```http
 POST /[project]/fields/[collection]
 ```
-
-Creates a new field in a given collection.
 
 ```json
 {
@@ -1234,13 +1139,29 @@ Creates a new field in a given collection.
 }
 ```
 
-#### Update Fields
+#### Get Fields
+
+Returns the list of all fields that belongs to a given collection.
+
+```http
+GET /[project]/fields/[collection]
+```
+
+#### Get Field
+
+Returns the details of a single field.
+
+```http
+GET /[project]/fields/[collection]/[field]
+```
+
+#### Update Field
+
+Updates the details of a given field.
 
 ```http
 PATCH /[project]/fields/[collection]/[field]
 ```
-
-Updates the details of a given field.
 
 ```json
 {
@@ -1250,23 +1171,35 @@ Updates the details of a given field.
 
 #### Delete Field
 
+Permanently deletes a field and its content.
+
 ```http
 DELETE /[project]/fields/[collection]
 ```
 
-Permanently deletes a field and its content.
+:::warning
+Deleting a field removes the actual column and any data therein from the database permanently. Please proceed with extreme caution.
+:::
 
-### Files
+### Collection Presets
 
-These endpoints are used for uploading, updating, and deleting files and virtual folders.
+These endpoints are used for creating, reading, updating, and deleting collection presets.
 
-#### List Files
+#### Create Collection Preset
+
+Creates a new collection preset.
 
 ```http
-GET /[project]/files
+POST /[project]/collection_presets
 ```
 
-Returns the list of files.
+#### Get Collection Presets
+
+Returns a list of collection presets.
+
+```http
+GET /[project]/collection_presets
+```
 
 ##### Supported Query Parameters
 
@@ -1283,14 +1216,14 @@ Returns the list of files.
 | `groups`      |
 | `joins`       |
 
-#### Get Files
+#### Get Collection Preset
+
+Returns the details of one or more collection presets.
 
 ```http
-GET /[project]/files/[id]
-GET /[project]/files/[id1],[id2],[idN]
+GET /[project]/collection_presets/[id]
+GET /[project]/collection_presets/[id1],[id2],[id3]
 ```
-
-Returns the details of one or more files.
 
 ##### Supported Query Parameters
 
@@ -1300,19 +1233,46 @@ Returns the details of one or more files.
 | `meta`        |
 | `joins`       |
 
+#### Update Collection Preset
+
+Updates the details of one or more collection presets.
+
+```http
+PATCH /[project]/collection_presets
+PATCH /[project]/collection_presets/[id]
+PATCH /[project]/collection_presets/[id1],[id2],[id3]
+```
+
+#### Delete Collection Preset
+
+Permanently deletes a collection_presets.
+
+```http
+DELETE /[project]/collection_presets/[id]
+DELETE /[project]/collection_presets/[id1],[id2],[id3]
+```
+
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
+
+### Files
+
+These endpoints are used for uploading, updating, and deleting files and virtual folders.
+
 #### Upload File
+
+Uploads or creates a new file.
 
 ```http
 POST /[project]/files
 ```
 
-Uploads a new file.
+There are two ways to upload a file:
 
-There's two way to upload a file:
+##### Using Base64 Content
 
-##### Using Base64 content
-
-Using passing a base64 file content to the `data` field.
+Using passing the base64 file contents to the `data` field.
 
 ```json
 {
@@ -1323,18 +1283,57 @@ Using passing a base64 file content to the `data` field.
 
 ##### Using `multipart/form-data` Content Type
 
-Passing the file form data set to the `data` field when making the `multipart/form-data` `POST` request.
+Passing the file form-data to the `data` field when making the `multipart/form-data` `POST` request.
 
-It allows for easier uploading file when using a HTML form element with a `enctype` (encoding type) set to `multipart/form-data`.
+This allows for easier uploading of files when using an HTML form element with the `enctype` (encoding type) set to `multipart/form-data`.
 
+#### Get Files
 
-#### Update Files
+Returns a list of files.
+
+```http
+GET /[project]/files
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
+#### Get File
+
+Returns the details of one or more files.
+
+```http
+GET /[project]/files/[id]
+GET /[project]/files/[id1],[id2],[id3]
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
+
+#### Update File
+
+Replaces a file or updates its details.
 
 ```http
 PATCH /[project]/files/[id]
 ```
-
-Updates the details of a given field, or replacing the current file.
 
 ```json
 {
@@ -1345,14 +1344,14 @@ Updates the details of a given field, or replacing the current file.
 
 #### Update Multiple Files
 
+Replaces several files, or updates their details.
+
 ```http
 PATCH /[project]/files
-PATCH /[project]/files/[id1],[id2],[idN]
+PATCH /[project]/files/[id1],[id2],[id3]
 ```
 
-Updates the details of a given field, or replacing the current file of one or more files.
-
-##### Multiple files with different data
+##### Different Data
 
 Each file object requires the `id` field to identify which record the new data will belongs to.
 
@@ -1364,14 +1363,14 @@ PATCH /_/files
 [{
   "id": 1,
   "data": "<base64-content>",
-  "description" : "new description"
+  "description" : "New Description"
 }, {
   "id": 2,
-  "title" : "new title"
+  "title" : "New Title"
 }]
 ```
 
-##### Multiple files with same data
+##### Same Data
 
 ```
 PATCH /_/files/1,2,3
@@ -1379,26 +1378,30 @@ PATCH /_/files/1,2,3
 
 ```json
 {
-  "tags": ["christmas", "2017"]
+  "tags": ["marketing", "2017"]
 }
 ```
 
-#### Delete Files
+#### Delete File
+
+Permanently deletes one or more files from the filesystem and database.
 
 ```http
 DELETE /[project]/files/[id]
-DELETE /[project]/files/[id1],[id2],[idn]
+DELETE /[project]/files/[id1],[id2],[id3]
 ```
 
-Permanently deletes one or more files and its record.
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
 
-#### List File Revisions
+#### Get File Revisions
+
+Returns a list of file's revisions.
 
 ```http
 GET /[project]/files/[id]/revisions
 ```
-
-Returns a list of a single file revisions.
 
 ##### Supported Query Parameters
 
@@ -1420,7 +1423,7 @@ Returns a list of a single file revisions.
 GET /[project]/files/[id]/revisions/[offset]
 ```
 
-Returns the revision of a single item using a 0-index based offset.
+Returns the revisions of a file using a 0-index based offset.
 
 ##### Supported Query Parameters
 
@@ -1432,55 +1435,15 @@ Returns the revision of a single item using a 0-index based offset.
 
 ### Folders
 
-These endpoints are used for creating, reading, updating, or deleting a virtual folders.
+These endpoints are used for creating, reading, updating, and deleting virtual folders.
 
-#### List Folders
+#### Create Folder
 
-```http
-GET /[project]/files/folders
-```
-
-Returns the list of your virtual folders.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `limit`       |
-| `meta`        |
-| `offset`      |
-| `single`      |
-| `sort`        |
-| `filter`      |
-| `q`           |
-| `groups`      |
-| `joins`       |
-
-#### Get Folders
-
-```http
-GET /[project]/files/folders/[id]
-GET /[project]/files/folders/[id1],[id2],[idN]
-```
-
-Returns the details of one or more virtual folders.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `meta`        |
-| `joins`       |
-
-#### Create Folders
+Creates a new virtual folder.
 
 ```http
 POST /[project]/files/folders
 ```
-
-Creates a new virtual folder.
 
 ```json
 {
@@ -1489,13 +1452,53 @@ Creates a new virtual folder.
 }
 ```
 
-#### Update Folders
+#### Get Folders
+
+Returns a list of virtual folders.
+
+```http
+GET /[project]/files/folders
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
+#### Get Folder
+
+Returns the details of one or more virtual folders.
+
+```http
+GET /[project]/files/folders/[id]
+GET /[project]/files/folders/[id1],[id2],[id3]
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
+
+#### Update Folder
+
+Updates the details of a given virtual folder.
 
 ```http
 PATCH /[project]/files/folders/[id]
 ```
-
-Updates the details of a given folder.
 
 ```json
 {
@@ -1503,107 +1506,32 @@ Updates the details of a given folder.
 }
 ```
 
-#### Delete Folders
+#### Delete Folder
+
+Permanently deletes one or more virtual folders.
 
 ```http
 DELETE /[project]/files/[id]
-DELETE /[project]/files/[id1],[id2],[idN]
+DELETE /[project]/files/[id1],[id2],[id3]
 ```
 
-Permanently deletes one or more virtual folders. Leaving its sub-folder and files orphan.
+:::warning
+This is not a recurrsive delete. As of now, any sub-folders and files are left orphaned in the heirarchy. Be sure to empty a virtual folder before deleting it.
+:::
 
 ### Permissions
 
-These endpoints are used for creating, reading, updating, or deleting permissions.
+These endpoints are used for creating, reading, updating, and deleting permissions.
 
-#### List Permissions
+#### Create Permission
 
-```http
-GET /[project]/permissions
-```
-
-Returns the list of permissions.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `limit`       |
-| `meta`        |
-| `offset`      |
-| `single`      |
-| `sort`        |
-| `filter`      |
-| `q`           |
-| `groups`      |
-| `joins`       |
-
-#### Get Permissions
-
-```http
-GET /[project]/permissions/[id]
-GET /[project]/permissions/[id1],[id2],[idN]
-```
-
-Returns the details of a single permission.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `meta`        |
-| `joins`       |
-
-#### Get Authenticated User Permissions
-
-```http
-GET /[project]/permissions/me
-```
-
-Returns a list of permissions that belongs to the authenticated user.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `limit`       |
-| `meta`        |
-| `offset`      |
-| `single`      |
-| `sort`        |
-| `filter`      |
-| `q`           |
-| `groups`      |
-| `joins`       |
-
-#### Get Authenticated User's Collection Permissions
-
-```http
-GET /[project]/permissions/me/[collection-name]
-```
-
-Returns a a collection's permissions that belongs to the authenticated user.
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `meta`        |
-| `joins`       |
-
-#### Create Permissions
+Creates one or more permissions.
 
 ```http
 POST /[project]/permissions
 ```
 
-Creates one or more permissions.
-
-##### One permission
+##### Body
 
 ```json
 {
@@ -1616,7 +1544,7 @@ Creates one or more permissions.
 }
 ```
 
-##### Multiple Permissions
+_Or, for multiple permissions:_
 
 ```json
 [{
@@ -1636,17 +1564,96 @@ Creates one or more permissions.
 }]
 ```
 
-#### Update Permissions
+#### Get Permissions
+
+Returns a list of permissions.
+
+```http
+GET /[project]/permissions
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
+#### Get Permission
+
+Returns the details of one or more permissions.
+
+```http
+GET /[project]/permissions/[id]
+GET /[project]/permissions/[id1],[id2],[id3]
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
+
+#### Get My Permissions
+
+Returns all permissions belonging to the currently authenticated user.
+
+```http
+GET /[project]/permissions/me
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `limit`       |
+| `meta`        |
+| `offset`      |
+| `single`      |
+| `sort`        |
+| `filter`      |
+| `q`           |
+| `groups`      |
+| `joins`       |
+
+#### Get My Collection Permissions
+
+Returns a collection's permissions belonging to the currently authenticated user.
+
+```http
+GET /[project]/permissions/me/[collection-name]
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `joins`       |
+
+#### Update Permission
+
+Updates the details of one or more permissions.
 
 ```http
 PATCH /[project]/permissions
 PATCH /[project]/permissions/[id]
-PATCH /[project]/permissions/[id1],[id2],[idN]
+PATCH /[project]/permissions/[id1],[id2],[id3]
 ```
 
-Updates the details of one or more permissions
-
-##### One Permission
+##### Examples
 
 ```http
 PATCH /_/permissions/1
@@ -1658,7 +1665,7 @@ PATCH /_/permissions/1
 }
 ```
 
-##### Multiple Permission with same data
+_Or, for multiple permissions with the same data:_
 
 ```http
 PATCH /_/permissions/1,2,3
@@ -1671,7 +1678,7 @@ PATCH /_/permissions/1,2,3
 }
 ```
 
-##### Multiple Permission with different data
+_Or, for multiple permissions with different data:_
 
 ```http
 PATCH /_/permissions
@@ -1689,20 +1696,62 @@ PATCH /_/permissions
 }]
 ```
 
-#### Delete Permissions
-
-```http
-DELETE /[project]/permissions/[id]
-DELETE /[project]/permissions/[id1],[id2],[idN]
-```
+#### Delete Permission
 
 Permanently deletes one or more permissions.
 
+```http
+DELETE /[project]/permissions/[id]
+DELETE /[project]/permissions/[id1],[id2],[id3]
+```
+
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
+
 ### Relations
 
-These endpoints are used for creating, reading, updating, or deleting collection's relations.
+These endpoints are used for creating, reading, updating, and deleting collection relations.
 
-#### List Relations
+#### Create Relation
+
+Creates one or more relations.
+
+```http
+POST /[project]/relations
+```
+
+##### Examples
+
+```json
+{
+  "collection_many": "projects",
+  "field_many": "author",
+  "collection_one": "directus_users",
+  "field_one": null
+}
+```
+
+_Or, for multiple relations:_
+
+```json
+[
+  {
+    "collection_many": "projects",
+    "field_many": "author",
+    "collection_one": "directus_users",
+    "field_one": null
+  },
+  {
+    "collection_many": "projects",
+    "field_many": "category",
+    "collection_one": "categories",
+    "field_one": null
+  }
+]
+```
+
+#### Get Relations
 
 ```http
 GET /[project]/relations
@@ -1725,14 +1774,14 @@ Returns the list of relations.
 | `groups`      |
 | `joins`       |
 
-#### Get Relations
+#### Get Relation
+
+Returns the details of one or more relations.
 
 ```http
 GET /[project]/relations/[id]
-GET /[project]/relations/[id1],[id2],[idN]
+GET /[project]/relations/[id1],[id2],[id3]
 ```
-
-Returns the details of one or more relations.
 
 ##### Supported Query Parameters
 
@@ -1742,55 +1791,17 @@ Returns the details of one or more relations.
 | `meta`        |
 | `joins`       |
 
-#### Create Relations
+#### Update Relation
 
-```http
-POST /[project]/relations
-```
-
-Creates one or more relations.
-
-##### One Relation
-
-```json
-{
-  "collection_many": "projects",
-  "field_many": "author",
-  "collection_one": "directus_users",
-  "field_one": null
-}
-```
-
-##### Multiple Relations
-
-```json
-[
-  {
-    "collection_many": "projects",
-    "field_many": "author",
-    "collection_one": "directus_users",
-    "field_one": null
-  },
-  {
-    "collection_many": "projects",
-    "field_many": "category",
-    "collection_one": "categories",
-    "field_one": null
-  }
-]
-```
-
-#### Update Relations
+Updates the details of one or more relations.
 
 ```http
 PATCH /[project]/relations
 PATCH /[project]/relations/[id]
-PATCH /[project]/relations/[id1],[id2],[idN]
+PATCH /[project]/relations/[id1],[id2],[id3]
 ```
 
-Updates the details of one or more relations.
-
-##### One Relation
+##### Examples
 
 ```http
 PATCH /_/relations/1
@@ -1802,7 +1813,7 @@ PATCH /_/relations/1
 }
 ```
 
-##### Multiple Relations with same data
+_Or, for multiple relations with the same data:_
 
 ```http
 PATCH /_/relations/1,2
@@ -1814,10 +1825,10 @@ PATCH /_/relations/1,2
 }
 ```
 
-##### Multiple Relations with different data
+_Or, for multiple relations with different data:_
 
 ```http
-PATCH /_/permissions
+PATCH /_/relations
 ```
 
 ```json
@@ -1832,73 +1843,53 @@ PATCH /_/permissions
 
 #### Delete Relations
 
+Permanently deletes one or more relations.
+
 ```http
 DELETE /[project]/relations/[id]
-DELETE /[project]/relations/[id1],[id2],[idN]
+DELETE /[project]/relations/[id1],[id2],[id3]
 ```
 
-Permanently deletes one or more relations.
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
 
 ### Revisions
 
-These endpoints are used for fetching one or a list of revisions.
+These endpoints are used for fetching one or more revisions.
 
-#### List Revisions
+#### Get Revisions
+
+Get a list of all revisions.
 
 ```http
 GET /[project]/revisions
 ```
 
-Get a list of all revisions.
-
-::: warning NOTE
-All these information are fetched from the `directus_revisions` table.
-:::
-
 #### Get Revisions
+
+Get the details of one or more revisions by their id.
 
 ```http
 GET /[project]/revisions/[id]
-GET /[project]/revisions/[id1],[id2],[idN]
+GET /[project]/revisions/[id1],[id2],[id3]
 ```
-
-Get the details of one or more revisions by their IDs.
 
 ### Roles
 
-These endpoints are used for creating, reading, updating, or deleting roles.
+These endpoints are used for creating, reading, updating, and deleting roles.
 
-#### List Roles
+#### Create Role
 
-```http
-GET /[project]/roles
-```
-
-Returns the list of roles.
-
-#### Get Roles
-
-```http
-GET /[project]/roles/[id]
-GET /[project]/roles/[id1],[id2],[idN]
-```
-
-Returns the details of one or multiple roles.
-
-#### Create Roles
+Creates one or more roles.
 
 ```http
 POST /[project]/roles
 ```
 
-Creates a one or more roles.
-
 ::: warning NOTE
-Directus is compatible with System for Cross-domain Identity Management (SCIM) protocol. All roles has an `external_id` to represent the group outside and it must be unique within Directus. if left empty on creation, Directus will generate an UUID v4.
+Directus is also compatible with _System for Cross-domain Identity Management_ (SCIM) protocol. All roles have an `external_id` to link each with the external system, these must be unique within Directus. Directus will automatically generate a UUID (v4) if this field is left blank when creating a role.
 :::
-
-
-##### Create one Role
 
 ```json
 {
@@ -1906,7 +1897,8 @@ Directus is compatible with System for Cross-domain Identity Management (SCIM) p
 }
 ```
 
-##### Create multiple Roles
+_Or, to create multiple at once:_
+
 ```json
 [
   {
@@ -1918,21 +1910,42 @@ Directus is compatible with System for Cross-domain Identity Management (SCIM) p
 ]
 ```
 
-#### Update Roles
+#### Get Roles
+
+Returns a list of roles.
+
+```http
+GET /[project]/roles
+```
+
+#### Get Role
+
+Returns the details of one or more roles.
+
+```http
+GET /[project]/roles/[id]
+GET /[project]/roles/[id1],[id2],[id3]
+```
+
+#### Update Role
+
+Updates the details of one or more roles.
 
 ```http
 PATCH /[project]/roles
 PATCH /[project]/roles/[id]
-PATCH /[project]/roles/[id1],[id2],[idN]
+PATCH /[project]/roles/[id1],[id2],[id3]
 ```
 
-Updates the details of one or more roles
+##### Examples
 
-##### Update one Role
+_To update a single role:_
 
 ```http
 PATCH /_/roles/3
 ```
+
+###### Body
 
 ```json
 {
@@ -1940,11 +1953,13 @@ PATCH /_/roles/3
 }
 ```
 
-##### Update multiple Roles with same data
+_Or, to update multiple with the same data:_
 
 ```http
 PATCH /_/roles/1,2,3
 ```
+
+###### Body
 
 ```json
 {
@@ -1952,11 +1967,13 @@ PATCH /_/roles/1,2,3
 }
 ```
 
-##### Update multiple Permission with different data
+_Or, to update multiple with different data:_
 
 ```http
 PATCH /_/roles
 ```
+
+###### Body
 
 ```json
 [{
@@ -1968,68 +1985,76 @@ PATCH /_/roles
 }]
 ```
 
-#### Delete Roles
-
-```http
-DELETE /[project]/roles/[id]
-DELETE /[project]/roles/[id1],[id2],[idN]
-```
+#### Delete Role
 
 Permanently deletes one or more roles.
 
+```http
+DELETE /[project]/roles/[id]
+DELETE /[project]/roles/[id1],[id2],[id3]
+```
+
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
+
 ### Settings
 
-These endpoints are used for creating, reading, updating, or deleting settings.
+These endpoints are used for creating, reading, updating, and deleting the general settings.
 
-#### List Settings
+#### Create Setting
 
-```http
-GET /[project]/settings
-```
-
-Returns the list of settings.
-
-#### Get Settings
-
-```http
-GET /[project]/settings/[id]
-GET /[project]/settings/[id1],[id2],[idN]
-```
-
-Returns the details of one or more settings.
-
-#### Create Settings
+Creates one or more settings.
 
 ```http
 POST /[project]/settings
 ```
 
-Creates one or more settings.
+#### Get Settings
 
-#### Update Settings
+Returns the list of settings.
+
+```http
+GET /[project]/settings
+```
+
+#### Get Setting
+
+Returns the details of one or more settings.
+
+```http
+GET /[project]/settings/[id]
+GET /[project]/settings/[id1],[id2],[id3]
+```
+
+#### Update Setting
+
+Updates the details of one or more settings.
 
 ```http
 PATCH /[project]/settings
 PATCH /[project]/settings/[id]
-PATCH /[project]/settings/[id1],[id2],[idN]
+PATCH /[project]/settings/[id1],[id2],[id3]
 ```
 
-Updates the details of one or more settings.
+#### Delete Setting
 
-#### Delete Settings
+Permanently deletes one or more settings.
 
 ```http
 DELETE /[project]/settings/[id]
-DELETE /[project]/settings/[id1],[id2],[idN]
+DELETE /[project]/settings/[id1],[id2],[id3]
 ```
 
-Permanently deletes one or more settings.
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
 
 ### Users
 
 #### Create User
 
-Creates a new user within this instance.
+Creates a new Directus user within this project.
 
 ```http
 POST /[project]/users
@@ -2048,33 +2073,7 @@ The email and password for the new user to be created. Any other submitted field
 
 #### Get Users
 
-Gets a single user from within this instance.
-
-```http
-GET /[project]/users/[pk]
-GET /[project]/users/[pk],[pk],[pk]
-```
-
-##### Supported Query Parameters
-
-| Name          |
-| ------------- |
-| `fields`      |
-| `meta`        |
-| `status`      |
-| `joins`       |
-
-##### Examples
-
-Returns the user with an ID of `1`.
-
-```bash
-curl -u <token>: https://api.directus.io/_/users/1
-```
-
-#### List Users
-
-Returns a list of Directus users within this instance.
+Returns a list of Directus users within this project.
 
 ```http
 GET /[project]/users
@@ -2099,13 +2098,39 @@ GET /[project]/users
 
 ##### Examples
 
-Get a list of Directus Users.
+Get a list of Directus users.
 
 ```bash
 curl -u <token>: https://api.directus.io/_/users
 ```
 
-#### Update Users
+#### Get User
+
+Gets a single user from within this project.
+
+```http
+GET /[project]/users/[pk]
+GET /[project]/users/[pk],[pk],[pk]
+```
+
+##### Supported Query Parameters
+
+| Name          |
+| ------------- |
+| `fields`      |
+| `meta`        |
+| `status`      |
+| `joins`       |
+
+##### Examples
+
+Returns the user with an id of `1`.
+
+```bash
+curl -u <token>: https://api.directus.io/_/users/1
+```
+
+#### Update User
 
 Updates a Directus User.
 
@@ -2115,7 +2140,7 @@ PATCH /[project]/users/[id]
 
 @TODO DO WE WANT TO SUPPORT CSV OF PKs HERE TOO?
 
-::: tip NOTE
+:::tip NOTE
 **PATCH** will partially update the item with the provided data, any missing fields will be ignored.
 :::
 
@@ -2123,27 +2148,28 @@ PATCH /[project]/users/[id]
 
 An [User Object](#). Fields names must match column names within `directus_users` collection.
 
-#### Delete Users
+#### Delete User
 
-Deletes one or more Users from Directus.
+Deletes one or more users from this project.
 
 ```http
 DELETE /[project]/users/[id]
-DELETE /[project]/users/[id1],[id2],[idN]
+DELETE /[project]/users/[id1],[id2],[id3]
 ```
 
-#### Invite Users
+::: danger WARNING
+Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
+
+#### Invite User
+
+Invites one or more users to this project. It creates a user with an `invited` status, and then sends an email to the user with instructions on how to activate their account.
 
 ```http
 POST /[project]/users/invite
 ```
 
-Invites one or more users to this instance. It will create an user with `invited` status, and then it will sends an email to the user with further instructions on how to activate their user.
-
-The email will sends an url with a to
-The API will generate and send a JWT token inside the email for this specific request.
-
-The payload contains the following data:
+The API will generate and send a JWT token inside the email for this specific request. The payload contains the following data:
 
 - `type`: The token type, always set to `invitation`.
 - `date`: The datetime when the token was generated.
@@ -2153,9 +2179,7 @@ The payload contains the following data:
 
 ##### Body
 
-An email, or a list of emails to send invites to.
-
-Invite one user:
+A single email or list of emails to send invites to.
 
 ```json
 {
@@ -2163,7 +2187,7 @@ Invite one user:
 }
 ```
 
-Invite multiple users:
+_Or, to invite multiple users:_
 
 ```json
 {
@@ -2175,17 +2199,17 @@ Invite multiple users:
 }
 ```
 
-#### Accept Users Invitation
+#### Accept User Invitation
+
+Accepts and enables an invited user using a JWT invitation token.
 
 ```http
 POST /[project]/users/invite/[token]
 ```
 
-Accepts and enable an invited user using an JWT invitation token.
-
 #### Track User
 
-Set the datetime and last Directus Web Application page accessed by the user. Last Access is used to determine if the user is still logged into the Directus Web Application, and Last Page is used to warn users when another users is editing the same item.
+Sets the last accessed page/datetime of the Directus App. This information is used to determine if the user is still logged into the Directus App and to warn when multiple users are editing the same item.
 
 ```http
 PATCH /[project]/users/[id]/tracking/page
@@ -2203,33 +2227,33 @@ The path to the last page the user was on in the Directus App.
 
 #### Get User Revisions
 
+Returns a list of revisions of a user.
+
 ```http
 GET /[project]/users/[id]/revisions
 ```
 
-Returns a list of revisions for an user.
-
 #### Get User Revision
+
+Returns a single revision of an user using a 0-index based offset.
 
 ```http
 GET /[project]/users/[id]/revisions/[offset]
 ```
 
-Returns a revision of an user using a 0-index based offset.
-
 ## Utilities
 
-| Hasher List   |
-| ------------- |
-| `core`        |
-| `bcrypt`      |
-| `sha1`        |
-| `sha224`      |
-| `sha256`      |
-| `sha384`      |
-| `sha512`      |
+| Available Hashers |
+| ----------------- |
+| `core`            |
+| `bcrypt`          |
+| `sha1`            |
+| `sha224`          |
+| `sha256`          |
+| `sha384`          |
+| `sha512`          |
 
-The default `hasher` is `core`. It uses the `password_hash` function and the php default algortim defined by `PASSWORD_DEFAULT`.
+The default `hasher` is `core` which uses the `password_hash` function and the PHP default algorthim defined by `PASSWORD_DEFAULT`.
 
 ### Hash String
 
@@ -2292,7 +2316,7 @@ The hashing algorithm to use, the plain string, and the hashed string.
 
 ### Generate Random String
 
-Returns a random-generated alphanumeric string.
+Returns a randomly generated alphanumeric string.
 
 ```http
 POST /[project]/utils/random/string
@@ -2324,7 +2348,7 @@ POST /[project]/mail
     2,
     {"email": "intern@example.com", "name": "Jane Doe"}
   ],
-  "subject": "New password",
+  "subject": "New Password",
   "body": "Hello <b>{{name}}</b>, this is your new password: {{password}}.",
   "type": "html",
   "data": {
@@ -2336,9 +2360,7 @@ POST /[project]/mail
 
 ## SCIM
 
-Directus partly supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for users to be created, managed, and disabled outside of Directus. It allows the exchange of user information between systems.
-
-The user have the ability to use a single, centralize system for user provisioning and use SCIM to exchange this information with Directus using these endpoints.
+Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be created, managed, and disabled outside of Directus.
 
 ### Endpoints
 
@@ -2349,9 +2371,61 @@ The user have the ability to use a single, centralize system for user provisioni
 | `/Groups`      | `GET`, `POST`                   |
 | `/Groups/{id}` | `GET`, `PUT`, `PATCH`, `DELETE` |
 
-Read more in the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
+Learn more within the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
 
-### List SCIM Users
+### Create SCIM User
+
+```http
+POST /[project]/scim/v2/Users
+```
+
+#### Body
+
+```json
+{
+  "schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],
+  "userName":"johndoe@example.com",
+  "externalId":"johndoe-id",
+  "name":{
+    "familyName":"Doe",
+    "givenName":"John"
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:User"
+  ],
+  "id": "johndoe-id",
+  "externalId": 4,
+  "meta": {
+    "resourceType": "User",
+    "location": "http://example.com/_/scim/v2/Users/johndoe-id",
+    "version": "W/\"fb2c131ad3a58d1f32800c1379cdfe50\""
+  },
+  "name": {
+    "familyName": "Doe",
+    "givenName": "John"
+  },
+  "userName": "johndoe@example.com",
+  "emails": [
+    {
+      "value": "johndoe@example.com",
+      "type": "work",
+      "primary": true
+    }
+  ],
+  "locale": "en-US",
+  "timezone": "America/New_York",
+  "active": false
+}
+```
+
+### Get SCIM Users
 
 ```http
 GET /[project]/scim/v2/Users
@@ -2362,7 +2436,7 @@ GET /[project]/scim/v2/Users
 | ------------ | ------------| ------------
 | `startIndex` | `Integer`   | The 1-based index of the first result in the current set of list results.
 | `count`      | `Integer`   | Specifies the desired maximum number of query results per page.
-| `filter`     | `String`    | `id`, `userName`, `emails.value` and `externalId` attribute Supported. Only operator `eq` is supported.
+| `filter`     | `String`    | `id`, `userName`, `emails.value` and `externalId` attributes are supported. Only the `eq` operator is supported.
 
 ```http
 GET /[project]/scim/v2/Users?filter=userName eq user@example.com
@@ -2500,58 +2574,6 @@ GET /[project]/scim/v2/Users/[id]
 }
 ```
 
-### Create SCIM User
-
-```http
-POST /[project]/scim/v2/Users
-```
-
-#### Body
-
-```json
-{
-  "schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],
-  "userName":"johndoe@example.com",
-  "externalId":"johndoe-id",
-  "name":{
-    "familyName":"Doe",
-    "givenName":"John"
-  }
-}
-```
-
-#### Response
-
-```json
-{
-  "schemas": [
-    "urn:ietf:params:scim:schemas:core:2.0:User"
-  ],
-  "id": "johndoe-id",
-  "externalId": 4,
-  "meta": {
-    "resourceType": "User",
-    "location": "http://example.com/_/scim/v2/Users/johndoe-id",
-    "version": "W/\"fb2c131ad3a58d1f32800c1379cdfe50\""
-  },
-  "name": {
-    "familyName": "Doe",
-    "givenName": "John"
-  },
-  "userName": "johndoe@example.com",
-  "emails": [
-    {
-      "value": "johndoe@example.com",
-      "type": "work",
-      "primary": true
-    }
-  ],
-  "locale": "en-US",
-  "timezone": "America/New_York",
-  "active": false
-}
-```
-
 ### Update SCIM User
 
 ```http
@@ -2602,7 +2624,42 @@ PATCH /[project]/scim/v2/Users/[id]
 }
 ```
 
-### List SCIM Groups
+### Create SCIM Group
+
+```http
+POST /[project]/scim/v2/Users
+```
+
+#### Body
+
+```json
+{
+  "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+  "displayName": "Editors",
+  "externalId": "editors-id"
+}
+```
+
+#### Response
+
+```json
+{
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:Group"
+  ],
+  "id": "editors-id",
+  "externalId": 4,
+  "meta": {
+    "resourceType": "Group",
+    "location": "http://example.com/_/scim/v2/Groups/editors-id",
+    "version": "W/\"7b7bc2512ee1fedcd76bdc68926d4f7b\""
+  },
+  "displayName": "Editors",
+  "members": []
+}
+```
+
+### Get SCIM Groups
 
 ```http
 GET /[project]/scim/v2/Groups
@@ -2723,41 +2780,6 @@ GET /[project]/scim/v2/Groups/[id]
 }
 ```
 
-### Create SCIM Group
-
-```http
-POST /[project]/scim/v2/Users
-```
-
-#### Body
-
-```json
-{
-  "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
-  "displayName": "Editors",
-  "externalId": "editors-id"
-}
-```
-
-#### Response
-
-```json
-{
-  "schemas": [
-    "urn:ietf:params:scim:schemas:core:2.0:Group"
-  ],
-  "id": "editors-id",
-  "externalId": 4,
-  "meta": {
-    "resourceType": "Group",
-    "location": "http://example.com/_/scim/v2/Groups/editors-id",
-    "version": "W/\"7b7bc2512ee1fedcd76bdc68926d4f7b\""
-  },
-  "displayName": "Editors",
-  "members": []
-}
-```
-
 ### Update SCIM Group
 
 ```http
@@ -2800,47 +2822,15 @@ DELETE /[project]/scim/v2/Groups/[id]
 
 #### Response
 
-Empty response when successful.
-
-## Extending Endpoints
-
-All custom endpoints defined in a extension (`pages` or `interfaces`) requires authentication.
-
-### Interfaces
-
-All endpoints defined in a interface will be located under the `interfaces` group.
-
-```http
-GET /[project]/interfaces/[interface-id]
-```
-
-### Pages
-
-All endpoints defined in a page will be located under the `pages` group.
-
-```http
-GET /[project]/pages/[page-id]
-```
-
-### Custom Endpoints
-
-All endpoints created by the user, that it's not related to any extension (`interfaces` or `pages`) will be located under the `custom` group.
-
-::: warning
-These endpoints don't require authentication. This means it has public access.
-:::
-
-```http
-GET /[project]/custom/[endpoint-id]
-```
+Response is empty when successful.
 
 ## Extensions
 
-Directus can easily be extended through the addition of several types of extensions. Extensions are important pieces of the Directus App that live in the decoupled Directus API. These include Interfaces, Layouts, and Pages. These three different types of extensions live in their own directory and may have their own endpoints.
+Directus can easily be extended through the addition of several types of extensions. Extensions are and important part of the Directus App that live within the decoupled Directus API. These extensions include: Interfaces, Layouts, and Pages. These three different types of extensions live in their own directory and may have their own endpoints. All custom endpoints defined in extensions (`pages`, `interfaces`, etc) require authentication.
 
-### Get Interfaces, Layouts and Pages
+### Get Extensions
 
-These endpoints search for all enabled extensions and include the content of each extension's `meta.json` file.
+These endpoints search for different types of enabled extensions and include the content of each extension's `meta.json` file.
 
 ```http
 GET /interfaces
@@ -2848,33 +2838,43 @@ GET /layouts
 GET /pages
 ```
 
-<!--
-::: tip
-This is tip message
-:::
+### Get Interface
+
+All endpoints defined in an interface will be located within the `interfaces` group.
+
+```http
+GET /[project]/interfaces/[interface-id]
+```
+
+### Get Page
+
+All endpoints defined in a page will be located within the `pages` group.
+
+```http
+GET /[project]/pages/[page-id]
+```
+
+### Get Custom Endpoint
+
+All custom endpoints that are not related to an extension will be located under the `custom` group.
 
 ::: warning
-This is a warning
+These endpoints do not require authentication, and are therefore publically accessible.
 :::
 
-::: danger
-This is a danger Note
-:::
-
-::: danger STOP
-This is danger note with a custom title
-:::
--->
+```http
+GET /[project]/custom/[endpoint-id]
+```
 
 ## Server
 
 ### Information
 
+Returns information about the server and API instance.
+
 ```http
 GET /
 ```
-
-Returns information about the server and API.
 
 #### Response
 
@@ -2897,25 +2897,23 @@ Returns information about the server and API.
 
 ### Ping
 
+If the server is setup correctly it will respond with `pong` as plain text.
+
 ```http
 GET /server/ping
 ```
-
-If the server is setup correctly it will respond with `pong` as plain text.
 
 ## Project
 
 ### Information
 
-@TODO: 
+Returns information about the server and API instance in relation to project.
 
 ```http
 GET /[project]/
 ```
 
-Returns information about the server and API in relation to project.
-
-An example could be increasing the `upload_max_size` for a specific project only.
+An example would be if `upload_max_size` has been increased only for a single project within this API instance.
 
 #### Response
 
@@ -2936,19 +2934,17 @@ An example could be increasing the `upload_max_size` for a specific project only
 }
 ```
 
-## Data Types
+## Field Types
+
+Returns the list of Directus field types.
 
 ```http
 GET /types
 ```
 
-Returns the list of Directus data types.
-
 ## Webhooks
 
-Webhooks allows you to send a HTTP request when an event happens.
-
-Creating a webhook on Directus is done by creating a custom hook that makes a HTTP request.
+Webhooks allow you to send an HTTP request when a specific event occurs. Creating a webhook in Directus is done by creating a custom hook that makes an HTTP request.
 
 The example below sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
 
@@ -2967,7 +2963,7 @@ The example below sends a `POST` request to `http://example.com/alert` every tim
 
 return [
     'actions' => [
-        // Send an alert when a post is created
+        // Send an alert when a article is created
         'collection.insert.articles' => function (array $data) {
             $client = new \GuzzleHttp\Client([
                 'base_uri' => 'http://example.com'
@@ -2988,7 +2984,7 @@ return [
 
 ## Object Models
 
-A list of all objects expected or returned by the system endpoints.
+A list of all system objects expected or returned by Directus endpoints.
 
 ### Activity Object
 
