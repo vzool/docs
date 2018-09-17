@@ -6,7 +6,7 @@
 
 The Directus API uses [SemVer](https://semver.org/) for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that existing API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
-### Projects
+### Project Keys
 
 All endpoints are prefixed with a project key (based on the configuration file name). The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
 
@@ -20,7 +20,7 @@ The naming format of the configuration file is `api.<project-key>.php`
 :::
 
 ::: warning
-A default API project (`api.php`) is required in order for the API to function properly.
+A default API project (`api.php`) is required for the API to function properly.
 :::
 
 ### Response Format
@@ -157,48 +157,6 @@ The API performs two types of validation on submitted data:
 
 *   **Data Type** – The API checks the submitted value's type against the Directus or database's field type. For example, a String submitted for an INT field will result in an error.
 *   **RegEx** – The API checks the submitted value against its column's `directus_fields.validation` RegEx. If the value doesn't match then an error will be returned.
-
-### Create Project
-
-Create a new project (and database) to be managed by this API instance.
-
-```http
-POST /projects
-```
-
-#### Body
-
-| Attribute       | Description                            | Required
-| --------------- | -------------------------------------- | ---------
-| `project`       | The project key. Default: `_`          | No
-| `force`         | Force the installation                 | No
-| `db_type`       | Database type. Only `mysql` supported  | No
-| `db_host`       | Database host. Default: `localhost`    | No
-| `db_port`       | Database port. Default: `3306`         | No
-| `db_name`       | Database name                          | Yes
-| `db_user`       | Database user name                     | Yes
-| `db_password`   | Database user password                 | No
-| `user_email`    | Directus Admin email                   | Yes
-| `user_password` | Directus Admin password                | Yes
-| `user_token`    | Directus Admin token. Default: `null`  | No
-| `mail_from`     | Default mailer `from` email            | No
-| `project_name`  | The project name. Default: `Directus`  | No
-| `cors_enabled`  | Enable CORS. Default `true`            | No
-| `auth_secret`   | Sets the authentication secret key     | No
-
-::: warning
-When `project` is not specified it will create the default configuration.
-:::
-
-```json
-{
-    "db_name": "directus",
-    "db_user": "root",
-    "db_password": "pass",
-    "user_email": "admin@example.com",
-    "user_password": "password"
-}
-```
 
 ## Authentication
 
@@ -2362,7 +2320,7 @@ POST /[project]/mail
 
 Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be created, managed, and disabled outside of Directus.
 
-### Endpoints
+### Overview
 
 | Endpoint       | Methods                         |
 | -------------- | ------------------------------- |
@@ -2868,6 +2826,8 @@ GET /[project]/custom/[endpoint-id]
 
 ## Server
 
+A server is comprised of the OS, HTTP server, PHP, and an instance of the Directus API.
+
 ### Information
 
 Returns information about the server and API instance.
@@ -2905,6 +2865,8 @@ GET /server/ping
 
 ## Project
 
+Each instance of Directus can manage multiple projects. A project is comprised of a dedicated SQL database, a config file, and any storage directories.
+
 ### Information
 
 Returns information about the server and API instance in relation to project.
@@ -2931,6 +2893,48 @@ An example would be if `upload_max_size` has been increased only for a single pr
       "max_upload_size": 8388608
     }
   }
+}
+```
+
+### Create Project
+
+Create a new project (database and config file) to be managed by this API instance.
+
+```http
+POST /projects
+```
+
+#### Body
+
+| Attribute       | Description                            | Required
+| --------------- | -------------------------------------- | ---------
+| `project`       | The project key. Default: `_`          | No
+| `force`         | Force the installation                 | No
+| `db_type`       | Database type. Only `mysql` supported  | No
+| `db_host`       | Database host. Default: `localhost`    | No
+| `db_port`       | Database port. Default: `3306`         | No
+| `db_name`       | Database name                          | Yes
+| `db_user`       | Database user name                     | Yes
+| `db_password`   | Database user password                 | No
+| `user_email`    | Directus Admin email                   | Yes
+| `user_password` | Directus Admin password                | Yes
+| `user_token`    | Directus Admin token. Default: `null`  | No
+| `mail_from`     | Default mailer `from` email            | No
+| `project_name`  | The project name. Default: `Directus`  | No
+| `cors_enabled`  | Enable CORS. Default `true`            | No
+| `auth_secret`   | Sets the authentication secret key     | No
+
+::: warning
+When `project` is not specified it will create the default configuration.
+:::
+
+```json
+{
+    "db_name": "directus",
+    "db_user": "root",
+    "db_password": "pass",
+    "user_email": "admin@example.com",
+    "user_password": "password"
 }
 ```
 
@@ -2982,7 +2986,7 @@ return [
 ];
 ```
 
-## Object Models
+## Directus Objects
 
 A list of all system objects expected or returned by Directus endpoints.
 
