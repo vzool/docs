@@ -62,94 +62,94 @@ The API uses numeric codes to avoid the need for translated error messages based
 
 #### General Error Codes
 
-- **0000** - Internal Error (500)
-- **0001** - Not Found (404)
-- **0002** - Bad Request (400)
-- **0003** - Unauthorized (401)
-- **0004** - Invalid Request (400) (_Validation_)
-- **0005** - Endpoint Not Found (404)
-- **0006** - Method Not Allowed (405)
-- **0007** - Too Many Requests (429)
-- **0008** - API Project Configuration Not Found (404)
-- **0009** - Failed Generating SQL Query (500)
-- **0010** - Forbidden (403)
-- **0011** - Failed to Connect to the Database (500)
-- **0012** - Unprocessable Entity (422)
-- **0013** - Invalid or Empty Payload (400)
-- **0014** - Default Project Not Configured Properly (503)
-- **0015** - Batch Upload Not Allowed (400)
-- **0016** - Invalid Filesystem Path (500)
-- **0017** - Invalid Configuration Path (422)
-- **0018** - Project Name Already Exists (409)
-- **0018** - Unauthorized Location Access (401)
+- `0000` - Internal Error (500)
+- `0001` - Not Found (404)
+- `0002` - Bad Request (400)
+- `0003` - Unauthorized (401)
+- `0004` - Invalid Request (400) (_Validation_)
+- `0005` - Endpoint Not Found (404)
+- `0006` - Method Not Allowed (405)
+- `0007` - Too Many Requests (429)
+- `0008` - API Project Configuration Not Found (404)
+- `0009` - Failed Generating SQL Query (500)
+- `0010` - Forbidden (403)
+- `0011` - Failed to Connect to the Database (500)
+- `0012` - Unprocessable Entity (422)
+- `0013` - Invalid or Empty Payload (400)
+- `0014` - Default Project Not Configured Properly (503)
+- `0015` - Batch Upload Not Allowed (400)
+- `0016` - Invalid Filesystem Path (500)
+- `0017` - Invalid Configuration Path (422)
+- `0018` - Project Name Already Exists (409)
+- `0018` - Unauthorized Location Access (401)
 
 #### Authentication Error Codes
 
-- **0100** - Invalid Credentials (404)
-- **0101** - Invalid Token (401)
-- **0102** - Expired Token (401)
-- **0103** - Inactive User (401)
-- **0104** - Invalid Reset Password Token (401)
-- **0105** - Expired Reset Password Token (401)
-- **0106** - User Not Found (404)
-- **0107** - User with Provided Email Not Found (404)
-- **0108** - User Not Authenticated (401)
+- `0100` - Invalid Credentials (404)
+- `0101` - Invalid Token (401)
+- `0102` - Expired Token (401)
+- `0103` - Inactive User (401)
+- `0104` - Invalid Reset Password Token (401)
+- `0105` - Expired Reset Password Token (401)
+- `0106` - User Not Found (404)
+- `0107` - User with Provided Email Not Found (404)
+- `0108` - User Not Authenticated (401)
 
 #### Items Error Codes
 
-- **0200** - Collection Not Found (404)
-- **0201** - Not Allow Direct Access To System Table (401)
-- **0202** - Field Not Found (404)
-- **0203** - Item Not Found (404)
-- **0204** - Duplicate Item (409)
-- **0205** - Collection Not Managed by Directus
-- **0206** - Field Not Managed by Directus
-- **0207** - Revision Not Found (404)
-- **0208** - Revision Has Invalid Delta
-- **0209** - Field Invalid (400) - _Trying to use a field that doesn't exists for actions such as filtering and sorting_
-- **0210** - Can Not Create Comment for Item
-- **0211** - Can Not Update Comment for Item
-- **0212** - Can Not Delete Comment from Item
+- `0200` - Collection Not Found (404)
+- `0201` - Not Allow Direct Access To System Table (401)
+- `0202` - Field Not Found (404)
+- `0203` - Item Not Found (404)
+- `0204` - Duplicate Item (409)
+- `0205` - Collection Not Managed by Directus
+- `0206` - Field Not Managed by Directus
+- `0207` - Revision Not Found (404)
+- `0208` - Revision Has Invalid Delta
+- `0209` - Field Invalid (400) - _Trying to use a field that doesn't exists for actions such as filtering and sorting_
+- `0210` - Can Not Create Comment for Item
+- `0211` - Can Not Update Comment for Item
+- `0212` - Can Not Delete Comment from Item
 
 #### Collections Error Codes
 
-- **0300** - Reading Items Denied (403)
-- **0301** - Creating Items Denied (403)
-- **0302** - Updating Items Denied (403)
-- **0303** - Deleting Items Denied (403)
-- **0304** - Reading Field Denied (403)
-- **0305** - Updating Field Denied (403)
-- **0306** - Altering Collection Denied (403)
-- **0307** - Collection Already Exists (422)
-- **0308** - Field Already Exists (422)
-- **0309** - Unable to Find Items Owned by User (403)
+- `0300` - Reading Items Denied (403)
+- `0301` - Creating Items Denied (403)
+- `0302` - Updating Items Denied (403)
+- `0303` - Deleting Items Denied (403)
+- `0304` - Reading Field Denied (403)
+- `0305` - Updating Field Denied (403)
+- `0306` - Altering Collection Denied (403)
+- `0307` - Collection Already Exists (422)
+- `0308` - Field Already Exists (422)
+- `0309` - Unable to Find Items Owned by User (403)
 
 #### Schema Error Codes
 
-- **0400** - Unknown Error (500)
-- **0401** - Unknown Data Type (400)
+- `0400` - Unknown Error (500)
+- `0401` - Unknown Data Type (400)
 
 #### Mail Error Codes
 
-- **0500** - Mailer Transport Not Found (500)
-- **0501** - Invalid Transport Option (500)
-- **0502** - Invalid Transport Instance (500)
+- `0500` - Mailer Transport Not Found (500)
+- `0501` - Invalid Transport Option (500)
+- `0502` - Invalid Transport Instance (500)
 
 #### Filesystem Error Codes
 
-- **0600** - Unknown Error (500)
-- **0601** - Uploaded File Exceeds Server's Max Upload Size (500)
-- **0602** - Uploaded File Exceeds Client's Max Upload Size (500)
-- **0603** - File Only Partially Uploaded (500)
-- **0604** - No File Uploaded (500)
-- **0605** - _Not yet defined_
-- **0606** - Missing Temporary Upload Directory (500)
-- **0607** - Failed to Write File to Disk (500)
-- **0608** - File Upload Stopped by PHP Extension (500)
+- `0600` - Unknown Error (500)
+- `0601` - Uploaded File Exceeds Server's Max Upload Size (500)
+- `0602` - Uploaded File Exceeds Client's Max Upload Size (500)
+- `0603` - File Only Partially Uploaded (500)
+- `0604` - No File Uploaded (500)
+- `0605` - _Not yet defined_
+- `0606` - Missing Temporary Upload Directory (500)
+- `0607` - Failed to Write File to Disk (500)
+- `0608` - File Upload Stopped by PHP Extension (500)
 
 #### Utils Error Codes
 
-- **1000** - Hasher Not Found (400)
+- `1000` - Hasher Not Found (400)
 
 ### Validation
 
