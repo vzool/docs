@@ -314,7 +314,7 @@ This endpoint generates a random password for the user and sends it to their ema
 GET /[project]/auth/password/reset/[reset-token]
 ```
 
-### Get SSO Services
+### SSO: Get Services
 
 ```http
 GET /[project]/auth/sso
@@ -322,7 +322,7 @@ GET /[project]/auth/sso
 
 A list of third-party Single Sign-On (SSO) authentication services available for this project, such as Google and Facebook.
 
-### Authorization Redirect
+### SSO: Authorization Redirect
 
 ```http
 GET /[project]/auth/sso/[provider]
@@ -330,7 +330,7 @@ GET /[project]/auth/sso/[provider]
 
 Automatically redirects to the authorization url if the origin host is allowed by the API, otherwise it will return the authorization url.
 
-### OAuth Authentication
+### SSO: OAuth Authentication
 
 ::: warning
 This endpoint is only useful when the callback is not handled by the API. See: /[project]/auth/sso/[provider]/callback.
@@ -363,7 +363,7 @@ The user's email address and the app URL from which the reset is requested.
 }
 ```
 
-### SSO Callback
+### SSO: Callback
 
 ```http
 GET /[project]/auth/sso/[provider]/callback
@@ -371,7 +371,7 @@ GET /[project]/auth/sso/[provider]/callback
 
 Set this URL as the callback for the Single Sign-On (SSO) OAuth service and it will return a "request token" that the client can use to request the access token.
 
-### Get Access Token
+### SSO: Access Token
 
 ```http
 POST /[project]/auth/sso/access_token
