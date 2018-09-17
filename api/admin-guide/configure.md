@@ -92,6 +92,7 @@ Choose where files can be uploaded. Currently we support local and Amazon-S3
 | `adapter`     | `local` for local filesystem or `s3` for Amazon-S3
 | `root`        | Root path where files are uploaded
 | `root_url`    | Public URL with access to `root` files
+| `thumb_root`  | Root path where the generated thumbnails images are stored
 | `key`         | S3 Bucket Key
 | `secret`      | S3 Bucket Secret
 | `region`      | S3 Bucket Region
@@ -104,7 +105,6 @@ A list of key-value-pairs (array) mail configurations. Currently only the `defau
 
 | Name          | Description   |
 | ------------- | ------------- |
-| `adapter`     | Only `swift_mailer` is supported at the moment
 | `transport`   | `smtp`, `sendmail`, `simple_file` (dummy example) or your own class name resolution string
 | `from`        | The global "from" email address
 
@@ -125,6 +125,18 @@ Cross-Origin Resource Sharing (CORS) is a mechanism that allows you to restricte
 | `exposed_headers` | List of headers the browser are allowed to access. Default: `none`.
 | `max_age`         | How long in seconds a preflight request can be cached. Default: `none`.
 | `credentials`     | Indicate whether or not to include credentials in the request. Default: `false`.
+
+### `rate_limit`
+
+| Name              | Description   |
+| ----------------- | ------------- |
+| `enabled`         | Enable or disable the rate limit
+| `limit`           | The request limit within the `interval`
+| `interval`        | Time to reset the `limit`
+| `adapter`         | `redis`, `memory` available
+| `host`            | Redis host
+| `port`            | Redis port
+| `timeout`         | Redis connection timeout
 
 ### `hooks`
 
@@ -151,7 +163,7 @@ Filters work the same as hooks except that you can manipulate the data being pas
 ```php
 'filters' => [
     'collection.insert.articles:before' => function (\Directus\Hook\Payload $payload) {
-        $payload->set('uuid', generate_uuid4());
+        $payload->set('uuid', \Directus\generate_uuid4());
 
         return $payload;
     }
