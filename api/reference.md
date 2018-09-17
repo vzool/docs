@@ -6,7 +6,7 @@
 
 The Directus API uses [SemVer](https://semver.org/) for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that existing API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
-### Project Keys
+### Project Prefix
 
 All endpoints are prefixed with a project key (based on the configuration file name). The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
 
@@ -2863,7 +2863,7 @@ If the server is setup correctly it will respond with `pong` as plain text.
 GET /server/ping
 ```
 
-## Project
+## Projects
 
 Each instance of Directus can manage multiple projects. A project is comprised of a dedicated SQL database, a config file, and any storage directories.
 
