@@ -1119,68 +1119,6 @@ DELETE /[project]/collections/[name]
 Deleting a collection removes the actual table and any records therein from the database permanently. Please proceed with extreme caution.
 :::
 
-### Fields
-
-These endpoints are used for creating, reading, updating, and deleting fields within a collection. It alters the database schema directly as needed.
-
-#### Create Field
-
-Creates a new field in a given collection.
-
-```http
-POST /[project]/fields/[collection]
-```
-
-```json
-{
-  "field": "description",
-  "type": "text",
-  "interface": "textarea"
-}
-```
-
-#### Get Fields
-
-Returns the list of all fields that belongs to a given collection.
-
-```http
-GET /[project]/fields/[collection]
-```
-
-#### Get Field
-
-Returns the details of a single field.
-
-```http
-GET /[project]/fields/[collection]/[field]
-```
-
-#### Update Field
-
-Updates the details of a given field.
-
-```http
-PATCH /[project]/fields/[collection]/[field]
-```
-
-```json
-{
-  "required": true
-}
-```
-
-#### Delete Field
-
-Permanently deletes a field and its content.
-
-```http
-DELETE /[project]/fields/[collection]
-```
-
-:::warning
-Deleting a field removes the actual column and any data therein from the database permanently. Please proceed with extreme caution.
-:::
-
 ### Collection Presets
 
 These endpoints are used for creating, reading, updating, and deleting collection presets.
@@ -1254,6 +1192,68 @@ DELETE /[project]/collection_presets/[id1],[id2],[id3]
 
 ::: danger WARNING
 Batch Delete can quickly destroy large amounts of data. Please be careful when implementing this request.
+:::
+
+### Fields
+
+These endpoints are used for creating, reading, updating, and deleting fields within a collection. It alters the database schema directly as needed.
+
+#### Create Field
+
+Creates a new field in a given collection.
+
+```http
+POST /[project]/fields/[collection]
+```
+
+```json
+{
+  "field": "description",
+  "type": "text",
+  "interface": "textarea"
+}
+```
+
+#### Get Fields
+
+Returns the list of all fields that belongs to a given collection.
+
+```http
+GET /[project]/fields/[collection]
+```
+
+#### Get Field
+
+Returns the details of a single field.
+
+```http
+GET /[project]/fields/[collection]/[field]
+```
+
+#### Update Field
+
+Updates the details of a given field.
+
+```http
+PATCH /[project]/fields/[collection]/[field]
+```
+
+```json
+{
+  "required": true
+}
+```
+
+#### Delete Field
+
+Permanently deletes a field and its content.
+
+```http
+DELETE /[project]/fields/[collection]
+```
+
+:::warning
+Deleting a field removes the actual column and any data therein from the database permanently. Please proceed with extreme caution.
 :::
 
 ### Files
