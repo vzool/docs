@@ -474,7 +474,7 @@ Using `offset` the first `offset` number of items can be skipped.
 Using `single` the first element will be returned.
 
 ::: tip NOTE
-Instead of returning a list, the result data will be an object representing the first item.
+Instead of returning a list, the result data will be a single object representing the first item.
 :::
 
 #### Examples
