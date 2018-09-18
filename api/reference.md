@@ -174,7 +174,7 @@ These optional tokens never expire and can be assigned to specific Directus user
 
 These tokens are generated upon the user's request and follow the [JWT spec](https://jwt.io).
 
-The JWT token payload contains the user id, type of token (`auth`), and an expiration date, which is signed with a secret key using the `HS256` hashing algorithm.
+The JWT token payload contains the user ID, type of token (`auth`), and an expiration date, which is signed with a secret key using the `HS256` hashing algorithm.
 
 There are several ways to include this access token:
 
@@ -286,7 +286,7 @@ The access token that is returned through this endpoint must be used with any su
 
 The API will send an email to the requested user’s email containing a link with a short-lived reset token link. This reset token can be used to finish the password reset flow.
 
-The reset token is a JWT token that includes the user id, email, type (`reset_password`), and expiration time.
+The reset token is a JWT token that includes the user ID, email, type (`reset_password`), and expiration time.
 
 ```http
 POST /[project]/auth/password/request
@@ -766,7 +766,7 @@ Update or replace a single item from a given collection.
 @TODO LOOK INTO ALLOWING FILTER PARAM FOR UPDATES, EG: `PUT /[project]/items/projects?filter[title][eq]=title`
 
 ```http
-PATCH /[project]/items/[collection-name]/[id]
+PATCH /[project]/items/[collection-name]/[pk]
 ```
 
 ::: warning
@@ -781,7 +781,7 @@ A single item to be updated. Field keys must match the collection's column names
 
 #### Examples
 
-*   Return the project item with an ID of `1`
+*   Return the project item with an primary key of `1`
     ```bash
     curl -u <token>: -d "title=new title" https://api.directus.io/_/items/projects/1
     ```
@@ -792,7 +792,7 @@ Update multiple items in a given collection.
 
 ```http
 PATCH /[project]/items/[collection-name]
-PATCH /[project]/items/[collection-name]/[id1],[id2],...
+PATCH /[project]/items/[collection-name]/[pk1],[pk2],[pk3],...
 ```
 
 ::: warning PATCH
@@ -834,7 +834,7 @@ Update multiple items, each with its dataset: `PATCH /items/projects`. Each item
 Reverts an item to a previous revision state.
 
 ```http
-PATCH /[project]/items/[collection-name]/[item-id]/revert/[revision-id]
+PATCH /[project]/items/[collection-name]/[item-pk]/revert/[revision-id]
 ```
 
 #### Body
@@ -853,8 +853,8 @@ There is no need for a body with this request.
 Deletes one or more items from a specific collection. This endpoint also accepts CSV of primary key values, and would then return an array of items.
 
 ```http
-DELETE /[project]/items/[collection-name]/[id]
-DELETE /[project]/items/[collection-name]/[id1],[id2],[id3]
+DELETE /[project]/items/[collection-name]/[pk]
+DELETE /[project]/items/[collection-name]/[pk1],[pk2],[pk3],...
 ```
 
 ::: danger WARNING
@@ -909,11 +909,11 @@ GET /[project]/activity
 
 #### Get Activity Event
 
-Get one or more activity events.
+Get one or more specific activity events.
 
 ```http
 GET /[project]/activity/[id]
-GET /[project]/activity/[id1],[id2],[id3]
+GET /[project]/activity/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -947,7 +947,7 @@ A single object representing the new comment.
 
 #### Update Comment
 
-Update a comment by its id.
+Update a comment by its ID.
 
 ```http
 POST /[project]/activity/comment/[id]
@@ -965,7 +965,7 @@ A single object representing the new comment. The collection and item fields are
 
 #### Delete Comment
 
-Delete a comment by its id.
+Delete a comment by its ID.
 
 ```http
 DELETE /[project]/activity/comment/[id]
@@ -1118,7 +1118,7 @@ Returns the details of one or more collection presets.
 
 ```http
 GET /[project]/collection_presets/[id]
-GET /[project]/collection_presets/[id1],[id2],[id3]
+GET /[project]/collection_presets/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -1136,7 +1136,7 @@ Updates the details of one or more collection presets.
 ```http
 PATCH /[project]/collection_presets
 PATCH /[project]/collection_presets/[id]
-PATCH /[project]/collection_presets/[id1],[id2],[id3]
+PATCH /[project]/collection_presets/[id1],[id2],[id3],...
 ```
 
 #### Delete Collection Preset
@@ -1145,7 +1145,7 @@ Permanently deletes a collection_presets.
 
 ```http
 DELETE /[project]/collection_presets/[id]
-DELETE /[project]/collection_presets/[id1],[id2],[id3]
+DELETE /[project]/collection_presets/[id1],[id2],[id3],...
 ```
 
 ::: danger WARNING
@@ -1274,7 +1274,7 @@ Returns the details of one or more files.
 
 ```http
 GET /[project]/files/[id]
-GET /[project]/files/[id1],[id2],[id3]
+GET /[project]/files/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -1306,7 +1306,7 @@ Replaces several files, or updates their details.
 
 ```http
 PATCH /[project]/files
-PATCH /[project]/files/[id1],[id2],[id3]
+PATCH /[project]/files/[id1],[id2],[id3],...
 ```
 
 ##### Different Data
@@ -1346,7 +1346,7 @@ Permanently deletes one or more files from the filesystem and database.
 
 ```http
 DELETE /[project]/files/[id]
-DELETE /[project]/files/[id1],[id2],[id3]
+DELETE /[project]/files/[id1],[id2],[id3],...
 ```
 
 ::: danger WARNING
@@ -1439,7 +1439,7 @@ Returns the details of one or more virtual folders.
 
 ```http
 GET /[project]/files/folders/[id]
-GET /[project]/files/folders/[id1],[id2],[id3]
+GET /[project]/files/folders/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -1470,7 +1470,7 @@ Permanently deletes one or more virtual folders.
 
 ```http
 DELETE /[project]/files/[id]
-DELETE /[project]/files/[id1],[id2],[id3]
+DELETE /[project]/files/[id1],[id2],[id3],...
 ```
 
 :::warning
@@ -1551,7 +1551,7 @@ Returns the details of one or more permissions.
 
 ```http
 GET /[project]/permissions/[id]
-GET /[project]/permissions/[id1],[id2],[id3]
+GET /[project]/permissions/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -1608,7 +1608,7 @@ Updates the details of one or more permissions.
 ```http
 PATCH /[project]/permissions
 PATCH /[project]/permissions/[id]
-PATCH /[project]/permissions/[id1],[id2],[id3]
+PATCH /[project]/permissions/[id1],[id2],[id3],...
 ```
 
 ##### Examples
@@ -1660,7 +1660,7 @@ Permanently deletes one or more permissions.
 
 ```http
 DELETE /[project]/permissions/[id]
-DELETE /[project]/permissions/[id1],[id2],[id3]
+DELETE /[project]/permissions/[id1],[id2],[id3],...
 ```
 
 ::: danger WARNING
@@ -1738,7 +1738,7 @@ Returns the details of one or more relations.
 
 ```http
 GET /[project]/relations/[id]
-GET /[project]/relations/[id1],[id2],[id3]
+GET /[project]/relations/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -1756,7 +1756,7 @@ Updates the details of one or more relations.
 ```http
 PATCH /[project]/relations
 PATCH /[project]/relations/[id]
-PATCH /[project]/relations/[id1],[id2],[id3]
+PATCH /[project]/relations/[id1],[id2],[id3],...
 ```
 
 ##### Examples
@@ -1805,7 +1805,7 @@ Permanently deletes one or more relations.
 
 ```http
 DELETE /[project]/relations/[id]
-DELETE /[project]/relations/[id1],[id2],[id3]
+DELETE /[project]/relations/[id1],[id2],[id3],...
 ```
 
 ::: danger WARNING
@@ -1826,11 +1826,11 @@ GET /[project]/revisions
 
 #### Get Revisions
 
-Get the details of one or more revisions by their id.
+Get the details of one or more revisions by their ID.
 
 ```http
 GET /[project]/revisions/[id]
-GET /[project]/revisions/[id1],[id2],[id3]
+GET /[project]/revisions/[id1],[id2],[id3],...
 ```
 
 ### Roles
@@ -1882,7 +1882,7 @@ Returns the details of one or more roles.
 
 ```http
 GET /[project]/roles/[id]
-GET /[project]/roles/[id1],[id2],[id3]
+GET /[project]/roles/[id1],[id2],[id3],...
 ```
 
 #### Update Role
@@ -1892,7 +1892,7 @@ Updates the details of one or more roles.
 ```http
 PATCH /[project]/roles
 PATCH /[project]/roles/[id]
-PATCH /[project]/roles/[id1],[id2],[id3]
+PATCH /[project]/roles/[id1],[id2],[id3],...
 ```
 
 ##### Examples
@@ -1949,7 +1949,7 @@ Permanently deletes one or more roles.
 
 ```http
 DELETE /[project]/roles/[id]
-DELETE /[project]/roles/[id1],[id2],[id3]
+DELETE /[project]/roles/[id1],[id2],[id3],...
 ```
 
 ::: danger WARNING
@@ -1982,7 +1982,7 @@ Returns the details of one or more settings.
 
 ```http
 GET /[project]/settings/[id]
-GET /[project]/settings/[id1],[id2],[id3]
+GET /[project]/settings/[id1],[id2],[id3],...
 ```
 
 #### Update Setting
@@ -1992,7 +1992,7 @@ Updates the details of one or more settings.
 ```http
 PATCH /[project]/settings
 PATCH /[project]/settings/[id]
-PATCH /[project]/settings/[id1],[id2],[id3]
+PATCH /[project]/settings/[id1],[id2],[id3],...
 ```
 
 #### Delete Setting
@@ -2001,7 +2001,7 @@ Permanently deletes one or more settings.
 
 ```http
 DELETE /[project]/settings/[id]
-DELETE /[project]/settings/[id1],[id2],[id3]
+DELETE /[project]/settings/[id1],[id2],[id3],...
 ```
 
 ::: danger WARNING
@@ -2082,7 +2082,7 @@ GET /[project]/users/[pk],[pk],[pk]
 
 ##### Examples
 
-Returns the user with an id of `1`.
+Returns the user with an ID of `1`.
 
 ```bash
 curl -u <token>: https://api.directus.io/_/users/1
@@ -2112,7 +2112,7 @@ Deletes one or more users from this project.
 
 ```http
 DELETE /[project]/users/[id]
-DELETE /[project]/users/[id1],[id2],[id3]
+DELETE /[project]/users/[id1],[id2],[id3],...
 ```
 
 ::: tip NOTE
@@ -2631,9 +2631,9 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
 | Endpoint       | Methods                         |
 | -------------- | ------------------------------- |
 | `/Users`       | `GET`, `POST`                   |
-| `/Users/{id}`  | `GET`, `PUT`, `PATCH`           |
+| `/Users/[id]`  | `GET`, `PUT`, `PATCH`           |
 | `/Groups`      | `GET`, `POST`                   |
-| `/Groups/{id}` | `GET`, `PUT`, `PATCH`, `DELETE` |
+| `/Groups/[id]` | `GET`, `PUT`, `PATCH`, `DELETE` |
 
 Learn more within the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
 
