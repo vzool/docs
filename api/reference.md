@@ -2,6 +2,8 @@
 
 ## Introduction
 
+The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture, providing dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and paramater alongside helpful examples that showcase typical request and response formats.
+
 ### Versioning
 
 The Directus API uses [SemVer](https://semver.org/) for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that existing API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
