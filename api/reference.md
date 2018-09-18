@@ -431,19 +431,19 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 #### Examples
 
 ```
-# Gets all top-level fields
+# Get all top-level fields
 ?fields=*
 
-# Gets all top-level fields and all relational fields one-level deep
+# Get all top-level fields and all second-level relational fields
 ?fields=*.*
 
-# Gets all top-level fields and all relational fields within images
+# Get all top-level fields and second-level relational fields within images
 ?fields=*,images.*
 
-# Gets only the first_name and last_name fields
+# Get only the first_name and last_name fields
 ?fields=first_name,last_name
 
-# Get all fields for top level and one level deep, as well as three levels deep within images.thumbnails
+# Get all top-level and second-level relational fields, and third-level fields within images.thumbnails
 ?fields=*.*,images.thumbnails.*
 ```
 
