@@ -230,35 +230,35 @@ The access token that is returned through this endpoint must be used with any su
 
 #### Protected Endpoints
 
-| Endpoint                       | Protected
-| ------------------------------ | -----------------------
-| /[project]/                    | **Yes**
-| /[project]/activity            | **Yes**
-| /[project]/auth                | No
-| /[project]/collections         | **Yes**
-| /[project]/collection_presets  | **Yes**
-| /[project]/custom              | No
-| /[project]/fields              | **Yes**
-| /[project]/files               | **Yes**
-| /[project]/items               | **Yes**
-| /[project]/interfaces          | **Yes**
-| /[project]/mail                | **Yes**
-| /[project]/pages               | **Yes**
-| /[project]/permissions         | **Yes**
-| /[project]/relations           | **Yes**
-| /[project]/revisions           | **Yes**
-| /[project]/roles               | **Yes**
-| /[project]/scim/v2             | **Yes**
-| /[project]/settings            | **Yes**
-| /[project]/users               | **Yes**
-| /[project]/utils               | **Yes**
-| /                              | **Yes**
-| /projects                      | No
-| /interfaces                    | **Yes**
-| /layouts                       | **Yes**
-| /pages                         | **Yes**
-| /server/ping                   | No
-| /types                         | **Yes**
+| Endpoint                         | Protected
+| -------------------------------- | -----------------------
+| `/[project]/`                    | **Yes**
+| `/[project]/activity`            | **Yes**
+| `/[project]/auth`                | No
+| `/[project]/collections`         | **Yes**
+| `/[project]/collection_presets`  | **Yes**
+| `/[project]/custom`              | No
+| `/[project]/fields`              | **Yes**
+| `/[project]/files`               | **Yes**
+| `/[project]/items`               | **Yes**
+| `/[project]/interfaces`          | **Yes**
+| `/[project]/mail`                | **Yes**
+| `/[project]/pages`               | **Yes**
+| `/[project]/permissions`         | **Yes**
+| `/[project]/relations`           | **Yes**
+| `/[project]/revisions`           | **Yes**
+| `/[project]/roles`               | **Yes**
+| `/[project]/scim`/v2             | **Yes**
+| `/[project]/settings`            | **Yes**
+| `/[project]/users`               | **Yes**
+| `/[project]/utils`               | **Yes**
+| `/`                              | **Yes**
+| `/projects`                      | No
+| `/interfaces`                    | **Yes**
+| `/layouts`                       | **Yes**
+| `/pages`                         | **Yes**
+| `/server/ping`                   | No
+| `/types`                         | **Yes**
 
 ### Refresh Auth Token
 
