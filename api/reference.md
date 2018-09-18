@@ -12,7 +12,7 @@ The Directus API uses [SemVer](https://semver.org/) for version labeling within 
 
 ### Project Prefix
 
-All endpoints are prefixed with a project key (based on the configuration file name). The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
+All endpoints are prefixed with a project key based on the configuration file name. The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
 
 Below are few examples of API requests when your API is located in an `/api` sub-directory:
 
@@ -430,11 +430,22 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 #### Examples
 
-*   `fields=*` Gets all top-level fields
-*   `fields=*.*` Gets all top-level fields and all relational fields one-level deep
-*   `fields=*,images.*` Gets all top-level fields and all relational fields within `images`
-*   `fields=first_name,last_name` Gets only the `first_name` and `last_name` fields
-*   `fields=*.*,images.thumbnails.*` Get all fields for top level and one level deep, as well as three levels deep within `images.thumbnails`
+```
+# Gets all top-level fields
+?fields=*
+
+# Gets all top-level fields and all relational fields one-level deep
+?fields=*.*
+
+# Gets all top-level fields and all relational fields within images
+?fields=*,images.*
+
+# Gets only the first_name and last_name fields
+?fields=first_name,last_name
+
+# Get all fields for top level and one level deep, as well as three levels deep within images.thumbnails
+?fields=*.*,images.thumbnails.*
+```
 
 ### Limit
 
@@ -442,7 +453,10 @@ Using `limit` can be set the maximum number of items that will be returned.
 
 #### Examples
 
-*   `limit=10` Returns a maximum of 10 items.
+```
+# Returns a maximum of 10 items
+?limit=10
+```
 
 ### Offset
 
@@ -450,7 +464,10 @@ Using `offset` the first `offset` number of items can be skipped.
 
 #### Examples
 
-*   `offset=3&limit=10` Returns a maximum of 10 items, but skips the first 3 items on the list.
+```
+# Returns a maximum of 10 items, but skips the first 3 items on the list
+?offset=3&limit=10
+```
 
 ### Single
 
@@ -462,7 +479,10 @@ Instead of returning a list, the result data will be an object representing the 
 
 #### Examples
 
-*   `single=1&offset=3&limit=10` Returns the first item of the result.
+```
+# Returns the first item of the result set
+?single=1&offset=3&limit=10
+```
 
 ### Sorting
 
@@ -470,10 +490,19 @@ Instead of returning a list, the result data will be an object representing the 
 
 #### Examples
 
-*   `sort=?` Sorts randomly
-*   `sort=name` Sorts by `name` ASC
-*   `&sort=name,-age` Sorts by `name` ASC, followed by `age` DESC
-*   `sort=name,-age,?` Sorts by `name` ASC, followed by `age` DESC, followed by random sorting
+```
+# Sorts randomly
+?sort=?
+
+# Sorts by name ASC
+?sort=name
+
+# Sorts by name ASC, followed by age DESC
+?&sort=name,-age
+
+# Sorts by name ASC, followed by age DESC, followed by random sorting
+?sort=name,-age,?
+```
 
 ### Status
 
@@ -569,7 +598,10 @@ The `groups` parameter allows grouping the result by one or more fields.
 
 #### Examples
 
-* `groups=id,name` Groups the result by `id` and `name` fields
+```
+# Groups the result by id and name fields
+groups=id,name
+```
 
 ### Joins
 
