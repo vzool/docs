@@ -4,7 +4,7 @@ To create a collection, head over to the _Collections & Fields_ page in the _Adm
 
 ### Note
 
-This is for internal use only. It helps your administrators understand the purpose of each collection.
+The collection's note field is for internal use only. It helps your administrators understand the purpose of each collection.
 
 ### Hidden
 
