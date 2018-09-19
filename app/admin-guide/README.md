@@ -10,7 +10,7 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 
 ## What You Need to Know Most
 
-* [What is Directus](../../what-is-directus.md)
+* [What is Directus?](../../what-is-directus.md)
 * [Installing the Directus Application](./install.md)
 * [Updating the Directus Application](./update.md)
 * [Troubleshooting the Directus Application](./troubleshooting.md)
@@ -26,17 +26,17 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 * [User Roles](./roles.md)
 * [Permissions](./permissions.md)
 
-## Use and create extensions (@TODO)
+## Create and Use Extensions (@TODO)
 
-* [Extensions: an introduction](./about-extensions.md)
-* [Write an extension](./write-extension.md)
-* [Extension resources](./extension-resources.md)
+* [Extensions: Introduction](./about-extensions.md)
+* [Write an Extension](./write-extension.md)
+* [Extension Resources](./extension-resources.md)
 
-## Customizing the application
+## Customizing the Application
 
-* [Style overrides](./custom-style.md)
-* [Custom scripts](./custom-scripts.md)
-* [Adding your own branding](./branding.md)
+* [Style Overrides](./custom-style.md)
+* [Custom Scripts](./custom-scripts.md)
+* [Adding Custom Branding](./branding.md)
 
 ::: tip Contribute to Development
 Interested in helping out making Directus a better platform? Checkout the [Directus Contributer Guide](../contributer-guide/) where you'll find everything you need to get started.
