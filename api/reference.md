@@ -1195,7 +1195,7 @@ These endpoints are used for creating, reading, updating, and deleting fields wi
 
 #### Create Field
 
-Creates a new field in a given collection.
+Creates a new field in a given collection. When creating a field you must submit the [Directus field type](/api/admin-guide/field-types.md) (`type`) as well as a database datatype (`datatype`) specific to your SQL vendor.
 
 ```http
 POST /[project]/fields/[collection]
@@ -1204,10 +1204,17 @@ POST /[project]/fields/[collection]
 ```json
 {
   "field": "description",
-  "type": "text",
+  "type": "string",
+  "datatype": "varchar",
   "interface": "textarea"
 }
 ```
+
+::: warning
+You must ensure that the Directus field type, database datatype, and interface all work together. This is easy when done through the App, since options are limited and defaults are provided. When working directly with the API you'll need to check compatibility.
+
+For example, you wouldn't have a `wysiwyg` interface with a `boolean` type save to a `datetime` datatype... that's just crazy.
+:::
 
 #### Get Fields
 
