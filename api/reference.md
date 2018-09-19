@@ -2522,7 +2522,7 @@ When `project` is not specified it will create the default configuration.
 
 ## Field Types
 
-Returns the list of Directus field types.
+Returns the list of [Directus field types](/api/admin-guide/field-types.md).
 
 ```http
 GET /types
