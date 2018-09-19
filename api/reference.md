@@ -1040,7 +1040,7 @@ When `type` requires a length, such as a string or numeric, a `length` attribute
     "fields": [
         {
             "field": "id",
-            "type": "primary_key",
+            "type": "number",
             "datatype": "int",
             "interface": "primary_key",
             "primary_key": true,
@@ -1050,7 +1050,8 @@ When `type` requires a length, such as a string or numeric, a `length` attribute
         },
         {
             "field": "title",
-            "type": "varchar",
+            "type": "string",
+            "datatype": "varchar",
             "interface": "text-input",
             "length": 255,
             "readonly": false,
