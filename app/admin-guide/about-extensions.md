@@ -1,6 +1,16 @@
 ## Extensions
 
-To keep the core codebase as simple and clean as possible, all edge-case (80/20 rule) functionality is added through extensions. There are many different types of extensions which we'll cover below:
+To keep the core codebase as simple and clean as possible, all edge-case (80/20 rule) functionality is added through extensions. There are many different types of extensions which we'll cover below.
+
+### Repo Location Explained
+
+Despite being an App resource, the Directus extensions are actually stored in the API codebase and repository. This seems counter-intuitive, but is neccesary because the Directus App supports multitenancy (you can connect to multiple APIs from one App). If you install a custom interface, like a "Seating Chart", you'll want that interface to be available within your project no matter which App you connect through.
+
+Because of this, we store all _custom_ extensions in the API Instance, and to keep things organized, we decided to also serve all core extensions from the same place.
+
+::: tip
+If you're adding a GitHub issue related to an extension, you still add it to the App since that is the logical place to discuss GUI components.
+:::
 
 ### Interfaces
 
