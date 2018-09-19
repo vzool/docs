@@ -27,7 +27,7 @@ To create a hook a [callable](http://php.net/manual/en/language.types.callable.p
 
 You can also you any class that implement the `__invoke` method instead of a function.
 
-### Using a class implementing __invoke
+### Using a class implementing `__invoke`
 
 ```php
 <?php
