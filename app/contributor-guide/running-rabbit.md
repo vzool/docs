@@ -1,10 +1,6 @@
 # Loading Queue (Running Rabbit)
 
-The Directus app uses a global loading indicator. It might've caught your eye already:
-
-<video src="/app/run.mov" autoplay loop muted />
-
-The rabbit runs as long as there's active requests in the queue which is stored in the [store](./store.md). 
+The Directus app uses a global loading indicator. The rabbit runs as long as there's active requests in the queue which is stored in the [store](./store.md).
 
 ## Usage
 
@@ -27,7 +23,7 @@ To remove something from the queue, dispatch the `loadingFinished` action:
 this.$store.dispatch("loadingFinished", id);
 ```
 
-**Full example**  
+**Full example**
 ```js
 const id = this.$helpers.shortid.generate();
 this.$store.dispatch("loadingStart", { id });
