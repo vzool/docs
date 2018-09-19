@@ -28,8 +28,8 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 
 ## Create and Use Extensions (@TODO)
 
-* [Extensions: Introduction](./about-extensions.md)
-* [Write an Extension](./write-extension.md)
+* [About Extensions](./about-extensions.md)
+* [Creating Extensions](./creating-extensions.md)
 * [Extension Resources](./extension-resources.md)
 
 ## Customizing the Application
