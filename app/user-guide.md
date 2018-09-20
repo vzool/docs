@@ -278,7 +278,18 @@ Clicking on any user's name or avatar throughout the system will open a modal to
 
 @TODO Screenshot
 
-This shortcut to your user's profile is where you can edit account information such as: email address, password, avatar, and more.
+This shortcut to your user's profile is where you can edit account information such as: email address, password, avatar, and more. Below we'll cover what each core field is for, but your specific user page might have additional fields added by your administrator.
+
+* **First Name** – Your given name
+* **Last Name** – Your surname name, which can be hyphenated
+* **Email** – The email used to sign-in to Directus
+* **Email Notifications** – If you want to Directus @mentions forwarded to your email
+* **Password** – The password used to sign-in to Directus
+* **Avatar** – An image that represents your user throughout Directus
+* **Company** – The name of the company or organization you work for
+* **Title** – Your title or position within the company or organization
+* **Locale** – This determines your App's language and date/number formatting
+* **Timezone** – This determines how times are presented to you
 
 ## My Activity
 
