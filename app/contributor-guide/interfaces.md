@@ -22,6 +22,9 @@ These display components are used in the system in places where the regular read
 
 The meta.json file contains information over the interface (like unique name, author, version) and it's options.
 
+::: tip
+To hide the label on the edit form, add `"hideLabel": true` to `meta.json`
+
 ## Boilerplate
 
 The minimum files required for each interface are the aforementioned input.vue, display.vue, and meta.json files.
