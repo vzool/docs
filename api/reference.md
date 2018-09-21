@@ -416,13 +416,29 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 #### Options
 
-*   `result_count` - Number of items returned in this response
-*   `total_count` - Total number of items in this collection
-*   `status` - Collection item count by statuses
-*   `collection` - The collection name
+*   `collection` - The name of the collection
 *   `type`
     *   `collection` If it is a collection of items
     *   `item` If it is a single item
+*   `result_count` - Number of items returned in this response
+*   `total_count` - Total number of items in this collection
+*   `status_count` - Number of items per status
+
+```
+# Here is an example of all meta data enabled
+{
+    "collection":"movies",
+    "type":"collection",
+    "result_count":20,
+    "total_count":962,
+    "status_count":{
+        "deleted":94,
+        "draft":90,
+        "coming soon":159,
+        "published":181
+    }
+}
+```
 
 ### Fields
 
