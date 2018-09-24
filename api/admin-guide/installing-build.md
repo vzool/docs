@@ -1,3 +1,21 @@
-# Install Using FTP: Build Version
+# Installing the Build Version
 
-If you're on a shared host or don't have access to the command line, then you can use our build version. This version is much larger, but includes all neccesary dependencies. Simply download the [latest build](https://github.com/directus/api/archive/build.zip) from GitHub, upload it to your server, and continue with the steps below.
+## Using Git
+
+The preferred way to install Directus is by cloning it directly from the repo. This will make upgrading things in the future far easier. From your terminal, navigate to the directory where you'd like to install Directus and use this command:
+
+```
+git clone -b build https://github.com/directus/directus.git
+```
+
+## Using FTP
+
+If you don't have access to the command line or would rather upload files directly to your server, follow these steps:
+
+1. Download the [latest build](https://github.com/directus/api/archive/build.zip) from GitHub
+2. Upload it to your server via FTP/SFTP
+3. Continue with the normal installation process
+
+::: warning
+Uploads may take a while since this version includes all neccesary dependencies.
+:::

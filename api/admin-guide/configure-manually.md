@@ -1,4 +1,4 @@
-# Configure Manually
+# Manual Configuration
 
 Create a copy of `config/api_sample.php` and change the name to `config/api.php`. Next, update the `database` values with your own:
 

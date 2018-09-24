@@ -16,6 +16,6 @@ Enter password: ****
 After you successfully log into MySQL, run the `CREATE DATABASE` command:
 
 ```
-mysql> CREATE DATABASE directus_test;
+mysql> CREATE DATABASE directus;
 Query OK, 1 row affected (0.00 sec)
 ```

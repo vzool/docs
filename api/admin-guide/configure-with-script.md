@@ -1,12 +1,12 @@
 # Configure with Script
 
-Create the config file:
+## Create Config File
 
 ```bash
 $ bin/directus install:config -n <database-name> -u <mysql-user> -p <mysql-password>
 ```
 
-## Options
+### Options
 
 | Name    | Description                                                           |
 |---------|-----------------------------------------------------------------------|
@@ -20,19 +20,19 @@ $ bin/directus install:config -n <database-name> -u <mysql-user> -p <mysql-passw
 | `-e`    | Email used by the Mailer as From/Sender (Default: `admin@example.com`)|
 | `-N`    | Name of the project (Default: `_`)                                    |
 
-Create the Directus system tables and data:
+## Add System Schema and Data
 
 ```bash
 $ bin/directus install:database
 ```
 
-Create the Directus default settings and user:
+## Create Admin User
 
 ```bash
 $ bin/directus install:install -e <admin-email> -p <admin-password> -t <project-title>
 ```
 
-## Options
+### Options
 
 | Name    | Description                                                           |
 |---------|-----------------------------------------------------------------------|
@@ -42,7 +42,9 @@ $ bin/directus install:install -e <admin-email> -p <admin-password> -t <project-
 | `-T`    | Title of the project (Default: `Directus`)                            |
 | `-N`    | Name of the project (Default: `_`)                                    |
 
-Test by requesting to view all users (the default `access_token` is `admin_token`):
+## Testing
+
+Test that everything is working by making a request to the `users` endpoint using the `access_token`.
 
 ```
 GET http://localhost/_/users?access_token=admin_token

@@ -1,6 +1,6 @@
-# Install Using Git: Source Version
+# Install the Source Version
 
-If you want to install Directus from source or want to install the latest development version you need to clone the Directus API repository from `https://github.com/directus/api`.
+If you want to install Directus from source or want the latest development version, you'll need to clone the Directus API repository from `https://github.com/directus/api`.
 
 ## Additional Requirements
 
