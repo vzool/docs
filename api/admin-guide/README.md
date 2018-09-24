@@ -14,13 +14,15 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 * [Update the API](./update.md)
 * [Configure the API](./configure.md)
 
-## Other Components
-
-* [Working with the Thumbnailer](./thumbnailer.md)
-
 ## Extending the API
 
 * [Creating Hooks](./hooks.md)
-* [Add a Custom Endpoint](./custom-endpoint.md)
-* [Add Another Auth Provider](./auth-provider.md)
+* [Creating Custom Endpoints](./custom-endpoint.md)
+* [Creating Auth Providers](./auth-provider.md)
 * [Other Extensions](./extensions.md)
+
+## Other Info
+
+* [Working with the Thumbnailer](./thumbnailer.md)
+* [Directus Field Types](./field-types.md)
+* [Permission Values](./permissions.md)

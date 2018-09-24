@@ -1,10 +1,10 @@
-# Endpoints
+# Creating Custom Endpoints
 
-Users can create custom endpoints. The custom endpoints can be created inside extensions (page, interfaces) or as a standalone.
+Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
 
-All custom endpoints are created equally, the only difference is where the file is located. The name of the file can be anything when the file is located in the root of the custom endpoints directory. When the endpoints are created inside an extension (page or interface) or a directory inside the custom endpoints path, the name must be `endpoints.php`.
+**Global** endpoints are defined in files within `/public/extension/custom/endpoints` ([link](https://github.com/directus/api/tree/master/public/extensions/custom/endpoints)). You can use any file-names or sub-directories to help keep things organized.
 
-These files must return an array with the endpoint path, method and handler.
+**Extension** endpoints are defined in the `endpoints.php` file within that extension's directory.
 
 ```php
 <?php
@@ -13,9 +13,9 @@ use Directus\Application\Http\Request;
 use Directus\Application\Http\Response;
 
 return [
-  // endpoint path
-  // '' means it's ran when `/custom/<endpoint-id>`
-  // '/` means `/custom/<endpoint-id>/`
+  // The endpoint path:
+  // '' means it is located at: `/custom/<endpoint-id>`
+  // '/` means it is located at: `/custom/<endpoint-id>/`
   '' => [
     'method' => 'GET',
     'handler' => function (Request $request, Response $response) {
@@ -31,22 +31,33 @@ return [
 ]
 ```
 
-Endpoints can be grouped to prepend a name/path. It heps when there's multiple endpoints that share the same prefix name.
+## Nesting Endpoints
+
+Endpoints can also be nested, or grouped, under a parent path name.
 
 ```php
 <?php
 
 return [
-  '/users' => [
+  '/articles' => [
     'group' => true,
     'endpoints' => [
+      // `/custom/articles
       '' => [
           'method' => 'GET',
           'handler' => function ($request, $response) {
 
           }
       ],
-      '/invite' => [
+      // `/custom/articles/category
+      '/category' => [
+        'method' => 'GET',
+        'handler' => function ($request, $response) {
+
+        }
+      ],
+      // `/custom/articles/preview
+      '/preview' => [
         'method' => 'GET',
         'handler' => function ($request, $response) {
 
@@ -56,5 +67,3 @@ return [
   ]
 ];
 ```
-
-The standalone endpoints must be stored in `public/extension/custom/endpoints`. The endpoints can be file in the root of the directory or a directory to keep together all the related files.

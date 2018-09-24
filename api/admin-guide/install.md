@@ -43,15 +43,22 @@ Use this source version if you'd like to customize, extend, or contribute to the
 
 ### Web Server Setup
 
-The Directus API has been tested on Apache 2, NGINX, and Caddy (though it should work on any HTTP Server). Each has a unique process for setup.
+Directus API should work on any HTTP Server, but it has been tested on Apache 2, NGINX, and Caddy.
 
 The root directory for Directus API should be `/path/to/directus/public`.
 
-[Apache 2 Setup](./configure-apache.md)
+The following files/folders should have write permission:
 
-[NGINX Setup](./configure-nginx.md)
+* `/logs`
+* `/public/uploads` (or your configured upload directory)
 
-[Caddy Setup](./configure-caddy.md)
+#### Specific Server Setup
+
+[Apache 2 Setup](./setup-apache.md)
+
+[NGINX Setup](./setup-nginx.md)
+
+[Caddy Setup](./setup-caddy.md)
 
 ::: tip
 For local development environments you can use WAMP, XAMP or MAMP

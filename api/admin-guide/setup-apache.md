@@ -1,4 +1,4 @@
-# Apache Configuration
+# Apache Setup
 
 Directus API comes with `.htaccess` files for the required configuration. These `.htaccess` won't work until the `AllowOverride` directive is set within a Directory block.
 
