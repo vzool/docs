@@ -73,7 +73,7 @@ Directus API should work on any HTTP Server, but most testing has been done on A
 2. The following files/folders should have write permission:
     * `/logs`
     * `/public/uploads` (or your configured upload directory)
-3. Make sure the directory ownership is set to `www-data`
+3. Make sure the directory ownership is set to user the web server is running under. Usually the user is `www-data`
     * eg: `sudo chown -R www-data:www-data /var/www/api`
 
 #### Specific Server Setup
