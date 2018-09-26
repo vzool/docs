@@ -75,12 +75,12 @@ Replace `<url>` with the API URL you'd like to connect to, `<port>` with the por
 
 Directus API should work on any HTTP Server, but most testing has been done on Apache 2, NGINX, and Caddy.
 
-The root directory for Directus API should be `/path/to/directus/public`.
-
-The following files/folders should have write permission:
-
-* `/logs`
-* `/public/uploads` (or your configured upload directory)
+1. The root directory for Directus API should be `/path/to/directus/public`.
+2. The following files/folders should have write permission:
+    * `/logs`
+    * `/public/uploads` (or your configured upload directory)
+3. Make sure the directory ownership is set to `www-data`
+    * eg: `sudo chown -R www-data:www-data /var/www/api`
 
 #### Specific Server Setup
 
