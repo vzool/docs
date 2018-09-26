@@ -1,5 +1,11 @@
 # Apache Setup
 
+## Mod_Rewite
+
+@TODO
+
+## AllowOverride
+
 Directus API comes with `.htaccess` files for the required configuration. These `.htaccess` won't work until the `AllowOverride` directive is set within a Directory block.
 
 1. Go to your Apache virtual host configuration
