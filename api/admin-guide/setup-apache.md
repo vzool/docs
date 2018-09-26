@@ -10,7 +10,11 @@ Directus API comes with `.htaccess` files for the required configuration. These 
 
 1. Go to your Apache virtual host configuration
 2. Create a `<Directory>` block that points to Directus API root
-3. Add `AllowOverride All` inside the `<Directory>` block
+3. Add `AllowOverride All` inside the `<Directory>` block to allow all directives in `.htaccess` including the `mod_rewrite` directives.
+
+::: tip
+Directus `.htaccess` actually uses `FileInfo` for rewriting and `Options` to following symlinks
+:::
 
 ## Example
 
