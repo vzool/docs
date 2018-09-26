@@ -4,17 +4,17 @@ The Directus application is a static single-page webapp (SPA) and can be install
 
 ### Using Git
 
-The easiest way of installing and updating the app is through using Git. By using the build branch on our repo, you're assured to have the latest version pre-bundled and ready to go.
+The easiest way of installing and updating the app is through Git. By using the build branch on our repo, you're assured to have the latest version pre-bundled and ready to go.
 
-To install the pre-bundled build version through Git, run 
+To install the pre-bundled build version through Git, run
 
 ```bash
 $ git clone -b build https://github.com/directus/app.git directus
-``` 
-    
+```
+
 ### Manually
 
-If you don't have access to the command line in your server, you can download the static bundle manually as a zip. Head over to [the releases page](https://github.com/directus/app/releases) and download a fresh copy of the latest version. 
+If you don't have access to the command line in your server, you can download the static bundle manually as a zip. Head over to [the releases page](https://github.com/directus/app/releases) to download a fresh copy of the latest version.
 
 ::: tip
 For instructions on how to setup a local development copy, checkout our [dev install guide](https://docs.directus.io/app/contributor-guide/install-dev.html#decoupled)
@@ -22,7 +22,7 @@ For instructions on how to setup a local development copy, checkout our [dev ins
 
 ### Using Docker
 
-Seeing the Directus Application is a SPA, running it in Docker is a breeze. The application comes with it's own Dockerfile, which you can use to to run the application.
+Seeing how the Directus Application is a SPA, running it in Docker is a breeze. The application comes with its own Dockerfile, which you can use to run the application.
 
 Download a copy of the latest release from the [Releases Page](https://github.com/directus/app/releases), `cd` into the directory and run
 
@@ -30,7 +30,7 @@ Download a copy of the latest release from the [Releases Page](https://github.co
 $ docker build . -t directus
 ```
 
-After the image has been build, you can run it by running
+After the image has been build, you can run it with
 
 ```bash
 $ docker run -it -d -e API_URL=<url> -p <port>:80 <name>
