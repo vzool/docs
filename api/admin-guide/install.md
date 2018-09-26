@@ -32,7 +32,7 @@ The easiest way of installing and updating the API is through Git. By using the 
 To install the pre-bundled build version through Git, run
 
 ```bash
-git clone -b build https://github.com/directus/directus.git
+git clone -b build https://github.com/directus/api.git
 ```
 
 ### Manually
