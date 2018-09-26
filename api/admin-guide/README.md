@@ -13,7 +13,7 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 * [What is Directus?](../../what-is-directus.md)
 * [Installing the Directus API](./install.md)
 * [Updating the Directus API](./update.md)
-* [Glossary](./glossary.md)
+* [Glossary](../../glossary.md)
 * [Releases](https://github.com/directus/api/releases)
 
 ## Learn How to Configure Directus
@@ -26,7 +26,7 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 * [Creating Hooks](./hooks.md)
 * [Creating Custom Endpoints](./custom-endpoint.md)
 * [Creating Auth Providers](./auth-provider.md)
-* [Other Extensions](./extensions.md)
+* [Other Extensions](../../app/contributor-guide/extensions.md)
 
 ## Other Info
 
