@@ -1,4 +1,6 @@
-# Install Locally
+# Setup Local Development Environment
+
+In order to work on the API, you'll need to install the source version locally. The application sourcecode is being hosted in the [directus/api](https://github.com/directus/api) repo on GitHub.
 
 ## System Requirements
 
@@ -6,7 +8,8 @@
 * MySQL 5.6+
 * A webserver (comes with .htaccess for Apache included) that supports URL rewrites
 * [Node.js](https://nodejs.org) v8.11.3 or higher (preferably v10.6+)
-* [Composer](https://getcomposer.org/)
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to fetch the source code from GitHub
+* [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) to install dependencies
 
 ## Steps
 
@@ -23,6 +26,10 @@ OR
 ```bash
 git clone git@github.com:directus/api.git
 ```
+
+::: warning Fork
+If you want to work on your fork of the project, remember to replace `directus` with your GitHub username in the url above
+:::
 
 ### 2. Install the Composer dependencies
 
@@ -44,16 +51,12 @@ Just like the app, if you'd like to actively work on Extensions, use `npm run de
 
 ### 4. Create a database
 
-In your local database, create a new database to use with the API.
-
-::: tip
-You can [download a demo SQL schema](https://sql.directus.app/demo.sql) to skip the api's installation process.
-:::
+On your local server, create a new database to use with the API.
 
 ### 5. Add a config file
 
-The api uses a config file to know what database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` and edit the settings as indicated.
+The API uses a config file to know which database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` and edit the settings as indicated.
 
-::: warning
-By default, **CORS is turned off**. This means that only applications that share the same domain name are allowed access to the API. Seeing it's very likely the application won't be served from the same domain locally, it's highly recommended to turn CORS on. This setting is managed in the same config file mentioned above.
+::: tip
+You can [download a demo SQL schema](https://sql.directus.app/demo.sql) to skip the API's installation process.
 :::
