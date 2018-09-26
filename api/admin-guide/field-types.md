@@ -22,6 +22,6 @@ In order to support multiple SQL vendors (MySQL, PostgreSQL, MS-SQL, etc) Direct
 * `translation` – Specific to translation interfaces, this `o2m` is stores multi-lingual content
 * `uuid` – A Universally Unique Identifier
 * `datetime_created` – System field to track the datetime an item was created, used by revisions
-* `datetime_modified` – System field to track the datetime an item was updated, used by revisions
+* `datetime_updated` – System field to track the datetime an item was updated, used by revisions
 * `user_created` – System field to track the user who created an item, used by revisions
-* `user_modified` – System field to track the user who updated an item, used by revisions
+* `user_updated` – System field to track the user who updated an item, used by revisions
