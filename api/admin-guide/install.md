@@ -4,6 +4,8 @@ Installation will vary depending on your specific server and project goals. This
 
 ## Requirements
 
+Directus is quite flexible and can be installed on many different varieties of server/database setups. Learn more about the [Directus Requirements](./requirements.md).
+
 * HTTP/Web Server
 * MySQL 5.2+
     * Database (empty or existing)
@@ -14,10 +16,6 @@ Installation will vary depending on your specific server and project goals. This
     * `gd`
     * `fileinfo`
     * `mbstring`
-
-::: tip
-Learn more about the [Directus Requirements](./requirements.md).
-:::
 
 ## Installation
 
