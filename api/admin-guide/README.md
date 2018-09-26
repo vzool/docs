@@ -10,9 +10,16 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 
 ## What You Need to Know Most
 
-* [Install the API](./install.md)
-* [Update the API](./update.md)
-* [Configure the API](./configure.md)
+* [What is Directus?](../../what-is-directus.md)
+* [Installing the Directus API](./install.md)
+* [Updating the Directus API](./update.md)
+* [Glossary](./glossary.md)
+* [Releases](https://github.com/directus/api/releases)
+
+## Learn How to Configure Directus
+
+* [Configuring the Directus API](./configure.md) (split this into individual pages)
+* [Global Settings](../../global-settings.md)
 
 ## Extending the API
 
@@ -26,3 +33,5 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 * [Working with the Thumbnailer](./thumbnailer.md)
 * [Directus Field Types](./field-types.md)
 * [Permission Values](./permissions.md)
+* [Requirements](./requirements.md)
+* [Reserved Project Names](./reserved-names.md)
