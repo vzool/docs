@@ -1,4 +1,6 @@
-# Install
+# Installing the Directus API
+
+Installation will vary depending on your specific server and project goals. This guide with walk you through several of the most common installation methods.
 
 ## Requirements
 
@@ -11,39 +13,67 @@
     * `fileinfo`
     * `mbstring`
 
+### Database
+
+To install Directus you will first need a database and a database-user with access to it. You can create a blank database, or install Directus on an existing database that already has a schema and content.
+
+[Learn more about creating a database](./creating-a-database.md)
+
 ::: tip
 Learn more about the [Directus Requirements](./requirements.md).
 :::
 
 ## Installation
 
-Installation will vary depending on your specific server and project goals. This guide with walk you through several of the most common installation methods.
+The Directus API can be installed in three ways:
 
-### Get Directus
+::: tip
+For instructions on how to setup a local development copy, checkout our [dev install guide](../contributor-guide/install-dev.md)
+:::
 
-The first step is to decide on how we want to get Directus.
+### Using Git
 
-#### Build Version
+The easiest way of installing and updating the API is through Git. By using the build branch on our repo, you're assured to have the latest version pre-bundled and ready to go.
 
-This is everything you need, pre-built and ready to go.
+To install the pre-bundled build version through Git, run
 
-[Install Build](./installing-build.md)
+```bash
+git clone -b build https://github.com/directus/directus.git
+```
 
-#### Docker Container
+### Manually
+
+If you don't have access to the command line for your server, you can download the static bundle manually as a zip. Head over to [the releases page](https://github.com/directus/api/releases) to download a fresh copy of the latest version.
+
+### Using Docker
+
+@TODO
 
 Our Docker image includes the database and server setup to get you up-and-running even faster.
 
 [Install Using Docker](https://github.com/directus/directus-docker)
 
-#### From Source
+Running the Directus API in Docker is a breeze. The API comes with its own Dockerfile, which you can use to to run it.
 
-Use this source version if you'd like to customize, extend, or contribute to the actual Directus codebase. This is a more advanced method, so make sure you're first familiar with things like `composer` and `npm`.
+Download a copy of the latest release from the [Releases Page](https://github.com/directus/api/releases), `cd` into the directory and run
 
-[Install Source](./installing-source.md)
+```bash
+$ docker build . -t directus
+```
+
+After the image has been built, you can run it with
+
+```bash
+$ docker run -it -d -e API_URL=<url> -p <port>:80 <name>
+```
+
+Replace `<url>` with the API URL you'd like to connect to, `<port>` with the port you want the application to be exposed on, and `<name>` with a name of your choosing which Docker will use internally.
+
+## Post-Installation
 
 ### Web Server Setup
 
-Directus API should work on any HTTP Server, but it has been tested on Apache 2, NGINX, and Caddy.
+Directus API should work on any HTTP Server, but most testing has been done on Apache 2, NGINX, and Caddy.
 
 The root directory for Directus API should be `/path/to/directus/public`.
 
@@ -67,12 +97,6 @@ For local development environments you can use WAMP, XAMP or MAMP
 ::: tip
 We appreciate any pull-requests outlining steps for new server-types. Just submit them to [these Docs on GitHub](https://github.com/directus/docs).
 :::
-
-### Database
-
-To install Directus you will first need a database and a database-user with access to it. You can create a blank database, or install Directus on an existing database that already has a schema and content.
-
-[Learn more about creating a database](./creating-a-database.md)
 
 ### Configuration
 
