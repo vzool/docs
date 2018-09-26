@@ -4,6 +4,8 @@
 
 Directus has been tested on Apache 2, NGINX, and Caddy. In theory, it should work on any HTTP Server.
 
+The API requires the web server to support URL rewriting for routing the request.
+
 ## SQL
 
 Directus requires MySQL 5.2+ or any drop-in alternatives such as MariaDB or Percona Server.
