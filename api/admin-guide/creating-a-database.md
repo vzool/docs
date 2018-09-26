@@ -1,5 +1,7 @@
 # Creating a Database
 
+## MySQL
+
 Connect to MySQL:
 
 ```
