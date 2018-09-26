@@ -8,6 +8,12 @@ Directus has been tested on Apache 2, NGINX, and Caddy. In theory, it should wor
 
 Directus requires MySQL 5.2+ and drop-in alternatives like MariaDB (v10+) or Percona.
 
+### Database
+
+To install Directus you will first need a database and a database-user with access to it. You can create a blank database, or install Directus on an existing database that already has a schema and content.
+
+[Learn more about creating a database](./creating-a-database.md)
+
 ## PHP
 
 Directus requires PHP 5.6+, though we recommend using the most recent/stable version possible.

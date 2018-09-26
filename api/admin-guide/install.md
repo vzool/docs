@@ -6,18 +6,14 @@ Installation will vary depending on your specific server and project goals. This
 
 * HTTP/Web Server
 * MySQL 5.2+
+    * Database (empty or existing)
+    * Database User (with access to database)
 * PHP 5.6+
     * `pdo` + `mysql`
     * `curl`
     * `gd`
     * `fileinfo`
     * `mbstring`
-
-### Database
-
-To install Directus you will first need a database and a database-user with access to it. You can create a blank database, or install Directus on an existing database that already has a schema and content.
-
-[Learn more about creating a database](./creating-a-database.md)
 
 ::: tip
 Learn more about the [Directus Requirements](./requirements.md).
