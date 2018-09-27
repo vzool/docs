@@ -1,7 +1,7 @@
 module.exports = {
   base: '/',
   title: 'Directus Docs',
-  description: 'The All-New Directus 7: Future-Proof Headless CMS for Managing Custom SQL Database Content.',
+  description: 'The All-New Directus 7. Future-Proof Headless CMS for Managing Custom Database Content.',
   themeConfig: {
     sidebar: 'auto',
     lastUpdated: 'Last Updated',

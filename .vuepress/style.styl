@@ -1,9 +1,19 @@
+.home .install {
+  text-align: center;
+  margin: 0 auto 4rem;
+  line-height: 1.7;
+  .action-button {
+    background-color: #ECEFF1;
+    color: #263238;
+  }
+  .action-button:hover {
+    background-color: #CFD8DC;
+  }
+}
+
 .feature-request {
   text-align: center;
   margin: 3rem auto;
-  a {
-    color:
-  }
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -28,12 +38,25 @@
     margin: 2rem auto;
 }
 
+.home .hero .action {
+  margin: 3rem auto 1rem;
+}
+
+.home .action-button,
 .home .hero .action-button {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  transition: background-color 0.1s ease;
+  box-sizing: border-box;
+
   background-color: #37474F;
-  margin: 2rem auto 3rem;
   border: none;
 }
 
+.home .action-button:hover,
 .home .hero .action-button:hover {
   background-color: #263238;
 }

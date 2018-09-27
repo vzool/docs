@@ -6,6 +6,10 @@ actionLink: /what-is-directus.html
 footer: GPL-3.0 | © 2018 RANGER Studio LLC
 ---
 
+<div class="install">
+  <router-link to="/install.html" class="action-button">Install the Directus Suite</router-link>
+</div>
+
 <div class="features">
   <div class="feature">
     <h2>Application Docs</h2>
