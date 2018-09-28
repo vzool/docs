@@ -15,6 +15,7 @@ In order to work on the API, you'll need to install the source version locally. 
     * `gd`
     * `fileinfo`
     * `mbstring`
+    * `xml` (Only if you are installing phpunit)
 * [Node.js](https://nodejs.org) v8.11.3 or higher (preferably v10.6+)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to fetch the source code from GitHub
 * [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) to install dependencies
@@ -47,6 +48,12 @@ If you want to work on your fork of the project, remember to replace `directus` 
 
 ```bash
 composer install
+```
+
+If you don't want to install any development package use the `--no-dev` option.
+
+```bash
+composer install --no-dev
 ```
 
 ### 3. Install the npm dependencies of and build the extensions

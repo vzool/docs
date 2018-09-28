@@ -16,6 +16,7 @@ Directus is quite flexible and can be installed on many different varieties of s
     * `gd`
     * `fileinfo`
     * `mbstring`
+    * `xml` (Only if you are installing PHPUnit)
 
 ## Installation
 
