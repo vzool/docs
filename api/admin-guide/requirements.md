@@ -10,9 +10,9 @@ The API requires the web server to support URL rewriting for routing the request
 
 Depending on the HTTP web server you are using, you may need to ensure proper setup for Directus to work as expected. Any edge-case server configurations are outlined below:
 
-* **Apache 2** – [Confirm this configuration](./setup-apache.md)
-* **NGINX** – [No additional setup required](./setup-nginx.md)
-* **Caddy** – [No additional setup required](./setup-caddy.md)
+* **Apache 2** – [View Setup Details](./setup-apache.md)
+* **NGINX** – [View Setup Details](./setup-nginx.md)
+* **Caddy** – [View Setup Details](./setup-caddy.md)
 
 ### Permissions
 

@@ -1,5 +1,7 @@
 # Apache Setup
 
+To get Directus working on Apache servers all you need to do is ensure that traffic is routed to the correct files.
+
 ## mod_rewrite
 
 The [`mod_rewrite`](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) is an Apache module that uses a ruled-based rewriting engine to rewrite requested URLs.
