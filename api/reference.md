@@ -1,3 +1,8 @@
+---
+sidebarDepth: 2
+---
+
+
 # API Reference
 
 ## Introduction

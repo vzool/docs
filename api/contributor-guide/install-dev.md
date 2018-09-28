@@ -1,4 +1,4 @@
-# Setup Local Development Environment
+# Setup Development Environment
 
 In order to work on the API, you'll need to install the source version locally. The application sourcecode is being hosted in the [directus/api](https://github.com/directus/api) repo on GitHub.
 

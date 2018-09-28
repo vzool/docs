@@ -1,4 +1,4 @@
-# Setup Local Development Environment
+# Setup Development Environment
 
 In order to work on the app, you'll need to install the application locally.
 
@@ -14,7 +14,7 @@ The extensions are being served from the API. Therefore, if you want to work on 
 
 The application is built with [Vue.js](https://vuejs.org) and heavily relies on [Node.js](https://nodejs.org) to be bundled / transpiled to browser-usable code. In order to work on Directus, you need [Node.js](https://nodejs.org) v8.11.3 or higher (preferably v10.6+).
 
-The application sourcecode is being hosted in the [directus/app](https://github.com/directus/app) repo on GitHub. 
+The application source code is being hosted in the [directus/app](https://github.com/directus/app) repo on GitHub.
 
 ### Steps
 
@@ -52,7 +52,7 @@ The default config file lets you test the app using the live Directus Demo API. 
 
 #### 4. Build / run the app
 
-The production version of the application is a static html file that can be hosted on any static file server. In order to build the app for production, run 
+The production version of the application is a static html file that can be hosted on any static file server. In order to build the app for production, run
 
 ```bash
 npm run build
