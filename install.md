@@ -19,7 +19,7 @@ The easiest way to get up-and-running with Directus is with our [combined releas
 [Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin-guide/requirements.md)
 :::
 
-## Using Git
+## Install Using Git
 
 The preferred method of installing is through Git by running the following command from your server's command line.
 
@@ -31,7 +31,7 @@ git clone https://github.com/directus/directus.git
 Don't have git? You can [install it with one command](https://git-scm.com/book/en/v1/Getting-Started-Installing-Git).
 :::
 
-## Manually
+## Install Manually
 
 If you don't have access to the command line or would rather do things manually, you can download the static bundle manually as a [zip](https://github.com/directus/directus/archive/master.zip) or [tar](https://github.com/directus/directus/archive/master.tar.gz) file from [our releases page](https://github.com/directus/directus/releases).
 
@@ -63,7 +63,7 @@ tar -xzf master.tar.gz
 
 If you don't have access to the command line then you'll need to decompress the files on your local computer before uploading to the remote server, though this will take _much_ longer.
 
-## Using Docker
+## Install Using Docker
 
 @TODO
 
