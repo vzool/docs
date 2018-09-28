@@ -6,6 +6,23 @@ Directus has been tested on Apache 2, NGINX, and Caddy. In theory, it should wor
 
 The API requires the web server to support URL rewriting for routing the request.
 
+### Server Specific
+
+Depending on the HTTP web server you are using, you may need to ensure proper setup for Directus to work as expected. Any edge-case server configurations are outlined below:
+
+* **Apache 2** – [Confirm this configuration](./setup-apache.md)
+* **NGINX** – [No additional setup required](./setup-nginx.md)
+* **Caddy** – [No additional setup required](./setup-caddy.md)
+
+### Permissions
+
+1. The root directory for Directus API should be `public` directory.
+2. Make sure the directory ownership is set to user the web server is running under. Usually the user is `www-data`
+    * eg: `sudo chown -R www-data:www-data /var/www/api`
+3. The following files/folders should have write permission:
+    * `/logs`
+    * `/public/uploads` (or your configured upload directory)
+
 ## SQL
 
 Directus requires MySQL 5.2+ or any drop-in alternatives such as MariaDB or Percona Server.
