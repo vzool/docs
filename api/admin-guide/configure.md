@@ -83,7 +83,7 @@ Enables caching to speed-up API responses
 | `host`        |  Redis server host
 | `port`        |  Redis server port number
 
-### `filesystem`
+### `storage`
 
 Choose where files can be uploaded. Currently we support local and Amazon-S3
 
