@@ -63,26 +63,6 @@ tar -xzf master.tar.gz
 
 If you don't have access to the command line then you'll need to decompress the files on your local computer before uploading to the remote server, though this will take _much_ longer.
 
-## Install Using Docker
-
-@TODO
-
-Our [Docker image](https://github.com/directus/directus-docker) goes a few steps further by including the database and server setup. It's the most fool-proof way to install Directus.
-
-Download a copy of the latest release from the [Releases Page](https://github.com/directus/directus/releases), `cd` into the directory and run
-
-```bash
-$ docker build . -t directus
-```
-
-Once the image has been built, you can run it with
-
-```bash
-$ docker run -it -d -e API_URL=<url> -p <port>:80 <name>
-```
-
-Replace `<url>` with the API URL you'd like to connect to, `<port>` with the port you want the application to be exposed on, and `<name>` with a name of your choosing which Docker will use internally.
-
 ---
 
 ## Other Options

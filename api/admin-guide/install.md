@@ -39,30 +39,6 @@ git clone -b build https://github.com/directus/api.git
 
 If you don't have access to the command line for your server, you can download the static bundle manually as a zip. Head over to [the releases page](https://github.com/directus/api/releases) to download a fresh copy of the latest version.
 
-### Using Docker
-
-@TODO
-
-Our Docker image includes the database and server setup to get you up-and-running even faster.
-
-[Install Using Docker](https://github.com/directus/directus-docker)
-
-Running the Directus API in Docker is a breeze. The API comes with its own Dockerfile, which you can use to to run it.
-
-Download a copy of the latest release from the [Releases Page](https://github.com/directus/api/releases), `cd` into the directory and run
-
-```bash
-$ docker build . -t directus
-```
-
-After the image has been built, you can run it with
-
-```bash
-$ docker run -it -d -e API_URL=<url> -p <port>:80 <name>
-```
-
-Replace `<url>` with the API URL you'd like to connect to, `<port>` with the port you want the application to be exposed on, and `<name>` with a name of your choosing which Docker will use internally.
-
 ## Post-Installation
 
 ### Web Server Setup
