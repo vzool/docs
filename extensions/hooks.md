@@ -137,8 +137,53 @@ if (in_array($collectionName, SchemaManager::getSystemCollections())) {
 
 ## Action Hooks List
 
-@TODO
+Name                              | Description
+--------------------------------- | ------------
+`application.boot`                | Before all endpoints are being set. app object is passed.
+`application.error`               | An Exception has been thrown. The exception object is passed.
+`directus.authenticated`          | User has been authenticated. The user object is passed.
+`collection.create:before`        | Before a collection is created. Collection's name passed.
+`collection.create:after`         | After a collection is created. Collection's name passed.
+`collection.create`               | Alias for collection.create:after
+`collection.drop:before`          | Before a collection is deleted from the database. Collection's name is passed.
+`collection.drop:after`           | After a collection is dropped. Collection's name is passed.
+`collection.drop`                 | Alias for collection.drop:after
+`collection.insert:before`        | Before new item is added to a collection. Collection's name and item data passed.
+`collection.insert.[name]:before` | Before new item is added to `[name]` (collection's name). Item data passed.
+`collection.insert:after`         | After new item is added to a collection. Collection's name and item data passed.
+`collection.insert.[name]:after`  | After new record has been added to [table-name]. Record data inserted passed.
+`collection.insert`               | Alias for collection.insert:after
+`collection.insert.[name]`        | Alias for collection.insert.[name]:after
+`collection.update:before`        | Before a collection item is updated. Collection's name and item data passed.
+`collection.update.[name]:before` | Before a record is updated in `[name]` (collection's name). Item data passed.
+`collection.update:after`         | After a collection is updated. Collection's name and item data passed.
+`collection.update.[name]:after`  | After a item is updated in `[name]` (collection's name). Item data passed.
+`collection.update`               | Alias for collection.update:after
+`collection.update.[name]`        | Alias for collection.update.[name]:after
+`collection.delete:before`        | Before a collection item is deleted. Collection's name passed.
+`collection.delete.[name]:before` | Before a item is deleted in `[name]` (collection's name).
+`collection.delete:after`         | After a collection's item is deleted. Collection's name.
+`collection.delete.[name]:after`  | After a item ins deleted in `[name]` (collection's name).
+`collection.delete`               | Alias for collection.delete:after
+`collection.delete.[name]`        | Alias for collection.delete.[name]:after
+`files.saving`                    | Before a file is save. Filename and size is passed.
+`files.saving:after`              | After a file is saved. Filename and size is passed.
+`files.deleting`                  | Before a file is deleted. File info is passed.
+`files.deleting:after`            | After a file is deleted. File info is passed.
 
 ## Filter Hooks List
 
-@TODO
+Name                                 | Description
+------------------------------------ | ------------
+`collection.insert:before`           | Before inserting a item into any collection
+`collection.insert.[name]:before`    | Before inserting a item into `[name]` (collection's name)
+`collection.update:before`           | Before updating a record from any collection
+`collection.update.[name]:before`    | Before updating a record from `[name]` (collection's name)
+`collection.select:before`           | Before selecting data from any collection
+`collection.select.[name]:before`    | Before selecting data from `[name]` (collection's name)
+`collection.select`                  | After selecting data from any collection
+`collection.select.[name]`           | After selecting data from `[name]` (collection's name)
+`response`                           | Before adding the content into the HTTP Response body
+`response.[method]`                  | Same as `response` but it only executes on a specific http method, such as `GET, POST, DELETE, PATCH, PUT, OPTIONS`
+`response.[collection-name]`         | Same as `response` but it only executes on a specific collection
+`response.[collection-name].[method]`| Same as `response.[method]` but it only executes on a specific collection
