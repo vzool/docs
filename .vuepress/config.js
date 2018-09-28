@@ -63,7 +63,6 @@ module.exports = {
           ['/api/contributor-guide/', 'Introduction'],
           ['/api/contributor-guide/install-dev', 'Development Environment'],
           '/api/contributor-guide/resources',
-          '/api/contributor-guide/github',
           '/api/contributor-guide/troubleshooting'
         ]
       },
