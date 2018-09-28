@@ -4,12 +4,24 @@ In order to work on the API, you'll need to install the source version locally. 
 
 ## System Requirements
 
+* A HTTP Web Server that supports URL rewrites
+    * _Comes with .htaccess included for Apache_
+* MySQL 5.2+
+    * Database (empty or existing)
+    * Database User (with access to database)
 * PHP 5.6+ or 7.0+
-* MySQL 5.6+
-* A webserver (comes with .htaccess for Apache included) that supports URL rewrites
+    * `pdo` + `mysql`
+    * `curl`
+    * `gd`
+    * `fileinfo`
+    * `mbstring`
 * [Node.js](https://nodejs.org) v8.11.3 or higher (preferably v10.6+)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to fetch the source code from GitHub
 * [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) to install dependencies
+
+:::warning Important
+[Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin-guide/requirements.md)
+:::
 
 ## Steps
 
