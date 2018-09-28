@@ -1,6 +1,23 @@
 # Installing the Directus Suite
 
-The easiest way to get up-and-running with Directus is with our [combined release](https://github.com/directus/directus), which includes the [Directus API](https://github.com/directus/api), the [Directus Application](https://github.com/directus/app), and all required dependencies. There are three ways to install the combined release:
+The easiest way to get up-and-running with Directus is with our [combined release](https://github.com/directus/directus), which includes the [Directus API](https://github.com/directus/api), the [Directus Application](https://github.com/directus/app), and all required dependencies. Check that your server meets the requirements, then choose one of the three ways to install the combined release.
+
+## Requirements
+
+* HTTP/Web Server
+* MySQL 5.2+
+    * Database (empty or existing)
+    * Database User (with access to database)
+* PHP 5.6+
+    * `pdo` + `mysql`
+    * `curl`
+    * `gd`
+    * `fileinfo`
+    * `mbstring`
+
+:::warning Important
+[Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin-guide/requirements.md)
+:::
 
 ## Using Git
 
