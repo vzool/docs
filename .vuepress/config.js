@@ -39,19 +39,17 @@ module.exports = {
         title: 'API Reference',
         collapsable: true,
         children: [
-          '/api/reference'
+          ['/api/reference', 'View Reference']
         ]
       },
       {
         title: 'API Admin Guide',
         collapsable: true,
         children: [
-          '/api/admin-guide/install',
-          '/api/admin-guide/update',
-          '/api/admin-guide/configure',
-          '/api/admin-guide/hooks',
-          '/api/admin-guide/custom-endpoints',
-          '/api/admin-guide/auth-providers',
+          ['/api/admin-guide/', 'Introduction'],
+          ['/api/admin-guide/install', 'Installing'],
+          ['/api/admin-guide/update', 'Updating'],
+          ['/api/admin-guide/configure', 'Configuring'],
           '/api/admin-guide/thumbnailer',
           '/api/admin-guide/field-types',
           '/api/admin-guide/permissions',
@@ -62,7 +60,8 @@ module.exports = {
         title: 'API Contributor Guide',
         collapsable: true,
         children: [
-          '/api/contributor-guide/install-dev',
+          ['/api/contributor-guide/', 'Introduction'],
+          ['/api/contributor-guide/install-dev', 'Development Environment'],
           '/api/contributor-guide/resources',
           '/api/contributor-guide/github',
           '/api/contributor-guide/troubleshooting'
@@ -72,16 +71,17 @@ module.exports = {
         title: 'App User Guide',
         collapsable: true,
         children: [
-          '/app/user-guide'
+          ['/app/user-guide', 'View Guide']
         ]
       },
       {
         title: 'App Admin Guide',
         collapsable: true,
         children: [
-          '/app/admin-guide/install',
-          '/app/admin-guide/update',
-          '/app/admin-guide/troubleshooting',
+          ['/app/admin-guide/', 'Introduction'],
+          ['/app/admin-guide/install', 'Installing'],
+          ['/app/admin-guide/update', 'Updating'],
+          ['/app/admin-guide/troubleshooting', 'Troubleshooting'],
           '/app/admin-guide/collections',
           '/app/admin-guide/fields',
           '/app/admin-guide/relationships',
@@ -93,10 +93,26 @@ module.exports = {
         title: 'App Contributor Guide',
         collapsable: true,
         children: [
-          '/app/contributor-guide/install-dev',
+          ['/app/contributor-guide/', 'Introduction'],
+          ['/app/contributor-guide/install-dev', 'Development Environment'],
           '/app/contributor-guide/resources',
           '/app/contributor-guide/github',
           '/app/contributor-guide/troubleshooting'
+        ]
+      },
+      {
+        title: 'Extending Directus',
+        collapsable: true,
+        children: [
+          ['/extensions/', 'Introduction'],
+          '/extensions/architecture',
+          '/extensions/interfaces',
+          '/extensions/layouts',
+          '/extensions/pages',
+          '/extensions/hooks',
+          '/extensions/custom-endpoints',
+          '/extensions/storage-adapters',
+          '/extensions/auth-providers'
         ]
       }
     ],

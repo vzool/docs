@@ -1,12 +1,8 @@
----
-sidebar: auto
----
-
 # Using Modals
 
-Modals can be used for a variety of reasons, from showing alerts to allowing users to pick and upload images in an advanced file explorer. 
+Modals can be used for a variety of reasons, from showing alerts to allowing users to pick and upload images in an advanced file explorer.
 
-There are 4 types of modal available in the system: 
+There are 4 types of modal available in the system:
 
 * Alert
 * Prompt
@@ -56,7 +52,7 @@ export default {
 
 ### Portals
 
-The overlay and modal are rendered using a combination of `position: absolute` and `position: fixed`. When using modals in a component that itself has position styling rules associated with it, or has other style rules that conflict with the modal styles, you'll run into a bunch of style issues. To work around this, you can use a `portal-vue` to render the modal itself at then end of the DOM. 
+The overlay and modal are rendered using a combination of `position: absolute` and `position: fixed`. When using modals in a component that itself has position styling rules associated with it, or has other style rules that conflict with the modal styles, you'll run into a bunch of style issues. To work around this, you can use a `portal-vue` to render the modal itself at then end of the DOM.
 
 > PortalVue is a set of two components that allow you to render a component's template (or a part of it) anywhere in the document - even outside the part controlled by your Vue App!
 
@@ -102,15 +98,15 @@ The alert can be used to show the user a message that needs the user's full atte
 
 ### Props
 
-`message`  
+`message`
 The message that is displayed to the user.
 
-`confirm-text`  
+`confirm-text`
 The text in the confirm button. Defaults to (the translation of) `ok`.
 
 ### Events
 
-`confirm`  
+`confirm`
 The user dismisses the alert.
 
 ::: warning NOTE
@@ -155,42 +151,42 @@ The prompt component can be used to ask the user a question. This is for example
 
 ### Props
 
-`message`  
+`message`
 The message that is displayed to the user.
 
-`confirm-text`  
+`confirm-text`
 The text in the confirm button. Defaults to (the translation of) `ok`.
 
-`cancel-text`  
+`cancel-text`
 The text that cancels out of the modal. Defaults to (the translation of) `cancel`.
 
-`value`  
+`value`
 The value to render in the input of the prompt
 
-`multiline`  
+`multiline`
 Render a textarea instead of a text-input
 
-`required`  
+`required`
 Require an user input before he/she can confirm/close out of the modal
 
-`placeholder`  
+`placeholder`
 The placeholder to render in the input
 
-`loading`  
+`loading`
 Shows a loading indicator on the submit button. Useful when you need to perform an API request on confirm of the modal.
 
-`safe`  
+`safe`
 Only allow database-safe values. (eg `Hello World` => `hello_world`)
 
 ### Events
 
-`confirm`  
+`confirm`
 The user submits the value
 
-`cancel`  
+`cancel`
 The user cancels out of the modal
 
-`input`  
+`input`
 User inputs a value into the input
 
 ::: tip
@@ -256,27 +252,27 @@ Confirms are basic yes or no questions for the user. For example "Are you sure t
 
 ### Props
 
-`message`  
+`message`
 The message that is displayed to the user.
 
-`confirm-text`  
+`confirm-text`
 The text in the confirm button. Defaults to (the translation of) `ok`.
 
-`cancel-text`  
+`cancel-text`
 The text that cancels out of the modal. Defaults to (the translation of) `cancel`.
 
-`loading`  
+`loading`
 Shows a loading indicator on the submit button. Useful when you need to perform an API request on confirm of the modal.
 
-`color`  
+`color`
 The color variable name to use in the primary button. Uses the global color variable names (eg `red`, `green-50`, `accent`).
 
 ### Events
 
-`confirm`  
+`confirm`
 The user submits the value
 
-`cancel`  
+`cancel`
 The user cancels out of the modal
 
 ### Example
@@ -331,16 +327,16 @@ The `v-modal` component is a "general use" modal component. You can use it to re
 
 ### Props
 
-`action-required`  
+`action-required`
 Prevent the user from canceling the modal by clicking outside of the modal or hitting ESC
 
-`title`  
+`title`
 Title of the modal, rendered in the top header
 
-`buttons`  
+`buttons`
 Object that controls what buttons to render inside the modal's footer. Defaults to nothing. The object's key is used as the event name
 
-_Example buttons object:_  
+_Example buttons object:_
 ```js
 {
   save: {
@@ -360,7 +356,7 @@ _Example buttons object:_
 
 ### Events
 
-`cancel`  
+`cancel`
 The user cancels out of the modal. Can be disabled by using the `action-required` prop.
 
 _Other events are based on the button config passed in. See the `button` prop above._
@@ -410,7 +406,7 @@ export default {
           color: red
         }
       }
-    }  
+    }
   },
   methods: {
     save() {},

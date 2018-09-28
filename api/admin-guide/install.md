@@ -1,4 +1,4 @@
-# Installing the Directus API
+# Installing the API
 
 Installation will vary depending on your specific server and project goals. This guide with walk you through several of the most common installation methods.
 

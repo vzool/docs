@@ -1,4 +1,6 @@
-# Adding Fields
+# Fields
+
+## Adding Fields
 
 Adding a field to Directus is straightforward, but the process varies depending on what type of field you are creating. Let's walk through the four possible steps in order.
 
@@ -10,36 +12,36 @@ Do you want a Toggle? Text Input? Map? Dropdown? Relationship? There are many Co
 
 Only the "Name" is required for this step, but it's good to familiarize yourself with the other options to get the most out of each field.
 
-* **Name**  
+* **Name**
   The technical name used in the database and API. It should be letters only, lowercase, with underscores for spaces.
-* **Display Name**  
+* **Display Name**
   You can not edit this value, it is just a preview of the above technical name in a more human readable format. This is how users will see the field name throughout the App.
-* **Note**  
+* **Note**
   This optional note will appear beside the field on the Item Detail page to give helpful context to users.
 
 #### Advanced
 
-* **Directus Type**  
+* **Directus Type**
   Directus specific type that the interface supports (eg `string`, `number`).
-* **Datatype**  
+* **Datatype**
   The database-specific type to use (eg `VARCHAR`, `DATETIME`, etc).
-* **Length**  
+* **Length**
   The max length of the field. For example, a string-type field with `length` is 10 only allows values up to 10 characters.
-* **Default**  
+* **Default**
   The default value for this field. Will be added when an item is created but the field left blank.
-* **Validation**  
+* **Validation**
   RegEX string that will be used to validate the value on save and upload.
-* **Validation Message**  
+* **Validation Message**
   A custom validation message that will be returned if the validation fails according to the RegEX string in the _Validation_ option.
-* **Required**  
+* **Required**
   Whether or not a value is required in this field.
-* **Readonly**  
+* **Readonly**
   Makes the interface non-interactive on the item detail page, resulting in the value only being readable by the user.
-* **Unique**  
+* **Unique**
   Makes sure the value is unique before saving. Will error out if it's not.
-* **Hidden on Detail**  
+* **Hidden on Detail**
   Hides the field on the item detail pages.
-* **Hidden on Items**  
+* **Hidden on Items**
   Hides the field on the item layout pages.
 
 

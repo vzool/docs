@@ -17,22 +17,23 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 * [Glossary](../../glossary.md)
 * [Releases](https://github.com/directus/app/releases)
 
-## Learn How to Configure Directus
+## Configuring the App
 
 * [Creating Collections](./collections.md)
 * [Creating Fields](./fields.md)
 * [Relationships](./relationships.md)
-* [Global Settings](../../global-settings.md)
+* [Global Settings](./global-settings.md)
 * [User Roles](./roles.md)
 * [Permissions](./permissions.md)
 
-## Create and Use Extensions (@TODO)
+## Extending the App
 
-* [About Extensions](./about-extensions.md)
-* [Creating Extensions](./creating-extensions.md)
-* [Extension Resources](./extension-resources.md)
+* [Extensions](../../extensions)
+* [Interfaces](../../extensions/interfaces)
+* [Layouts](../../extensions/layouts)
+* [Pages](../../extensions/pages)
 
-## Customizing the Application
+## Customizing the App
 
 * [Style Overrides](./custom-style.md)
 * [Custom Scripts](./custom-scripts.md)

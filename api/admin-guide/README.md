@@ -16,17 +16,17 @@ To learn how to use the Directus API, checkout the [Directus API Reference](../r
 * [Glossary](../../glossary.md)
 * [Releases](https://github.com/directus/api/releases)
 
-## Learn How to Configure Directus
+## Configuring the API
 
 * [Configuring the Directus API](./configure.md) (split this into individual pages)
-* [Global Settings](../../global-settings.md)
+* [Global Settings](./global-settings.md)
 
 ## Extending the API
 
-* [Creating Hooks](./hooks.md)
-* [Creating Custom Endpoints](./custom-endpoint.md)
-* [Creating Auth Providers](./auth-provider.md)
-* [Other Extensions](../../app/contributor-guide/extensions.md)
+* [Creating Hooks](../../extensions/hooks.md)
+* [Creating Custom Endpoints](../../extensions/custom-endpoints.md)
+* [Creating Auth Providers](../../extensions/auth-providers.md)
+* [Other Extensions](../../extensions)
 
 ## Other Info
 

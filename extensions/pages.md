@@ -1,0 +1,3 @@
+# Pages
+
+Pages allow _anything_ to be built inside of Directus, such as custom dashboards, reports, point-of-sale systems, etc. Each page is protected within the auth gateway and can easily access instance data or global variables (eg: current user). A [disabled page extension demo](https://github.com/directus/api/tree/master/extensions/core/pages/testing) is included in Directus to help you get started.

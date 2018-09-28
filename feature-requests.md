@@ -1,6 +1,6 @@
 # Feature Requests
 
-## Our 80/20 Rule
+## 80/20 Rule
 
 The main thing to be aware of when submitting a new Directus feature request, is our rule on edge-cases. To keep the Directus core codebase as clean and simple as possible we will only consider adding features that at least 80% of our user-base will use. If we feel that less than 80% of our users will find the feature valuable then we will not implement it. Instead, those edge-case features should be added as Extensions.
 

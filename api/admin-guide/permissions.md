@@ -1,5 +1,7 @@
 # Permissions
 
+The Directus permissions system is quite granular so it is important to understand the available options. Below are the actual values that can be saved into `directus_permissions`. If you're looking for more information on how the permissions work you can [learn more on our App's permissions page](../../app/admin-guide/permissions.md).
+
 ## Create
 
 * `none` (or `NULL`, default) Can not create any items

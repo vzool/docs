@@ -9,10 +9,8 @@ Directus is a community driven open-source project which means that development 
 * [Setup Local Development Environment](./install-dev.md)
 * [Good First Issues](https://github.com/directus/api/issues)
 * [Development Resources](./resources.md)
-* [How to use GitHub](./github.md)
 * [Troubleshooting](./troubleshooting.md)
 
-## Help Write the Documentation
+## Help Write the Docs
 
-* [Docs Structure](./docs-structure.md)
-* [How to Update the Docs Using GitHub](./docs-github.md)
+* [Docs Structure](../../docs-structure.md)

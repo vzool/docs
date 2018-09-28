@@ -6,21 +6,72 @@ Directus permissions are extremely granular and powerful, but don't feel overwhe
 Use the "All/None" shortcut on hover of each row or click the column header to toggle that permission for all collections.
 :::
 
-### Field Read/Write Blacklist
+## Collection Level
 
-Clicking on the "Fields" button allows you to set blacklists for both read and write. This allows you to control which fields are visible or editable for the collection. All fields are readable and writable by default.
+Directus supports the standard Create, Read, Update, and Delete permissions, and adds additional support for Comments and Explanations. Furthermore, some privileges have the ability to be scoped to the current user or other their role. Below are all of the collection-level permissions:
 
-#### Status Blacklist
+### Create
 
-Clicking on the "Status" button allows you to set a blacklist of which status options. This allows you to control which status options a user can choose – for example, not allowing an Intern to _publish_ items. All statuses are available by default.
+* `none` (or `NULL`, default) Can not create any items
+* `full` Can create items
 
-#### Workflow
+### Read
 
-Workflows are one of the most powerful features of Directus. They allow for all the other permission settings to be controled **per status**. This feature compounds the utility, but it can be difficult to fully understand its potential, so let's explore an example with all the bells and whistles:
+* `none` (or `NULL`, default) Can not view any items
+* `mine` Can only view _their_ items
+* `role` Can only view items created by members of this role
+* `full` Can view all items
+
+### Update
+
+* `none` (or `NULL`, default) Can not update any items
+* `mine` Can only update _their_ items
+* `role` Can only update items created by members of this role
+* `full` Can update all items
+
+### Delete
+
+* `none` (or `NULL`, default) Can not delete any items
+* `mine` Can only delete _their_ items
+* `role` Can only delete items created by members of this role
+* `full` Can delete all items
+
+### Comment
+
+* `none` Can not comment
+* `read` Can only see comments
+* `create` Can add comments
+* `update` (or `NULL`, default) Can add, edit and delete their comments
+* `full` Can add, edit and delete any comments (including other users)
+
+### Explain (Force)
+
+* `none` (or `NULL`, default) Never requires "commit" comment
+* `on_create` Requires a "commit" comment on Create
+* `on_update` Requires a "commit" comment on Update
+* `always` Requires a "commit" comment on Create and Update
+
+## Field Level
+
+Clicking "Fields" allows you to blacklist certain fields for either read and write. This allows you to control which fields are visible or editable within the collection. By default, fields are both readable and writable.
+
+## Status Level
+
+Clicking "Allowed Statuses" allows you to blacklist certain status options. This allows you to control which status options a user can choose – for example, not allowing an Intern to _publish_ items. By default, all statuses are available.
+
+## Workflow
+
+Workflows are one of the most powerful features of Directus, allowing for all permissions to be controlled **per status**. Workflow is enabled by clicking the arrows at the far right to expand the collection into Workflow mode and show dedicated permission rows for each status.
+
+In addition to the custom options set within your status interface, there is always a "On Creation" option that sets permissions for when an item is being created. This is useful because when an item is being created it doesn't yet have a status set.
+
+### Example
+
+This feature enables absolute control over the most fluid workflows, but it can be difficult to fully understand its potential, so let's explore an example with all the bells and whistles:
 
 ![Workflow Example](../img/workflow-example.png)
 
-##### Intern
+#### Intern
 
 * **Creating** – Can create Draft or Review items
 * **Read** – Can see Draft items they created, Review items anyone in their role created, all Published items, and all Locked items
@@ -29,7 +80,7 @@ Workflows are one of the most powerful features of Directus. They allow for all 
 * **Explain** – Must leave an explanation when creating/updating Draft or Review items
 * **Comment** – Can comment on their Draft items or Review items created by members of their role
 
-##### Staff
+#### Staff
 
 * **Creating** – Can create Draft, Review, or Published items
 * **Read** – Can see all Draft, Review, Published, and Locked items
@@ -38,7 +89,7 @@ Workflows are one of the most powerful features of Directus. They allow for all 
 * **Explain** – Must leave an explanation when creating/updating Published items
 * **Comment** – Can comment on any Draft, Review, or Published items
 
-##### Manager
+#### Manager
 
 * **Creating** – Can create Draft, Review, Published, or Locked items
 * **Read** – Can see all Draft, Review, Published, and Locked items
@@ -51,10 +102,14 @@ Workflows are one of the most powerful features of Directus. They allow for all 
 
 Not shown in the diagram, but worth noting: the Admin role always has _full_ permissions and is not required to explain anything.
 
-#### Directus Collections
+## App Level
 
-Below the permissions interface is a toggle to show the Directus system collections. These permissions are automatically generated when new roles are created and can be used to control system pages such as: File Library, User Directory, My Activity, etc.
+Below the permissions interface is a toggle to show the Directus system collections. These permissions are automatically generated when new roles are created and can be used to control certain system pages, such as: File Library, User Directory, and My Activity.
 
 ::: warning
 Changing the default system permissions can result in unexpected behavior or a completely broken platform. The API and App rely on certain data. For example, full read permission for `directus_users` is required. Only update these values if you know exactly what you're doing.
 :::
+
+## IP Level
+
+You can also control access to Directus based on a user's IP address. This is useful if you need to limit access to specific offices or locations, provided they have a static IP address. Simply add a CSV of IP addresses to limit, or leave blank to not limit.

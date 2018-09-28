@@ -1,4 +1,4 @@
-# Creating Hooks
+# Hooks
 
 Directus provides a list of events hooks that are triggered when an actions occurs. For example: before an item is updated.
 
@@ -135,10 +135,10 @@ if (in_array($collectionName, SchemaManager::getSystemCollections())) {
 }
 ```
 
-## Action Hooks list
+## Action Hooks List
 
-TODO
+@TODO
 
-## Filter Hooks list
+## Filter Hooks List
 
-TODO
+@TODO

@@ -87,7 +87,7 @@ Using the URL `http://directus.example.com/thumbnail/_/200/200/crop/better/file-
 Images are never stretched or distorted even when changing the aspect ratio.
 :::
 
-## Contain Better 200x200
+### Contain Better 200x200
 
 Now let's use the first example again, but this time with `contain` action. Now our URL is `http://directus.example.com/thumbnail/_/200/200/contain/better/file-name.jpg`, which saves the thumbnail to the server's filesystem at `thumbnail/_/200/200/contain/better/file-name.jpg`. As you can see ferom the example below, this new thumbnail has not been cropped at all... it has simply been shrunk to fit within the 200x200 bounds.
 

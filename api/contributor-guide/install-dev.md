@@ -2,7 +2,7 @@
 
 In order to work on the API, you'll need to install the source version locally. The application sourcecode is being hosted in the [directus/api](https://github.com/directus/api) repo on GitHub.
 
-## System Requirements
+## Requirements
 
 * A HTTP Web Server that supports URL rewrites
     * _Comes with .htaccess included for Apache_
@@ -23,7 +23,7 @@ In order to work on the API, you'll need to install the source version locally. 
 [Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin-guide/requirements.md)
 :::
 
-## Steps
+## Setup Steps
 
 ### 1. Clone the repo
 

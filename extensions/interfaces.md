@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Interfaces are Directus' way of interacting with user data. An interface contains two parts: the actual Interface and a Readonly component. The Interface is the _thing_ the user uses to interact with and create data. Eg: a text-field, color picker, JSON editor, or WYSIWYG. These interfaces are primarily used on the edit page, but can also be used inside the filter, modals, or anywhere else.
+Interfaces are Directus' way of interacting with user data. An interface contains two parts: the actual Interface and a Readonly component. The Interface is the _thing_ the user interacts with and uses to create and update data. Eg: a text-field, color picker, JSON editor, or WYSIWYG. These interfaces are primarily used on the edit page, but can also be used inside the filter, modals, or anywhere else.
 
 ## Files & Structure
 

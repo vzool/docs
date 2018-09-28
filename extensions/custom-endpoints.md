@@ -1,6 +1,8 @@
-# Creating Custom Endpoints
+# Custom API Endpoints
 
-Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
+Directus ships with all the [core endpoints](../api/reference.md) you need to manage your database data, but you may want to extend these or add completely custom responses. Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
+
+## Creating Custom Endpoints
 
 **Global** endpoints are defined in files within `/public/extension/custom/endpoints` ([link](https://github.com/directus/api/tree/master/public/extensions/custom/endpoints)). You can use any file-names or sub-directories to help keep things organized.
 

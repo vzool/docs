@@ -1,6 +1,8 @@
 # Configuring the API
 
-### `app`
+The API is configured through project files in the `/config` directory. A [sample config file](https://github.com/directus/api/blob/master/config/api_sample.php) is provided in case you would like to [manually install](./configure-manually.md) the API instead of using the [App installer](./configure-with-app.md) or [CLI installer](./configure-with-script.md).
+
+## `app`
 
 The API application settings
 
@@ -9,7 +11,7 @@ The API application settings
 | `env`         | Defines the detail of PHP error reporting (errors, warning, and notices). Options: `development` (default) or `production` |
 | `timezone`    | PHP default timezone  |
 
-### `settings`
+## `settings`
 
 The settings for [Slim](https://www.slimframework.com/), the micro-framework used by Directus
 
@@ -21,7 +23,7 @@ The settings for [Slim](https://www.slimframework.com/), the micro-framework use
 Currently the logger only works on the server's filesystem
 :::
 
-### `database`
+## `database`
 
 Settings for the database connection
 
@@ -37,7 +39,7 @@ Settings for the database connection
 | `charset`     | Database connection charset |
 | `socket`      | @TODO: Add an option to add a socket connection |
 
-### `cache`
+## `cache`
 
 Enables caching to speed-up API responses
 
@@ -48,26 +50,26 @@ Enables caching to speed-up API responses
 | `pool`        | Where the cache will be stored: `filesystem`, `redis`, `apc`, `apcu` or `memcached`
 
 
-#### APC
+### APC
 
 | Name          | Description   |
 | ------------- | ------------- |
 | `adapter`     |  Name of the adapter. Must be `apc`
 
-#### APCU
+### APCU
 
 | Name          | Description   |
 | ------------- | ------------- |
 | `adapter`     |  Name of the adapter. Must be `apcu`
 
-#### Filesystem
+### Filesystem
 
 | Name          | Description   |
 | ------------- | ------------- |
 | `adapter`     |  Name of the adapter. Must be `filesystem`
 | `path`        |  Where on the cache will be stored relative to the API root path. Prepend with `/` for absolute
 
-#### Memcached
+### Memcached
 
 | Name          | Description   |
 | ------------- | ------------- |
@@ -75,7 +77,7 @@ Enables caching to speed-up API responses
 | `host`        |  Memcached host
 | `port`        |  Memcached server port number
 
-#### Redis
+### Redis
 
 | Name          | Description   |
 | ------------- | ------------- |
@@ -83,7 +85,7 @@ Enables caching to speed-up API responses
 | `host`        |  Redis server host
 | `port`        |  Redis server port number
 
-### `storage`
+## `storage`
 
 Choose where files can be uploaded. Currently we support local and Amazon-S3
 
@@ -99,7 +101,7 @@ Choose where files can be uploaded. Currently we support local and Amazon-S3
 | `version`     | S3 API version
 | `bucket`      | S3 Bucket name
 
-### `mail`
+## `mail`
 
 A list of key-value-pairs (array) mail configurations. Currently only the `default` key is supported. Each value must have at least the following information:
 
@@ -112,7 +114,7 @@ A list of key-value-pairs (array) mail configurations. Currently only the `defau
 You can extend `Directus\Mail\Transports\AbstractTransport` class to create your own Swift Mailer transport. All options that exists in your mailer config will be passed to your transport.
 :::
 
-### `cors`
+## `cors`
 
 Cross-Origin Resource Sharing (CORS) is a mechanism that allows you to restricted access of Directus API from other domains
 
@@ -126,7 +128,7 @@ Cross-Origin Resource Sharing (CORS) is a mechanism that allows you to restricte
 | `max_age`         | How long in seconds a preflight request can be cached. Default: `none`.
 | `credentials`     | Indicate whether or not to include credentials in the request. Default: `false`.
 
-### `rate_limit`
+## `rate_limit`
 
 | Name              | Description   |
 | ----------------- | ------------- |
@@ -138,7 +140,7 @@ Cross-Origin Resource Sharing (CORS) is a mechanism that allows you to restricte
 | `port`            | Redis port
 | `timeout`         | Redis connection timeout
 
-### `hooks`
+## `hooks`
 
 Hooks allow you to execute custom code when a Directus Event happens. You can register functions or classes to a hook name and when the event happens it will execute that code. FOr example:
 
@@ -156,7 +158,7 @@ The example above will execute the `notify` function after an item has been inse
 
 A class that implements the `__invoke` method or inherits from `\Directus\Hook\HookInterface` can also be used, and instead of passing a function you must pass the fully qualified class name resolution. For example: `\MyApplication\Events\NotifyNewArticles::class`.
 
-### `filters`
+## `filters`
 
 Filters work the same as hooks except that you can manipulate the data being passed. This is a nice way to add, remove, or manipulate the data before it is sent to the database. Filters always pass a `\Directus\Hook\Payload` object as the first parameter and it must return a payload object. An example would be generating a new UUID every time an article is created:
 
@@ -170,15 +172,15 @@ Filters work the same as hooks except that you can manipulate the data being pas
 ]
 ```
 
-### `feedback`
+## `feedback`
 
 It doesn't do anything on version 2.0, but it was created to ping our server to understand approximately how many instances of Directus exists.
 
-### `tableBlacklist`
+## `tableBlacklist`
 
 It doesn't do anything, but it was meant to blacklist tables from being used by Directus.
 
-### `auth`
+## `auth`
 
 Out-of-the-box Directus supports `Okta`, `GitHub`, `Facebook`, `Twitter` and `Google` Single-Sign-On (SSO), but also allows you to create your own providers.
 
@@ -192,7 +194,7 @@ You can also manage auth externally through the [SCIM endpoints](#).
 | `social_providers` | List of available third-party authentication providers |
 
 
-#### Okta
+### Okta
 
 | Name            | Description   |
 | --------------- | ------------- |
@@ -200,14 +202,14 @@ You can also manage auth externally through the [SCIM endpoints](#).
 | `client_secret` | Your Okta client secret key |
 | `base_url`      | Your okta application base URL |
 
-#### GitHub
+### GitHub
 
 | name            | Description   |
 | --------------- | ------------- |
 | `client_id`     | Your application client id |
 | `client_secret` | Your application client secret key |
 
-#### Facebook
+### Facebook
 
 | Name                | Description   |
 | ------------------- | ------------- |
@@ -215,7 +217,7 @@ You can also manage auth externally through the [SCIM endpoints](#).
 | `client_secret`     | Your application client secret key |
 | `graph_api_version` | Facebook graph API version |
 
-#### Google
+### Google
 
 | Name                | Description   |
 | ------------------- | ------------- |
@@ -223,7 +225,7 @@ You can also manage auth externally through the [SCIM endpoints](#).
 | `client_secret`     | Your application client secret key |
 | `hosted_domain`     | Your application allowed hosted domain |
 
-#### Twitter
+### Twitter
 
 | Name                | Description   |
 | ------------------- | ------------- |

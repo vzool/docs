@@ -1,5 +1,11 @@
 # Installing the Directus Application
 
+## Requirements
+
+The Directus App is comprised of static files and does not have any special requirements. However if you would like to use "history" mode for clean URLs then you will need a way to route all traffic to the App's `/public/index.html` file.
+
+## Installation
+
 The Directus application is a static single-page webapp (SPA) and can be installed in three ways:
 
 ### Using Git
