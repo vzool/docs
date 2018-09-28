@@ -1,8 +1,44 @@
 # Apache Setup
 
-## Mod_Rewite
+## mod_rewrite
 
-@TODO
+The [`mod_rewrite`](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) is an Apache module that uses a ruled-based rewriting engine to rewrite requested URLs.
+
+Directus API requires `mod_rewrite` to be enabled on Apache, because it uses the URL rewriting to maps all requested URLs to an internal endpoint unless it matches an actual file in the filesystem.
+
+The rewrite rules are include in Directus API inside the `public` directory in a `.htaccess` file that serve as the front controller for all the endpoints.
+
+### Install mod_rewrite
+
+Apache include `mod_rewrite` by default. If that's not the case, how to install it will depends on your system and apache version, and the best option will be to go to the [Compiling and Installing](http://httpd.apache.org/docs/trunk/en/install.html) section on Apache and tries to compile and install `mod_rewrite` individually.
+
+Apache has a tool called [`apxs`](https://httpd.apache.org/docs/2.4/programs/apxs.html) (APache eXtenSion) for lets you build and install modules this is a good option to install new modules from source.
+
+### Enable mod_rewrite
+
+There's different way to enable a module after being installed. On ubuntu-based distribution can be enabled using `a2enmod` script.
+
+```
+a2enmod rewrite
+```
+
+Make sure to reload all apache configuration.
+
+```
+service apache2 reload
+```
+
+If you are not using a ubuntu-based distribution or `a2enmod` is not available in your system, you can go to your apache configuration, on ubuntu-based system are usually located in `/etc/apache2/conf/httpd.conf`, and add a line to load the rewrite module.
+
+```
+LoadModule rewrite_module modules/mod_rewrite.so
+```
+
+`rewrite_module` is the module name and `modules/mod_rewrite.so` is the path where the module file is located. In this case the module file is relative to the `ServerRoot` configured in your `httpd.conf`
+
+### Check if mod_rewrite is enabled
+
+Using the command line you can execute: `apachectl -M | grep 'rewrite'` and it will filter all installed modules that matches `rewrite`, if `rewrite_module` is returned, congratulations you already have installed and enabled `mod_rewrite` in your system.
 
 ## AllowOverride
 
