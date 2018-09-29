@@ -74,7 +74,9 @@ On your local server, create a new database to use with the API.
 
 ### 5. Add a config file
 
-The API uses a config file to know which database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` and edit the settings as indicated.
+The API uses a config file to know which database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` (default project) and edit the settings as indicated.
+
+[Learn more about configuring the API](../admin-guide/configure.md)
 
 ::: tip
 You can [download a demo SQL schema](https://sql.directus.app/demo.sql) to skip the API's installation process.

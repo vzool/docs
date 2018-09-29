@@ -19,7 +19,9 @@ The easiest way to get up-and-running with Directus is with our [combined releas
 [Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin-guide/requirements.md)
 :::
 
-## Install Using Git
+## Install
+
+### Install Using Git
 
 The preferred method of installing is through Git by running the following command from your server's command line.
 
@@ -31,7 +33,7 @@ git clone https://github.com/directus/directus.git
 Don't have git? You can [install it with one command](https://git-scm.com/book/en/v1/Getting-Started-Installing-Git).
 :::
 
-## Install Manually
+### Install Manually
 
 If you don't have access to the command line or would rather do things manually, you can download the static bundle manually as a [zip](https://github.com/directus/directus/archive/master.zip) or [tar](https://github.com/directus/directus/archive/master.tar.gz) file from [our releases page](https://github.com/directus/directus/releases).
 
@@ -39,7 +41,7 @@ If you don't have access to the command line or would rather do things manually,
 If your server doesn't have `gzip` then you can usually install it by running `sudo apt-get install zip`.
 :::
 
-### Zip File
+#### Zip File
 
 ```bash
 # Get the zip file from GitHub
@@ -49,7 +51,7 @@ wget https://github.com/directus/directus/archive/master.zip
 unzip master.zip
 ```
 
-### Tar File
+#### Tar File
 
 ```bash
 # Get the zip file from GitHub
@@ -59,9 +61,29 @@ wget https://github.com/directus/directus/archive/master.tar.gz
 tar -xzf master.tar.gz
 ```
 
-### Using FTP
+#### Using FTP
 
 If you don't have access to the command line then you'll need to decompress the files on your local computer before uploading to the remote server, though this will take _much_ longer.
+
+## Configure
+
+Once you have Directus on your server, you can access it via the App to continue setup. When you select the API from the login page you will be prompted to "Install", click this button and follow the prompts to complete configuration.
+
+* **Project Name** – The name of your project
+* **Environment** – TK
+* **Admin Email** – The email address of your first administrator
+* **Admin Password** – The password for your first administrator
+
+* **Host** – The server/host of your database
+* **Port** – The port for the database (default is 3306)
+* **Database User** – The database user
+* **Database Password** – The database user's password
+* **Database Name** – The name of the database
+* **Database Type** – As of now, Directus only supports MySQL
+
+:::tip Manual Config
+If you would rather setup your project manually you can [follow these instructions](./api/admin-guide/configure.md)).
+:::
 
 ---
 
