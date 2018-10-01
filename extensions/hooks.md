@@ -142,6 +142,7 @@ Name                              | Description
 `application.boot`                | Before all endpoints are being set. app object is passed.
 `application.error`               | An Exception has been thrown. The exception object is passed.
 `directus.authenticated`          | User has been authenticated. The user object is passed.
+`auth.authenticated:credentials`  | User has request a token via credentials. The user object is passed.
 `collection.create:before`        | Before a collection is created. Collection's name passed.
 `collection.create:after`         | After a collection is created. Collection's name passed.
 `collection.create`               | Alias for collection.create:after
