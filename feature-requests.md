@@ -22,6 +22,6 @@ If your idea passes the 80/20 test and has not already been submitted, then we'd
 
 You can also vote on existing feature requests. As mentioned above, the `:+1:` and `:-1:` are used for sorting, so adding one of these reactions to the GitHub issue will cast a vote that helps us better identify the most desired (or undesired) features. And remember to add a comment if you have additional thoughts to help clarify or improve the request.
 
-## Fullfilling a Request
+## Fulfilling a Request
 
 Our core team is always working hard to implement the most highly-requested community features, but we're a small team. If you need the feature faster than we can provide it, or simply want to help improve the Directus platform, we'd love to receive a pull-request from you!
