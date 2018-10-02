@@ -1,6 +1,6 @@
 # Docs Structure
 
-This documentation of Directus is divided into a few different sections.
+The documentation of Directus is divided into a few different sections.
 
 ## Introduction
 
@@ -8,7 +8,7 @@ This houses the global (root level) docs. Here we store important resources that
 
 ## API
 
-We organize all page related to the API inside this directory.
+We organize all pages related to the API inside this directory.
 
 ### API Reference
 
@@ -24,17 +24,17 @@ Information on customizing, extending, or better understanding the inner-working
 
 ## App
 
-We organize all page related to the App inside this directory.
+We organize all pages related to the App inside this directory.
 
 ### User Guide
 
 This is one single page to make it easier to read from end-to-end. The purpose is to give non-technical users a better understanding of how to use Directus. It does not include any Settings as those should be located in the App Admin guide.
 
-### API Admin Guide
+### App Admin Guide
 
 For more information on installing, configuring, and updating the App. This also includes information on everything inside the _Settings_ section of the App.
 
-### API Contributor Guide
+### App Contributor Guide
 
 Information on customizing, extending, or better understanding the inner-workings of the App.
 
