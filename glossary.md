@@ -18,6 +18,17 @@ An external application using Database managed data.
 
 A set of items, saved as a SQL table
 
+### Collection Preset
+
+Also known as a "bookmark", this is a specific view of a collection assigned to an individual user, a role, or global. It includes:
+
+* Search query
+* Filters
+* View Type
+* Sort Field and Direction
+* Layout Query (eg: visible fields)
+* Layout Options (eg: tabular column widths)
+
 ### Datatype
 
 The SQL vendor-specific database storage type (eg: `VARCHAR`, `BIGINT`, etc)
