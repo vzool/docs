@@ -42,3 +42,7 @@ The Directus permissions system is quite granular so it is important to understa
 * `on_create` Requires a "commit" comment on Create
 * `on_update` Requires a "commit" comment on Update
 * `always` Requires a "commit" comment on Create and Update
+
+:::tip NOTE
+The `mine` and `role` permission options are only available when the parent collection contains `created_on` and `created_by` interface fields.
+:::
