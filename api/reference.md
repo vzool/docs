@@ -190,8 +190,8 @@ There are several ways to include this access token:
 #### 1. Bearer Token in Authorization Header
 
 ```
-curl -H "Authorization: Bearer Py8Rumu.LD7HE5j.uFrOR5" https://example.com/api/`
-curl -H "Authorization: Bearer staticToken" https://example.com/api/`
+curl -H "Authorization: Bearer Py8Rumu.LD7HE5j.uFrOR5" https://example.com/api/
+curl -H "Authorization: Bearer staticToken" https://example.com/api/
 ```
 
 ::: warning NOTE
