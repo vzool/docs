@@ -2,6 +2,12 @@
 
 Definitions and other various terms that are exclusive to the Directus Ecosystem.
 
+### Directus
+
+Directus [duh REKT iss](./img/directus.mp3) is latin, and means _laid straight, arranged in lines, having been arranged in lines_.
+
+-----
+
 ### Alias
 
 A field that does not actually map to a database column (eg: a divider or the one side of a relationship).
