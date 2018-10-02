@@ -72,12 +72,23 @@ Just like the app, if you'd like to actively work on Extensions, use `npm run de
 
 On your local server, create a new database to use with the API.
 
-### 5. Add a config file
+#### Boilerplate SQL
+
+If you'd rather skip the installer (next step), you can simply import the boilerplate schema file from [the included schema.sql file](https://github.com/directus/api/blob/master/src/schema.sql).
+
+#### Demo SQL
+
+This file comes with the boilerplate schema as well as some dummy collections, fields, data, and Settings. You can [download a demo SQL schema](https://sql.directus.app/demo.sql) to skip the API's installation process.
+
+::: tip Credentials
+If you are skipping the installer and adding the SQL directly to your database, the default login credentials are:
+
+* **User:** `admin@example.com`
+* **Password:** `password`
+:::
+
+### 5. Config File Installer
 
 The API uses a config file to know which database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` (default project) and edit the settings as indicated.
 
 [Learn more about configuring the API](../admin-guide/configure.md)
-
-::: tip
-You can [download a demo SQL schema](https://sql.directus.app/demo.sql) to skip the API's installation process.
-:::
