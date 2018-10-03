@@ -201,8 +201,12 @@ You can also manage auth externally through the [SCIM endpoints](#).
 | Name          | Description   |
 | ------------- | ------------- |
 | `secret_key`  | This key is used by the JWT encode function to encode tokens |
+| `public_key`  | This key is used by the JWT as identifier for all project tokens |
 | `social_providers` | List of available third-party authentication providers |
 
+:::tip
+The `secret_key` and `public_key` can be anything, but we recommend a "strong" and unique value. They are used to uniquely identify your project so that all your tokens can be more secure by only being able to be used in the same project it was created.
+:::
 
 #### Okta
 
