@@ -12,9 +12,13 @@ Because of this, we store all _custom_ extensions in the API Instance, and to ke
 If you're adding a GitHub issue related to an extension, you still [add it to the App](https://github.com/directus/app/issues/new/choose) since that is the logical place to discuss GUI components.
 :::
 
+::: tip Disabled Extensions
+You can include an extension in your project but disable it from being used by prepending its container directory with an underscore (`_`). For example, the demo Page is included in the API codebase but is disabled by default: `api/extensions/core/pages/_demo/`
+:::
+
 [Learn more about Extension Architecture](./architecture.md)
 
-### Interfaces
+## Interfaces
 
 Interfaces customize how a field is presented to the user. For example a `STRING` datatype would be shown as a text-input by default, but an interface could instead show that as a dropdown, Map, WYSIWYG Editor, or Color Picker.
 
@@ -22,7 +26,7 @@ Each interface also describes how a field's data should be shown on the Browse I
 
 [Learn more about Directus Interfaces](./interfaces.md)
 
-### Layouts
+## Layouts
 
 Layouts are custom designs for the Browse Items page. The core layouts are the List view (system default), which shows items in a tabular format, and a Card view (default for Users and Files) for image-based collections.
 
