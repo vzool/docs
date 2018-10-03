@@ -4,6 +4,7 @@ In order to support multiple SQL vendors (MySQL, PostgreSQL, MS-SQL, etc) Direct
 
 * `alias` – Fields that do not have corresponding column in the database
 * `array` – Standard array format in API response
+* `binary` – Binary strings limited by its length
 * `boolean` – `true` or `false`
 * `datetime` – A date and time in ISO format, eg: `2018-09-19T14:00:43+00:00`
 * `date` – Date, eg: `2018-09-19`
