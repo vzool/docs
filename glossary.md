@@ -4,7 +4,7 @@ Definitions and other various terms that are exclusive to the Directus Ecosystem
 
 ### Directus
 
-Directus [duh REKT iss](./img/directus.mp3) is latin, and means _laid straight, arranged in lines, having been arranged in lines_.
+The Directus [duh REKT iss](./img/directus.mp3) name is latin, meaning _laid straight, arranged in lines, having been arranged in lines_. It represents how data is displayed in an orderly fashion thereby making it more intuitive to manage.
 
 -----
 
