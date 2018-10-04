@@ -91,7 +91,7 @@ If you would rather setup your project manually you can [follow these instructio
 
 ### Install Individually
 
-If you prefer, you can choose to only [install the Directus API](./app/admin-guide/install.md), or only [install the Directus App](./api/admin-guide/install.md). This is useful for multitenancy, such as when you need many instances of the API but only one App to manage them all.
+If you prefer, you can choose to only [install the Directus API](./api/admin-guide/install.md), or only [install the Directus App](./app/admin-guide/install.md). This is useful for multitenancy, such as when you need many instances of the API but only one App to manage them all.
 
 ### Install from Source
 
