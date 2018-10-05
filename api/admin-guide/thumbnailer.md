@@ -37,23 +37,39 @@ Make sure the `root`, `root_url`, and `thumb_root` keys within the `filesystem` 
 
 ### Example Configuration
 
-```php
-// dimensions
-[
-  '100x100',
-  '200x200',
-  '100x200',
-]
+#### `not_found_location`
+```
 
-// qualityTags
-[
-  'poor' => 25,
-  'good' => 50,
-  'better' => 75,
-  'best' => 100,
-]
+```
 
-// actions
+#### `dimensions`
+
+Comma separate value of dimensions in [width]x[height] format
+
+This image will be used when trying to generate a thumbnail with invalid options or an error happens on the server trying to create the image)
+
+```
+100x100,200x200,100x200
+```
+
+#### `quality_tags`
+
+Key-Value json string of qualities tagged with a name. Ex: {"best": 100}. Ranging from 0 to 100. 0 = Worst quality and smaller file size to 100 best quality biggest file size.
+
+```
+{
+  "poor": 25,
+  "good": 50,
+  "better": 75,
+  "best": 100,
+}
+```
+
+#### `actions`
+
+WIP; List options to perform different thumbnail generation actions.
+
+```
 'contain' => [
   'options' => [
     'resizeCanvas' => false, // http://image.intervention.io/api/resizeCanvas
@@ -67,6 +83,14 @@ Make sure the `root`, `root_url`, and `thumb_root` keys within the `filesystem` 
     'position' => 'center', // http://image.intervention.io/api/fit
    ]
 ]
+```
+
+#### `cache_ttl`
+
+Cache time to live in seconds. It sets HTTP max-age and Expires datetime. Default: 86400 seconds = 1 day
+
+```
+86400
 ```
 
 ## Examples
