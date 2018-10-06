@@ -2,6 +2,15 @@
 
 The documentation of Directus is divided into a few different sections.
 
+## Development Environment
+
+You can always easily contribute directly on GitHub for typos and small changes, but if you would like to make larger updates you can install the Docs locally. The steps for this are as follows:
+
+1. `git clone https://github.com/directus/docs-v7.git` (clone the repo locally)
+1. `cd` (move to the root directory)
+1. `npm install` (install the dependencies)
+1. `npm run dev` (run the development script)
+
 ## Introduction
 
 This houses the global (root level) docs. Here we store important resources that are shared equally between the App and API, or are about the platform in general.
