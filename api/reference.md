@@ -137,6 +137,8 @@ The API uses numeric codes to avoid the need for translated error messages based
 
 - `0400` - Unknown Error (500)
 - `0401` - Unknown Data Type (400)
+- `0402` - Field Type Missing Length (422)
+- `0403` - Field Type Do Not Support Length (422)
 
 #### Mail Error Codes
 
