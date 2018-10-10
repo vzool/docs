@@ -2558,6 +2558,10 @@ POST /projects
 When `project` is not specified it will create the default configuration.
 :::
 
+::: tip
+If there's a fille in the root named `.lock` this instance is locked from creating new projects.
+:::
+
 ```json
 {
     "db_name": "directus",
