@@ -51,6 +51,19 @@ Directus supports the standard Create, Read, Update, and Delete permissions, and
 * `on_update` Requires a "commit" comment on Update
 * `always` Requires a "commit" comment on Create and Update
 
+:::tip NOTE
+The `mine` and `role` permission options are only available when the parent collection contains a `created_by` field type. See below for setup.
+:::
+
+### Accountability
+
+To enforce the `mine` and `role` permissions described above, Directus needs to know who created an item. Additionally, you may want to track _when_ an item was created, or who/when it was last _updated_. This can all happen automatically, but you first must include a few system fields.
+
+* **Created By** – Stores the Directus user ID. Create a field with the `user` interface and set the Field Type to: "Created By" under Advanced Options
+* **Created On** – Stores a datetime. Create a field with the `datetime` interface and set the Field Type to: "Created On" under Advanced Options
+* **Updated By** – Stores the Directus user ID. Create a field with the `user` interface and set the Field Type to: "Updated By" under Advanced Options
+* **Updated On** – Stores the datetime. Create a field with the `datetime` interface and set the Field Type to: "Updated On" under Advanced Options
+
 ## Field Level
 
 Clicking "Fields" allows you to blacklist certain fields for either read and write. This allows you to control which fields are visible or editable within the collection. By default, fields are both readable and writable.
