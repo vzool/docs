@@ -416,6 +416,7 @@ The API has a set of query parameters that can be used for specific actions, suc
 | `q`           | Search for items that matches the given string in any of their fields*
 | `groups`      | Groups the items by one or more fields
 | `joins`       | Joins the result with another collection using SQL Joins
+| `activity_skip` | Disable activity logging for the request
 
 ### Metadata
 
@@ -645,6 +646,14 @@ groups=id,name
 ### Joins
 
 The `joins` parameter allows joining items from another collection to the main result.
+
+#### Examples
+
+@TODO: Add examples and useful examples behind this feature
+
+### Skip Activity Logging
+
+The `activity_skip` parameter prevent the activity logging to be saved in the `directus_actity` table. `activity_skip=1` means to ignore the logging any other value means record the activity.
 
 #### Examples
 
