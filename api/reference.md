@@ -536,7 +536,16 @@ Instead of returning a list, the result data will be a single object representin
 
 ### Status
 
-@TODO
+This parameter is useful to filter the items by status value. The value should be a CSV and it only works if the collection has a field with `status` type.
+
+By default all status except those marked as `soft_delete` are going to include in the `status` parameter. To Include all status including those marked as `soft_delete` an asterisk (`*`) can be used.
+
+Example:
+
+```
+/_/items/projects?status=*
+/_/items/projects?status=published,under_review,draft
+```
 
 ### Filtering
 
