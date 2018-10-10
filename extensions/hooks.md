@@ -146,6 +146,9 @@ Name                              | Description
 `collection.create:before`        | Before a collection is created. Collection's name passed.
 `collection.create:after`         | After a collection is created. Collection's name passed.
 `collection.create`               | Alias for collection.create:after
+`collection.schema.update:before`  | Before a collection schema is updated. Collection's name and data is passed.
+`collection.schema.update:after`  | After a collection schema is updated. Collection's name and data is passed.
+`collection.schema.update`        | Alias for collection.schema.update:after
 `collection.drop:before`          | Before a collection is deleted from the database. Collection's name is passed.
 `collection.drop:after`           | After a collection is dropped. Collection's name is passed.
 `collection.drop`                 | Alias for collection.drop:after
