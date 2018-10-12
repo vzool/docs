@@ -37,67 +37,47 @@ module.exports = {
         ]
       },
       {
-        title: 'API Reference',
+        title: 'API',
         collapsable: true,
         children: [
-          ['/api/reference', 'View Reference']
-        ]
-      },
-      {
-        title: 'API Admin Guide',
-        collapsable: true,
-        children: [
-          ['/api/admin-guide/', 'Introduction'],
+          ['/api/reference', 'API Reference'],
+          ['/', '┄┄┄┄┄┄┄┄┄┄'],
+          ['/api/admin-guide/', 'Admin Guide'],
           ['/api/admin-guide/install', 'Installing'],
           ['/api/admin-guide/update', 'Updating'],
           ['/api/admin-guide/configure', 'Configuring'],
-          '/api/admin-guide/thumbnailer',
-          '/api/admin-guide/field-types',
-          '/api/admin-guide/permissions',
-          '/api/admin-guide/global-settings'
-        ]
-      },
-      {
-        title: 'API Contributor Guide',
-        collapsable: true,
-        children: [
-          ['/api/contributor-guide/', 'Introduction'],
+          ['/api/admin-guide/thumbnailer', 'Thumbnailer'],
+          ['/api/admin-guide/field-types', 'Field Types'],
+          ['/api/admin-guide/permissions', 'Permissions'],
+          ['/api/admin-guide/global-settings', 'Global Settings'],
+          ['/', '┄┄┄┄┄┄┄┄┄┄'],
+          ['/api/contributor-guide/', 'Contributor Guide'],
           ['/api/contributor-guide/install-dev', 'Development Environment'],
-          '/api/contributor-guide/resources',
-          '/api/contributor-guide/troubleshooting'
+          ['/api/contributor-guide/resources', 'Resources'],
+          ['/api/contributor-guide/troubleshooting', 'Troubleshooting']
         ]
       },
       {
-        title: 'App User Guide',
+        title: 'Application',
         collapsable: true,
         children: [
-          ['/app/user-guide', 'View Guide']
-        ]
-      },
-      {
-        title: 'App Admin Guide',
-        collapsable: true,
-        children: [
-          ['/app/admin-guide/', 'Introduction'],
+          ['/app/user-guide', 'User Guide'],
+          ['/', '┄┄┄┄┄┄┄┄┄┄'],
+          ['/app/admin-guide/', 'Admin Guide'],
           ['/app/admin-guide/install', 'Installing'],
           ['/app/admin-guide/update', 'Updating'],
           ['/app/admin-guide/troubleshooting', 'Troubleshooting'],
-          '/app/admin-guide/collections',
-          '/app/admin-guide/fields',
-          '/app/admin-guide/relationships',
-          '/app/admin-guide/roles',
-          '/app/admin-guide/permissions'
-        ]
-      },
-      {
-        title: 'App Contributor Guide',
-        collapsable: true,
-        children: [
-          ['/app/contributor-guide/', 'Introduction'],
+          ['/app/admin-guide/collections', 'Collections'],
+          ['/app/admin-guide/fields', 'Fields'],
+          ['/app/admin-guide/relationships', 'Relationships'],
+          ['/app/admin-guide/roles', 'Roles'],
+          ['/app/admin-guide/permissions', 'Permissions'],
+          ['/', '┄┄┄┄┄┄┄┄┄┄'],
+          ['/app/contributor-guide/', 'Contributor Guide'],
           ['/app/contributor-guide/install-dev', 'Development Environment'],
-          '/app/contributor-guide/resources',
-          '/app/contributor-guide/github',
-          '/app/contributor-guide/troubleshooting'
+          ['/app/contributor-guide/resources', 'Resources'],
+          ['/app/contributor-guide/github', 'GitHub'],
+          ['/app/contributor-guide/troubleshooting', 'Troubleshooting']
         ]
       },
       {
