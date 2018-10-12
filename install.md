@@ -67,10 +67,10 @@ If you don't have access to the command line then you'll need to decompress the 
 
 ## Configure
 
-Once you have Directus on your server, you can access it via the App to continue setup. When you select the API from the login page you will be prompted to "Install", click this button and follow the prompts to complete configuration.
+Now that you have Directus on your server, navigate to the App at: `/admin` to finish setup. Just click "Install" and follow the prompts to complete configuration.
 
 * **Project Name** – The name of your project
-* **Environment** – TK
+* **Project Key** – For now, only the default project key (`_`) is available through the installer
 * **Admin Email** – The email address of your first administrator
 * **Admin Password** – The password for your first administrator
 
