@@ -70,6 +70,7 @@ module.exports = {
           ['/app/admin-guide/collections', 'Collections'],
           ['/app/admin-guide/fields', 'Fields'],
           ['/app/admin-guide/relationships', 'Relationships'],
+          ['/app/admin-guide/status', 'Status'],
           ['/app/admin-guide/roles', 'Roles'],
           ['/app/admin-guide/permissions', 'Permissions'],
           ['/', '┄┄┄┄┄┄┄┄┄┄'],
