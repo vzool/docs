@@ -29,6 +29,7 @@ module.exports = {
         children: [
           '/what-is-directus',
           '/install',
+          '/i18n',
           '/supporting-directus',
           '/feature-requests',
           '/docs-structure',
