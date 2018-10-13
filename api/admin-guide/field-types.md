@@ -20,7 +20,7 @@ In order to support multiple SQL vendors (MySQL, PostgreSQL, MS-SQL, etc) Direct
 * `sort` – System field that stores a item order within the collection items
 * `status` – System field used for publishing workflows
 * `string` – Any text or characters, limited by its length
-* `translation` – Specific to translation interfaces, this is a `o2m` type that stores multi-lingual content
+* `translation` – Specific to translation interfaces, this is a `o2m` for multi-lingual content
 * `uuid` – A Universally Unique Identifier
 * `datetime_created` – System field to track the datetime an item was created, used by revisions
 * `datetime_updated` – System field to track the datetime an item was updated, used by revisions
