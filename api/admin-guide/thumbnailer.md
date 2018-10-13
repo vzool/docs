@@ -1,6 +1,6 @@
 # Thumbnailer
 
-The thumbnailer is a feature of Directus that dynamically returns thumbnails upon request. To avoid a potential DDoS or other malicious activity, all thumbnail versions are whitelisted based on the configuration.
+The thumbnailer is a feature of Directus that dynamically returns thumbnails upon request. To avoid a potential DDoS or other malicious activity, all thumbnails are whitelisted based on the configuration.
 
 ## URL Syntax
 
