@@ -20,10 +20,11 @@ These display components are used in the system in places where the regular read
 
 ### meta.json
 
-The meta.json file contains information over the interface (like unique name, author, version) and it's options.
+The meta.json file contains information over the interface (like unique name, author, version) and it's options. Whenever updating any extensions, it is important to increment the version number in accordance with [SemVer](https://semver.org/).
 
-::: tip
+::: tip Hiding Labels
 To hide the label on the edit form, add `"hideLabel": true` to `meta.json`
+:::
 
 ## Boilerplate
 
