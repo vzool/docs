@@ -114,7 +114,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0206` - Field Not Managed by Directus
 - `0207` - Revision Not Found (404)
 - `0208` - Revision Has Invalid Delta
-- `0209` - Field Invalid (400) - _Trying to use a field that doesn't exists for actions such as filtering and sorting_
+- `0209` - Field Invalid (400) - _A field that doesn't exist for an action such as filtering and sorting_
 - `0210` - Can Not Create Comment for Item
 - `0211` - Can Not Update Comment for Item
 - `0212` - Can Not Delete Comment from Item
@@ -537,9 +537,9 @@ Instead of returning a list, the result data will be a single object representin
 
 ### Status
 
-This parameter is useful to filter the items by status value. The value should be a CSV and it only works if the collection has a field with `status` type.
+This parameter is useful for filtering items by their status value. It is only used when the collection has a field with the `status` type. The value should be a CSV.
 
-By default all status except those marked as `soft_delete` are going to include in the `status` parameter. To Include all status including those marked as `soft_delete` an asterisk (`*`) can be used.
+By default all statuses are included except those marked as `soft_delete`. To include statuses marked as `soft_delete`, they should be explicitly requested or an asterisk wildcard (`*`) should be used.
 
 Example:
 
