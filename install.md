@@ -69,17 +69,18 @@ If you don't have access to the command line then you'll need to decompress the 
 
 Now that you have Directus on your server, navigate to the App at: `/admin` to finish setup. Just click "Install" and follow the prompts to complete configuration.
 
-* **Project Name** – The name of your project
-* **Project Key** – For now, only the default project key (`_`) is available through the installer
-* **Admin Email** – The email address of your first administrator
-* **Admin Password** – The password for your first administrator
-
-* **Host** – The server/host of your database
-* **Port** – The port for the database (default is 3306)
-* **Database User** – The database user
-* **Database Password** – The database user's password
-* **Database Name** – The name of the database
-* **Database Type** – As of now, Directus only supports MySQL
+Field          | Description
+-------------- | ------------
+Project Name   | The name of your project
+Project Key    | For now, only the default project key (`_`) is available through the installer
+Admin Email    | The email address of your first administrator
+Admin Password | The password for your first administrator
+Host           | The server/host of your database
+Port           | The port for the database (default is 3306)
+Database User  | The database user
+Database Password | The database user's password
+Database Name  | The name of the database
+Database Type  | As of now, Directus only supports MySQL
 
 :::tip Manual Config
 If you would rather setup your project manually you can [follow these instructions](./api/admin-guide/configure.md)).
