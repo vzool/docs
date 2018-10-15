@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ## Introduction
 
-The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture, providing dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and paramater alongside helpful examples that showcase typical request and response formats.
+The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture, providing dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and parameter alongside helpful examples that showcase typical request and response formats.
 
 [Get the latest version of the Directus API here](https://github.com/directus/api/releases)
 
@@ -473,7 +473,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 ### Limit
 
-Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to rturn all items, bypassing the default limits.
+Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits.
 
 #### Examples
 
