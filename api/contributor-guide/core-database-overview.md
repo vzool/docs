@@ -227,7 +227,7 @@ Phinx migrations table, record all migrations executed.
 | first_name                  | First name (given) of the user                                                |
 | last_name                   | Last name (surname) of the user                                               |
 | email                       | Email of the user. Must be unique within users                                |
-| email_notifications         | If the user should recieve email updates from this instance                   |
+| email_notifications         | If the user should receive email updates from this instance                   |
 | password                    | Hashed password of user                                                       |
 | avatar                      | ID of file/image used as user's avatar (Foreign Key: directus_files)          |
 | company                     | Company the user works for                                                    |
