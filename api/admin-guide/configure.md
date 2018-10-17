@@ -150,16 +150,18 @@ Cross-Origin Resource Sharing (CORS) is a mechanism that allows you to restricte
 | `port`            | Redis port
 | `timeout`         | Redis connection timeout
 
-### `hooks`
+### `actions`
 
-Hooks allow you to execute custom code when a Directus Event happens. You can register functions or classes to a hook name and when the event happens it will execute that code. FOr example:
+Actions hooks allow you to execute custom code when a Directus Event happens. You can register functions or classes to a hook name and when the event happens it will execute that code. For example:
 
 ```php
 'hooks' => [
-    'collection.insert.articles' => function ($data, $collectionName) {
-        $content = 'New article was created with the title: ' . $data['title'];
-        // pesudo function
-        notify('admin@example.com', 'New Article', $content);
+    'actions' => [
+        'collection.insert.articles' => function ($data, $collectionName) {
+            $content = 'New article was created with the title: ' . $data['title'];
+            // pesudo function
+            notify('admin@example.com', 'New Article', $content);
+        ]
     }
 ]
 ```
@@ -173,12 +175,14 @@ A class that implements the `__invoke` method or inherits from `\Directus\Hook\H
 Filters work the same as hooks except that you can manipulate the data being passed. This is a nice way to add, remove, or manipulate the data before it is sent to the database. Filters always pass a `\Directus\Hook\Payload` object as the first parameter and it must return a payload object. An example would be generating a new UUID every time an article is created:
 
 ```php
-'filters' => [
-    'collection.insert.articles:before' => function (\Directus\Hook\Payload $payload) {
-        $payload->set('uuid', \Directus\generate_uuid4());
+'hooks' => [
+    'filters' => [
+        'collection.insert.articles:before' => function (\Directus\Hook\Payload $payload) {
+            $payload->set('uuid', \Directus\generate_uuid4());
 
-        return $payload;
-    }
+            return $payload;
+        }
+    ]
 ]
 ```
 
