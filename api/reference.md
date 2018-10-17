@@ -2406,7 +2406,7 @@ POST /[project]/mail
   "body": "Hello <b>{{name}}</b>, this is your new password: {{password}}.",
   "type": "html",
   "data": {
-    "user": "John Doe",
+    "name": "John Doe",
     "password": "secret"
   }
 }
