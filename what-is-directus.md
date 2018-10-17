@@ -19,7 +19,7 @@ If you're still a bit confused about what all that means, let's take a look at a
 * **Digital-Signage**
   From the small screens in the back of taxis to huge digital billboards towering over highways, the text, images, and videos on those displays is all content that needs to be managed. Directus can easily handle that.
 * **Internet-of-Things (IoT) Devices**
-  The internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or recieving data somewhere. Somewhere like Directus.
+  The internet-of-things is the umbrella term for all the world's connected "smart" devices. Refrigerators, washing machines, security cameras—even lights and thermostats. If it's considered a smart device then chances are it's sending or receiving data somewhere. Somewhere like Directus.
 * **Wearables**
   Smart watches, fitness trackers, and GPS bracelets all typically store data in the "Cloud" (a fancy word for the internet). Whether mapping your hike or tracking the number of steps taken along the way, each of those devices shares its data with a service like Directus.
 * **Internal Tools**
