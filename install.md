@@ -18,7 +18,7 @@ Learn more about these system requirements, neccesary permissions, and other ser
 The preferred method of installing is through Git by running the following command from your server's command line. If your server doesn't allow for this method then you can [install manually too](#install-manually).
 
 ```bash
-git clone https://github.com/directus/directus.git
+git clone -b build-v7 https://github.com/directus/directus.git
 ```
 
 ## Configure
