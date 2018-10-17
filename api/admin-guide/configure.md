@@ -117,8 +117,26 @@ A list of key-value-pairs (array) mail configurations. Currently only the `defau
 
 | Name          | Description   |
 | ------------- | ------------- |
-| `transport`   | `smtp`, `sendmail`, `simple_file` (dummy example) or your own class name resolution string
+| `transport`   | `smtp`, `sendmail`, `simple_file` (dummy example) or your own class name resolution string (Ex: `\My\Namespace\MyTransport`)
 | `from`        | The global "from" email address
+
+When the `transport` is set to one of the transports mentioned below, any of those options can be used.
+
+#### `smtp`
+
+| Name          | Description   |
+| ------------- | ------------- |
+| `host`        | Server's host
+| `port`        | Server's port
+| `username`    | Authentication username
+| `password`    | Authentication password
+| `encryption`  | Connection encryption type, Example: `ssl` or `tls`
+
+#### `sendmail`
+
+| Name          | Description   |
+| ------------- | ------------- |
+| `sendmail`    | The location of the sendmail command. This value is only required if the path is not `/usr/sbin/sendmail` (default).
 
 ::: tip
 You can extend `Directus\Mail\Transports\AbstractTransport` class to create your own Swift Mailer transport. All options that exists in your mailer config will be passed to your transport.
