@@ -33,7 +33,7 @@ git clone git@github.com:directus/app.git
 ```
 
 ::: warning Fork
-If you want to work on your fork of the project, remember to replace `directus` with your GitHub username in the url above
+If you want to work on your fork of the project, remember to replace `directus` with your GitHub username in the url above.
 :::
 
 #### 2. Install the [npm](https://npmjs.com) dependencies
@@ -47,7 +47,7 @@ npm install
 The application makes use of a config file that's found in the `public` folder in the root of the folder. To prevent issues when upgrading the app, we decided to ignore the default version of this config file. We do provide an example that you can duplicate. Move or rename the `/public/config_example.js` file to `/public/config.js` file to your hearts content.
 
 ::: tip
-The default config file lets you test the app using the live Directus Demo API. Don't forget to add the address of your lcal API in order to test it.
+The default config file lets you test the app using the live Directus Demo API. Don't forget to add the address of your local API in order to test it.
 :::
 
 #### 4. Build / run the app
