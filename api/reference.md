@@ -2720,7 +2720,7 @@ A list of all system objects expected or returned by Directus endpoints.
 
 ## SCIM
 
-Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be created, managed, and disabled outside of Directus.
+Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be externally managed using the endpoints described below.
 
 ### Overview
 
