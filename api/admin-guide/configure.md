@@ -216,10 +216,6 @@ It doesn't do anything, but it was meant to blacklist tables from being used by 
 
 Out-of-the-box Directus supports `Okta`, `GitHub`, `Facebook`, `Twitter` and `Google` Single-Sign-On (SSO), but also allows you to create your own providers.
 
-:::tip
-You can also manage auth externally through the [SCIM endpoints](#).
-:::
-
 | Name          | Description   |
 | ------------- | ------------- |
 | `secret_key`  | This key is used by the JWT encode function to encode tokens |
