@@ -2733,6 +2733,8 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
 
 Learn more within the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
 
+If want to integrate Directus SCIM endpoints with Okta, follow these steps on [Publishing Your SCIM-Based Provisioning Integration](https://developer.okta.com/standards/SCIM/#publishing-your-scim-based-provisioning-integration) section.
+
 ### Create SCIM User
 
 ```http
