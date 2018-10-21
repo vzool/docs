@@ -238,6 +238,24 @@ The `secret_key` and `public_key` can be anything, but we recommend a "strong" a
 | `client_secret` | Your Okta client secret key |
 | `base_url`      | Your okta application base URL |
 
+##### How to
+
+1. First you have to create an Developer Okta account: https://developer.okta.com/signup/.
+
+2. After you create the account, a email is going to be sent to your inbox to active your account using a temporary password.
+
+3. Login with the information that was sent to you and set a new password.
+
+4. Create a new Okta web application by clicking on Applications in the main menu, it should take you to `https://<your-okta-id>-admin.oktapreview.com/admin/apps/active`, then you click on "Add Application".
+
+5. Pick Web, click Next.
+
+6. Make sure that "Login redirect URIs" goes to `your-directus-host/[project-name]/auth/sso/okta/callback`, for example `http://localhost/_/auth/sso/okta/callback`.
+
+7. Click on the newly created applications and go to "General > Client Credentials" and you will see the `Client ID` and the `Client secret`. Use these value for the okta `client_id` and `client_secret` in your API project configuration in `config/api.<project-name>.php`.
+
+8. The `base_url` can be found by clicking on API in the main menu. You will see a list of Authorization Servers, pick any from the list that you want to use, the url is under the column labeled as `Issuer URI`.
+
 #### GitHub
 
 | name            | Description   |
