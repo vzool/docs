@@ -2526,6 +2526,18 @@ An example would be if `upload_max_size` has been increased only for a single pr
 }
 ```
 
+### Update
+
+Updates the project database.
+
+```http
+POST /[project]/update
+```
+
+#### Response
+
+Empty response when successful.
+
 ### Create Project
 
 Create a new project (database and config file) to be managed by this API instance.

@@ -113,6 +113,18 @@ Always backup your database before running the database module to prevent data l
 php bin/directus db:install
 ```
 
+#### Upgrade Directus Schema
+
+```
+$ bin/directus db:upgrade
+```
+
+The command above will upgrade the default project database, to update an specific project the option `N` can be used.
+
+```
+$ bin/directus db:upgrade -N <project-name>
+```
+
 ### Log Module
 
 #### Prune Old Log Files
