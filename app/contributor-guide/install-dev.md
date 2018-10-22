@@ -3,11 +3,11 @@
 In order to work on the app, you'll need to install the application locally.
 
 ::: tip
-You can use our demo API (https://next.demo-api.directus.app) to debug the application. If you'd like to run the API locally as well, checkout the [local install guide](#) for the API.
+To quickly debug the application you can use [our demo API](https://next.demo-api.directus.app) by authenticating with the credentials: `admin@example.com` and `password`.
 :::
 
 ::: warning
-The extensions are being served from the API. Therefore, if you want to work on extensions, you'll need to have [a local installation of the API](#) as well.
+Directus extensions are served from the API ([learn why](/extensions/architecture.md)). Therefore, if you want to work on extensions you'll need [a local installation of the API](/api/contributor-guide/install-dev.md) as well.
 :::
 
 ### System Requirements
