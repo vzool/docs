@@ -259,7 +259,7 @@ The access token that is returned through this endpoint must be used with any su
 | `/[project]/relations`           | **Yes**
 | `/[project]/revisions`           | **Yes**
 | `/[project]/roles`               | **Yes**
-| `/[project]/scim`/v2             | **Yes**
+| `/[project]/scim/v2`             | **Yes**
 | `/[project]/settings`            | **Yes**
 | `/[project]/users`               | **Yes**
 | `/[project]/utils`               | **Yes**
