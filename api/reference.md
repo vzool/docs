@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ## Introduction
 
-The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture, providing dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and parameter alongside helpful examples that showcase typical request and response formats.
+The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture which allows for flexible content modeling and dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and parameter alongside helpful examples that showcase typical request and response formats.
 
 [Get the latest version of the Directus API here](https://github.com/directus/api/releases)
 
@@ -2720,7 +2720,7 @@ A list of all system objects expected or returned by Directus endpoints.
 
 ## SCIM
 
-Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be created, managed, and disabled outside of Directus.
+Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be externally managed using the endpoints described below.
 
 ### Overview
 
@@ -2732,6 +2732,8 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
 | `/Groups/[id]` | `GET`, `PUT`, `PATCH`, `DELETE` |
 
 Learn more within the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
+
+If want to integrate Directus SCIM endpoints with Okta, follow these steps on [Publishing Your SCIM-Based Provisioning Integration](https://developer.okta.com/standards/SCIM/#publishing-your-scim-based-provisioning-integration) section.
 
 ### Create SCIM User
 
