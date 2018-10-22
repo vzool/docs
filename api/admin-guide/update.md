@@ -15,3 +15,15 @@ $ git pull
 ## Manually
 
 Updating is basically the same as installing fresh. You can download a copy of the latest version from [the releases page](https://github.com/directus/api/releases) and overwrite the files you had before. **Make sure not to override any uploads within `/public/uploads/`, logs within `/logs`, or config files within `/config/*.php`**.
+
+## Upgrade Database
+
+After you update the Directus API code, there may be changes in the database, such as a new field, a field with a different interface or new options.
+
+You can upgrade the database using the terminal:
+
+```
+$ bin/directus db:upgrade
+```
+
+Or the endpoint `/[project-name]/update` (Only admin can use this endpoint).
