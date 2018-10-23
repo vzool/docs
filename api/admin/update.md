@@ -20,4 +20,4 @@ Updating is basically the same as installing fresh. You can download a copy of t
 
 After you update the Directus API code, there may be changes in the database, such as a new field, a field with a different interface or new options.
 
-You can upgrade the database using the [terminal](../contributor-guide/command-line-interface.md) or the [endpoint](../reference.md#update)
+You can upgrade the database using the [terminal](../contributor/cli.md) or the [endpoint](../reference.md#update)

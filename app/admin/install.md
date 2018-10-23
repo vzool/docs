@@ -23,7 +23,7 @@ $ git clone -b build https://github.com/directus/app.git directus
 If you don't have access to the command line in your server, you can download the static bundle manually as a zip. Head over to [the releases page](https://github.com/directus/app/releases) to download a fresh copy of the latest version.
 
 ::: tip
-For instructions on how to setup a local development copy, checkout our [dev install guide](https://docs.directus.io/app/contributor-guide/install-dev.html#decoupled)
+For instructions on how to setup a local development copy, checkout our [dev install guide](https://docs.directus.io/app/contributor/install-dev.html#decoupled)
 :::
 
 ### Using Docker

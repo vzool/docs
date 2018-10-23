@@ -51,8 +51,8 @@ As mentioned above, Soft Delete is meant to _feel_ like an item has been deleted
 
 ## Workflow
 
-The status interface also enables extended permission options that allow [setting permissions based on an item's status](/app/admin-guide/permissions.md#status-level).
+The status interface also enables extended permission options that allow [setting permissions based on an item's status](/app/admin/permissions.md#status-level).
 
 ## Custom Status Interfaces
 
-The core status interface should work for 90% of use-cases, but you can still take advantage of the functionality with different styling or interactions. To do this you would [create a custom interface](/extensions/interfaces.md) that uses the `status` [field type](/api/admin-guide/field-types.md).
+The core status interface should work for 90% of use-cases, but you can still take advantage of the functionality with different styling or interactions. To do this you would [create a custom interface](/extensions/interfaces.md) that uses the `status` [field type](/api/admin/field-types.md).

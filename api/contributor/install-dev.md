@@ -21,7 +21,7 @@ In order to work on the API, you'll need to install the source version locally. 
 * [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) to install dependencies
 
 :::warning Important
-[Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin-guide/requirements.md)
+[Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/api/admin/requirements.md)
 :::
 
 ## Setup Steps
@@ -91,4 +91,4 @@ If you are skipping the installer and adding the SQL directly to your database, 
 
 The API uses a config file to know which database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` (default project) and edit the settings as indicated.
 
-[Learn more about configuring the API](../admin-guide/configure.md)
+[Learn more about configuring the API](../admin/configure.md)

@@ -23,7 +23,7 @@ Directus is quite flexible and can be installed on many different varieties of s
 The Directus API can be installed in three ways:
 
 ::: tip
-For instructions on how to setup a local development copy, checkout our [dev install guide](../contributor-guide/install-dev.md)
+For instructions on how to setup a local development copy, checkout our [dev install guide](../contributor/install-dev.md)
 :::
 
 ### Using Git

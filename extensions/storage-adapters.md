@@ -7,5 +7,5 @@ Storage Adapters allow you to save Directus files anywhere. By default the syste
 * **Rackconnect** – Store files on Rackspace's storage solution
 
 :::tip
-You can change your storage adapter in the [API configuration](../api/admin-guide/configure.html#storage).
+You can change your storage adapter in the [API configuration](../api/admin/configure.html#storage).
 :::

@@ -309,4 +309,4 @@ Only users with the Administrator role are guaranteed to see _everything_ in the
 
 ---
 
-[Continue on to: App Admin Guide](./admin-guide)
+[Continue on to: App Admin Guide](./admin)

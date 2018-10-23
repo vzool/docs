@@ -40,5 +40,5 @@ To learn how to use Directus, checkout the [Directus User Guide](../user-guide.m
 * [Adding Custom Branding](./branding.md)
 
 ::: tip Contribute to Development
-Interested in helping out making Directus a better platform? Checkout the [Directus App Contributer Guide](../contributer-guide) where you'll find everything you need to get started.
+Interested in helping out making Directus a better platform? Checkout the [Directus App Contributer Guide](../contributer) where you'll find everything you need to get started.
 :::

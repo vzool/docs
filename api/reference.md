@@ -1243,7 +1243,7 @@ These endpoints are used for creating, reading, updating, and deleting fields wi
 
 #### Create Field
 
-Creates a new field in a given collection. When creating a field you must submit the [Directus field type](/api/admin-guide/field-types.md) (`type`) as well as a database datatype (`datatype`) specific to your SQL vendor.
+Creates a new field in a given collection. When creating a field you must submit the [Directus field type](/api/admin/field-types.md) (`type`) as well as a database datatype (`datatype`) specific to your SQL vendor.
 
 ```http
 POST /[project]/fields/[collection]
@@ -2586,7 +2586,7 @@ If there's a fille in the root named `.lock` this instance is locked from creati
 
 ## Field Types
 
-Returns the list of [Directus field types](/api/admin-guide/field-types.md).
+Returns the list of [Directus field types](/api/admin/field-types.md).
 
 ```http
 GET /types

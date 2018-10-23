@@ -9,5 +9,5 @@ For SSO to function properly, a user with a matching email address must already 
 * **Okta** – Service's email must match user's Directus email
 
 ::: tip Login Flow
-Learn more about the [SSO Login Flow](../api/contributor-guide/sso-login-flow.md)
+Learn more about the [SSO Login Flow](../api/contributor/sso-login-flow.md)
 :::

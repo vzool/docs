@@ -7,7 +7,7 @@ To quickly debug the application you can use [our demo API](https://next.demo-ap
 :::
 
 ::: warning
-Directus extensions are served from the API ([learn why](/extensions/architecture.md)). Therefore, if you want to work on extensions you'll need [a local installation of the API](/api/contributor-guide/install-dev.md) as well.
+Directus extensions are served from the API ([learn why](/extensions/architecture.md)). Therefore, if you want to work on extensions you'll need [a local installation of the API](/api/contributor/install-dev.md) as well.
 :::
 
 ### System Requirements
