@@ -175,12 +175,12 @@ Actions hooks allow you to execute custom code when a Directus Event happens. Yo
 ```php
 'hooks' => [
     'actions' => [
-        'collection.insert.articles' => function ($data, $collectionName) {
+        'item.create.articles' => function ($data) {
             $content = 'New article was created with the title: ' . $data['title'];
             // pesudo function
             notify('admin@example.com', 'New Article', $content);
-        ]
-    }
+        }
+    ]
 ]
 ```
 
@@ -195,7 +195,7 @@ Filters work the same as hooks except that you can manipulate the data being pas
 ```php
 'hooks' => [
     'filters' => [
-        'collection.insert.articles:before' => function (\Directus\Hook\Payload $payload) {
+        'item.create.articles:before' => function (\Directus\Hook\Payload $payload) {
             $payload->set('uuid', \Directus\generate_uuid4());
 
             return $payload;
