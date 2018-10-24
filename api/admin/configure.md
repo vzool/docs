@@ -47,7 +47,7 @@ Settings for the database connection
 | `password`    | Database user password |
 | `engine`      | Database storage engine |
 | `charset`     | Database connection charset |
-| `socket`      | @TODO: Add an option to add a socket connection |
+| `socket`      | Unix socket used for connection. It shouldn't be used with `host` |
 
 ### `cache`
 
