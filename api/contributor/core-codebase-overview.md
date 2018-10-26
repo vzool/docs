@@ -13,7 +13,7 @@ The Directus API core codebase is written in PHP.
   * `/helpers` – Function helpers
   * `/mail` – Email templates
   * `/services` – Business logic (service-layer)
-  * `/schema.sql` – The empty database boilerplate
+  * [`/schema.sql`](#schema) – The empty database boilerplate
   * `/web.php` The http/web entry-point bootstrap
 * `/tests` Response and code tests
 
@@ -29,9 +29,71 @@ There are two types of tests: testing the API http response (actual requests) an
 
 The migration files are created using [Phinx](https://phinx.org).
 
-**Migrations** are a way to define a database schema programmatically, making it easier to make and apply changes. Read [How to Create Migrations](http://docs.phinx.org/en/latest/migrations.html#creating-a-new-migration).
+**Migrations** are a way to define a database schema programmatically, making it easier to make and apply changes.
+
+Each migration file represents a table.
+
+To create a new migration file use the following command: `vendor/bin/phinx create MyNewMigration -c config/migrations.php`, it will create a new migration in the format `YYYYMMDDHHMMSS_my_new_migration.php`, where the first 14 characters are replaced with the current timestamp down to the second.
 
 **Seeders** are a way to insert data into tables. Read [How to Create Seeding](http://docs.phinx.org/en/latest/seeding.html#creating-a-new-seed-class).
+
+Each seeder represents the default data for some tables.
+
+To create a new seeding file use the following command: `php vendor/bin/phinx seed:create UsersSeeder`, it will create a new file in `migrations/db/seeds` named `UsersSeeder.php` with the similar template shown below:
+
+```php
+<?php
+
+use Phinx\Seed\AbstractSeed;
+
+class UsersSeeder extends AbstractSeed
+{
+    /**
+     * Run Method.
+     *
+     * Write your database seeder using this method.
+     *
+     * More information on writing seeders is available here:
+     * http://docs.phinx.org/en/latest/seeding.html
+     */
+    public function run()
+    {
+
+    }
+}
+```
+
+The example below show how to insert data into the `directus_users` table.
+
+```php
+<?php
+
+use Phinx\Seed\AbstractSeed;
+
+class UsersSeeder extends AbstractSeed
+{
+    public function run()
+    {
+        $data = [
+            [
+                'email'    => 'admin@example.com'
+            ],[
+                'email'    => 'user@example.com'
+            ]
+        ];
+
+        $posts = $this->table('directus_users');
+        $posts->insert($data)
+              ->save();
+    }
+}
+```
+
+The seeder ran after the migrations when database install command is executed.
+
+## Schema
+
+The `schema.sql` is a MySQL database dump. There's no automatic way of creating this, but it's an manual export of the tables and rows created by the migrations and seeders on installation.
 
 ## Documentation
 
