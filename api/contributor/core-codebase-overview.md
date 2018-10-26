@@ -29,9 +29,9 @@ There are two types of tests: testing the API http response (actual requests) an
 
 The migration files are created using [Phinx](https://phinx.org).
 
-**Migrations** are a way to define a database schema programmatically, making it easier to make and apply changes.
+**Migrations** are a way to define a database schema programmatically, making it easier to make and apply changes. Read [How to Create Migrations](http://docs.phinx.org/en/latest/migrations.html#creating-a-new-migration)
 
-**Seeders** are a way to insert data into tables.
+**Seeders** are a way to insert data into tables. Read [How to Create Seeding](http://docs.phinx.org/en/latest/seeding.html#creating-a-new-seed-class)
 
 ## Documentation
 
