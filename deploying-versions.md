@@ -210,13 +210,13 @@ $ rm -rf app-build/.git
 9. Copy everything from app-build to directus/public/admin
 
 ```bash
-cp -r app-build/* directus/public/admin
+$ cp -r app-build/* directus/public/admin
 ```
 
 10. Duplicate the `directus/public/admin/config_example.js` file to `directus/public/admin/config.js`
 
 ```bash
-cp directus/public/admin/config_example.js directus/public/admin/config.js
+$ cp directus/public/admin/config_example.js directus/public/admin/config.js
 ```
 
 11. Change the `directus/public/admin/config.js` file to point to the relative API
