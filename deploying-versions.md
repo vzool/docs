@@ -45,22 +45,30 @@ $ git clone -b build git@github.com:directus/app.git app-build
 7. Copy everything from `app/dist` to `app-build`
 
 ```bash
-$ cp -r app/dist/. build  
+$ cp -r app/dist/. app-build  
 ```
 
 8. Delete all .DS_Store files
 
 ```bash
+$ cd app-build
 $ find . -name '.DS_Store' -type f -delete
 ```
 
 9. Add-commit-push
 
 ```bash
-$ cd app-build
 $ git add .
 $ git commit -m "<VERSION NUMBER>"
 $ git push origin build
 ```
 
 10. Create release on GH
+
+11. Delete local repos
+
+```bash
+$ cd ..
+$ rm -rf app
+$ rm -rf app-build
+```
