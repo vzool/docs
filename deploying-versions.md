@@ -163,3 +163,92 @@ $ rm -rf api-build
 
 ## Deploying the combined build
 
+1. Clone the directus/directus repo
+
+```bash
+$ git clone git@github.com:directus/directus.git
+```
+
+2. Delete everything in it except the `.git` folder
+
+3. Clone the api build
+
+```bash
+$ git clone -b build git@github.com:directus/api.git api-build
+```
+
+4. Remove the `.git` folder from the `api-build` folder
+
+```bash
+$ rm -rf api-build/.git
+```
+
+5. Copy everything in the api-build folder to the main directus/directus repo
+
+```bash
+$ cp -r api-build/* directus
+```
+
+6. Clone the app build
+
+```bash
+$ git clone -b build git@github.com:directus/app.git app-build
+```
+
+7. Make the public/admin directory in directus/directus
+
+```bash
+$ mkdir directus/public/admin
+```
+
+8. Delete the `.git` folder from the app-build
+
+```bash
+$ rm -rf app-build/.git
+```
+
+9. Copy everything from app-build to directus/public/admin
+
+```bash
+cp -r app-build/* directus/public/admin
+```
+
+10. Duplicate the `directus/public/admin/config_example.js` file to `directus/public/admin/config.js`
+
+```bash
+cp directus/public/admin/config_example.js directus/public/admin/config.js
+```
+
+11. Change the `directus/public/admin/config.js` file to point to the relative API
+
+```js
+api: {
+  "../_/": "Directus API"
+}
+```
+
+12. Delete all .DS_Store files
+
+```bash
+$ cd directus
+$ find . -name '.DS_Store' -type f -delete
+```
+
+13. Add-commit-push
+
+```bash
+$ git add .
+$ git commit -m "<VERSION NUMBER>"
+$ git push origin master
+```
+
+14. Create release on GH
+
+15. Delete local repos
+
+```bash
+$ cd ..
+$ rm -rf directus
+$ rm -rf api-build
+$ rm -rf app-build
+```
