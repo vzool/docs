@@ -17,8 +17,8 @@ footer: GPL-3.0 | © 2018 RANGER Studio LLC
     <nav>
       <ul>
         <li><router-link to="/app/user-guide.html">User Guide</router-link></li>
-        <li><router-link to="/app/admin-guide/">Admin Guide</router-link></li>
-        <li><router-link to="/app/contributor-guide/">Contributor Guide</router-link></li>
+        <li><router-link to="/app/admin/">Admin Guide</router-link></li>
+        <li><router-link to="/app/contributor/">Contributor Guide</router-link></li>
       </ul>
     </nav>
   </div>
@@ -28,8 +28,8 @@ footer: GPL-3.0 | © 2018 RANGER Studio LLC
     <nav>
       <ul>
         <li><router-link to="/api/reference.html">API Reference</router-link></li>
-        <li><router-link to="/api/admin-guide/">Admin Guide</router-link></li>
-        <li><router-link to="/api/contributor-guide/">Contributor Guide</router-link></li>
+        <li><router-link to="/api/admin/">Admin Guide</router-link></li>
+        <li><router-link to="/api/contributor/">Contributor Guide</router-link></li>
       </ul>
     </nav>
   </div>

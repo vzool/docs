@@ -18,9 +18,11 @@ To create a hook a [callable](http://php.net/manual/en/language.types.callable.p
 ```php
 [
   'hooks' => [
-    'item.create' => function ($collectionName, array $data) {
-      // execute any code
-    }
+    'actions' => [
+      'item.create' => function ($collectionName, array $data) {
+        // execute any code
+      }
+    ]
   ]
 ];
 ```
@@ -45,7 +47,9 @@ class CreateItemEvent
 ```php
 [
   'hooks' => [
-    'item.create' => '\App\Events\CreateItemEvent'
+    'actions' => [
+      'item.create' => '\App\Events\CreateItemEvent'
+    ]
   ];
 ];
 ```
@@ -70,7 +74,9 @@ class CreateItemEvent implements \Directus\Hook\HookInterface
 ```php
 [
   'hooks' => [
-    'item.create' => '\App\Events\CreateItemEvent'
+    'actions' => [
+      'item.create' => '\App\Events\CreateItemEvent'
+    ]
   ]
 ];
 ```
@@ -79,23 +85,27 @@ class CreateItemEvent implements \Directus\Hook\HookInterface
 
 ```php
 'hooks' => [
-  'item.create.articles' => function ($data, $collectionName) {
-    $content = 'New article was created with the title: ' . $data['title'];
-    // pesudo function
-    notify('admin@example.com', 'New Article', $content);
-  }
+  'actions' => [
+    'item.create.articles' => function ($data, $collectionName) {
+      $content = 'New article was created with the title: ' . $data['title'];
+      // pesudo function
+      notify('admin@example.com', 'New Article', $content);
+    }
+  ]
 ]
 ```
 
 ## Create a Filter Hook
 
 ```php
-'filters' => [
-  'item.create.articles:before' => function (\Directus\Hook\Payload $payload) {
-    $payload->set('uuid', \Directus\generate_uuid4());
+'hooks' => [
+  'filters' => [
+    'item.create.articles:before' => function (\Directus\Hook\Payload $payload) {
+      $payload->set('uuid', \Directus\generate_uuid4());
 
-    return $payload;
-  }
+      return $payload;
+    }
+  ]
 ]
 ```
 

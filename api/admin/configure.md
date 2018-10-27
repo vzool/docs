@@ -47,7 +47,7 @@ Settings for the database connection
 | `password`    | Database user password |
 | `engine`      | Database storage engine |
 | `charset`     | Database connection charset |
-| `socket`      | @TODO: Add an option to add a socket connection |
+| `socket`      | Unix socket used for connection. It shouldn't be used with `host` |
 
 ### `cache`
 
@@ -117,7 +117,7 @@ A list of key-value-pairs (array) mail configurations. Currently only the `defau
 
 | Name          | Description   |
 | ------------- | ------------- |
-| `transport`   | `smtp`, `sendmail`, `simple_file` (dummy example) or your own class name resolution string (Ex: `\My\Namespace\MyTransport`)
+| `transport`   | `smtp`, `sendmail` or your own class name resolution string (Ex: `\My\Namespace\MyTransport`). This class must extends from `\Directus\Mail\Transports\AbstractTransport`.
 | `from`        | The global "from" email address
 
 When the `transport` is set to one of the transports mentioned below, any of those options can be used.
@@ -126,8 +126,8 @@ When the `transport` is set to one of the transports mentioned below, any of tho
 
 | Name          | Description   |
 | ------------- | ------------- |
-| `host`        | Server's host
-| `port`        | Server's port
+| `host`        | Server's host. Default: `localhost`
+| `port`        | Server's port. Default: `25`
 | `username`    | Authentication username
 | `password`    | Authentication password
 | `encryption`  | Connection encryption type, Example: `ssl` or `tls`
@@ -175,12 +175,12 @@ Actions hooks allow you to execute custom code when a Directus Event happens. Yo
 ```php
 'hooks' => [
     'actions' => [
-        'collection.insert.articles' => function ($data, $collectionName) {
+        'item.create.articles' => function ($data) {
             $content = 'New article was created with the title: ' . $data['title'];
             // pesudo function
             notify('admin@example.com', 'New Article', $content);
-        ]
-    }
+        }
+    ]
 ]
 ```
 
@@ -195,7 +195,7 @@ Filters work the same as hooks except that you can manipulate the data being pas
 ```php
 'hooks' => [
     'filters' => [
-        'collection.insert.articles:before' => function (\Directus\Hook\Payload $payload) {
+        'item.create.articles:before' => function (\Directus\Hook\Payload $payload) {
             $payload->set('uuid', \Directus\generate_uuid4());
 
             return $payload;
