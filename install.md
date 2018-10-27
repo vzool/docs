@@ -27,7 +27,9 @@ git clone https://github.com/directus/directus.git
 
 ## Configure
 
-Now that you have Directus on your server, navigate to the App at: `/admin` to finish setup. Just click "Install" and follow the prompts to complete configuration.
+1. Set your document root to the `/public` directory
+2. Navigate your browser to the App at `/admin`
+3. Follow the prompts to complete configuration (see steps below)
 
 Field          | Description
 :------------- | :-----------
@@ -48,7 +50,7 @@ If you would rather setup your project manually you can [follow these instructio
 
 ## Logging In
 
-Once you've finished with the installer, you will automatically be taken to the login page of the Directus App. You can then login with the credentials you provided during the configuration process, or the default credentials if configured manually: `admin@example.com` and `password`
+Once you've finished with the installer, you will automatically be taken to the login page of the Directus App (again, at `/admin`). You can then login with the credentials you provided during the configuration process, or the default credentials if configured manually: `admin@example.com` and `password`
 
 ## Other Install Options
 
