@@ -2,6 +2,7 @@ module.exports = {
   base: '/',
   title: 'Directus Docs',
   description: 'The All-New Directus 7. Future-Proof Headless CMS for Managing Custom Database Content.',
+  ga: 'UA-24637628-7',
   head: [
     ['link', { rel: "manifest",  href: "/site.webmanifest" }],
     ['link', { rel: "mask-icon",  href: "/safari-pinned-tab.svg", color: "#5bbad5" }],
@@ -100,7 +101,6 @@ module.exports = {
     lastUpdated: 'Last Updated',
     repo: 'directus/docs-v7',
     docsDir: '',
-    editLinks: true,
-    ga: 'UA-24637628-7',
+    editLinks: true
   }
 };
