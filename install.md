@@ -4,7 +4,7 @@ The easiest way to get up-and-running with Directus is with our [combined releas
 
 ## Requirements
 
-Learn more about these system requirements, neccesary permissions, and other server-specific prerequisites on our [dedicated requirements page](/api/admin-guide/requirements.md).
+Learn more about these system requirements, neccesary permissions, and other server-specific prerequisites on our [dedicated requirements page](/api/admin/requirements.md).
 
 * HTTP/Web Server
 * MySQL 5.2+
@@ -39,7 +39,7 @@ Database Name  | The name of the database
 Database Type  | As of now, Directus only supports MySQL
 
 :::tip Manual Config
-If you would rather setup your project manually you can [follow these instructions](./api/admin-guide/configure.md)).
+If you would rather setup your project manually you can [follow these instructions](./api/admin/configure.md)).
 :::
 
 ## Logging In
@@ -78,8 +78,8 @@ If you don't have access to the command line then you'll need to decompress the 
 
 ### Install Individually
 
-If you prefer, you can choose to only [install the Directus API](./api/admin-guide/install.md), or only [install the Directus App](./app/admin-guide/install.md). This is useful for multitenancy, such as when you need many instances of the API but only one App to manage them all.
+If you prefer, you can choose to only [install the Directus API](./api/admin/install.md), or only [install the Directus App](./app/admin/install.md). This is useful for multitenancy, such as when you need many instances of the API but only one App to manage them all.
 
 ### Install from Source
 
-If you would like to extend or make contributions to the core codebase then you can [install the Directus API Source](./api/contributor-guide/install-dev.md), or [install the Directus App Source](./app/contributor-guide/install-dev.md). This process involves more steps, so we recommend using the combined build for normal usage.
+If you would like to extend or make contributions to the core codebase then you can [install the Directus API Source](./api/contributor/install-dev.md), or [install the Directus App Source](./app/contributor/install-dev.md). This process involves more steps, so we recommend using the combined build for normal usage.
