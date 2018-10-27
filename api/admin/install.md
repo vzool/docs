@@ -46,7 +46,7 @@ If you don't have access to the command line for your server, you can download t
 
 Directus API should work on any HTTP Server, but most testing has been done on Apache 2, NGINX, and Caddy.
 
-1. The root directory for Directus API should be `public` directory.
+1. The root directory for Directus API should be set the `/public` directory.
 2. Make sure the directory ownership is set to user the web server is running under. Usually the user is `www-data`
     * eg: `sudo chown -R www-data:www-data /var/www/api`
 3. The following files/folders should have write permission:
