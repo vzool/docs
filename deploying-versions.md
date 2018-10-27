@@ -111,6 +111,7 @@ $ git clone -b build git@github.com:directus/api.git api-build
 7. Delete all nested .git folders (prevent submodules)
 
 ```bash
+$ cd api
 $ ( find . -type d -name ".git" \
   && find . -name ".gitignore" \
   && find . -name ".gitmodules" ) | xargs rm -rf
