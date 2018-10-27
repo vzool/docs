@@ -132,7 +132,6 @@ $ ( find . -type d -name ".git" \
 * docker-compose.yml
 
 ```bash
-$ cd api
 $ cp -r ./{bin,config,docker,logs,migrations,public,src,vendor,LICENSE.md,README.md,docker-compose.yml} ../api-build
 $ cd ..
 ```
