@@ -54,6 +54,9 @@ module.exports = {
           ['/', '┄┄┄┄┄┄┄┄┄┄'],
           ['/api/contributor/', 'Contributor Guide'],
           ['/api/contributor/install-dev', 'Development Environment'],
+          ['/api/contributor/cli', 'CLI'],
+          ['/api/contributor/codebase-overview', 'Codebase Overview'],
+          ['/api/contributor/database-overview', 'Database Overview'],
           ['/api/contributor/resources', 'Resources'],
           ['/api/contributor/troubleshooting', 'Troubleshooting']
         ]
@@ -77,6 +80,8 @@ module.exports = {
           ['/', '┄┄┄┄┄┄┄┄┄┄'],
           ['/app/contributor/', 'Contributor Guide'],
           ['/app/contributor/install-dev', 'Development Environment'],
+          ['/app/contributor/helpers', 'Helpers'],
+          ['/app/contributor/i18n', 'Internationalization'],
           ['/app/contributor/resources', 'Resources'],
           ['/app/contributor/github', 'GitHub'],
           ['/app/contributor/troubleshooting', 'Troubleshooting']
