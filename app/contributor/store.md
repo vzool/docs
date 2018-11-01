@@ -29,8 +29,7 @@ Every store action that fetches data should return a promise so the caller can k
 
 ## State
 
-When in `development` mode, you can view all of these state variables in [Vue DevTools](https://github.com/vuejs/vue-devtools), but we've included an abridged example here for reference:
-
+When in `development` mode, you can view all of these state variables in [Vue DevTools](https://github.com/vuejs/vue-devtools), but we've included an abridged example here for reference. All of these values can be accessed within the App using: `this.$store.state`. For example, `this.$store.state.currentUser.first_name` would be `Admin` in the example below.
 
 ```json
 {
