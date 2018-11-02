@@ -89,6 +89,6 @@ If you are skipping the installer and adding the SQL directly to your database, 
 
 ### 5. Config File Installer
 
-The API uses a config file to know which database to connect to. Copy or rename the `/config/api_example.php` file to `/config/api.php` (default project) and edit the settings as indicated.
+The API uses a config file to know which database to connect to. Copy or rename the `/config/api_sample.php` file to `/config/api.php` (default project) and edit the settings as indicated.
 
 [Learn more about configuring the API](../admin/configure.md)
