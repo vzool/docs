@@ -111,6 +111,10 @@ Choose where files can be uploaded. Currently we support local and Amazon-S3
 | `version`     | S3 API version
 | `bucket`      | S3 Bucket name
 
+:::tip NOTE
+If you are using the `s3` storage adapter, you must install the `aws/aws-sdk-php` package. Run `composer require aws/aws-sdk-php` in the terminal.
+:::
+
 ### `mail`
 
 A list of key-value-pairs (array) mail configurations. Currently only the `default` key is supported. Each value must have at least the following information:
