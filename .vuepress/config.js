@@ -30,10 +30,10 @@ module.exports = {
         children: [
           '/what-is-directus',
           '/install',
-          '/i18n',
+          '/contributing',
           '/supporting-directus',
-          '/feature-requests',
           '/docs-structure',
+          '/i18n',
           '/glossary'
         ]
       },
@@ -83,7 +83,6 @@ module.exports = {
           ['/app/contributor/helpers', 'Helpers'],
           ['/app/contributor/i18n', 'Internationalization'],
           ['/app/contributor/resources', 'Resources'],
-          ['/app/contributor/github', 'GitHub'],
           ['/app/contributor/troubleshooting', 'Troubleshooting']
         ]
       },
