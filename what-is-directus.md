@@ -6,7 +6,7 @@
 
 Often described as a "headless" CMS, Directus _only manages content_. It doesn't come with a website editor, template designs, or "presentation layer" built-in. That means that you have the freedom to connect content anywhere and everywhere, using the technologies you prefer.
 
-There are three main repositories to be aware of with Directus:
+There are three main facets of Directus to be aware of:
 
 * **[Directus API](https://github.com/directus/api)** — A wrapper for custom SQL databases. It is how _projects_ communicate with the database. It's the "engine" of the Directus suite, and is layered on-top of your database.
 * **[Directus API](https://github.com/directus/app)** — An admin GUI for managing API instances. It is how _humans_ interact with the API. It wraps the API with a friendly user interface so that anyone can manage content in their web browser.
