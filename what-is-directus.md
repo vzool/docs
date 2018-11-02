@@ -2,13 +2,23 @@
 
 ## Introduction
 
-**Directus is a free and open-source suite of software for managing agnostic content.** It provides an easy way for developers to connect your data to projects on _any_ platform, and non-technical users an intuitive way to manage that data.
+**Directus is a free and open-source suite of software for managing agnostic content.** It provides developers with an easy way to connect data to projects on _any_ platform, and non-technical users an intuitive way to manage that data.
 
-Often described as a "headless" CMS, Directus _only manages content_. It doesn't come with a website editor, design templates, or other "presentation layer" built-in. That means that you have the freedom to connect this _agnostic_ content anywhere and everywhere, regardless of platform.
+Often described as a "headless" CMS, Directus _only manages content_. It doesn't come with a website editor, template designs, or "presentation layer" built-in. That means that you have the freedom to connect content anywhere and everywhere, using the technologies you prefer.
 
-If you're still a bit confused about what all that means, let's take a look at a few examples to clear things up.
+There are three main repositories to be aware of with Directus:
+
+* **[Directus API](https://github.com/directus/api)** — A wrapper for custom SQL databases. It is how _projects_ communicate with the database. It's the "engine" of the Directus suite, and is layered on-top of your database.
+* **[Directus API](https://github.com/directus/app)** — An admin GUI for managing API instances. It is how _humans_ interact with the API. It wraps the API with a friendly user interface so that anyone can manage content in their web browser.
+* **[Directus Suite](https://github.com/directus/directus)** — A combined build of the API and App. There is no unique code here, it is simply a convenient way to install the Directus API, App, and all dependencies.
+
+:::tip Docs
+Another important repository is the one you're looking at now: [Docs](https://github.com/directus/docs). This is where all of the documenation for Directus lives. Our docs are written in markdown and compiled with [VuePress](https://vuepress.vuejs.org/), so it's easy for anyone to add new sections or recommend edits.
+:::
 
 ### Project Examples
+
+If you're still a bit confused about what Directus can be used for, let's take a look at a few examples to clear things up.
 
 * **Websites**
   You might be managing simple text and images for a personal blog, massive amounts of syndicated content for a network of enterprise sites, or highly customized user account data for a complex webapp service; Directus has it covered.
@@ -42,12 +52,6 @@ There are many concepts that make Directus unique, and several terms that we use
 **"Unopinionated"** means that Directus tries its hardest not impose any self-proclaimed "best practices". You decide how your data is managed and accessed.
 
 **"Isolated"** means that the Directus stores all its "system" data separate from yours. You could even _delete_ Directus and your project would still work if it pulls directly from the database.
-
-## API vs App
-
-The **Directus API** (Application Programming Interface) is how _projects_ communicate with the database. It's the "engine" of the Directus suite, and is layered on-top of your database.
-
-The **Directus App** (Application) is how _humans_ interact with the API. It wraps the API with a friendly user interface so that people can manage content in their web browser.
 
 ## Multitenancy
 
