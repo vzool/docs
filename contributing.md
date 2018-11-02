@@ -30,7 +30,7 @@ This is what you're looking at right now. It stores all of the Documentation for
 
 ### [directus/docker](https://github.com/directus/docker)
 
-The official Docker container for Directus 7. Actual containers are available through our Docker Hub: https://hub.docker.com/u/directus/
+This is the code used to generate the official Docker images for Directus 7. These images are available through our [Docker Hub](https://hub.docker.com/u/directus/) and can be accessed via: `docker pull directus/app` and `docker pull directus/api`... the Dockerized combined build for Directus 7 is coming soon.
 
 ## Feature Requests
 
