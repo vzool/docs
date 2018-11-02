@@ -415,7 +415,6 @@ The API has a set of query parameters that can be used for specific actions, suc
 | `lang`        | Include translation information
 | `q`           | Search for items that matches the given string in any of their fields*
 | `groups`      | Groups the items by one or more fields
-| `joins`       | Joins the result with another collection using SQL Joins
 | `activity_skip` | Disable activity logging for the request
 
 ### Metadata
@@ -643,14 +642,6 @@ The `groups` parameter allows grouping the result by one or more fields.
 groups=id,name
 ```
 
-### Joins
-
-The `joins` parameter allows joining items from another collection to the main result.
-
-#### Examples
-
-@TODO: Add examples and useful examples behind this feature
-
 ### Skip Activity Logging
 
 The `activity_skip` parameter prevent the activity logging to be saved in the `directus_actity` table. `activity_skip=1` means to ignore the logging any other value means record the activity.
@@ -774,7 +765,6 @@ GET /[project]/items/[collection-name]
 | `lang`        | [Read More](#language)     |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Examples
 
@@ -834,7 +824,6 @@ GET /[project]/items/[collection-name]/[id]/revisions
 | `lang`        | [Read More](#language)     |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Examples
 
@@ -989,7 +978,6 @@ GET /[project]/activity
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Activity Event
 
@@ -1195,7 +1183,6 @@ GET /[project]/collection_presets
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Collection Preset
 
@@ -1212,7 +1199,6 @@ GET /[project]/collection_presets/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Collection Preset
 
@@ -1358,7 +1344,6 @@ GET /[project]/files
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get File
 
@@ -1375,7 +1360,6 @@ GET /[project]/files/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update File
 
@@ -1465,7 +1449,6 @@ GET /[project]/files/[id]/revisions
 | `sort`        | [Read More](#sort)         |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get File Revision
 
@@ -1481,7 +1464,6 @@ Returns the revisions of a file using a 0-index based offset.
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 ### Folders
 
@@ -1523,7 +1505,6 @@ GET /[project]/files/folders
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Folder
 
@@ -1540,7 +1521,6 @@ GET /[project]/files/folders/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Folder
 
@@ -1635,7 +1615,6 @@ GET /[project]/permissions
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Permission
 
@@ -1652,7 +1631,6 @@ GET /[project]/permissions/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Get My Permissions
 
@@ -1675,7 +1653,6 @@ GET /[project]/permissions/me
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get My Collection Permissions
 
@@ -1691,7 +1668,6 @@ GET /[project]/permissions/me/[collection-name]
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Permission
 
@@ -1822,7 +1798,6 @@ Returns the list of relations.
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Relation
 
@@ -1839,7 +1814,6 @@ GET /[project]/relations/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Relation
 
@@ -2144,7 +2118,6 @@ GET /[project]/users
 | `lang`        | [Read More](#language)     |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 ##### Examples
 
@@ -2170,7 +2143,6 @@ GET /[project]/users/[pk],[pk],[pk]
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
 | `status`      | [Read More](#status)       |
-| `joins`       | [Read More](#joins)        |
 
 ##### Examples
 
