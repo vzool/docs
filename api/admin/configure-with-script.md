@@ -38,8 +38,8 @@ $ bin/directus install:install -e <admin-email> -p <admin-password> -t <project-
 |---------|-----------------------------------------------------------------------|
 | `-e`    | Email of the Directus user (Default: `admin@example.com`)             |
 | `-p`    | Password of the Directus user (Default: `password`)                   |
-| `-t`    | Token of the Directus user (Default: `admin_token`)                   |
-| `-T`    | Title of the project (Default: `Directus`)                            |
+| `-T`    | Token of the Directus user (Default: `admin_token`)                   |
+| `-t`    | Title of the project (Default: `Directus`)                            |
 | `-N`    | Name of the project (Default: `_`)                                    |
 
 ## Testing
