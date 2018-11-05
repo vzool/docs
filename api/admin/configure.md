@@ -87,6 +87,14 @@ Enables caching to speed-up API responses
 | `host`        |  Memcached host
 | `port`        |  Memcached server port number
 
+**Note:** Memcached and PHP Memcached extension must be installed.
+
+```
+# Ubuntu example
+sudo apt-get install memcached
+sudo apt-get install php-memcached
+```
+
 #### Redis
 
 | Name          | Description   |
@@ -94,6 +102,14 @@ Enables caching to speed-up API responses
 | `adapter`     |  Name of the adapter. Must be `redis`
 | `host`        |  Redis server host
 | `port`        |  Redis server port number
+
+**Note:** Redis Server and PHP Redis extension must be installed.
+
+```
+# Ubuntu example
+sudo apt-get install redis-server
+sudo apt-get install php-redis
+```
 
 ### `storage`
 
