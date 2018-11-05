@@ -2888,6 +2888,8 @@ GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 GET /[project]/scim/v2/Users/[id]
 ```
 
+The `id` must be the `external_id` in the `directus_users` collection, which is the `id` in the SCIM Users results.
+
 #### Response
 
 ```json
